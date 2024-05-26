@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="loginBlock" [formGroup]="loginForm">
+    <div class="fields">
+      <input type="text" placeholder="Username/Email"  class="form-control" formControlName="username"/>
+    </div>
+    <div class="fields">
+      <input type="password" placeholder="Password"  class="form-control" formControlName="password"/>
+    </div>
+    <div class="fieldsBtn">
+      <button (click)="loginAdmin(loginForm.value)" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+  </div>

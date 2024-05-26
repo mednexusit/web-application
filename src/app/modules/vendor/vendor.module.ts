@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { VendorRoutingModule } from './vendor-routing.module';
-import { LoginComponent } from './components/login/login.component';
+import { VendorloginComponent } from './components/vendorlogin/vendorlogin.component';
+import { SharedModuleModule } from '../../common/shared-module/shared-module.module';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    VendorloginComponent
   ],
   imports: [
     CommonModule,
-    VendorRoutingModule
+    VendorRoutingModule,
+    SharedModuleModule
   ]
 })
 export class VendorModule { }

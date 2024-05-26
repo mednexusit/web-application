@@ -2,16 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModuleModule } from '../../common/shared-module/shared-module.module';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+
+  
+    AdminloginComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModuleModule
   ]
 })
 export class AdminModule { }

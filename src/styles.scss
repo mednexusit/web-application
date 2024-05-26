@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import './variables';
+
+app-login{
+  height:100%;
+  width: 100%;
+  background: linear-gradient(45deg,$primaryGradient, $secondaryGradient);
+}
