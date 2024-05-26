@@ -1,8 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 @import './variables';
 
-app-login{
-  height:100%;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+app-root{
+  height: 100%;
   width: 100%;
-  background: linear-gradient(45deg,$primaryGradient, $secondaryGradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+app-adminlogin{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+app-vendorlogin{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+app-login{
+  height: 100%;
+  width: 100%;
 }

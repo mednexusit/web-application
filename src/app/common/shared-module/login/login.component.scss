@@ -1,0 +1,33 @@
+@import "../../../../variables";
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, $secondaryGradient, $primaryGradient);
+}
+
+.loginBlock {
+  background: rgba($color: #fff, $alpha: 1);
+  padding: 20px;
+  height: 350px;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px 2px #b6b3b3;
+  h2{
+    background: linear-gradient(27deg, rgb(127, 23, 192), rgb(207, 18, 163));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight:900;
+  }
+  .fields {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .fieldsBtn {
+    margin-top: 20px;
+  }
+}

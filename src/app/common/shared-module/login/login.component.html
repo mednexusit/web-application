@@ -1,13 +1,53 @@
 <div class="wrapper">
-  <div class="loginBlock" [formGroup]="loginForm">
+  @if (route.url==='/admin') {
+  <div class="loginBlock col col-sm-8 col-md-3 col-lg-3" [formGroup]="loginForm">
+    <h2>Login</h2>
     <div class="fields">
-      <input type="text" placeholder="Username/Email"  class="form-control" formControlName="username"/>
+      <input
+        type="text"
+        placeholder="Username/Email"
+        class="form-control"
+        formControlName="username"
+      />
     </div>
     <div class="fields">
-      <input type="password" placeholder="Password"  class="form-control" formControlName="password"/>
+      <input
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        formControlName="password"
+      />
     </div>
     <div class="fieldsBtn">
-      <button (click)="loginAdmin(loginForm.value)" class="btn btn-primary">Login</button>
+      <button (click)="loginAdmin(loginForm.value)" class="btn btn-primary">
+        Admin Login
+      </button>
     </div>
   </div>
+  } @if (route.url==='/vendor') {
+  <div class="loginBlock col col-sm-8 col-md-3 col-lg-3" [formGroup]="loginForm">
+    <h2>Login</h2>
+    <div class="fields">
+      <input
+        type="text"
+        placeholder="Username/Email"
+        class="form-control"
+        formControlName="username"
+      />
+    </div>
+    <div class="fields">
+      <input
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        formControlName="password"
+      />
+    </div>
+    <div class="fieldsBtn">
+      <button (click)="loginAdmin(loginForm.value)" class="btn btn-primary">
+        Vendor Login
+      </button>
+    </div>
   </div>
+  }
+</div>
