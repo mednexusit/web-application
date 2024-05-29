@@ -5,23 +5,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, $secondaryGradient, $primaryGradient);
 }
 
 .loginBlock {
-  background: rgba($color: #fff, $alpha: 1);
   padding: 20px;
-  height: 350px;
   border-radius: 10px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 10px 2px #b6b3b3;
-  h2{
-    background: linear-gradient(27deg, rgb(127, 23, 192), rgb(207, 18, 163));
+  h1,
+  h3 {
+    background: $blackColor;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight:900;
+    font-weight: 900;
   }
   .fields {
     margin-top: 20px;
@@ -29,5 +26,46 @@
   }
   .fieldsBtn {
     margin-top: 20px;
+  }
+}
+
+.userLoginBlock {
+  background:$themePrimaryColor;
+  background-position: center;
+  background-size: contain;
+  padding: 10px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  h1,
+  h3 {
+    color: #fff;
+  }
+  h3 {
+    margin-top: 3vw;
+  }
+  .fields {
+    display: flex;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: space-between;
+    padding: $smallPadding;
+    border-radius: 10px;
+    background: #fff;
+    .numberInp {
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: $smallPadding;
+    }
+  }
+  .fieldsBtn {
+    .btn {
+      margin-top: 10px;
+      color: #fff;
+    }
   }
 }

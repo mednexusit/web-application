@@ -60,3 +60,13 @@ app-footer{
   border-bottom: 5px solid #fff;
   transition: border-bottom 0.3s linear;
 }
+.valid{
+  border: 2px solid green !important;
+}
+.invalid{
+  border: 2px solid red !important;
+}
+.error{
+  font-size: small;
+  color: #fff;
+}
