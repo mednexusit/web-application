@@ -35,35 +35,7 @@
         display: flex;
         align-items: center;
         margin-right: 10px;
-        .radioBtn{
-          appearance: none;
-          height: 15px;
-          width: 15px;
-          border-radius: 50%;
-          background: #fff;
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-right: 10px;
-        }
-        .radioBtn::before{
-          content: '';
-          height: 60%;
-          width: 60%;
-          background: $whiteColor;
-          border-radius: 50%;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%,-50%);
-        }
-        .radioBtn:checked{
-          background: $whiteColor;
-        }
-        .radioBtn:checked::before{
-          background: $themePrimaryColor;
-        }
+
       }
 
     }
@@ -96,4 +68,77 @@
       cursor: pointer;
     }
   }
+}
+.coursesBlock{
+  margin-top: 10px;
+  column-count: 2;
+  .courseItem{
+    display: flex;
+    align-items: center;
+    label{
+      white-space: nowrap;
+      cursor: pointer;
+      color: $whiteColor;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.radioBtn{
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.radioBtn::before{
+  content: '';
+  height: 60%;
+  width: 60%;
+  background: $whiteColor;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.radioBtn:checked{
+  background: $whiteColor;
+}
+.radioBtn:checked::before{
+  background: $themePrimaryColor;
+}
+.courseRadioBtn{
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.courseRadioBtn::before{
+  content: '';
+  height: 60%;
+  width: 60%;
+  background: $whiteColor;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.courseRadioBtn:checked{
+  background: $whiteColor;
+}
+.courseRadioBtn:checked::before{
+  background: $themePrimaryColor;
 }

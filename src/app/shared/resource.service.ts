@@ -17,7 +17,6 @@ export class ResourceService {
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    console.log(authToken)
     return this.http.get(this.resourceAPI+'getstatelist', httpOptions);
   }
   getColleges(data:any){
@@ -27,7 +26,15 @@ export class ResourceService {
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    console.log(authToken)
     return this.http.post(this.resourceAPI+'getcollegebystate',data,httpOptions);
+  }
+  getMSList(){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.get(this.resourceAPI+'getmslist',httpOptions)
   }
 }

@@ -78,8 +78,35 @@
           </li>
         </ul>
       </div>
-      <input type="text" placeholder="City" class="autoInp" />
-      <input type="text" placeholder="Medical Registered Number" class="autoInp" />
+      <input type="text" placeholder="City" class="autoInp"  formControlName="city"/>
+      <input type="text" placeholder="Medical Registered Number" class="autoInp" formControlName="mrn" />
+      <div class="coursesBlock">
+        <div class="courseItem">
+          <label for="mbbs">
+            <input type="radio" value="mbbs" id="mbbs" name="course" class="courseRadioBtn" formControlName="course">
+            MBBS
+          </label>
+        </div>
+        <div class="courseItem">
+          <label for="pg/dnb">
+            <input type="radio" value="pg/dnb" id="pg/dnb" name="course" class="courseRadioBtn" formControlName="course">
+            PG/DNB
+          </label>
+        </div>
+        <div class="courseItem">
+          <label for="ss/dnb">
+            <input type="radio" value="ss/dnb" id="ss/dnb" name="course" class="courseRadioBtn" formControlName="course">
+            SS/DNB
+          </label>
+        </div>
+        <div class="courseItem">
+          <label for="practising">
+            <input type="radio" value="practising" id="practising" name="course" class="courseRadioBtn" formControlName="course">
+            Practising
+          </label>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

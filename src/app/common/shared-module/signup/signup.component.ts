@@ -18,17 +18,20 @@ export class SignupComponent implements OnInit {
   signupForm:any=FormGroup;
   selectedStateData:any;
   selectedCollegeData:any;
+  isStateSelected:boolean=false;
+  msListData:any=[];
   constructor(private resServ: ResourceService, private fb:FormBuilder) {}
 
   ngOnInit(): void {
     this.getStatesList();
+    this.getMsListData();
     this.signupForm = this.fb.group({
       name:['',Validators.required],
       email:['',Validators.compose([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])],
       age:['',Validators.compose([Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)])],
       gender:['',Validators.required],
       state:['',Validators.required],
-      college:['',Validators.required],
+      college: [{ value: '', disabled: true }, Validators.required],
       city:['',Validators.required],
       mrn:['',Validators.required],
       course:['',Validators.required],
@@ -37,6 +40,9 @@ export class SignupComponent implements OnInit {
   }
   getStateText(data: any) {
     this.stateSearchText = data.target.value;
+    if(this.stateSearchText.length===0){
+      this.tempCollegeData=[];
+    }
     if (this.stateSearchText.length > 1) {
       this.tempStatesData = this.tempStatesData.filter((item: any) => {
         return item.name
@@ -48,12 +54,28 @@ export class SignupComponent implements OnInit {
 
     }
   }
+  getMsListData(){
+    this.resServ.getMSList().subscribe({
+      next:(data:any)=>{
+        console.log("data is",data);
+        if(data.responseContents){
+          this.msListData = data.responseContents;
+
+        }
+      }
+      ,error:(err:any)=>{
+        console.log(err)
+      }
+    })
+  }
   getSelectedState(data: any) {
     this.selectedStateData = data;
     this.signupForm.get('state').setValue(data.name);
     this.isShowStates=false;
-    this.getCollegeList()
-
+    this.isStateSelected=true;
+    this.signupForm.get('college').enable();
+    this.signupForm.get('college').setValue('')
+    this.getCollegeList();
   }
 
   getCollegeList(){
@@ -63,6 +85,7 @@ export class SignupComponent implements OnInit {
     this.resServ.getColleges(dataToPass).subscribe({
       next:(data:any)=>{
         this.tempCollegeData=data.responseContents;
+        console.log(this.tempCollegeData)
       }
     })
   }
@@ -86,6 +109,7 @@ export class SignupComponent implements OnInit {
   }
   onCollegeFocus(){
     this.isShowCollege=true;
+    this.isShowStates=false;
   }
   onCollegeBlur(){
     this.isShowCollege=false;
@@ -93,6 +117,7 @@ export class SignupComponent implements OnInit {
 
   onStateFocus(){
       this.isShowStates=true;
+      this.isShowCollege=false;
   }
   onStateBlur(){
     this.isShowStates=false;
