@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import 'ngx-toastr/toastr';
 @import './variables';
 
 *{
@@ -41,6 +43,13 @@ app-login{
   width: 100%;
 }
 app-home{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+app-signup{
   display: flex;
   height: 100%;
   align-items: center;

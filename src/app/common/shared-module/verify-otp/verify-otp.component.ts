@@ -1,0 +1,63 @@
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SharedService } from '../../../shared/shared.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../auth.service';
+
+@Component({
+  selector: 'app-verify-otp',
+  templateUrl: './verify-otp.component.html',
+  styleUrl: './verify-otp.component.scss',
+})
+export class VerifyOtpComponent implements OnInit {
+  @Input() mobNumber: any;
+  @Output() closeOtpModal = new EventEmitter();
+  @Output() resendNewOtp = new EventEmitter();
+
+  isOtpValid: boolean = false;
+  otpVal: any;
+  constructor(private sharedServ: SharedService, private router: Router, private toastr:ToastrService, private authServ:AuthService) {}
+
+  config = {
+    length: 5,
+    allowNumbersOnly: true,
+    inputClass: 'inp-otp',
+  };
+  ngOnInit(): void {}
+  onOtpChange(otp: any) {
+    this.otpVal = otp;
+    if (this.otpVal.length === 5) {
+      this.isOtpValid = true;
+    } else {
+      this.isOtpValid = false;
+    }
+  }
+  verifyOtp() {
+    let dataToPass = { mobile: '+91' + this.mobNumber, otp: this.otpVal };
+    this.sharedServ.verifyOtp(dataToPass).subscribe({
+      next: (data: any) => {
+        console.log('Data is ', data);
+        this.authServ.sendToken(data.access_token);
+        if (data.registrationinfo === null) {
+          console.log('OTP Verification Success');
+          this.router.navigate(['signup']);
+          this.toastr.success('OTP verification Success','',{
+            timeOut:1000
+          })
+        }
+        if (data.registrationinfo !== null && data.access_token) {
+          this.router.navigate(['']);
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+  resendOtp() {
+    this.resendNewOtp.emit();
+  }
+  handleCloseOtp() {
+    this.closeOtpModal.emit();
+  }
+}

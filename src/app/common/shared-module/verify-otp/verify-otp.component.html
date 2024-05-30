@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="otpBlock col-lg-3 col-md-3 col-sm-8">
+    <span class="closeBtn" (click)="handleCloseOtp()"><i class="fa-solid fa-xmark"></i></span>
+    <h3>Phone Verification</h3>
+    <p>
+      <span class="pvText">Enter your OTP code here</span>
+      <span class="pnText">Send to +91 {{ mobNumber }}</span>
+    </p>
+    <ng-otp-input
+      (onInputChange)="onOtpChange($event)"
+      [config]="config"
+    ></ng-otp-input>
+    <button
+      class="verifyBtn btn btn-primary"
+      [disabled]="!isOtpValid"
+      (click)="verifyOtp()"
+    >
+      Verify
+    </button>
+    <div class="resendBlock">
+      <span>Didn't you recieved any code?</span>
+      <button (click)="resendOtp()" class="resendOtpBtn btn btn">
+        Resend a new code
+      </button>
+    </div>
+  </div>
+</div>

@@ -37,12 +37,14 @@
   min-height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   border-radius: 15px;
+  animation: animate 0.5s linear;
   h1,
   h3 {
     color: #fff;
+    text-align: center;
   }
   h3 {
     margin-top: 3vw;
@@ -68,4 +70,54 @@
       color: #fff;
     }
   }
+  .notiBlock{
+    font-size: $secondaryFontSize;
+    margin-top: 20px;
+    color: #fff;
+    display: flex;
+    width: 80%;
+    align-items: center;
+    padding: $primaryPadding;
+  }
+}
+.loginBtn{
+  color: #fff !important;
+}
+
+@keyframes animate {
+  0%{
+    transform: scale(0.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.toggle{
+  appearance: none;
+  height: 10px;
+  width: 30px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: gray;
+}
+.toggle::before{
+  content: '';
+  height: 20px;
+  width: 20px;
+  background: #4f4e4e;
+  position: absolute;
+  left: -10px;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+}
+.toggle:checked::before{
+  left: 55%;
+  box-shadow: 0 0 4px 2px #fff;
+}
+.toggle:checked{
+  background: #52a4e7;
 }

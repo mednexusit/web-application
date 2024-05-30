@@ -1,0 +1,99 @@
+@import '../../../../variables';
+.signupWrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .signupBlock{
+    height: auto;
+    padding: $primaryPadding;
+    background: $themePrimaryColor;
+    border-radius: 10px;
+    h1{
+      color: $whiteColor;
+    }
+
+    .fields{
+      input{
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+        padding:10px;
+        outline: none;
+        border: 1px solid gray;
+      }
+    }
+    .genderFields{
+      padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+      label{
+        cursor: pointer;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        .radioBtn{
+          appearance: none;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+          background: #fff;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+        }
+        .radioBtn::before{
+          content: '';
+          height: 60%;
+          width: 60%;
+          background: $whiteColor;
+          border-radius: 50%;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+        }
+        .radioBtn:checked{
+          background: $whiteColor;
+        }
+        .radioBtn:checked::before{
+          background: $themePrimaryColor;
+        }
+      }
+
+    }
+  }
+}
+.autoInp{
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding:10px;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.autoComplete{
+  position: relative;
+  ul{
+    max-height: 200px;
+    height: auto;
+    width: auto;
+    z-index: 100;
+    padding: 10px;
+    background: $whiteColor;
+    list-style-type: none;
+    overflow-y: scroll;
+    position: absolute;
+    li{
+      color: #000;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+}

@@ -113,15 +113,27 @@
     >
       Enter Valid Phone Number
     </span>
+    <div class="notiBlock">
+      <label for="notifications"
+        >Get Notification and Updates on Whatsapp</label
+      >
+      <input
+        type="checkbox"
+        id="notifications"
+        class="toggle"
+        formControlName="whatsapp_status"
+      />
+    </div>
     <div class="fieldsBtn">
       <button
         (click)="userLogin(userLoginForm.value)"
         [disabled]="!userLoginForm.valid"
-        class="btn btn-primary"
+        class="btn btn-primary loginBtn"
       >
         Login
       </button>
     </div>
   </div>
   }
+  <app-verify-otp *ngIf="isShowVerifyOtp" [mobNumber]="mobNumberVal" (resendNewOtp)="resendOtp()" (closeOtpModal)="closeVerifyOtpModal()" ></app-verify-otp>
 </div>

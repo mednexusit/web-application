@@ -1,0 +1,85 @@
+<div class="signupWrapper">
+  <div class="signupBlock col col-lg-4 col-md-4 col-sm-8" [formGroup]="signupForm">
+    <h1>SignUp</h1>
+    <div class="fields">
+      <input type="text" placeholder="Name" autofocus formControlName="name" />
+      <input type="text" placeholder="Email" formControlName="email" />
+      <input type="text" placeholder="Age" formControlName="age" />
+    </div>
+    <div class="genderFields">
+      <label for="male">
+        <input
+          type="radio"
+          class="radioBtn"
+          name="gender"
+          value="male"
+          id="male"
+          formControlName="gender"
+        />
+        Male
+      </label>
+      <label for="female">
+        <input
+          type="radio"
+          class="radioBtn"
+          name="gender"
+          value="female"
+          id="female"
+          formControlName="gender"
+        />
+        Female
+      </label>
+      <label for="other">
+        <input
+          type="radio"
+          class="radioBtn"
+          name="gender"
+          value="other"
+          id="other"
+          formControlName="gender"
+        />
+        Other
+      </label>
+    </div>
+    <div class="addressFields">
+      <div class="autoComplete">
+        <input
+          type="text"
+          placeholder="Select State"
+          (input)="getStateText($event)"
+          (focus)="onStateFocus()"
+          class="autoInp"
+          formControlName="state"
+        />
+        <ul *ngIf="isShowStates">
+          <li
+            *ngFor="let item of tempStatesData"
+            (click)="getSelectedState(item)"
+          >
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
+      <div class="autoComplete">
+        <input
+          type="text"
+          placeholder="Select College"
+          (input)="getCollegeText($event)"
+          (focus)="onCollegeFocus()"
+          class="autoInp"
+          formControlName="college"
+        />
+        <ul *ngIf="isShowCollege">
+          <li
+            *ngFor="let item of tempCollegeData"
+            (click)="getSelectedCollege(item)"
+          >
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
+      <input type="text" placeholder="City" class="autoInp" />
+      <input type="text" placeholder="Medical Registered Number" class="autoInp" />
+    </div>
+  </div>
+</div>

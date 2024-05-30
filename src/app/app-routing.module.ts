@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
+import { SignupComponent } from './common/shared-module/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/vendor/vendor.module').then((m) => m.VendorModule),
   },
+  {path:'signup',component:SignupComponent},
   {path:'**',component:PagenotfoundComponent}
 ];
 
