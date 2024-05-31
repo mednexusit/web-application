@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { SignupComponent } from './signup/signup.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { SignupComponent } from './signup/signup.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    RouterModule
   ],
   exports:[
     LoginComponent

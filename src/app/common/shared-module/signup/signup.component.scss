@@ -10,6 +10,7 @@
     padding: $primaryPadding;
     background: $themePrimaryColor;
     border-radius: 10px;
+    position: relative;
     h1 {
       color: $whiteColor;
     }
@@ -103,10 +104,10 @@
   position: absolute;
 }
 .radioBtn:checked {
-  background: $whiteColor;
+  background: $blackColor;
 }
 .radioBtn:checked::before {
-  background: $themePrimaryColor;
+  background: $whiteColor;
   animation: zoomIn 0.1s linear;
 }
 .courseRadioBtn {
@@ -130,10 +131,10 @@
   position: absolute;
 }
 .courseRadioBtn:checked {
-  background: $whiteColor;
+  background: $blackColor;
 }
 .courseRadioBtn:checked::before {
-  background: $themePrimaryColor;
+  background: $whiteColor;
   animation: zoomIn 0.1s linear;
 }
 
@@ -160,4 +161,21 @@
 }
 .greenBack{
   background: green !important;
+}
+.submitBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skipNow{
+  color: #fff;
+  position: absolute;
+  left: -30%;
+  z-index: 1000;
+  bottom: 10%;
+  border: 1px solid gray;
+  background: $themePrimaryColor;
+  padding: 10px 15px;
+  border-radius: 10px;
+
 }

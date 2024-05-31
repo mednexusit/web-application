@@ -79,3 +79,17 @@ app-footer{
   font-size: small;
   color: #fff;
 }
+.submitBtn{
+  padding: 5px 15px;
+  color: #fff;
+  background: #000;
+  border-radius: 20px;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+.submitBtn:disabled{
+  background: #888;
+  cursor: not-allowed;
+}

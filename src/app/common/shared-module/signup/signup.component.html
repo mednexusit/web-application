@@ -1,10 +1,53 @@
 <div class="signupWrapper">
-  <div class="signupBlock col col-lg-4 col-md-4 col-sm-8" [formGroup]="signupForm">
-    <h1>SignUp</h1>
+  <div
+    class="signupBlock col col-lg-4 col-md-4 col-sm-8"
+    [formGroup]="signupForm"
+  >
+  <a class="skipNow" [routerLink]="['']" >Skip Now</a>
+  <h1>SignUp</h1>
     <div class="fields">
-      <input type="text" placeholder="Name" autofocus formControlName="name" />
-      <input type="text" placeholder="Email" formControlName="email" />
-      <input type="text" placeholder="Age" formControlName="age" />
+      <input
+        type="text"
+        placeholder="Name"
+        autofocus
+        formControlName="name"
+        [class.valid]="
+          signupForm.get('name').valid &&
+          (signupForm.get('name').dirty || signupForm.get('name').touched)
+        "
+        [class.invalid]="
+          signupForm.get('name').invalid &&
+          (signupForm.get('name').dirty || signupForm.get('name').touched)
+        "
+      />
+      <div class="d-flex">
+        <input
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+          [class.valid]="
+            signupForm.get('email').valid &&
+            (signupForm.get('email').dirty || signupForm.get('email').touched)
+          "
+          [class.invalid]="
+            signupForm.get('email').invalid &&
+            (signupForm.get('email').dirty || signupForm.get('email').touched)
+          "
+        />
+        <input
+          type="number"
+          placeholder="Age"
+          formControlName="age"
+          [class.valid]="
+            signupForm.get('age').valid &&
+            (signupForm.get('age').dirty || signupForm.get('age').touched)
+          "
+          [class.invalid]="
+            signupForm.get('age').invalid &&
+            (signupForm.get('age').dirty || signupForm.get('age').touched)
+          "
+        />
+      </div>
     </div>
     <div class="genderFields">
       <label for="male">
@@ -50,6 +93,14 @@
           (focus)="onStateFocus()"
           class="autoInp"
           formControlName="state"
+          [class.valid]="
+          signupForm.get('state').valid &&
+          (signupForm.get('state').dirty || signupForm.get('state').touched)
+        "
+        [class.invalid]="
+          signupForm.get('state').invalid &&
+          (signupForm.get('state').dirty || signupForm.get('state').touched)
+        "
         />
         <ul *ngIf="isShowStates">
           <li
@@ -68,6 +119,14 @@
           (focus)="onCollegeFocus()"
           class="autoInp"
           formControlName="college"
+          [class.valid]="
+          signupForm.get('college').valid &&
+          (signupForm.get('college').dirty || signupForm.get('college').touched)
+        "
+        [class.invalid]="
+          signupForm.get('college').invalid &&
+          (signupForm.get('college').dirty || signupForm.get('college').touched)
+        "
         />
         <ul *ngIf="isShowCollege">
           <li
@@ -78,47 +137,278 @@
           </li>
         </ul>
       </div>
-      <input type="text" placeholder="City" class="autoInp"  formControlName="city"/>
-      <input type="text" placeholder="Medical Registered Number" class="autoInp" formControlName="mrn" />
+      <input
+        type="text"
+        placeholder="City"
+        class="autoInp"
+        formControlName="city"
+        [class.valid]="
+        signupForm.get('city').valid &&
+        (signupForm.get('city').dirty || signupForm.get('city').touched)
+      "
+      [class.invalid]="
+        signupForm.get('city').invalid &&
+        (signupForm.get('city').dirty || signupForm.get('city').touched)
+      "
+      />
+      <input
+        type="text"
+        placeholder="Medical Registered Number"
+        class="autoInp"
+        formControlName="mrn"
+        [class.valid]="
+        signupForm.get('mrn').valid &&
+        (signupForm.get('mrn').dirty || signupForm.get('mrn').touched)
+      "
+      [class.invalid]="
+        signupForm.get('mrn').invalid &&
+        (signupForm.get('mrn').dirty || signupForm.get('mrn').touched)
+      "
+      />
       <div class="coursesBlock">
         <div class="courseItem">
           <label for="mbbs">
-            <input type="radio" value="mbbs" id="mbbs" name="course" class="courseRadioBtn" formControlName="course">
+            <input
+              type="radio"
+              value="mbbs"
+              id="mbbs"
+              name="course"
+              class="courseRadioBtn"
+              formControlName="course"
+            />
             MBBS
           </label>
         </div>
         <div class="courseItem">
           <label for="pg/dnb">
-            <input type="radio" value="pg/dnb" id="pg/dnb" name="course" class="courseRadioBtn" formControlName="course">
+            <input
+              type="radio"
+              value="pg/dnb"
+              id="pg/dnb"
+              name="course"
+              class="courseRadioBtn"
+              formControlName="course"
+            />
             PG/DNB
           </label>
         </div>
         <div class="courseItem">
           <label for="ss/dnb">
-            <input type="radio" value="ss/dnb" id="ss/dnb" name="course" class="courseRadioBtn" formControlName="course">
+            <input
+              type="radio"
+              value="ss/dnb"
+              id="ss/dnb"
+              name="course"
+              class="courseRadioBtn"
+              formControlName="course"
+            />
             SS/DNB
           </label>
         </div>
         <div class="courseItem">
           <label for="practising">
-            <input type="radio" value="practising" id="practising" name="course" class="courseRadioBtn" formControlName="course">
+            <input
+              type="radio"
+              value="practising"
+              id="practising"
+              name="course"
+              class="courseRadioBtn"
+              formControlName="course"
+            />
             Practising
           </label>
         </div>
       </div>
       <div class="courseOptionsBlock">
         <div class="mbbsBlock" *ngIf="isMbbsSelected">
-          <label for="studying" (click)="getIsCompletedData(0)" [ngClass]="{greenBack: isCompletedFlag===0}">
-            <input type="radio" class="mbbsOptions" name="isCompleted" id="studying" value="0" formControlName="isCompleted">
+          <label
+            for="studying"
+            (click)="getIsCompletedData(0)"
+            [ngClass]="{ greenBack: isCompletedFlag === 0 }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isCompleted"
+              id="studying"
+              value="0"
+              formControlName="isCompleted"
+            />
             STUDYING
           </label>
-          <label for="completed" (click)="getIsCompletedData(1)" [ngClass]="{greenBack: isCompletedFlag===1}">
-            <input type="radio" class="mbbsOptions" name="isCompleted" id="completed" value="1" formControlName="isCompleted">
+          <label
+            for="completed"
+            (click)="getIsCompletedData(1)"
+            [ngClass]="{ greenBack: isCompletedFlag === 1 }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isCompleted"
+              id="completed"
+              value="1"
+              formControlName="isCompleted"
+            />
             COMPLETED
           </label>
         </div>
+        <div class="mbbsBlock" *ngIf="isPGDNBSelected">
+          <label
+            for="studying"
+            (click)="getMDORMS('md')"
+            [ngClass]="{ greenBack: mdOrMS === 'md' }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isMdOrMS"
+              id="studying"
+              value="md"
+              formControlName="isMdOrMS"
+            />
+            MD
+          </label>
+          <label
+            for="completed"
+            (click)="getMDORMS('ms')"
+            [ngClass]="{ greenBack: mdOrMS === 'ms' }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isMdOrMS"
+              id="completed"
+              value="ms"
+              formControlName="isMdOrMS"
+            />
+            MS
+          </label>
+          <div class="autoComplete">
+            <input
+              type="text"
+              (input)="getMDText($event)"
+              (focus)="onMDFocus()"
+              class="autoInp"
+              formControlName="md"
+              placeholder="Search MD"
+              *ngIf="mdOrMS === 'md'"
+            />
+            <ul *ngIf="isShowMD">
+              <li *ngFor="let item of msListData" (click)="getSelectedMD(item)">
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
+          <div class="autoComplete">
+            <input
+              type="text"
+              (input)="getMSText($event)"
+              (focus)="onMSFocus()"
+              class="autoInp"
+              placeholder="Search MS"
+              formControlName="ms"
+              *ngIf="mdOrMS === 'ms'"
+            />
+            <ul *ngIf="isShowMS">
+              <li *ngFor="let item of msListData" (click)="getSelectedMS(item)">
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mbbsBlock" *ngIf="isSSDNBSelected">
+          <label
+            for="studying"
+            (click)="getDMORMCH('dm')"
+            [ngClass]="{ greenBack: dmORMCH === 'dm' }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isDmOrMCH"
+              id="studying"
+              value="dm"
+              formControlName="isDmOrMCH"
+            />
+            DM
+          </label>
+          <label
+            for="completed"
+            (click)="getDMORMCH('mch')"
+            [ngClass]="{ greenBack: dmORMCH === 'mch' }"
+          >
+            <input
+              type="radio"
+              class="mbbsOptions"
+              name="isDmOrMCH"
+              id="completed"
+              value="mch"
+              formControlName="isDmOrMCH"
+            />
+            MCH
+          </label>
+          <div class="autoComplete">
+            <input
+              type="text"
+              (input)="getDMText($event)"
+              (focus)="onDMFocus()"
+              class="autoInp"
+              formControlName="dm"
+              placeholder="Search DM"
+              *ngIf="dmORMCH === 'dm'"
+            />
+            <ul *ngIf="isShowDM">
+              <li *ngFor="let item of msListData" (click)="getSelectedDM(item)">
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
+          <div class="autoComplete">
+            <input
+              type="text"
+              (input)="getMCHText($event)"
+              (focus)="onMCHFocus()"
+              class="autoInp"
+              placeholder="Search MCH"
+              formControlName="mch"
+              *ngIf="dmORMCH === 'mch'"
+            />
+            <ul *ngIf="isShowMCH">
+              <li
+                *ngFor="let item of msListData"
+                (click)="getSelectedMCH(item)"
+              >
+                {{ item.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mbbsBlock" *ngIf="isPractisingSelected">
+          <input
+            class="autoInp"
+            type="text"
+            placeholder="Practising"
+            formControlName="practising"
+          />
+          <input
+            class="autoInp"
+            type="number"
+            placeholder="Years Of Experience"
+            formControlName="experience"
+          />
+          <input
+            class="autoInp"
+            type="text"
+            placeholder="Others"
+            formControlName="others"
+          />
+        </div>
       </div>
-
+    </div>
+    <div class="submitBlock">
+      <button class="submitBtn" [disabled]="!signupForm.valid">
+        Start Your Journey
+      </button>
     </div>
   </div>
 </div>
