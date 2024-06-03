@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
   loginAdmin(data: any) {
     console.log(data);
+
   }
   userLogin(data:any){
     this.mobNumberVal = data.mobile;

@@ -1,0 +1,8 @@
+<div class="autocomplete">
+  <input type="text" [(ngModel)]="query" (input)="filter()" placeholder={{placeHolder}} />
+  <ul *ngIf="filteredList.length > 0">
+    <li *ngFor="let item of filteredList" (click)="select(item)">
+      {{item.name}}
+    </li>
+  </ul>
+</div>

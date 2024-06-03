@@ -6,6 +6,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule } from '@angular/router';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LoginComponent,
     VerifyOtpComponent,
-    SignupComponent
+    SignupComponent,
+    AutocompleteComponent
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,7 @@
     background: $themePrimaryColor;
     border-radius: 10px;
     position: relative;
-    h1 {
+    h3{
       color: $whiteColor;
     }
 
@@ -170,7 +170,7 @@
 .skipNow{
   color: #fff;
   position: absolute;
-  left: -30%;
+  left: -7vw;
   z-index: 1000;
   bottom: 10%;
   border: 1px solid gray;

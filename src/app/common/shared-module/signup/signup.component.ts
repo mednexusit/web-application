@@ -1,5 +1,5 @@
 import { filter } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ResourceService } from '../../../shared/resource.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -29,18 +29,25 @@ export class SignupComponent implements OnInit {
   isShowMS: boolean = false;
   msSearchText: any = '';
   mdSearchText: any = '';
-
+  isShowOtherOption:any='';
   mdOrMS: any = '';
   dmORMCH: any;
   dmSearchText: any;
-  isShowDM: boolean=false;
-  isShowMCH: boolean=false;
+  isShowDM: boolean = false;
+  isShowMCH: boolean = false;
   mchSearchText: any;
-  constructor(private resServ: ResourceService, private fb: FormBuilder) {}
+  showOtherInput:boolean=false;
+  mdListData: any;
+  mchListData: any;
+  constructor(
+    private resServ: ResourceService,
+    private fb: FormBuilder,
+    private elementRef: ElementRef
+  ) {}
 
   ngOnInit(): void {
     this.getStatesList();
-    this.getMsListData();
+   // this.getMsListData();
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: [
@@ -65,19 +72,34 @@ export class SignupComponent implements OnInit {
       course: ['mbbs', Validators.required],
       isCompleted: [''],
       isMdOrMS: [''],
-      md:[''],
-      ms:[''],
-      isDmOrMCH:[''],
-      dm:[''],
-      mch:[''],
-      practising:[''],
-      experience:[''],
-      others:['']
+      md: [''],
+      ms: [''],
+      isDmOrMCH: [''],
+      dm: [''],
+      mch: [''],
+      practising: [''],
+      experience: [''],
+      others: [''],
+      otherCollege:['']
     });
     this.isMbbsSelected = true;
-
+    this.signupForm.get('isDmOrMCH').valueChanges.subscribe((data:any)=>{
+      if(data==='mch'){
+        this.getMCHListData();
+      }
+      if(data==="dm"){
+        this.getMdListData();
+      }
+    })
+    this.signupForm.get('isMdOrMS').valueChanges.subscribe((data:any)=>{
+      if(data==='md'){
+        this.getMdListData();
+      }
+      if(data==="ms"){
+        this.getMsListData();
+      }
+    })
     this.signupForm.get('course').valueChanges.subscribe((data: any) => {
-      console.log('Radio Data', data);
       if (data === 'mbbs') {
         this.isMbbsSelected = true;
         this.isPGDNBSelected = false;
@@ -106,8 +128,9 @@ export class SignupComponent implements OnInit {
   }
   getStateText(data: any) {
     this.stateSearchText = data.target.value;
-    if (this.stateSearchText.length === 0) {
+    if (this.stateSearchText.length <= 0) {
       this.tempCollegeData = [];
+      this.signupForm.get('college').disable();
     }
     if (this.stateSearchText.length > 1) {
       this.tempStatesData = this.tempStatesData.filter((item: any) => {
@@ -117,14 +140,38 @@ export class SignupComponent implements OnInit {
       });
     } else {
       this.getStatesList();
+      this.tempCollegeData = [];
     }
   }
   getMsListData() {
     this.resServ.getMSList().subscribe({
       next: (data: any) => {
-        console.log('data is', data);
         if (data.responseContents) {
           this.msListData = data.responseContents;
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+  getMdListData() {
+    this.resServ.getMDList().subscribe({
+      next: (data: any) => {
+        if (data.responseContents) {
+          this.mdListData = data.responseContents;
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+  getMCHListData() {
+    this.resServ.getMCHList().subscribe({
+      next: (data: any) => {
+        if (data.responseContents) {
+          this.mchListData = data.responseContents;
         }
       },
       error: (err: any) => {
@@ -149,7 +196,6 @@ export class SignupComponent implements OnInit {
     this.resServ.getColleges(dataToPass).subscribe({
       next: (data: any) => {
         this.tempCollegeData = data.responseContents;
-        console.log(this.tempCollegeData);
       },
     });
   }
@@ -167,6 +213,13 @@ export class SignupComponent implements OnInit {
           .toLowerCase()
           .includes(this.collegeSearchText.toLowerCase());
       });
+      console.log("TEMPCOLLEGEDATA",this.tempCollegeData)
+      if(this.tempCollegeData.length <=0){
+        this.isShowOtherOption=true;
+      }
+      else{
+        this.isShowOtherOption=false;
+      }
     } else {
       this.getCollegeList();
     }
@@ -186,11 +239,13 @@ export class SignupComponent implements OnInit {
   onStateBlur() {
     this.isShowStates = false;
   }
-
+  onSelect(data: any) {
+    console.log('Data selected is', data);
+  }
   getStatesList() {
     this.resServ.getStates().subscribe({
       next: (data: any) => {
-        this.tempStatesData = data.responseContents;
+        this.tempStatesData = data;
       },
     });
   }
@@ -198,12 +253,11 @@ export class SignupComponent implements OnInit {
   getIsCompletedData(data: any) {
     this.isCompletedFlag = data;
     this.signupForm.get('isCompleted').setValue(data);
-    console.log(this.signupForm.get('isCompleted').value);
   }
   getMDORMS(data: any) {
     this.mdOrMS = data;
-    this.isShowMD=false;
-    this.isShowMS=false;
+    this.isShowMD = false;
+    this.isShowMS = false;
   }
 
   getMSText(data: any) {
@@ -221,13 +275,13 @@ export class SignupComponent implements OnInit {
       this.getMsListData();
     }
   }
-  onMDFocus(){
-      this.isShowMD=true;
-      this.isShowMS=false;
+  onMDFocus() {
+    this.isShowMD = true;
+    this.isShowMS = false;
   }
-  onMSFocus(){
-    this.isShowMS=true;
-    this.isShowMD=false;
+  onMSFocus() {
+    this.isShowMS = true;
+    this.isShowMD = false;
   }
   getMDText(data: any) {
     this.mdSearchText = data.target.value;
@@ -244,23 +298,18 @@ export class SignupComponent implements OnInit {
       this.getMsListData();
     }
   }
-  getSelectedMD(data:any){
-    console.log(data)
-    this.signupForm.get('md').setValue(data.name)
-    this.isShowMD=false;
-
-
-
+  getSelectedMD(data: any) {
+    this.signupForm.get('md').setValue(data.name);
+    this.isShowMD = false;
   }
-  getSelectedMS(data:any){
-    this.signupForm.get('ms').setValue(data.name)
-    this.isShowMS=false;
+  getSelectedMS(data: any) {
+    this.signupForm.get('ms').setValue(data.name);
+    this.isShowMS = false;
   }
   getDMORMCH(data: any) {
-    console.log("255",data);
     this.dmORMCH = data;
-    this.isShowMCH=false;
-    this.isShowDM=false;
+    this.isShowMCH = false;
+    this.isShowDM = false;
   }
 
   getDMText(data: any) {
@@ -278,13 +327,13 @@ export class SignupComponent implements OnInit {
       this.getMsListData();
     }
   }
-  onDMFocus(){
-      this.isShowDM=true;
-      this.isShowMCH=false;
+  onDMFocus() {
+    this.isShowDM = true;
+    this.isShowMCH = false;
   }
-  onMCHFocus(){
-    this.isShowMCH=true;
-    this.isShowDM=false;
+  onMCHFocus() {
+    this.isShowMCH = true;
+    this.isShowDM = false;
   }
   getMCHText(data: any) {
     this.mchSearchText = data.target.value;
@@ -301,16 +350,24 @@ export class SignupComponent implements OnInit {
       this.getMsListData();
     }
   }
-  getSelectedMCH(data:any){
-    console.log(data)
-    this.signupForm.get('mch').setValue(data.name)
-    this.isShowMCH=false;
-
-
-
+  getSelectedMCH(data: any) {
+    this.signupForm.get('mch').setValue(data.name);
+    this.isShowMCH = false;
   }
-  getSelectedDM(data:any){
-    this.signupForm.get('dm').setValue(data.name)
-    this.isShowDM=false;
+  getSelectedDM(data: any) {
+    this.signupForm.get('dm').setValue(data.name);
+    this.isShowDM = false;
+  }
+  selectOtherOption(){
+    this.showOtherInput=true;
+    this.isShowOtherOption=false;
+    this.isShowCollege=false;
+  }
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.tempCollegeData = [];
+      this.tempStatesData = [];
+    }
   }
 }
