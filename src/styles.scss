@@ -64,6 +64,13 @@ app-footer{
   width: 100%;
   height: auto;
 }
+app-admin-home{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 .router-link-active{
   background: rgb(214, 62, 7);
   border-bottom: 5px solid #fff;
@@ -92,4 +99,18 @@ app-footer{
 .submitBtn:disabled{
   background: #888;
   cursor: not-allowed;
+}
+
+.mainWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.mainSection{
+  flex-grow: 1;
+  width: 100%;
 }

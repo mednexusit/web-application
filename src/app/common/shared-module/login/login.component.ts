@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.sharedServ.sendRoute(this.route.url);
     localStorage.setItem('loginroute', this.route.url);
-    this.sharedServ.getRoute().subscribe((data:any)=>{
-      console.log(data);
-    })
     this.loginForm = this.fb.group({
       mobile: ['',Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d{10}$/)])],
       whatsapp_status: [true],
