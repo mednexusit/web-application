@@ -22,8 +22,19 @@
     font-weight: 900;
   }
   .fields {
-    margin-top: 20px;
-    width: 100%;
+    display: flex;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: space-between;
+    padding: $smallPadding;
+    border-radius: 10px;
+    background: #fff;
+    .numberInp {
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: $smallPadding;
+    }
   }
   .fieldsBtn {
     margin-top: 20px;
@@ -65,21 +76,7 @@
       padding: $smallPadding;
     }
   }
-  .fieldsBtn {
-    .btn {
-      margin-top: 10px;
-      color: #fff;
-    }
-  }
-  .notiBlock{
-    font-size: $secondaryFontSize;
-    margin-top: 20px;
-    color: #fff;
-    display: flex;
-    width: 80%;
-    align-items: center;
-    padding: $primaryPadding;
-  }
+
 }
 .loginBtn{
   color: #fff !important;
@@ -121,4 +118,31 @@
 }
 .toggle:checked{
   background: #52a4e7;
+}
+.fieldsBtn {
+  padding-left: 10px;
+  .btn {
+    margin-top: 10px;
+    color: #fff;
+  }
+}
+.notiBlock{
+  font-size: $secondaryFontSize;
+  margin-top: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  padding: 10px;
+}
+.adminNotiBlock{
+  font-size: $secondaryFontSize;
+  margin-top: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+h2{
+  color: #fff;
 }

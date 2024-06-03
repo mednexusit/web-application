@@ -13,6 +13,7 @@ export class VerifyOtpComponent implements OnInit {
   @Input() mobNumber: any;
   @Output() closeOtpModal = new EventEmitter();
   @Output() resendNewOtp = new EventEmitter();
+  routeFrom:any='';
 
   isOtpValid: boolean = false;
   otpVal: any;
@@ -23,7 +24,12 @@ export class VerifyOtpComponent implements OnInit {
     allowNumbersOnly: true,
     inputClass: 'inp-otp',
   };
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sharedServ.getRoute().subscribe((data:any)=>{
+      this.routeFrom=data;
+      console.log(this.routeFrom);
+    })
+  }
   onOtpChange(otp: any) {
     this.otpVal = otp;
     if (this.otpVal.length === 5) {
@@ -46,7 +52,13 @@ export class VerifyOtpComponent implements OnInit {
           })
         }
         if (data.registrationinfo !== null && data.access_token) {
-          this.router.navigate(['']);
+          if(this.routeFrom==='/admin'){
+            this.router.navigate(['admin/adminhome'])
+          }
+          if(this.routeFrom==='/userlogin'){
+            this.router.navigate(['']);
+          }
+
         }
       },
       error: (err: any) => {

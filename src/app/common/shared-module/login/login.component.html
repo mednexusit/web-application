@@ -4,30 +4,65 @@
     class="loginBlock col col-sm-8 col-md-3 col-lg-3"
     [formGroup]="loginForm"
   >
-    <h2>MedNexus</h2>
-    <div class="fields">
+    <h2>MedNexus Login</h2>
+    <div
+      class="fields"
+      [class.valid]="
+        userLoginForm.get('mobile').valid &&
+        (userLoginForm.get('mobile').dirty ||
+          userLoginForm.get('mobile').touched)
+      "
+      [class.invalid]="
+        userLoginForm.get('mobile').invalid &&
+        (userLoginForm.get('mobile').dirty ||
+          userLoginForm.get('mobile').touched)
+      "
+    >
+      <span>+91-</span>
       <input
-        type="text"
-        placeholder="Username/Email"
-        class="form-control"
-        formControlName="username"
+        type="tel"
+        placeholder="Enter your mobile number"
+        class="numberInp"
+        formControlName="mobile"
       />
     </div>
-    <div class="fields">
+    <span
+      class="error"
+      *ngIf="
+        (loginForm.get('mobile').dirty || loginForm.get('mobile').touched) &&
+        loginForm.get('mobile').errors &&
+        loginForm.get('mobile').hasError('required')
+      "
+    >
+      Phone Number is required
+    </span>
+    <span
+      class="error"
+      *ngIf="
+        (loginForm.get('mobile').dirty || loginForm.get('mobile').touched) &&
+        loginForm.get('mobile').errors
+      "
+    >
+      Enter Valid Phone Number
+    </span>
+    <div class="adminNotiBlock">
+      <label for="notifications"
+        >Get Notification and Updates on Whatsapp</label
+      >
       <input
-        type="password"
-        placeholder="Password"
-        class="form-control"
-        formControlName="password"
+        type="checkbox"
+        id="notifications"
+        class="toggle"
+        formControlName="whatsapp_status"
       />
     </div>
     <div class="fieldsBtn">
       <button
         (click)="loginAdmin(loginForm.value)"
         [disabled]="!loginForm.valid"
-        class="btn btn-primary"
+        class="btn btn-primary loginBtn"
       >
-        Admin Login
+        Login
       </button>
     </div>
   </div>
@@ -135,5 +170,10 @@
     </div>
   </div>
   }
-  <app-verify-otp *ngIf="isShowVerifyOtp" [mobNumber]="mobNumberVal" (resendNewOtp)="resendOtp()" (closeOtpModal)="closeVerifyOtpModal()" ></app-verify-otp>
+  <app-verify-otp
+    *ngIf="isShowVerifyOtp"
+    [mobNumber]="mobNumberVal"
+    (resendNewOtp)="resendOtp()"
+    (closeOtpModal)="closeVerifyOtpModal()"
+  ></app-verify-otp>
 </div>
