@@ -1,5 +1,126 @@
-<header>
-  <div class="logoutBlock">
-    <i class="fa-solid fa-right-from-bracket logoutColor" (click)="logout()"></i>
+<header class="d-flex justify-content-between desktop">
+  <div class="logo">
+    <!-- Logo content -->
   </div>
+  <nav class="navbar navbar-expand">
+    <ul>
+      <li>
+        <a
+          [routerLink]="['/admin/adminhome']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Dashboard</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/admin/adminhome/conferencerequest']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Conference Requests</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/admin/adminhome/useranalytics']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >User Analytics</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/admin/adminhome/financialreports']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Financial Reports</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/admin/adminhome/adminsettings']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Settings</a
+        >
+      </li>
+      <li (click)="logout()">
+        <a
+          [routerLink]="['/admin']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ><i class="fa-solid fa-right-from-bracket"></i></a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<header class="mobile">
+  <div class="logo">
+    <!-- Logo content -->
+  </div>
+  <button class="hamburger" (click)="toggleMobileMenu()">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <nav class="navbar navbar-expand" [class.show]="isMobileMenuOpen">
+    <button class="closeBtn" (click)="toggleMobileMenu()">
+      <i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li>
+        <a
+          [routerLink]="['admin/adminhome']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          >Dashboard</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['admin/conferencerequest']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          >Conference Requests</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['admin/useranalytics']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          >User Analytics</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['admin/financialreports']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          >Financial Reports</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['admin/adminsettings']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          >Settings</a
+        >
+      </li>
+      <li (click)="logout()">
+        <a
+          [routerLink]="['/admin']"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMobileMenu()"
+          ><i class="fa-solid fa-right-from-bracket"></i></a
+        >
+      </li>
+    </ul>
+  </nav>
 </header>

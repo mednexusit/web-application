@@ -16,5 +16,10 @@ export class AdminHeaderComponent {
     this.authServ.logout();
     this.router.navigate(['/admin'])
   }
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 
 }
