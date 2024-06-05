@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { SharedService } from '../../../../shared/shared.service';
+import { AuthService } from '../../../../auth.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './admin-header.component.scss'
 })
 export class AdminHeaderComponent {
+   router= inject(Router);
+   sharedServ= inject(SharedService)
+   authServ= inject(AuthService);
+  logout(){
+    this.authServ.logout();
+    this.router.navigate(['/admin'])
+  }
 
 }

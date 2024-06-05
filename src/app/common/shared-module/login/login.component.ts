@@ -53,9 +53,10 @@ export class LoginComponent implements OnInit {
   userLogin(data:any){
     this.mobNumberVal = data.mobile;
     let dataToPass={
-      mobile:data.mobile,
+      mobile:'+91'+data.mobile,
       whatsapp_status:data.whatsapp_status ? 1 : 0
     }
+
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
         console.log("Data is",data);
