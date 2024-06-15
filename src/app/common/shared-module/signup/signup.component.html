@@ -138,6 +138,19 @@
             Practising
           </label>
         </div>
+        <div class="courseItem">
+          <label for="others">
+            <input
+              type="radio"
+              value="others"
+              id="others"
+              name="course"
+              class="courseRadioBtn"
+              formControlName="course"
+            />
+            Others
+          </label>
+        </div>
       </div>
       <div class="courseOptionsBlock">
         <div class="mbbsBlock" *ngIf="isMbbsSelected">
@@ -385,6 +398,26 @@
             formControlName="others"
           />
         </div>
+        <div class="mbbsBlock" *ngIf="isOthersSelected">
+          <input
+            class="autoInp"
+            type="text"
+            placeholder="Enter Others"
+            formControlName="otherCourse"
+          />
+          <input
+            class="autoInp"
+            type="number"
+            placeholder="Years Of Experience"
+            formControlName="experience"
+          />
+          <input
+            class="autoInp"
+            type="text"
+            placeholder="Others"
+            formControlName="others"
+          />
+        </div>
       </div>
       <div class="autoComplete">
         <input
@@ -415,7 +448,7 @@
       <div class="autoComplete">
         <input
           type="text"
-          placeholder="Select College"
+          placeholder="Select Institute"
           (input)="getCollegeText($event)"
           (focus)="onCollegeFocus()"
           class="autoInp"
