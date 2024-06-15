@@ -1,0 +1,146 @@
+<div class="stepper">
+  <div class="steps">
+    <div class="step" [class.active]="currentStep === 1">1</div>
+    <div class="step" [class.active]="currentStep === 2">2</div>
+    <div class="step" [class.active]="currentStep === 3">3</div>
+    <div class="step" [class.active]="currentStep === 4">4</div>
+  </div>
+  <div class="content">
+    <div *ngIf="currentStep === 1">
+      <h3>Personal Information</h3>
+      <form
+        [formGroup]="personalInfo"
+        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+      >
+        <div class="fields d-flex">
+          <input
+            type="text"
+            placeholder="Name"
+            formControlName="name"
+            [class.valid]="
+              personalInfo.get('name').valid &&
+              (personalInfo.get('name').dirty ||
+                personalInfo.get('name').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('name').invalid &&
+              (personalInfo.get('name').dirty ||
+                personalInfo.get('name').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <input
+            type="mumber"
+            placeholder="Age"
+            formControlName="age"
+            [class.valid]="
+              personalInfo.get('age').valid &&
+              (personalInfo.get('age').dirty || personalInfo.get('age').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('age').invalid &&
+              (personalInfo.get('age').dirty || personalInfo.get('age').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <select
+            name=""
+            id="sex"
+            formControlName="sex"
+            class="select"
+            [class.valid]="
+              personalInfo.get('sex').valid &&
+              (personalInfo.get('sex').dirty || personalInfo.get('sex').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('sex').invalid &&
+              (personalInfo.get('sex').dirty || personalInfo.get('sex').touched)
+            "
+          >
+            <option value="" selected class="option">Select Sex</option>
+            <option value="male" class="option">Male</option>
+            <option value="female" class="option">Female</option>
+            <option value="other" class="option">Other</option>
+          </select>
+        </div>
+        <div class="fields d-flex">
+          <input
+            type="text"
+            placeholder="Address"
+            formControlName="address"
+            [class.valid]="
+              personalInfo.get('address').valid &&
+              (personalInfo.get('address').dirty ||
+                personalInfo.get('address').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('address').invalid &&
+              (personalInfo.get('address').dirty ||
+                personalInfo.get('address').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <input
+            type="text"
+            placeholder="Phone Number"
+            formControlName="phoneNumber"
+            [class.valid]="
+              personalInfo.get('phoneNumber').valid &&
+              (personalInfo.get('phoneNumber').dirty ||
+                personalInfo.get('phoneNumber').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('phoneNumber').invalid &&
+              (personalInfo.get('phoneNumber').dirty ||
+                personalInfo.get('phoneNumber').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <input
+            type="text"
+            placeholder="Email"
+            formControlName="email"
+            [class.valid]="
+              personalInfo.get('email').valid &&
+              (personalInfo.get('email').dirty ||
+                personalInfo.get('email').touched)
+            "
+            [class.invalid]="
+              personalInfo.get('email').invalid &&
+              (personalInfo.get('email').dirty ||
+                personalInfo.get('email').touched)
+            "
+          />
+        </div>
+      </form>
+    </div>
+    <div *ngIf="currentStep === 2">
+      <h3>2</h3>
+
+      <form [formGroup]="conferenceInfo">
+        <input formControlName="step2" placeholder="Step 2 Input" />
+      </form>
+    </div>
+    <div *ngIf="currentStep === 3">
+      <h3>3</h3>
+      <form [formGroup]="speakerInfo">
+        <input formControlName="step3" placeholder="Step 3 Input" />
+      </form>
+    </div>
+    <div *ngIf="currentStep === 4">
+      <h3>4</h3>
+      <form [formGroup]="paymentInfo">
+        <input formControlName="step4" placeholder="Step 4 Input" />
+      </form>
+    </div>
+  </div>
+  <div class="navigation col col-lg-3 col-md-3 col-sm-12">
+    <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
+    <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
+    <button (click)="onSubmit()" *ngIf="currentStep === 4">Finish</button>
+  </div>
+</div>

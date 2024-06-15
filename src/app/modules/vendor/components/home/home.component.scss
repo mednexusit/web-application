@@ -1,0 +1,78 @@
+.stepper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.steps {
+  display: flex;
+}
+
+.step {
+  width: 25%;
+  padding: 10px;
+  text-align: center;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.step.active {
+  background-color: deepskyblue;
+  color: white;
+}
+
+.content {
+  margin-bottom: 20px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  button{
+    padding: 10px 15px;
+    height: 50px;
+    border: 1px solid gray;
+    background: cornflowerblue;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+  }
+  button:disabled{
+    background: gray;
+    cursor: not-allowed;
+  }
+}
+
+.personalInfo{
+  padding: 10px;
+  .fields{
+    justify-content: space-between;
+    align-items: center;
+    input{
+      width: 100%;
+      padding: 10px 15px;
+      margin-top: 5px;
+      border:1px solid gray;
+      border-radius: 5px;
+    }
+    label{
+      color: cornflowerblue;
+      font-weight: 800;
+    }
+    .select{
+      width: 100%;
+      padding: 10px 15px;
+      margin-top: 5px;
+      border:1px solid gray;
+      border-radius: 5px;
+      .option{
+        width: 50%;
+
+      }
+    }
+
+  }
+}
+
