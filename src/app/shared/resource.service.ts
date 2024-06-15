@@ -57,4 +57,13 @@ export class ResourceService {
     };
     return this.http.get(this.resourceAPI+'getmchlist',httpOptions)
   }
+  getDNBList(){
+    let authToken=localStorage .getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.get(this.resourceAPI+'specialty',httpOptions)
+  }
 }

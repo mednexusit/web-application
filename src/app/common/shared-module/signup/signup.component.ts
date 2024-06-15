@@ -27,7 +27,9 @@ export class SignupComponent implements OnInit {
   isPractisingSelected: boolean = false;
   isShowMD: boolean = false;
   isShowMS: boolean = false;
+  isShowDNB:boolean=false;
   msSearchText: any = '';
+  dnbSearchText:any="";
   mdSearchText: any = '';
   isShowOtherOption:any='';
   mdOrMS: any = '';
@@ -38,6 +40,7 @@ export class SignupComponent implements OnInit {
   mchSearchText: any;
   showOtherInput:boolean=false;
   mdListData: any;
+  dnbListData:any;
   mchListData: any;
   constructor(
     private resServ: ResourceService,
@@ -74,13 +77,15 @@ export class SignupComponent implements OnInit {
       isMdOrMS: [''],
       md: [''],
       ms: [''],
+      dnb:[''],
       isDmOrMCH: [''],
       dm: [''],
       mch: [''],
       practising: [''],
       experience: [''],
       others: [''],
-      otherCollege:['']
+      otherCollege:[''],
+      drnb:['']
     });
     this.isMbbsSelected = true;
     this.signupForm.get('isDmOrMCH').valueChanges.subscribe((data:any)=>{
@@ -167,6 +172,19 @@ export class SignupComponent implements OnInit {
       },
     });
   }
+  getDNBListData() {
+    this.resServ.getDNBList().subscribe({
+      next: (data: any) => {
+        if (data.responseContents) {
+          this.dnbListData = data.responseContents;
+        }
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+
   getMCHListData() {
     this.resServ.getMCHList().subscribe({
       next: (data: any) => {
@@ -255,9 +273,11 @@ export class SignupComponent implements OnInit {
     this.signupForm.get('isCompleted').setValue(data);
   }
   getMDORMS(data: any) {
+    console.log(data);
     this.mdOrMS = data;
     this.isShowMD = false;
     this.isShowMS = false;
+    this.isShowDNB=false;
   }
 
   getMSText(data: any) {
@@ -275,12 +295,34 @@ export class SignupComponent implements OnInit {
       this.getMsListData();
     }
   }
+  getDNBText(data: any) {
+    this.dnbSearchText = data.target.value;
+    if (this.dnbSearchText.length === 0) {
+      this.dnbListData = [];
+    }
+    if (this.dnbSearchText.length > 1) {
+      this.dnbListData = this.dnbListData.filter((item: any) => {
+        return item.name
+          .toLowerCase()
+          .includes(this.dnbSearchText.toLowerCase());
+      });
+    } else {
+      this.getDNBListData();
+    }
+  }
   onMDFocus() {
     this.isShowMD = true;
+    this.isShowDNB=false;
     this.isShowMS = false;
   }
   onMSFocus() {
     this.isShowMS = true;
+    this.isShowDNB=false;
+    this.isShowMD = false;
+  }
+  onDNBFocus(){
+    this.isShowDNB=true;
+    this.isShowMS = false;
     this.isShowMD = false;
   }
   getMDText(data: any) {
@@ -306,10 +348,19 @@ export class SignupComponent implements OnInit {
     this.signupForm.get('ms').setValue(data.name);
     this.isShowMS = false;
   }
+  getSelectedDNB(data: any) {
+    this.signupForm.get('dnb').setValue(data.name);
+    this.isShowDNB = false;
+  }
+  getSelectedDRNB(data: any) {
+    this.signupForm.get('drnb').setValue(data.name);
+    this.isShowDNB = false;
+  }
   getDMORMCH(data: any) {
     this.dmORMCH = data;
     this.isShowMCH = false;
     this.isShowDM = false;
+    this.isShowDNB=false;
   }
 
   getDMText(data: any) {

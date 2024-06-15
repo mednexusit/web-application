@@ -22,6 +22,13 @@ header{
 .mobile {
   display: none;
   position: relative;
+  .logo{
+    width: 100%;
+    height: 80px;
+    img{
+      object-fit: scale-down;
+    }
+  }
 }
 
 .hamburger, .closeBtn {
@@ -94,6 +101,11 @@ header {
   .logo {
     width: 200px;
     height: 100%;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .navbar {
     margin: 0;
