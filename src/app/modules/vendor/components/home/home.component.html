@@ -7,7 +7,7 @@
   </div>
   <div class="content">
     <div *ngIf="currentStep === 1">
-      <h3>Personal Information</h3>
+      <h3>Personal Information :</h3>
       <form
         [formGroup]="personalInfo"
         class="personalInfo col col-lg-3 col-md-3 col-sm-12"
@@ -119,7 +119,7 @@
       </form>
     </div>
     <div *ngIf="currentStep === 2">
-      <h3>Conference Information</h3>
+      <h3>Conference Information :</h3>
       <form
         [formGroup]="conferenceInfo"
         class="personalInfo col col-lg-3 col-md-3 col-sm-12"
@@ -196,7 +196,7 @@
       </form>
     </div>
     <div *ngIf="currentStep === 3">
-      <h3>Speaker and Session Details:</h3>
+      <h3>Speaker and Session Details :</h3>
       <form
         [formGroup]="speakerInfo"
         class="personalInfo col col-lg-3 col-md-3 col-sm-12"
@@ -243,7 +243,7 @@
       </form>
     </div>
     <div *ngIf="currentStep === 4">
-      <h3>Payment Information</h3>
+      <h3>Payment Information :</h3>
       <form
         [formGroup]="paymentInfo"
         class="personalInfo col col-lg-3 col-md-3 col-sm-12"
@@ -306,10 +306,11 @@
         </div>
       </form>
     </div>
+    <div class="navigation col col-lg-3 col-md-3 col-sm-12">
+      <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
+      <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
+      <button (click)="onSubmit()" *ngIf="currentStep === 4">Finish</button>
+    </div>
   </div>
-  <div class="navigation col col-lg-3 col-md-3 col-sm-12">
-    <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
-    <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
-    <button (click)="onSubmit()" *ngIf="currentStep === 4">Finish</button>
-  </div>
+
 </div>

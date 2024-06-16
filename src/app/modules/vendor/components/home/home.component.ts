@@ -79,8 +79,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.personalInfo.valid) {
-      console.log('Stepper completed', this.personalInfo.value);
+    if (this.personalInfo.valid && this.conferenceInfo.valid && this.speakerInfo.valid && this.paymentInfo.valid) {
+      console.log('Stepper completed', this.personalInfo.value, this.conferenceInfo.value, this.speakerInfo.value, this.paymentInfo.value);
     }
   }
 }
