@@ -10,7 +10,7 @@
       <h3>Personal Information :</h3>
       <form
         [formGroup]="personalInfo"
-        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+        class="personalInfo col col-lg-4 col-md-4 col-sm-12"
       >
         <div class="fields d-flex">
           <input
@@ -122,7 +122,7 @@
       <h3>Conference Information :</h3>
       <form
         [formGroup]="conferenceInfo"
-        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+        class="personalInfo col col-lg-4 col-md-4 col-sm-12"
       >
         <div class="fields d-flex">
           <input
@@ -199,7 +199,7 @@
       <h3>Speaker and Session Details :</h3>
       <form
         [formGroup]="speakerInfo"
-        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+        class="personalInfo col col-lg-4 col-md-4 col-sm-12"
       >
         <div class="fields">
           <textarea
@@ -246,35 +246,32 @@
       <h3>Payment Information :</h3>
       <form
         [formGroup]="paymentInfo"
-        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+        class="personalInfo d-flex flex-wrap bank col col-lg-10 col-md-10 col-sm-12"
       >
-        <div class="fields">
+      <div class="vendorInfo col col-lg-5">
+        <div class="fields d-flex">
           <input
             type="text"
             placeholder="Vendor Name"
             formControlName="vendorName"
           />
-        </div>
-        <div class="fields">
           <input
             type="text"
             placeholder="Contact Person"
             formControlName="contactPerson"
           />
         </div>
-        <div class="fields">
+        <div class="fields d-flex">
           <input
-            type="text"
-            placeholder="Contact Email"
-            formControlName="contactEmail"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Contact Phone Number"
-            formControlName="contactPhoneNumber"
-          />
+          type="text"
+          placeholder="Contact Email"
+          formControlName="contactEmail"
+        />
+        <input
+        type="text"
+        placeholder="Contact Phone Number"
+        formControlName="contactPhoneNumber"
+      />
         </div>
         <div class="fields">
           <input
@@ -293,20 +290,47 @@
         <div class="fields">
           <input
             type="text"
-            placeholder="Branch Name"
-            formControlName="branchName"
+            placeholder="Account Holder's Name"
+            formControlName="accountHolderName"
           />
         </div>
         <div class="fields">
           <input
             type="text"
-            placeholder="Account Holder's Name"
-            formControlName="accountHolderName"
+            placeholder="Account Number"
+            formControlName="accountNumber"
           />
         </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="IFSC CODE"
+            formControlName="ifsccode"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="SWIFT CODE"
+            formControlName="swiftcode"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Branch Address"
+            formControlName="branchAddress"
+          />
+        </div>
+      </div>
+      <div class="paymentMethods">
+        <h5>Payment Method(s) Accepted:</h5>
+        <h6>Coming Soon...</h6>
+      </div>
+
       </form>
     </div>
-    <div class="navigation col col-lg-3 col-md-3 col-sm-12">
+    <div class="navigation col col-lg-4 col-md-4 col-sm-12">
       <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
       <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
       <button (click)="onSubmit()" *ngIf="currentStep === 4">Finish</button>
