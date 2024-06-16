@@ -119,22 +119,191 @@
       </form>
     </div>
     <div *ngIf="currentStep === 2">
-      <h3>2</h3>
-
-      <form [formGroup]="conferenceInfo">
-        <input formControlName="step2" placeholder="Step 2 Input" />
+      <h3>Conference Information</h3>
+      <form
+        [formGroup]="conferenceInfo"
+        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+      >
+        <div class="fields d-flex">
+          <input
+            type="text"
+            placeholder="Location(Place and Venu)"
+            formControlName="location"
+            [class.valid]="
+              conferenceInfo.get('location').valid &&
+              (conferenceInfo.get('location').dirty ||
+                conferenceInfo.get('location').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('location').invalid &&
+              (conferenceInfo.get('location').dirty ||
+                conferenceInfo.get('location').touched)
+            "
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Specifice College Name(If Applicable)"
+            formControlName="specificCollegeName"
+            [class.valid]="
+              conferenceInfo.get('specificCollegeName').valid &&
+              (conferenceInfo.get('specificCollegeName').dirty ||
+                conferenceInfo.get('specificCollegeName').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('specificCollegeName').invalid &&
+              (conferenceInfo.get('specificCollegeName').dirty ||
+                conferenceInfo.get('specificCollegeName').touched)
+            "
+          />
+        </div>
+        <div class="fields">
+          <textarea
+            type="text"
+            placeholder="Design And Format Of The Conference"
+            formControlName="designAndFormat"
+            [class.valid]="
+              conferenceInfo.get('designAndFormat').valid &&
+              (conferenceInfo.get('designAndFormat').dirty ||
+                conferenceInfo.get('designAndFormat').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('designAndFormat').invalid &&
+              (conferenceInfo.get('designAndFormat').dirty ||
+                conferenceInfo.get('designAndFormat').touched)
+            "
+          ></textarea>
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Conference Brochure
+          "
+            formControlName="conferenceBrochure"
+            [class.valid]="
+              conferenceInfo.get('conferenceBrochure').valid &&
+              (conferenceInfo.get('conferenceBrochure').dirty ||
+                conferenceInfo.get('conferenceBrochure').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('conferenceBrochure').invalid &&
+              (conferenceInfo.get('conferenceBrochure').dirty ||
+                conferenceInfo.get('conferenceBrochure').touched)
+            "
+          />
+        </div>
       </form>
     </div>
     <div *ngIf="currentStep === 3">
-      <h3>3</h3>
-      <form [formGroup]="speakerInfo">
-        <input formControlName="step3" placeholder="Step 3 Input" />
+      <h3>Speaker and Session Details:</h3>
+      <form
+        [formGroup]="speakerInfo"
+        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+      >
+        <div class="fields">
+          <textarea
+            name=""
+            id=""
+            placeholder="Names & Profiles of speakers"
+            formControlName="speakerDetails"
+            rows="4"
+            cols="50"
+            [class.valid]="
+              speakerInfo.get('speakerDetails').valid &&
+              (speakerInfo.get('speakerDetails').dirty ||
+                speakerInfo.get('speakerDetails').touched)
+            "
+            [class.invalid]="
+              speakerInfo.get('speakerDetails').invalid &&
+              (speakerInfo.get('speakerDetails').dirty ||
+                speakerInfo.get('speakerDetails').touched)
+            "
+          ></textarea>
+          <textarea
+            name=""
+            id=""
+            placeholder="Sessions and topics covered in the conference
+          "
+            rows="4"
+            cols="50"
+            formControlName="sessionDetails"
+            [class.valid]="
+              speakerInfo.get('sessionDetails').valid &&
+              (speakerInfo.get('sessionDetails').dirty ||
+                speakerInfo.get('sessionDetails').touched)
+            "
+            [class.invalid]="
+              speakerInfo.get('sessionDetails').invalid &&
+              (speakerInfo.get('sessionDetails').dirty ||
+                speakerInfo.get('sessionDetails').touched)
+            "
+          ></textarea>
+        </div>
       </form>
     </div>
     <div *ngIf="currentStep === 4">
-      <h3>4</h3>
-      <form [formGroup]="paymentInfo">
-        <input formControlName="step4" placeholder="Step 4 Input" />
+      <h3>Payment Information</h3>
+      <form
+        [formGroup]="paymentInfo"
+        class="personalInfo col col-lg-3 col-md-3 col-sm-12"
+      >
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Vendor Name"
+            formControlName="vendorName"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Contact Person"
+            formControlName="contactPerson"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Contact Email"
+            formControlName="contactEmail"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Contact Phone Number"
+            formControlName="contactPhoneNumber"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Bank Name"
+            formControlName="bankName"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Branch Name"
+            formControlName="branchName"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Branch Name"
+            formControlName="branchName"
+          />
+        </div>
+        <div class="fields">
+          <input
+            type="text"
+            placeholder="Account Holder's Name"
+            formControlName="accountHolderName"
+          />
+        </div>
       </form>
     </div>
   </div>

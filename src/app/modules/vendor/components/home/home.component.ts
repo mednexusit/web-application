@@ -40,6 +40,30 @@ export class HomeComponent implements OnInit {
         ]),
       ]
     })
+    this.conferenceInfo=this.formBuilder.group({
+      location:['',Validators.required],
+      specificCollegeName:[''],
+      designAndFormat:['',Validators.required],
+      conferenceBrochure:['',Validators.required]
+    })
+    this.speakerInfo=this.formBuilder.group({
+      speakerDetails:['',Validators.required],
+      sessionDetails:['',Validators.required]
+    })
+    this.paymentInfo= this.formBuilder.group({
+      vendorName:['',Validators.required],
+      conferenceName:['',Validators.required],
+      contactPerson:['',Validators.required],
+      contactEmail:['',Validators.required],
+      contactPhoneNumber:['',Validators.required],
+      bankName:['',Validators.required],
+      branchName:['',Validators.required],
+      accountHolderName:['',Validators.required],
+      accountNumber:['',Validators.required],
+      ifsccode:['',Validators.required],
+      swiftcode:['',Validators.required],
+      branchAddress:['',Validators.required]
+    })
   }
 
   nextStep() {

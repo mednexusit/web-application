@@ -24,6 +24,10 @@
 
 .content {
   margin-bottom: 20px;
+  h3{
+    margin-top: 10px;
+    color: cornflowerblue;
+  }
 }
 
 .navigation {
@@ -51,6 +55,13 @@
     justify-content: space-between;
     align-items: center;
     input{
+      width: 100%;
+      padding: 10px 15px;
+      margin-top: 5px;
+      border:1px solid gray;
+      border-radius: 5px;
+    }
+    textarea{
       width: 100%;
       padding: 10px 15px;
       margin-top: 5px;
