@@ -65,6 +65,9 @@ export class HomeComponent implements OnInit {
       branchAddress:['',Validators.required]
     })
   }
+  changeCurrentStep(data:number){
+    this.currentStep=data;
+  }
 
   nextStep() {
     if (this.currentStep < 4) {

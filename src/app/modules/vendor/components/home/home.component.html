@@ -1,9 +1,9 @@
 <div class="stepper">
   <div class="steps">
-    <div class="step" [class.active]="currentStep === 1">1</div>
-    <div class="step" [class.active]="currentStep === 2">2</div>
-    <div class="step" [class.active]="currentStep === 3">3</div>
-    <div class="step" [class.active]="currentStep === 4">4</div>
+    <div class="step" (click)="changeCurrentStep(1)" [class.active]="currentStep === 1">1</div>
+    <div class="step"(click)="changeCurrentStep(2)"  [class.active]="currentStep === 2">2</div>
+    <div class="step"(click)="changeCurrentStep(3)"  [class.active]="currentStep === 3">3</div>
+    <div class="step"(click)="changeCurrentStep(4)"  [class.active]="currentStep === 4">4</div>
   </div>
   <div class="content">
     <div *ngIf="currentStep === 1">
