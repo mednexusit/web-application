@@ -66,4 +66,9 @@ export class ResourceService {
     };
     return this.http.get(this.resourceAPI+'specialty',httpOptions)
   }
+
+
+
+
+
 }

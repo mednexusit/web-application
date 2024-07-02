@@ -28,6 +28,13 @@ export class SharedService {
     return this.routeFrom.asObservable();
   }
 
+  uploadFileCommon(data:any){
+    return this.http.post(this.baseURL+'upload/category',data)
+  }
+
+  submitVendorProposalForm(data:any){
+    return this.http.post('http://3.109.153.67/reguser/PersonalVendor',data)
+  }
 
 
 }

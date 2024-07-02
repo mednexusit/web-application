@@ -1,9 +1,33 @@
 <div class="stepper">
   <div class="steps">
-    <div class="step" (click)="changeCurrentStep(1)" [class.active]="currentStep === 1">1</div>
-    <div class="step"(click)="changeCurrentStep(2)"  [class.active]="currentStep === 2">2</div>
-    <div class="step"(click)="changeCurrentStep(3)"  [class.active]="currentStep === 3">3</div>
-    <div class="step"(click)="changeCurrentStep(4)"  [class.active]="currentStep === 4">4</div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(1)"
+      [class.active]="currentStep === 1"
+    >
+      1
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(2)"
+      [class.active]="currentStep === 2"
+    >
+      2
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(3)"
+      [class.active]="currentStep === 3"
+    >
+      3
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(4)"
+      [class.active]="currentStep === 4"
+    >
+      4
+    </div>
   </div>
   <div class="content">
     <div *ngIf="currentStep === 1">
@@ -13,9 +37,9 @@
         class="personalInfo col col-lg-4 col-md-4 col-sm-12"
       >
         <div class="fields d-flex">
+          <label for="">Name:</label>
           <input
             type="text"
-            placeholder="Name"
             formControlName="name"
             [class.valid]="
               personalInfo.get('name').valid &&
@@ -30,9 +54,9 @@
           />
         </div>
         <div class="fields d-flex">
+          <label for="">Age:</label>
           <input
-            type="mumber"
-            placeholder="Age"
+            type="number"
             formControlName="age"
             [class.valid]="
               personalInfo.get('age').valid &&
@@ -45,47 +69,50 @@
           />
         </div>
         <div class="fields d-flex">
+          <label for="">Gender:</label>
           <select
             name=""
             id="sex"
-            formControlName="sex"
+            formControlName="gender"
             class="select"
             [class.valid]="
-              personalInfo.get('sex').valid &&
-              (personalInfo.get('sex').dirty || personalInfo.get('sex').touched)
+              personalInfo.get('gender').valid &&
+              (personalInfo.get('gender').dirty || personalInfo.get('gender').touched)
             "
             [class.invalid]="
-              personalInfo.get('sex').invalid &&
-              (personalInfo.get('sex').dirty || personalInfo.get('sex').touched)
+              personalInfo.get('gender').invalid &&
+              (personalInfo.get('gender').dirty || personalInfo.get('gender').touched)
             "
           >
-            <option value="" selected class="option">Select Sex</option>
-            <option value="male" class="option">Male</option>
-            <option value="female" class="option">Female</option>
+            <option value="" selected class="option">
+              ---Select Gender---
+            </option>
+            <option value='1' class="option">Male</option>
+            <option value="0" class="option">Female</option>
             <option value="other" class="option">Other</option>
           </select>
         </div>
         <div class="fields d-flex">
+          <label for="">Email:</label>
           <input
             type="text"
-            placeholder="Address"
-            formControlName="address"
+            formControlName="email"
             [class.valid]="
-              personalInfo.get('address').valid &&
-              (personalInfo.get('address').dirty ||
-                personalInfo.get('address').touched)
+              personalInfo.get('email').valid &&
+              (personalInfo.get('email').dirty ||
+                personalInfo.get('email').touched)
             "
             [class.invalid]="
-              personalInfo.get('address').invalid &&
-              (personalInfo.get('address').dirty ||
-                personalInfo.get('address').touched)
+              personalInfo.get('email').invalid &&
+              (personalInfo.get('email').dirty ||
+                personalInfo.get('email').touched)
             "
           />
         </div>
         <div class="fields d-flex">
+          <label for="">Phone:</label>
           <input
             type="text"
-            placeholder="Phone Number"
             formControlName="phoneNumber"
             [class.valid]="
               personalInfo.get('phoneNumber').valid &&
@@ -100,19 +127,19 @@
           />
         </div>
         <div class="fields d-flex">
+          <label for="">Address:</label>
           <input
             type="text"
-            placeholder="Email"
-            formControlName="email"
+            formControlName="address"
             [class.valid]="
-              personalInfo.get('email').valid &&
-              (personalInfo.get('email').dirty ||
-                personalInfo.get('email').touched)
+              personalInfo.get('address').valid &&
+              (personalInfo.get('address').dirty ||
+                personalInfo.get('address').touched)
             "
             [class.invalid]="
-              personalInfo.get('email').invalid &&
-              (personalInfo.get('email').dirty ||
-                personalInfo.get('email').touched)
+              personalInfo.get('address').invalid &&
+              (personalInfo.get('address').dirty ||
+                personalInfo.get('address').touched)
             "
           />
         </div>
@@ -125,71 +152,134 @@
         class="personalInfo col col-lg-4 col-md-4 col-sm-12"
       >
         <div class="fields d-flex">
+          <label for="">Event Name: </label>
           <input
             type="text"
-            placeholder="Location(Place and Venu)"
-            formControlName="location"
+            formControlName="eventname"
             [class.valid]="
-              conferenceInfo.get('location').valid &&
-              (conferenceInfo.get('location').dirty ||
-                conferenceInfo.get('location').touched)
+              conferenceInfo.get('eventname').valid &&
+              (conferenceInfo.get('eventname').dirty ||
+                conferenceInfo.get('eventname').touched)
             "
             [class.invalid]="
-              conferenceInfo.get('location').invalid &&
-              (conferenceInfo.get('location').dirty ||
-                conferenceInfo.get('location').touched)
+              conferenceInfo.get('eventname').invalid &&
+              (conferenceInfo.get('eventname').dirty ||
+                conferenceInfo.get('eventname').touched)
             "
           />
         </div>
-        <div class="fields">
+        <div class="fields d-flex">
+          <label for="">Organised By: </label>
           <input
             type="text"
-            placeholder="Specifice College Name(If Applicable)"
-            formControlName="specificCollegeName"
+            formControlName="organisedby"
             [class.valid]="
-              conferenceInfo.get('specificCollegeName').valid &&
-              (conferenceInfo.get('specificCollegeName').dirty ||
-                conferenceInfo.get('specificCollegeName').touched)
+              conferenceInfo.get('organisedby').valid &&
+              (conferenceInfo.get('organisedby').dirty ||
+                conferenceInfo.get('organisedby').touched)
             "
             [class.invalid]="
-              conferenceInfo.get('specificCollegeName').invalid &&
-              (conferenceInfo.get('specificCollegeName').dirty ||
-                conferenceInfo.get('specificCollegeName').touched)
+              conferenceInfo.get('organisedby').invalid &&
+              (conferenceInfo.get('organisedby').dirty ||
+                conferenceInfo.get('organisedby').touched)
             "
           />
         </div>
-        <div class="fields">
-          <textarea
-            type="text"
-            placeholder="Design And Format Of The Conference"
-            formControlName="designAndFormat"
+        <div class="fields d-flex">
+          <label for="">Category:</label>
+          <select
+            name="category"
+            id="category"
+            formControlName="category"
+            class="select"
             [class.valid]="
-              conferenceInfo.get('designAndFormat').valid &&
-              (conferenceInfo.get('designAndFormat').dirty ||
-                conferenceInfo.get('designAndFormat').touched)
+              conferenceInfo.get('category').valid &&
+              (conferenceInfo.get('category').dirty ||
+                conferenceInfo.get('category').touched)
             "
             [class.invalid]="
-              conferenceInfo.get('designAndFormat').invalid &&
-              (conferenceInfo.get('designAndFormat').dirty ||
-                conferenceInfo.get('designAndFormat').touched)
+              conferenceInfo.get('category').invalid &&
+              (conferenceInfo.get('category').dirty ||
+                conferenceInfo.get('category').touched)
             "
-          ></textarea>
+          >
+            <option value="" selected class="option">
+              ---Select Category---
+            </option>
+            <option
+              [value]="item.id"
+              *ngFor="let item of categories"
+              class="option"
+            >
+              {{ item.name }}
+            </option>
+          </select>
         </div>
-        <div class="fields">
+        <div class="fields d-flex">
+          <label for="">State: </label>
           <input
             type="text"
-            placeholder="Conference Brochure
-          "
-            formControlName="conferenceBrochure"
+            formControlName="state"
             [class.valid]="
-              conferenceInfo.get('conferenceBrochure').valid &&
-              (conferenceInfo.get('conferenceBrochure').dirty ||
-                conferenceInfo.get('conferenceBrochure').touched)
+              conferenceInfo.get('state').valid &&
+              (conferenceInfo.get('state').dirty ||
+                conferenceInfo.get('state').touched)
             "
             [class.invalid]="
-              conferenceInfo.get('conferenceBrochure').invalid &&
-              (conferenceInfo.get('conferenceBrochure').dirty ||
-                conferenceInfo.get('conferenceBrochure').touched)
+              conferenceInfo.get('state').invalid &&
+              (conferenceInfo.get('state').dirty ||
+                conferenceInfo.get('state').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <label for="">Place: </label>
+          <input
+            type="text"
+            formControlName="place"
+            [class.valid]="
+              conferenceInfo.get('place').valid &&
+              (conferenceInfo.get('place').dirty ||
+                conferenceInfo.get('place').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('place').invalid &&
+              (conferenceInfo.get('place').dirty ||
+                conferenceInfo.get('place').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <label for="">Pin: </label>
+          <input
+            type="number"
+            formControlName="pin"
+            [class.valid]="
+              conferenceInfo.get('pin').valid &&
+              (conferenceInfo.get('pin').dirty ||
+                conferenceInfo.get('pin').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('pin').invalid &&
+              (conferenceInfo.get('pin').dirty ||
+                conferenceInfo.get('pin').touched)
+            "
+          />
+        </div>
+        <div class="fields d-flex">
+          <label for="">Venu: </label>
+          <input
+            type="text"
+            formControlName="venu"
+            [class.valid]="
+              conferenceInfo.get('venu').valid &&
+              (conferenceInfo.get('venu').dirty ||
+                conferenceInfo.get('venu').touched)
+            "
+            [class.invalid]="
+              conferenceInfo.get('venu').invalid &&
+              (conferenceInfo.get('venu').dirty ||
+                conferenceInfo.get('venu').touched)
             "
           />
         </div>
@@ -199,46 +289,62 @@
       <h3>Speaker and Session Details :</h3>
       <form
         [formGroup]="speakerInfo"
-        class="personalInfo col col-lg-4 col-md-4 col-sm-12"
+        class="personalInfo speakerInfoStyles col col-lg-4 col-md-4 col-sm-12"
       >
-        <div class="fields">
-          <textarea
-            name=""
-            id=""
-            placeholder="Names & Profiles of speakers"
-            formControlName="speakerDetails"
-            rows="4"
-            cols="50"
+        <div class="fields d-flex flex-column">
+          <label for="">Speaker Info: </label>
+          <input
+            type="text"
+            formControlName="speakerinfo"
             [class.valid]="
-              speakerInfo.get('speakerDetails').valid &&
-              (speakerInfo.get('speakerDetails').dirty ||
-                speakerInfo.get('speakerDetails').touched)
+              speakerInfo.get('speakerinfo').valid &&
+              (speakerInfo.get('speakerinfo').dirty ||
+                speakerInfo.get('speakerinfo').touched)
             "
             [class.invalid]="
-              speakerInfo.get('speakerDetails').invalid &&
-              (speakerInfo.get('speakerDetails').dirty ||
-                speakerInfo.get('speakerDetails').touched)
+              speakerInfo.get('speakerinfo').invalid &&
+              (speakerInfo.get('speakerinfo').dirty ||
+                speakerInfo.get('speakerinfo').touched)
             "
-          ></textarea>
-          <textarea
-            name=""
-            id=""
-            placeholder="Sessions and topics covered in the conference
-          "
-            rows="4"
-            cols="50"
-            formControlName="sessionDetails"
-            [class.valid]="
-              speakerInfo.get('sessionDetails').valid &&
-              (speakerInfo.get('sessionDetails').dirty ||
-                speakerInfo.get('sessionDetails').touched)
-            "
-            [class.invalid]="
-              speakerInfo.get('sessionDetails').invalid &&
-              (speakerInfo.get('sessionDetails').dirty ||
-                speakerInfo.get('sessionDetails').touched)
-            "
-          ></textarea>
+          />
+        </div>
+        <h5>Session Details</h5>
+        <div class="fields d-flex flex-row align-items-center">
+          <label for="">Upload PDF/JPG:</label>
+          <input
+            type="file"
+            class="session_name"
+            accept=".pdf, .jpg, .jpeg"
+            (change)="handleSessionNameFile($event)"
+          />
+        </div>
+        <div class="fields d-flex flex-column">
+          <label for="">Enter Manually:</label>
+          <div class="field d-flex">
+            <input type="text" placeholder="Topic" formControlName="topic" />
+            <input type="text" placeholder="Speaker Name" formControlName="speaker_name" />
+            <input type="number" placeholder="Duration" formControlName="duration" />
+          </div>
+        </div>
+        <div class="fields d-flex m-top-10">
+          <label for="" *ngIf="showCMEPoints">CME Points:</label>
+        </div>
+        <div class="fields d-flex flex-row align-items-center">
+          <label for="">Upload Letter</label>
+          <input
+            type="file"
+            class="session_name"
+            accept=".pdf, .jpg, .jpeg"
+            (change)="handleLetterField($event)"
+          />
+        </div>
+        <div class="fields d-flex">
+          <label for="">CME Points:</label>
+          <input
+            type="number"
+            placeholder="Enter CME Points"
+            formControlName="cme_point"
+          />
         </div>
       </form>
     </div>
@@ -248,93 +354,217 @@
         [formGroup]="paymentInfo"
         class="personalInfo d-flex flex-wrap bank col col-lg-10 col-md-10 col-sm-12"
       >
-      <div class="vendorInfo col col-lg-5 col-md-5 col-sm-12">
-        <div class="fields d-flex">
-          <input
-            type="text"
-            placeholder="Vendor Name"
-            formControlName="vendorName"
-          />
-          <input
-            type="text"
-            placeholder="Contact Person"
-            formControlName="contactPerson"
-          />
-        </div>
-        <div class="fields d-flex">
-          <input
-          type="text"
-          placeholder="Contact Email"
-          formControlName="contactEmail"
-        />
-        <input
-        type="text"
-        placeholder="Contact Phone Number"
-        formControlName="contactPhoneNumber"
-      />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Bank Name"
-            formControlName="bankName"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Branch Name"
-            formControlName="branchName"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Account Holder's Name"
-            formControlName="accountHolderName"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Account Number"
-            formControlName="accountNumber"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="IFSC CODE"
-            formControlName="ifsccode"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="SWIFT CODE"
-            formControlName="swiftcode"
-          />
-        </div>
-        <div class="fields">
-          <input
-            type="text"
-            placeholder="Branch Address"
-            formControlName="branchAddress"
-          />
-        </div>
-      </div>
-      <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
-        <h5>Payment Method(s) Accepted:</h5>
-        <h6>Coming Soon...</h6>
-      </div>
+        <div class="vendorInfo col col-lg-5 col-md-5 col-sm-12">
+          <div class="fields d-flex">
+            <label for="">Vendor Name:</label>
+            <input
+              type="text"
+              placeholder="Vendor Name"
+              formControlName="vendorname"
+              [class.valid]="
+              paymentInfo.get('vendorname').valid &&
+              (paymentInfo.get('vendorname').dirty ||
+              paymentInfo.get('vendorname').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('vendorname').invalid &&
+              (paymentInfo.get('vendorname').dirty ||
+              paymentInfo.get('vendorname').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Contact Person:</label>
+            <input
+              type="text"
+              placeholder="Contact Person"
+              formControlName="contactperson"
+              [class.valid]="
+              paymentInfo.get('contactperson').valid &&
+              (paymentInfo.get('contactperson').dirty ||
+              paymentInfo.get('contactperson').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('contactperson').invalid &&
+              (paymentInfo.get('contactperson').dirty ||
+              paymentInfo.get('contactperson').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Contact Email:</label>
+            <input
+              type="text"
+              placeholder="Contact Email"
+              formControlName="contactemail"
+              [class.valid]="
+              paymentInfo.get('contactemail').valid &&
+              (paymentInfo.get('contactemail').dirty ||
+              paymentInfo.get('contactemail').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('contactemail').invalid &&
+              (paymentInfo.get('contactemail').dirty ||
+              paymentInfo.get('contactemail').touched)
+            "
+            />
+            </div>
+            <div class="fields d-flex">
+              <label for="">Contact Phone:</label>
+            <input
+              type="text"
+              placeholder="Contact Phone Number"
+              formControlName="contactphonenumber"
+              [class.valid]="
+              paymentInfo.get('contactphonenumber').valid &&
+              (paymentInfo.get('contactphonenumber').dirty ||
+              paymentInfo.get('contactphonenumber').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('contactphonenumber').invalid &&
+              (paymentInfo.get('contactphonenumber').dirty ||
+              paymentInfo.get('contactphonenumber').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Bank Name:</label>
+            <input
+              type="text"
+              placeholder="Bank Name"
+              formControlName="bankname"
+              [class.valid]="
+              paymentInfo.get('bankname').valid &&
+              (paymentInfo.get('bankname').dirty ||
+              paymentInfo.get('bankname').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('bankname').invalid &&
+              (paymentInfo.get('bankname').dirty ||
+              paymentInfo.get('bankname').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Branch Name:</label>
+            <input
+              type="text"
+              placeholder="Branch Name"
+              formControlName="branchname"
+              [class.valid]="
+              paymentInfo.get('branchname').valid &&
+              (paymentInfo.get('branchname').dirty ||
+              paymentInfo.get('branchname').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('branchname').invalid &&
+              (paymentInfo.get('branchname').dirty ||
+              paymentInfo.get('branchname').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Account Holder:</label>
+            <input
+              type="text"
+              placeholder="Account Holder's Name"
+              formControlName="accountholdername"
+              [class.valid]="
+              paymentInfo.get('accountholdername').valid &&
+              (paymentInfo.get('accountholdername').dirty ||
+              paymentInfo.get('accountholdername').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('accountholdername').invalid &&
+              (paymentInfo.get('accountholdername').dirty ||
+              paymentInfo.get('accountholdername').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Account Number:</label>
+            <input
+              type="text"
+              placeholder="Account Number"
+              formControlName="accountnumber"
+              [class.valid]="
+              paymentInfo.get('accountnumber').valid &&
+              (paymentInfo.get('accountnumber').dirty ||
+              paymentInfo.get('accountnumber').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('accountnumber').invalid &&
+              (paymentInfo.get('accountnumber').dirty ||
+              paymentInfo.get('accountnumber').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">IFSC Code:</label>
+            <input
+              type="text"
+              placeholder="IFSC CODE"
+              formControlName="ifsccode"
+              [class.valid]="
+              paymentInfo.get('ifsccode').valid &&
+              (paymentInfo.get('ifsccode').dirty ||
+              paymentInfo.get('ifsccode').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('ifsccode').invalid &&
+              (paymentInfo.get('ifsccode').dirty ||
+              paymentInfo.get('ifsccode').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">SWIFT Code</label>
 
+            <input
+              type="text"
+              placeholder="SWIFT CODE"
+              formControlName="swiftcode"
+              [class.valid]="
+              paymentInfo.get('swiftcode').valid &&
+              (paymentInfo.get('swiftcode').dirty ||
+              paymentInfo.get('swiftcode').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('swiftcode').invalid &&
+              (paymentInfo.get('swiftcode').dirty ||
+              paymentInfo.get('swiftcode').touched)
+            "
+            />
+          </div>
+          <div class="fields d-flex">
+            <label for="">Branch Address:</label>
+            <input
+              type="text"
+              placeholder="Branch Address"
+              formControlName="branchaddress"
+              [class.valid]="
+              paymentInfo.get('branchaddress').valid &&
+              (paymentInfo.get('branchaddress').dirty ||
+              paymentInfo.get('branchaddress').touched)
+            "
+            [class.invalid]="
+              paymentInfo.get('branchaddress').invalid &&
+              (paymentInfo.get('branchaddress').dirty ||
+              paymentInfo.get('branchaddress').touched)
+            "
+            />
+          </div>
+        </div>
+        <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
+          <h5>Payment Method(s) Accepted:</h5>
+          <h6>Coming Soon...</h6>
+        </div>
       </form>
     </div>
     <div class="navigation col col-lg-4 col-md-4 col-sm-12">
       <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
       <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
-      <button (click)="onSubmit()" *ngIf="currentStep === 4">Finish</button>
+      <button (click)="onSubmit()" *ngIf="currentStep === 4" [disabled]="!personalInfo.valid || !paymentInfo.valid || !speakerInfo.valid || !conferenceInfo.valid">Submit</button>
     </div>
   </div>
-
 </div>
