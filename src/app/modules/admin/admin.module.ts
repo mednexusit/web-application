@@ -13,12 +13,14 @@ import { ConferenceRequestsComponent } from './components/conference-requests/co
 import { UserAnalyticsComponent } from './components/user-analytics/user-analytics.component';
 import { FinancialReportsComponent } from './components/financial-reports/financial-reports.component';
 import { SettingComponent } from './components/setting/setting.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
   declarations: [
 
-  
+
     AdminloginComponent,
           AdminHomeComponent,
           AdminHeaderComponent,
@@ -27,14 +29,16 @@ import { SettingComponent } from './components/setting/setting.component';
           ConferenceRequestsComponent,
           UserAnalyticsComponent,
           FinancialReportsComponent,
-          SettingComponent
+          SettingComponent,
+          FilterPipe
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModuleModule
+    SharedModuleModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }

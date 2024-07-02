@@ -1,1 +1,109 @@
-<p>admin-dashboard works!</p>
+<div class="container">
+  <div class="row my-3">
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by ID or Name"
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">Proposal ID</th>
+          <th scope="col">Status</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let item of vendorRequestListData | filter : searchTerm;
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+          <td>{{ item.status === 1 ? "Pending" : "" }}</td>
+          <td>{{ item.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="vendorDetailModal" *ngIf="isShowVendorModal">
+  <div class="modalWrapper  col col-lg-7 col-md-7 col-sm-10">
+    <span class="closeModal" (click)="closeModal()"><i class="fa-solid fa-circle-xmark icon"></i></span>
+    <div class="content">
+      <h4>Vendor Details</h4>
+      <div class="modalDetails">
+        <h6>Personal Details:</h6>
+        <div class="details">
+          <label for="">Name: {{ this.modalData.name }}</label>
+          <label for="">Age: {{ this.modalData.age }}</label>
+          <label for="">Gender: {{ this.modalData.gender }}</label>
+          <label for="">Email: {{ this.modalData.email }}</label>
+          <label for="">Phone: {{ this.modalData.phone }}</label>
+          <label for="">Address: {{ this.modalData.address }}</label>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Conference Details</h6>
+        <div class="details">
+          <label for="">Event Name: {{ this.modalData.eventname }}</label>
+          <label for="">Organized By: {{ this.modalData.organisedby }}</label>
+          <label for="">Category: {{ this.modalData.category }}</label>
+          <label for="">State: {{ this.modalData.state }}</label>
+          <label for="">Place: {{ this.modalData.place }}</label>
+          <label for="">Pin: {{ this.modalData.pin }}</label>
+          <label for="">Venu: {{ this.modalData.venu }}</label>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Speaker Details</h6>
+        <div class="details">
+          <label for="">Speaker Info: {{ this.modalData.speakerinfo }}</label>
+          <label for="">Topic: {{ this.modalData.topic }}</label>
+          <label for="">Duration: {{ this.modalData.duration }}</label>
+          <label for="">CME Points: {{ this.modalData.cme_point }}</label>
+          <label for="">Speaker Name: {{ this.modalData.speaker_name }}</label>
+          <div class="flex d-flex">
+            <label for="">Session Name:</label>
+            <img src="{{ this.modalData.session_name }}" alt="" />
+          </div>
+          <div class="flex d-flex">
+            <label for="">Letter:</label>
+            <img src="{{ this.modalData.letter }}" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Payment Details</h6>
+        <div class="details">
+          <label for="">Vendor Name: {{ this.modalData.vendorname }}</label>
+          <label for="">Contact Email: {{ this.modalData.contactemail }}</label>
+          <label for="">Contact Person: {{ this.modalData.contactperson }}</label>
+          <label for="">Bank Name: {{ this.modalData.bankname }}</label>
+          <label for="">Branch Name: {{ this.modalData.branchname }}</label>
+          <label for="">Account Holder Name: {{ this.modalData.accountholdername }}</label>
+          <label for="">Account Number: {{ this.modalData.accountnumber }}</label>
+          <label for="">IFSC Code: {{ this.modalData.ifsccode }}</label>
+          <label for="">SWIFT Code: {{ this.modalData.swiftcode }}</label>
+          <label for="">Branch Address: {{ this.modalData.branchaddress }}</label>
+
+
+
+        </div>
+      </div>
+      <div class="actionButtons">
+        <button class="btn btn-success">Approve</button>
+        <button class="btn btn-danger">Reject</button>
+      </div>
+    </div>
+  </div>
+
+</div>
