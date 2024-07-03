@@ -29,7 +29,7 @@
         >
           <td>{{ i + 1 }}</td>
           <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
-          <td><span *ngIf="item.active===1">Pending</span><span *ngIf="item.active===2">Approved</span><span *ngIf="item.active===3">Rejected</span></td>
+          <td><span *ngIf="item.active===1" class="pending">Pending</span><span *ngIf="item.active===2" class="approved">Approved</span><span *ngIf="item.active===3" class="rejected">Rejected</span></td>
           <td>{{ item.name }}</td>
           <td><i class="fa-solid fa-trash deleteIcon" (click)="deleteRequest(item)"></i></td>
         </tr>

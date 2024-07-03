@@ -84,3 +84,12 @@ h4{
   color: $themePrimaryColor;
   cursor: pointer;
 }
+.pending{
+  color: $themePrimaryColor;
+}
+.approved{
+  color: green;
+}
+.rejected{
+  color: red;
+}
