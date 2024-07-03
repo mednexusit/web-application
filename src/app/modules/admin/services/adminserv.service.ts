@@ -16,4 +16,24 @@ export class AdminservService {
     };
     return this.http.post('http://3.109.153.67/reguser/getPersonalVendor',{},httpOptions);
   }
+
+  approveRejectVendorRequest(data:any){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post('http://3.109.153.67/reguser/approvePersonalVendor',data,httpOptions)
+  }
+  deleteVendorRequests(data:any){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post('http://3.109.153.67/reguser/deletePersonalVendor',data,httpOptions)
+  }
+
 }

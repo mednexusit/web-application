@@ -17,6 +17,7 @@
           <th scope="col">Proposal ID</th>
           <th scope="col">Status</th>
           <th scope="col">Name</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -28,8 +29,9 @@
         >
           <td>{{ i + 1 }}</td>
           <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
-          <td>{{ item.status === 1 ? "Pending" : "" }}</td>
+          <td><span *ngIf="item.active===1">Pending</span><span *ngIf="item.active===2">Approved</span><span *ngIf="item.active===3">Rejected</span></td>
           <td>{{ item.name }}</td>
+          <td><i class="fa-solid fa-trash deleteIcon" (click)="deleteRequest(item)"></i></td>
         </tr>
       </tbody>
     </table>
@@ -100,8 +102,8 @@
         </div>
       </div>
       <div class="actionButtons">
-        <button class="btn btn-success">Approve</button>
-        <button class="btn btn-danger">Reject</button>
+        <button class="btn btn-success"(click)="changeStatus('approve',this.modalData)">Approve</button>
+        <button *ngIf="this.modalData.active !==2" class="btn btn-danger" (click)="changeStatus('reject', this.modalData)">Reject</button>
       </div>
     </div>
   </div>

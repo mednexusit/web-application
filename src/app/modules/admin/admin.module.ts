@@ -38,7 +38,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     ReactiveFormsModule,
     FormsModule,
     SharedModuleModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class AdminModule { }
