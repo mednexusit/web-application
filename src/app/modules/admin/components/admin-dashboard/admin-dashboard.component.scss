@@ -86,10 +86,13 @@ h4{
 }
 .pending{
   color: $themePrimaryColor;
+  font-weight: 800;
 }
 .approved{
   color: green;
+  font-weight: 800;
 }
 .rejected{
+  font-weight: 800;
   color: red;
 }

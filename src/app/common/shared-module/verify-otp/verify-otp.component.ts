@@ -44,14 +44,14 @@ export class VerifyOtpComponent implements OnInit {
       next: (data: any) => {
         console.log('Data is ', data);
         this.authServ.sendToken(data.access_token);
-        if (data.registrationinfo === null) {
+        if (data.registrationinfo === null && !data.access_token) {
           console.log('OTP Verification Success');
           this.router.navigate(['signup']);
           this.toastr.success('OTP verification Success','',{
             timeOut:1000
           })
         }
-        if (data.registrationinfo !== null && data.access_token) {
+        if ( data.access_token) {
           if(this.routeFrom==='/admin'){
             this.router.navigate(['admin/adminhome'])
           }
