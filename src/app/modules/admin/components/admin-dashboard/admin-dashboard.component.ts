@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminDashboardComponent implements OnInit {
   vendorRequestListData:any=[];
-  toggleText:any='Show Deleted';
+  toggleText:any='Show Deleted Requests';
   isShowDeleted:boolean=false;
   deletedVendorRequestListData:any=[];
   searchTerm:any='';
@@ -49,7 +49,7 @@ export class AdminDashboardComponent implements OnInit {
   }
   toggleTables(){
     this.isShowDeleted=!this.isShowDeleted;
-    this.toggleText = !this.isShowDeleted?"Show Deleted":"Show Requested";
+    this.toggleText = !this.isShowDeleted?"Show Deleted Requests":"Show Active Requests";
   }
   closeModal(){
     this.isShowVendorModal=false;
