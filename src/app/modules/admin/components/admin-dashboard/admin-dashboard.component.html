@@ -67,6 +67,7 @@
             <th scope="col">Proposal ID</th>
             <th scope="col">Status</th>
             <th scope="col">Name</th>
+            <th scope="col">Comments</th>
           </tr>
         </thead>
         <tbody>
@@ -84,6 +85,7 @@
               ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
             </td>
             <td>{{ item.name }}</td>
+            <td>{{ item.comments }}</td>
           </tr>
         </tbody>
       </table>
