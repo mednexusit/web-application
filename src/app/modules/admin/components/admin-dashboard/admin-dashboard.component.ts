@@ -12,8 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class AdminDashboardComponent implements OnInit {
   vendorRequestListData:any=[];
+  toggleText:any='Show Deleted';
+  isShowDeleted:boolean=false;
   deletedVendorRequestListData:any=[];
   searchTerm:any='';
+  searchTermDel:any='';
   modalData:any;
   activeVal:any;
   isShowVendorModal:boolean=false;
@@ -43,6 +46,10 @@ export class AdminDashboardComponent implements OnInit {
     this.isShowVendorModal=true;
     this.modalData=data;
     console.log(this.modalData)
+  }
+  toggleTables(){
+    this.isShowDeleted=!this.isShowDeleted;
+    this.toggleText = !this.isShowDeleted?"Show Deleted":"Show Requested";
   }
   closeModal(){
     this.isShowVendorModal=false;

@@ -1,50 +1,95 @@
 <div class="container">
-  <div class="row my-3">
-    <div class="col">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by ID or Name"
-        [(ngModel)]="searchTerm"
-      />
+  <button class="btn btn-primary" (click)="toggleTables()">{{toggleText}}</button>
+  <div class="current" *ngIf="!isShowDeleted">
+    <div class="row my-3">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by ID or Name"
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Proposal ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of vendorRequestListData  | filter : searchTerm;
+              let i = index
+            "
+          >
+            <td>{{ i + 1 }}</td>
+            <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+            <td>
+              <span *ngIf="item.active === 1" class="pending">Pending</span
+              ><span *ngIf="item.active === 2" class="approved">Approved</span
+              ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+            </td>
+            <td>{{ item.name }}</td>
+            <td>
+              <i
+                class="fa-solid fa-trash deleteIcon"
+                (click)="deleteRequest(item)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Sr.No</th>
-          <th scope="col">Proposal ID</th>
-          <th scope="col">Status</th>
-          <th scope="col">Name</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let item of vendorRequestListData  | filter : searchTerm;
-            let i = index
-          "
-        >
-          <td>{{ i + 1 }}</td>
-          <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
-          <td>
-            <span *ngIf="item.active === 1" class="pending">Pending</span
-            ><span *ngIf="item.active === 2" class="approved">Approved</span
-            ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
-          </td>
-          <td>{{ item.name }}</td>
-          <td>
-            <i
-              class="fa-solid fa-trash deleteIcon"
-              (click)="deleteRequest(item)"
-            ></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="deleted" *ngIf="isShowDeleted">
+    <div class="row my-3">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by ID or Name"
+          [(ngModel)]="searchTermDel"
+        />
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Proposal ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of deletedVendorRequestListData  | filter : searchTermDel;
+              let i = index
+            "
+          >
+            <td>{{ i + 1 }}</td>
+            <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+            <td>
+              <span *ngIf="item.active === 1" class="pending">Pending</span
+              ><span *ngIf="item.active === 2" class="approved">Approved</span
+              ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+            </td>
+            <td>{{ item.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
 </div>
 <div class="vendorDetailModal" *ngIf="isShowVendorModal">
   <div class="modalWrapper col col-lg-7 col-md-7 col-sm-10">
