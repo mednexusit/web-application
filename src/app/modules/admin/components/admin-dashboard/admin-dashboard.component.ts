@@ -1,3 +1,4 @@
+import { filter } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AdminservService } from '../../services/adminserv.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminDashboardComponent implements OnInit {
   vendorRequestListData:any=[];
+  deletedVendorRequestListData:any=[];
   searchTerm:any='';
   modalData:any;
   activeVal:any;
@@ -29,6 +31,10 @@ export class AdminDashboardComponent implements OnInit {
     this.adminServ.getVendorRequestLists().subscribe({
       next:(data:any)=>{
         this.vendorRequestListData= data.responseContents;
+        this.vendorRequestListData =  this.vendorRequestListData.filter((item:any)=> item.status===1)
+        this.deletedVendorRequestListData =  data.responseContents.filter((item:any)=> item.status===0)
+        console.log(this.deletedVendorRequestListData)
+
         console.log(data);
       }
     })
@@ -74,13 +80,17 @@ export class AdminDashboardComponent implements OnInit {
       title:'Do you want to delete this request?',
       icon:'warning',
       showCancelButton:true,
+      input:'text',
+      inputLabel:"Enter Delete Comments",
+      inputValidator:result => !result && 'Enter Delete Comment!',
       cancelButtonText:"No",
       showConfirmButton:true,
       confirmButtonText:"Yes",
     }).then((result)=>{
-      if(result.isConfirmed){
+      if(result.isConfirmed && result.value!==null){
         let dataToPass={
-          id:data.id
+          id:data.id,
+          comments:result.value
         }
         this.adminServ.deleteVendorRequests(dataToPass).subscribe({
           next:(data:any)=>{
@@ -93,6 +103,9 @@ export class AdminDashboardComponent implements OnInit {
             this.toastr.error('Failed to delete','',{timeOut:1000})
           }
         })
+      }
+      else{
+
       }
 
     })
