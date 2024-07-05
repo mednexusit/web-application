@@ -166,13 +166,14 @@
       </div>
       <div class="actionButtons">
         <button
+        *ngIf="this.modalData.active === 1 && this.modalData.status !==0"
           class="btn btn-success"
           (click)="changeStatus('approve', this.modalData)"
         >
           Approve
         </button>
         <button
-          *ngIf="this.modalData.active !== 2"
+          *ngIf="this.modalData.active === 1 &&  this.modalData.status !==0"
           class="btn btn-danger"
           (click)="changeStatus('reject', this.modalData)"
         >
