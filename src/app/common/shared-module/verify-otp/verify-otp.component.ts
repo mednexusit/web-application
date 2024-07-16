@@ -43,6 +43,11 @@ export class VerifyOtpComponent implements OnInit {
     this.sharedServ.verifyOtp(dataToPass).subscribe({
       next: (data: any) => {
         console.log('Data is ', data);
+        let userData={
+          userid:data.userid,
+          usertype:data.useridtype
+        }
+        localStorage.setItem('userData',JSON.stringify(userData))
         this.authServ.sendToken(data.access_token);
         if (data.registrationinfo === null && !data.access_token) {
           console.log('OTP Verification Success');

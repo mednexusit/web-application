@@ -1,13 +1,109 @@
 <div class="container">
   <button class="btn btn-primary" (click)="toggleTables()">{{toggleText}}</button>
-  <div class="current" *ngIf="!isShowDeleted">
+  <button class="btn btn-primary btns" *ngIf="userType===0" (click)="openAddSubAdmin()">Add Sub-Admin <i class="fa-solid fa-user-plus"></i></button>
+  <button class="btn btn-primary btns" *ngIf="userType===0" (click)="showSubAdmin()">{{isShowSubAdmin?"Hide":"Show"}} Sub-Admin <i class="fa-solid fa-user"></i></button>
+
+  <div class="forAdmin" *ngIf="!isShowSubAdmin">
+    <div class="current" *ngIf="!isShowDeleted">
+      <div class="row my-3">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by ID or Name"
+            [(ngModel)]="searchTerm"
+          />
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Sr.No</th>
+              <th scope="col">Proposal ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of vendorRequestListData  | filter : searchTerm;
+                let i = index
+              "
+            >
+              <td>{{ i + 1 }}</td>
+              <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+              <td>
+                <span *ngIf="item.active === 1" class="pending">Pending</span
+                ><span *ngIf="item.active === 2" class="approved">Approved</span
+                ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+              </td>
+              <td>{{ item.name }}</td>
+              <td>
+                <i
+                  class="fa-solid fa-trash deleteIcon"
+                  (click)="deleteRequest(item)"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="deleted" *ngIf="isShowDeleted">
+      <div class="row my-3">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by ID or Name"
+            [(ngModel)]="searchTermDel"
+          />
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Sr.No</th>
+              <th scope="col">Proposal ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Name</th>
+              <th scope="col">Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of deletedVendorRequestListData  | filter : searchTermDel;
+                let i = index
+              "
+            >
+              <td>{{ i + 1 }}</td>
+              <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+              <td>
+                <span *ngIf="item.active === 1" class="pending">Pending</span
+                ><span *ngIf="item.active === 2" class="approved">Approved</span
+                ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+              </td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.comments }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="forSubAdmin" *ngIf="userType===0 &&isShowSubAdmin ">
     <div class="row my-3">
       <div class="col">
         <input
           type="text"
           class="form-control"
           placeholder="Search by ID or Name"
-          [(ngModel)]="searchTerm"
+          [(ngModel)]="searchSubAdmin"
         />
       </div>
     </div>
@@ -16,84 +112,42 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Sr.No</th>
-            <th scope="col">Proposal ID</th>
+            <th scope="col">UUID</th>
+            <th scope="col">Mobile</th>
             <th scope="col">Status</th>
-            <th scope="col">Name</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr
             *ngFor="
-              let item of vendorRequestListData  | filter : searchTerm;
+              let item of subAdminListData  | filter : searchSubAdmin;
               let i = index
             "
           >
             <td>{{ i + 1 }}</td>
-            <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+            <td class="proposalId">{{ item.uuid }}</td>
+            <td>{{ item.mobile }}</td>
             <td>
-              <span *ngIf="item.active === 1" class="pending">Pending</span
-              ><span *ngIf="item.active === 2" class="approved">Approved</span
-              ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+              <span *ngIf="item.status === 1" class="green" >Active</span
+              ><span *ngIf="item.status === 0" class="red" >Inactive</span>
             </td>
-            <td>{{ item.name }}</td>
+
             <td>
-              <i
-                class="fa-solid fa-trash deleteIcon"
-                (click)="deleteRequest(item)"
-              ></i>
+              <div (click)="toggleStatus(item)" class="toggleStatus" >
+                <i class="fa-solid fa-arrows-rotate" [ngClass]="{'rotate': item.isRotating}"></i>
+              </div>
             </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="deleted" *ngIf="isShowDeleted">
-    <div class="row my-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by ID or Name"
-          [(ngModel)]="searchTermDel"
-        />
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Sr.No</th>
-            <th scope="col">Proposal ID</th>
-            <th scope="col">Status</th>
-            <th scope="col">Name</th>
-            <th scope="col">Comments</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="
-              let item of deletedVendorRequestListData  | filter : searchTermDel;
-              let i = index
-            "
-          >
-            <td>{{ i + 1 }}</td>
-            <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
-            <td>
-              <span *ngIf="item.active === 1" class="pending">Pending</span
-              ><span *ngIf="item.active === 2" class="approved">Approved</span
-              ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
-            </td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.comments }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
+
+
 </div>
-<div class="vendorDetailModal" *ngIf="isShowVendorModal">
+<div class="openModal" *ngIf="isShowVendorModal">
   <div class="modalWrapper col col-lg-7 col-md-7 col-sm-10">
     <span class="closeModal" (click)="closeModal()"
       ><i class="fa-solid fa-circle-xmark icon"></i
@@ -181,5 +235,28 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="openModal" *ngIf="isOpenAddSubAdmin" [formGroup]="subAdminFormGroup">
+  <div class="modalWrapper subAdmin  col col-lg-5 col-md-5 col-sm-10">
+    <h3 class="heading-sub">Add Sub-Admin</h3>
+    <div class="fields col-lg-12 col-md-12 col-sm-10">
+      <input type="text" class="inp" placeholder="Enter Sub Admin Phone Number" required formControlName="mobile">
+      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('required') && subAdminFormGroup.get('mobile')?.touched">
+        Phone Number is Required
+      </span>
+      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('minlength') && subAdminFormGroup.get('mobile')?.touched">
+        Phone Number must be 10 digits long
+      </span>
+      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('maxlength') && subAdminFormGroup.get('mobile')?.touched">
+        Phone Number must be 10 digits long
+      </span>
+    </div>
+    <div class="actBtns">
+      <button class="btn btn-primary adBtn" (click)="registerSubAdmin(subAdminFormGroup.value)" [disabled]="!subAdminFormGroup.valid">Add</button>
+      <button class="btn btn-primary adBtn canBtn" (click)="closeAddModal()">Cancel</button>
+    </div>
+
   </div>
 </div>

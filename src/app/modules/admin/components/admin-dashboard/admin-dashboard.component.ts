@@ -1,8 +1,11 @@
-import { filter } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { filter, timeout } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AdminservService } from '../../services/adminserv.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from '../../../../shared/shared.service';
 
 
 @Component({
@@ -14,20 +17,32 @@ export class AdminDashboardComponent implements OnInit {
   vendorRequestListData:any=[];
   toggleText:any='Show Deleted Requests';
   isShowDeleted:boolean=false;
+  isOpenAddSubAdmin:boolean=false;
   deletedVendorRequestListData:any=[];
   searchTerm:any='';
+  isShowSubAdmin:boolean=false;
+  subAdminListData:any=[];
   searchTermDel:any='';
   modalData:any;
+  searchSubAdmin:any='';
+  userType:any;
   activeVal:any;
   isShowVendorModal:boolean=false;
-  constructor(private adminServ:AdminservService, private toastr:ToastrService){
+  subAdminPhoneNumber:any='';
+  changeStart:boolean=false;
+  subAdminFormGroup:any=FormGroup;
+  constructor(private adminServ:AdminservService, private toastr:ToastrService, private fb:FormBuilder, private sharedServ:SharedService){
 
   }
 
   ngOnInit(): void {
 
       this.getAllVendorRequestList();
+      this.subAdminFormGroup = this.fb.group({
+        mobile:['', Validators.compose([Validators.required, Validators.minLength(10),Validators.maxLength(10)])]
+      })
 
+      this.userType=    this.sharedServ.getUserType();
 
   }
   getAllVendorRequestList(){
@@ -116,5 +131,76 @@ export class AdminDashboardComponent implements OnInit {
       }
 
     })
+  }
+  openAddSubAdmin(){
+    this.isOpenAddSubAdmin=true;
+  }
+  registerSubAdmin(data:any){
+    console.log(data)
+    if(data.mobile){
+      this.adminServ.createSubAdmin(data).subscribe({
+        next:(data:any)=>{
+          console.log(data);
+          if(data.status){
+            this.toastr.success(data.msg,'',{
+              timeOut:1000
+            })
+            this.subAdminFormGroup.reset();
+            this.isOpenAddSubAdmin=false;
+            this.getSubAdmin();
+          }
+
+        },
+        error:(err)=>{
+          console.log(err)
+          this.isOpenAddSubAdmin=false;
+          this.subAdminFormGroup.reset();
+          this.toastr.error('Failed to add sub admin')
+        }
+      })
+    }
+  }
+  closeAddModal(){
+    this.isOpenAddSubAdmin=false;
+
+  }
+  showSubAdmin(){
+    this.isShowSubAdmin= !this.isShowSubAdmin;
+    if(this.isShowSubAdmin){
+      this.getSubAdmin();
+    }
+  }
+  getSubAdmin(){
+    this.adminServ.getSubAdminList().subscribe({
+      next:(data:any)=>{
+        console.log("Data",data)
+        this.subAdminListData= data.responseContents;
+        this.subAdminListData = this.subAdminListData.map((item:any) => ({
+          ...item,
+          isRotating: false
+        }));
+      }
+    })
+  }
+  toggleStatus(data:any){
+    data.isRotating=!data.isRotating;
+    let statusTemp;
+    if(data.status===0){
+      statusTemp=1
+    }
+    if(data.status===1){
+      statusTemp=0
+    }
+    let dataToPass={
+      status:statusTemp,
+      user_id:data.uuid
+    }
+    this.adminServ.toggleSubAdminStatus(dataToPass).subscribe({
+      next:(data:any)=>{
+        console.log(data);
+        this.getSubAdmin();
+      }
+    })
+    console.log(dataToPass)
   }
 }

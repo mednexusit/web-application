@@ -2,7 +2,7 @@
 .table-responsive {
   margin: 20px 0;
 }
-.vendorDetailModal{
+.openModal{
   display: flex; /* Hidden by default */
   justify-content: center;
   align-items: center;
@@ -95,4 +95,66 @@ h4{
 .rejected{
   font-weight: 800;
   color: red;
+}
+.btns{
+  margin-left: 10px;
+}
+.heading-sub{
+  margin: 10px;
+}
+.fields{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .inp{
+    padding: 10px 12px;
+    width: 80%;
+  }
+}
+.subAdmin{
+  min-height: 300px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .adBtn{
+    margin-top: 20px;
+  }
+}
+
+.errors{
+  color: red;
+  font-size: 10px;;
+}
+.actBtns{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 20px;
+}
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+.canBtn{
+  background: red !important;
+  border: none;
+}
+.rotate{
+  animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.toggleStatus{
+  cursor: pointer;
 }

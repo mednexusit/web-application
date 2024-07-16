@@ -36,5 +36,17 @@ export class SharedService {
     return this.http.post('http://3.109.153.67/reguser/PersonalVendor',data)
   }
 
+  getUserType(){
+    let userData:any= localStorage.getItem("userData");
+    let userType;
+    if(userData){
+      userData = JSON.parse(userData);
+      userType= userData['usertype'];
+    }
+    return userType;
+  }
+
+
+
 
 }
