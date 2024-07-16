@@ -1,0 +1,100 @@
+<div class="container">
+  <button class="btn btn-primary theme" (click)="openModal('add')">
+    Add News
+  </button>
+  <div class="row my-3">
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by ID or Name"
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Sr.No</th>
+          <th scope="col">ID</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Sub-Heading</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of newFeedData | filter : searchTerm; let i = index"
+        >
+          <td>{{ i + 1 }}</td>
+          <td class="proposalId">{{ item.id }}</td>
+          <td class="proposalId">{{ item.heading }}</td>
+          <td>{{ item.subheading }}</td>
+          <td>
+            <i
+              class="fa-solid fa-trash deleteIcon"
+              (click)="deleteNewsFeed(item)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal" *ngIf="isAddNews">
+  <div class="modalWrapper col col-lg-7 col-md-7 col-sm-10">
+    <div class="content">
+      <h3>{{ headText | titlecase }} News Feed</h3>
+      <div class="addForm" [formGroup]="newsFeedForm">
+        <div class="fields">
+          <label for="">Heading: </label>
+          <input type="text" formControlName="heading" class="inp" />
+        </div>
+        <div
+          class="errors"
+          *ngIf="
+            (newsFeedForm.get('heading').dirty ||
+              newsFeedForm.get('heading').touched) &&
+            newsFeedForm.get('heading').errors &&
+            newsFeedForm.get('heading').hasError('required')
+          "
+        >
+          Heading is required
+        </div>
+        <div class="fields">
+          <label for="">Sub Heading: </label>
+          <input type="text" formControlName="subheading" class="inp" />
+        </div>
+        <div
+          class="errors"
+          *ngIf="
+            (newsFeedForm.get('subheading').dirty ||
+              newsFeedForm.get('subheading').touched) &&
+            newsFeedForm.get('subheading').errors &&
+            newsFeedForm.get('subheading').hasError('required')
+          "
+        >
+          Sub Heading is required
+        </div>
+        <div class="fields">
+          <label for="">Image: </label>
+          <label for="chooseImage" class="chsImage"
+            >Choose Image :{{ fileName }}</label
+          >
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            id="chooseImage"
+            (change)="onFileSelection($event)"
+          />
+        </div>
+        <div class="btnsArea">
+          <button class="btn btn-success theme" [disabled]="!newsFeedForm.valid" (click)="submitNewsFeed(newsFeedForm.value)">Submit News Feed</button>
+          <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { ConferenceRequestsComponent } from './components/conference-requests/co
 import { UserAnalyticsComponent } from './components/user-analytics/user-analytics.component';
 import { FinancialReportsComponent } from './components/financial-reports/financial-reports.component';
 import { SettingComponent } from './components/setting/setting.component';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 const routes: Routes = [
   { path: '', component: AdminloginComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
       {path:'conferencerequest',component:ConferenceRequestsComponent},
       {path:'useranalytics',component:UserAnalyticsComponent},
       {path:'financialreports', component:FinancialReportsComponent},
-      {path:'adminsettings',component:SettingComponent}
+      {path:'adminsettings',component:SettingComponent},
+      {path:'news-feed',component:NewsfeedComponent}
     ]
   },
 ];

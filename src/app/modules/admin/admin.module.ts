@@ -15,6 +15,7 @@ import { FinancialReportsComponent } from './components/financial-reports/financ
 import { SettingComponent } from './components/setting/setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FilterPipe } from './pipes/filter.pipe';
           UserAnalyticsComponent,
           FinancialReportsComponent,
           SettingComponent,
-          FilterPipe
+          FilterPipe,
+          NewsfeedComponent
   ],
   imports: [
     CommonModule,

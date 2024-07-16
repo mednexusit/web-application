@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(items: any[], searchTerm: string): any[] {
-    console.log("items",items)
     if (!items) {
       return [];
     }
@@ -18,7 +17,9 @@ export class FilterPipe implements PipeTransform {
       item.id && item.id.toString().toLowerCase().includes(searchTerm) ||
       item.name && item.name.toLowerCase().includes(searchTerm)||
      item.uuid && item.uuid.toString().toLowerCase().includes(searchTerm) ||
-     item.mobile && item.mobile.toString().toLowerCase().includes(searchTerm)
+     item.mobile && item.mobile.toString().toLowerCase().includes(searchTerm)||
+     item.heading && item.heading.toString().toLowerCase().includes(searchTerm)||
+     item.subheading && item.subheading.toString().toLowerCase().includes(searchTerm)
     );
   }
 

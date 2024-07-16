@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class AdminDashboardComponent implements OnInit {
   subAdminPhoneNumber:any='';
   changeStart:boolean=false;
   subAdminFormGroup:any=FormGroup;
-  constructor(private adminServ:AdminservService, private toastr:ToastrService, private fb:FormBuilder, private sharedServ:SharedService){
+  constructor(private router:Router,private adminServ:AdminservService, private toastr:ToastrService, private fb:FormBuilder, private sharedServ:SharedService){
 
   }
 
@@ -137,8 +138,11 @@ export class AdminDashboardComponent implements OnInit {
   }
   registerSubAdmin(data:any){
     console.log(data)
+    let dataToPass={
+      mobile:`+91${data.mobile}`
+    }
     if(data.mobile){
-      this.adminServ.createSubAdmin(data).subscribe({
+      this.adminServ.createSubAdmin(dataToPass).subscribe({
         next:(data:any)=>{
           console.log(data);
           if(data.status){
@@ -159,6 +163,9 @@ export class AdminDashboardComponent implements OnInit {
         }
       })
     }
+  }
+  goToNewsFeed(){
+    this.router.navigate(['admin/adminhome/news-feed'])
   }
   closeAddModal(){
     this.isOpenAddSubAdmin=false;

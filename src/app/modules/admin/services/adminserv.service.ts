@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminservService {
+  baseURL2=environment.baseURL2;
 
   constructor(private http:HttpClient) { }
   getVendorRequestLists(){
@@ -24,7 +26,7 @@ export class AdminservService {
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.post('http://3.109.153.67/reguser/approvePersonalVendor',data,httpOptions)
+    return this.http.post(this.baseURL2+'reguser/approvePersonalVendor',data,httpOptions)
   }
   deleteVendorRequests(data:any){
     let authToken= localStorage.getItem("LoggedInUser")
@@ -65,5 +67,46 @@ export class AdminservService {
     };
     return this.http.post('http://3.109.153.67/reguser/subadminactive',data,httpOptions)
   }
+
+  createNewsFeed(data:any){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+'resorceapi/createnewsfeed',data,httpOptions)
+  }
+
+  getNewsFeed(){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+'resorceapi/Getallnewsfeed',{},httpOptions)
+  }
+
+  updateNewsFeed(data:any){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+'resorceapi/updatesnewsfeed',data,httpOptions)
+  }
+
+  deleteNewsFeed(data:any){
+    let authToken= localStorage.getItem("LoggedInUser")
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+'resorceapi/deletesnewsfeed',data,httpOptions)
+  }
+
 
 }
