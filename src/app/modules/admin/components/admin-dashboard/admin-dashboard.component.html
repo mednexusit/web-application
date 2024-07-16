@@ -1,8 +1,9 @@
 <div class="container">
-  <button class="btn btn-primary" (click)="toggleTables()">{{toggleText}}</button>
-  <button class="btn btn-primary btns" *ngIf="userType===0" (click)="openAddSubAdmin()">Add Sub-Admin <i class="fa-solid fa-user-plus"></i></button>
-  <button class="btn btn-primary btns" *ngIf="userType===0" (click)="showSubAdmin()">{{isShowSubAdmin?"Hide":"Show"}} Sub-Admin <i class="fa-solid fa-user"></i></button>
-  <button class="btn btn-primary btns" *ngIf="userType===2" (click)="goToNewsFeed()"> News Feed <i class="fa-solid fa-newspaper"></i></button>
+  <button class="btn btn-primary btns theme" *ngIf="userType===0" (click)="openAddSubAdmin()">Add Sub-Admin <i class="fa-solid fa-user-plus"></i></button>
+  <button class="btn btn-primary theme " (click)="toggleTables()">{{toggleText}}</button>
+  <button class="btn btn-primary btns theme" *ngIf="userType===0" (click)="openAddSubAdmin()">Add Sub-Admin <i class="fa-solid fa-user-plus"></i></button>
+  <button class="btn btn-primary btns theme" *ngIf="userType===0" (click)="showSubAdmin()">{{isShowSubAdmin?"Hide":"Show"}} Sub-Admin <i class="fa-solid fa-user"></i></button>
+  <button class="btn btn-primary btns theme" *ngIf="userType===2" (click)="goToNewsFeed()"> News Feed <i class="fa-solid fa-newspaper"></i></button>
 
   <div class="forAdmin" *ngIf="!isShowSubAdmin">
     <div class="current" *ngIf="!isShowDeleted">
