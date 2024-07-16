@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   userLoginForm:any=FormGroup;
   mobNumberVal:any;
+  userLoginData:any;
 
   isShowVerifyOtp:boolean=false;
   constructor(private fb: FormBuilder, public route: Router, private sharedServ:SharedService, private toastr:ToastrService) {}
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     })
   }
   loginAdmin(data: any) {
+    localStorage.setItem("loginData",JSON.stringify(data))
     this.mobNumberVal=data.mobile;
     let dataToPass={
       mobile:"+91"+data.mobile,
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
     }
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
+        console.log(data)
         this.isShowVerifyOtp=true;
         this.sharedServ.sendRoute(this.route.url)
       },
@@ -48,6 +51,7 @@ export class LoginComponent implements OnInit {
     })
   }
   userLogin(data:any){
+    localStorage.setItem("loginData",JSON.stringify(data));
     this.mobNumberVal = data.mobile;
     let dataToPass={
       mobile:'+91'+data.mobile,
@@ -56,6 +60,7 @@ export class LoginComponent implements OnInit {
 
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
+        console.log(data)
         this.isShowVerifyOtp=true;
       },
       error:(err:any)=>{
@@ -64,7 +69,9 @@ export class LoginComponent implements OnInit {
     })
   }
   resendOtp(){
-    this.userLogin(this.userLoginForm.value)
+    this.userLoginData = localStorage.getItem("loginData");
+    this.userLoginData= JSON.parse(this.userLoginData);
+    this.userLogin(this.userLoginData)
   }
   closeVerifyOtpModal(){
     this.isShowVerifyOtp=false;
