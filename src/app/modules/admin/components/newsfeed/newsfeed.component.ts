@@ -4,6 +4,7 @@ import { AdminservService } from '../../services/adminserv.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SharedService } from '../../../../shared/shared.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-newsfeed',
@@ -11,33 +12,36 @@ import { SharedService } from '../../../../shared/shared.service';
   styleUrl: './newsfeed.component.scss',
 })
 export class NewsfeedComponent implements OnInit {
-  newFeedData:any=[];
-  searchTerm:any='';
-  userData:any;
-  headText:any='';
-  fileName:any='';
-  isAddNews:boolean=false;
-  newsFeedForm:any= FormGroup;
-  constructor(private router:Router, private adminServ:AdminservService, private fb:FormBuilder, private toast:ToastrService,
-    private sharedServ:SharedService
-  ){
-
-  }
+  newFeedData: any = [];
+  searchTerm: any = '';
+  userData: any;
+  headText: any = '';
+  fileName: any = '';
+  isAddNews: boolean = false;
+  editUserData: any;
+  imgUrl: any = '';
+  newsFeedForm: any = FormGroup;
+  constructor(
+    private router: Router,
+    private adminServ: AdminservService,
+    private fb: FormBuilder,
+    private toast: ToastrService,
+    private sharedServ: SharedService
+  ) {}
   ngOnInit(): void {
     this.getNewsFeedData();
-    this.userData= localStorage.getItem("userData");
-    this.userData= JSON.parse(this.userData);
+    this.userData = localStorage.getItem('userData');
+    this.userData = JSON.parse(this.userData);
     this.newsFeedForm = this.fb.group({
-      heading:['',Validators.required],
-      subheading:['',Validators.required],
-      img_url:['',Validators.required]
-    })
-
+      heading: ['', Validators.required],
+      subheading: ['', Validators.required],
+      img_url: ['', Validators.required],
+    });
   }
 
-  onFileSelection(file:any){
+  onFileSelection(file: any) {
     let fileData: File = file.target.files[0];
-    this.fileName= fileData.name;
+    this.fileName = fileData.name;
     if (fileData) {
       const formData = new FormData();
       formData.append('file', fileData, fileData.name);
@@ -64,52 +68,111 @@ export class NewsfeedComponent implements OnInit {
     }
   }
 
-  getNewsFeedData(){
+  getNewsFeedData() {
     this.adminServ.getNewsFeed().subscribe({
-      next:(data:any)=>{
-        this.newFeedData=data.responseContents;
-        console.log("data",this.newFeedData)
-      }
-    })
-  }
-  openModal(data:any){
-    this.headText=data;
-    this.isAddNews=true;
-    if(data==='add'){
-
-    }
-  }
-  closeModal(){
-    this.isAddNews=false;
-  }
-  deleteNewsFeed(data:any){
-
-  }
-  submitNewsFeed(data:any){
-    console.log(data);
-    let dataToPass={
-      user_type:this.userData.usertype,
-      user_id:this.userData.userid,
-      heading:data.heading,
-      subheading:data.subheading,
-      img_url:data.img_url
-    }
-    console.log(dataToPass)
-    this.adminServ.createNewsFeed(dataToPass).subscribe({
-      next:(data:any)=>{
-        if(data){
-          this.toast.success('News Feed Added SuccessFully','',{timeOut:1000})
-          this.getNewsFeedData();
-          this.isAddNews=false;
-          this.newsFeedForm.reset();
-        }
+      next: (data: any) => {
+        this.newFeedData = data.responseContents;
+        console.log('data', this.newFeedData);
       },
-      error:(err:any)=>{
-        this.toast.error("Failed to add news feed",'',{timeOut:1000})
-      }
-    })
+    });
   }
+  openModal(data: any) {
+    this.headText = data;
+    this.isAddNews = true;
+  }
+  openEditModal(data: any) {
+    console.log('Editdata', data);
+    this.headText = 'Edit';
+    this.editUserData = data;
+    this.isAddNews = true;
+    this.newsFeedForm.get('heading').setValue(data.heading);
+    this.newsFeedForm.get('subheading').setValue(data.subheading);
+    this.newsFeedForm.get('img_url').setValue(data.img_url);
+    this.imgUrl = data.img_url;
+  }
+  closeModal() {
+    this.isAddNews = false;
+  }
+  deleteNewsFeed(data: any) {
+    let dataToPass = {
+      id: data.id,
+      user_type: this.userData.usertype,
+      user_id: data.user_id,
+    };
 
-
-
+    Swal.fire({
+      title: 'Do you want to delete it?',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: 'red',
+      cancelButtonText: 'No',
+      showConfirmButton: true,
+      confirmButtonText: 'Yes',
+      icon: 'question',
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.adminServ.deleteNewsFeed(dataToPass).subscribe({
+          next: (data: any) => {
+            if (data) {
+              this.toast.success(data.msg, '', { timeOut: 1000 });
+              this.getNewsFeedData();
+            }
+          },
+          error: (err: any) => {
+            this.toast.error('Failed to add news feed', '', { timeOut: 1000 });
+          },
+        });
+      }
+    });
+  }
+  submitNewsFeed(data: any) {
+    console.log(data);
+    if (this.headText === 'Add') {
+      let dataToPass = {
+        user_type: this.userData.usertype,
+        user_id: this.userData.userid,
+        heading: data.heading,
+        subheading: data.subheading,
+        img_url: data.img_url,
+      };
+      console.log(dataToPass);
+      this.adminServ.createNewsFeed(dataToPass).subscribe({
+        next: (data: any) => {
+          if (data) {
+            this.toast.success(data.msg, '', { timeOut: 1000 });
+            this.getNewsFeedData();
+            this.isAddNews = false;
+            this.newsFeedForm.reset();
+          }
+        },
+        error: (err: any) => {
+          this.toast.error('Failed to add news feed', '', { timeOut: 1000 });
+        },
+      });
+    }
+    if (this.headText === 'Edit') {
+      let dataToPass = {
+        user_type: this.userData.usertype,
+        user_id: this.userData.userid,
+        heading: data.heading,
+        subheading: data.subheading,
+        img_url: data.img_url,
+        id: this.editUserData.id,
+      };
+      console.log(dataToPass);
+      this.adminServ.updateNewsFeed(dataToPass).subscribe({
+        next: (data: any) => {
+          if (data) {
+            this.toast.success(data.msg, '', { timeOut: 1000 });
+            this.getNewsFeedData();
+            this.isAddNews = false;
+            this.newsFeedForm.reset();
+          }
+        },
+        error: (err: any) => {
+          this.toast.error('Failed to add news feed', '', { timeOut: 1000 });
+        },
+      });
+    }
+  }
 }

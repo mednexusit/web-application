@@ -33,9 +33,10 @@
           <td>{{ item.subheading }}</td>
           <td>
             <i
-              class="fa-solid fa-trash deleteIcon"
+              class="fa-solid fa-trash deleteIcon" title="Delete"
               (click)="deleteNewsFeed(item)"
             ></i>
+            <i title="Edit News" class="fa-solid fa-pen editIcon" (click)="openEditModal(item)"></i>
           </td>
         </tr>
       </tbody>
@@ -89,6 +90,9 @@
             id="chooseImage"
             (change)="onFileSelection($event)"
           />
+          <div class="image" *ngIf="headText==='Edit'">
+            <img src={{imgUrl}} alt="">
+          </div>
         </div>
         <div class="btnsArea">
           <button class="btn btn-success theme" [disabled]="!newsFeedForm.valid" (click)="submitNewsFeed(newsFeedForm.value)">Submit News Feed</button>
