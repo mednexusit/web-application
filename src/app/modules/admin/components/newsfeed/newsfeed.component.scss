@@ -111,9 +111,13 @@
   background: $themePrimaryColor;
   color: #fff;
   white-space: nowrap;
+  max-width: 300px;
+  text-overflow: ellipsis;
   width: auto !important;
   cursor: pointer;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
 }
 .errors{

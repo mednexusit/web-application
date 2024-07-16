@@ -11,7 +11,6 @@ export class SharedService {
   constructor(private http: HttpClient) {}
 
   userLogin(data: any) {
-    console.log("UserLogin",data);
     return this.http.post(this.baseURL + 'auth/checklogin', data);
   }
 

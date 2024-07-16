@@ -52,16 +52,12 @@ export class AdminDashboardComponent implements OnInit {
         this.vendorRequestListData= data.responseContents;
         this.vendorRequestListData =  this.vendorRequestListData.filter((item:any)=> item.status===1)
         this.deletedVendorRequestListData =  data.responseContents.filter((item:any)=> item.status===0)
-        console.log(this.deletedVendorRequestListData)
-
-        console.log(data);
       }
     })
   }
   openModal(data:any){
     this.isShowVendorModal=true;
     this.modalData=data;
-    console.log(this.modalData)
   }
   toggleTables(){
     this.isShowDeleted=!this.isShowDeleted;
@@ -84,7 +80,6 @@ export class AdminDashboardComponent implements OnInit {
     }
     this.adminServ.approveRejectVendorRequest(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log(data);
         if(data.message){
           this.toastr.success(data.message,'',{timeOut:1000})
           this.isShowVendorModal=false;
@@ -137,14 +132,12 @@ export class AdminDashboardComponent implements OnInit {
     this.isOpenAddSubAdmin=true;
   }
   registerSubAdmin(data:any){
-    console.log(data)
     let dataToPass={
       mobile:`+91${data.mobile}`
     }
     if(data.mobile){
       this.adminServ.createSubAdmin(dataToPass).subscribe({
         next:(data:any)=>{
-          console.log(data);
           if(data.status){
             this.toastr.success(data.msg,'',{
               timeOut:1000
@@ -180,7 +173,6 @@ export class AdminDashboardComponent implements OnInit {
   getSubAdmin(){
     this.adminServ.getSubAdminList().subscribe({
       next:(data:any)=>{
-        console.log("Data",data)
         this.subAdminListData= data.responseContents;
         this.subAdminListData = this.subAdminListData.map((item:any) => ({
           ...item,
@@ -204,10 +196,8 @@ export class AdminDashboardComponent implements OnInit {
     }
     this.adminServ.toggleSubAdminStatus(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log(data);
         this.getSubAdmin();
       }
     })
-    console.log(dataToPass)
   }
 }

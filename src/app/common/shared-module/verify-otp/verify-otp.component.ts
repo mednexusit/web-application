@@ -27,7 +27,6 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
     this.sharedServ.getRoute().subscribe((data:any)=>{
       this.routeFrom=data;
-      console.log(this.routeFrom);
     })
   }
   onOtpChange(otp: any) {
@@ -42,7 +41,6 @@ export class VerifyOtpComponent implements OnInit {
     let dataToPass = { mobile: '+91' + this.mobNumber, otp: this.otpVal };
     this.sharedServ.verifyOtp(dataToPass).subscribe({
       next: (data: any) => {
-        console.log('Data is ', data);
         let userData={
           userid:data.userid,
           usertype:data.useridtype
@@ -50,7 +48,6 @@ export class VerifyOtpComponent implements OnInit {
         localStorage.setItem('userData',JSON.stringify(userData))
         this.authServ.sendToken(data.access_token);
         if (data.registrationinfo === null && !data.access_token) {
-          console.log('OTP Verification Success');
           this.router.navigate(['signup']);
           this.toastr.success('OTP verification Success','',{
             timeOut:1000

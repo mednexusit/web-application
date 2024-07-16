@@ -29,11 +29,9 @@ export class LoginComponent implements OnInit {
       whatsapp_status:[true]
     })
     this.userLoginForm.get('whatsapp_status').valueChanges.subscribe((data:any)=>{
-      console.log("Sata",data);
     })
   }
   loginAdmin(data: any) {
-    console.log(data);
     this.mobNumberVal=data.mobile;
     let dataToPass={
       mobile:"+91"+data.mobile,
@@ -41,7 +39,6 @@ export class LoginComponent implements OnInit {
     }
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log("Data is ",data)
         this.isShowVerifyOtp=true;
         this.sharedServ.sendRoute(this.route.url)
       },
@@ -59,7 +56,6 @@ export class LoginComponent implements OnInit {
 
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log("Data is",data);
         this.isShowVerifyOtp=true;
       },
       error:(err:any)=>{

@@ -245,7 +245,6 @@ export class SignupComponent implements OnInit {
           .toLowerCase()
           .includes(this.collegeSearchText.toLowerCase());
       });
-      console.log('TEMPCOLLEGEDATA', this.tempCollegeData);
       if (this.tempCollegeData.length <= 0) {
         this.isShowOtherOption = true;
       } else {
@@ -271,7 +270,6 @@ export class SignupComponent implements OnInit {
     this.isShowStates = false;
   }
   onSelect(data: any) {
-    console.log('Data selected is', data);
   }
   getStatesList() {
     this.resServ.getStates().subscribe({
@@ -286,7 +284,6 @@ export class SignupComponent implements OnInit {
     this.signupForm.get('isCompleted').setValue(data);
   }
   getMDORMS(data: any) {
-    console.log(data);
     this.mdOrMS = data;
     this.isShowMD = false;
     this.isShowMS = false;

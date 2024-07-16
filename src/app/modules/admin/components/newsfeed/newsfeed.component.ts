@@ -72,16 +72,16 @@ export class NewsfeedComponent implements OnInit {
     this.adminServ.getNewsFeed().subscribe({
       next: (data: any) => {
         this.newFeedData = data.responseContents;
-        console.log('data', this.newFeedData);
       },
     });
   }
   openModal(data: any) {
+    this.newsFeedForm.reset();
+    this.imgUrl='';
     this.headText = data;
     this.isAddNews = true;
   }
   openEditModal(data: any) {
-    console.log('Editdata', data);
     this.headText = 'Edit';
     this.editUserData = data;
     this.isAddNews = true;
@@ -126,7 +126,6 @@ export class NewsfeedComponent implements OnInit {
     });
   }
   submitNewsFeed(data: any) {
-    console.log(data);
     if (this.headText === 'Add') {
       let dataToPass = {
         user_type: this.userData.usertype,
@@ -135,7 +134,6 @@ export class NewsfeedComponent implements OnInit {
         subheading: data.subheading,
         img_url: data.img_url,
       };
-      console.log(dataToPass);
       this.adminServ.createNewsFeed(dataToPass).subscribe({
         next: (data: any) => {
           if (data) {
@@ -159,7 +157,6 @@ export class NewsfeedComponent implements OnInit {
         img_url: data.img_url,
         id: this.editUserData.id,
       };
-      console.log(dataToPass);
       this.adminServ.updateNewsFeed(dataToPass).subscribe({
         next: (data: any) => {
           if (data) {
