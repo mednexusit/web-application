@@ -162,3 +162,37 @@ h4{
   background: $themePrimaryColor;
   border: none;
 }
+.editIcon{
+  margin-left: 10px;
+  cursor: pointer;
+}
+.editIcon:hover{
+  color: $themePrimaryColor;
+}
+.edit-fields{
+  margin-top: 10px;
+  label{
+    width: 20%;
+  }
+  input{
+    padding: 7px 10px;
+  }
+  select{
+    padding: 7px 10px;
+  }
+}
+#sessionname{
+  appearance: none;
+  display: none;
+  }
+  .session_name{
+    appearance: none;
+  display: none;
+  }
+  .sessionnameclass{
+    padding: 7px 10px;
+    background: cornflowerblue;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }

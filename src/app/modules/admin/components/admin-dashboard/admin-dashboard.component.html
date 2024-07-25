@@ -1,8 +1,29 @@
 <div class="container">
-  <button class="btn btn-primary btns theme " (click)="toggleTables()">{{toggleText}}</button>
-  <button class="btn btn-primary btns theme" *ngIf="userType===0" (click)="openAddSubAdmin()">Add Sub-Admin <i class="fa-solid fa-user-plus"></i></button>
-  <button class="btn btn-primary btns theme" *ngIf="userType===0" (click)="showSubAdmin()">{{isShowSubAdmin?"Hide":"Show"}} Sub-Admin <i class="fa-solid fa-user"></i></button>
-  <button class="btn btn-primary btns theme" *ngIf="userType===2" (click)="goToNewsFeed()"> News Feed <i class="fa-solid fa-newspaper"></i></button>
+  <button class="btn btn-primary btns theme" (click)="toggleTables()">
+    {{ toggleText }}
+  </button>
+  <button
+    class="btn btn-primary btns theme"
+    *ngIf="userType === 0"
+    (click)="openAddSubAdmin()"
+  >
+    Add Sub-Admin <i class="fa-solid fa-user-plus"></i>
+  </button>
+  <button
+    class="btn btn-primary btns theme"
+    *ngIf="userType === 0"
+    (click)="showSubAdmin()"
+  >
+    {{ isShowSubAdmin ? "Hide" : "Show" }} Sub-Admin
+    <i class="fa-solid fa-user"></i>
+  </button>
+  <button
+    class="btn btn-primary btns theme"
+    *ngIf="userType === 2"
+    (click)="goToNewsFeed()"
+  >
+    News Feed <i class="fa-solid fa-newspaper"></i>
+  </button>
 
   <div class="forAdmin" *ngIf="!isShowSubAdmin">
     <div class="current" *ngIf="!isShowDeleted">
@@ -30,22 +51,30 @@
           <tbody>
             <tr
               *ngFor="
-                let item of vendorRequestListData  | filter : searchTerm;
+                let item of vendorRequestListData | filter : searchTerm;
                 let i = index
               "
             >
               <td>{{ i + 1 }}</td>
-              <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+              <td class="proposalId" (click)="openModal(item, 'view')">
+                #{{ item.id }}
+              </td>
               <td>
                 <span *ngIf="item.active === 1" class="pending">Pending</span
                 ><span *ngIf="item.active === 2" class="approved">Approved</span
-                ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+                ><span *ngIf="item.active === 3" class="rejected"
+                  >Rejected</span
+                >
               </td>
               <td>{{ item.name }}</td>
               <td>
                 <i
                   class="fa-solid fa-trash deleteIcon"
                   (click)="deleteRequest(item)"
+                ></i>
+                <i
+                  class="fa-solid fa-pen editIcon"
+                  (click)="openModal(item, 'edit')"
                 ></i>
               </td>
             </tr>
@@ -78,16 +107,21 @@
           <tbody>
             <tr
               *ngFor="
-                let item of deletedVendorRequestListData  | filter : searchTermDel;
+                let item of deletedVendorRequestListData
+                  | filter : searchTermDel;
                 let i = index
               "
             >
               <td>{{ i + 1 }}</td>
-              <td class="proposalId" (click)="openModal(item)">#{{ item.id }}</td>
+              <td class="proposalId" (click)="openModal(item, 'view')">
+                #{{ item.id }}
+              </td>
               <td>
                 <span *ngIf="item.active === 1" class="pending">Pending</span
                 ><span *ngIf="item.active === 2" class="approved">Approved</span
-                ><span *ngIf="item.active === 3" class="rejected">Rejected</span>
+                ><span *ngIf="item.active === 3" class="rejected"
+                  >Rejected</span
+                >
               </td>
               <td>{{ item.name }}</td>
               <td>{{ item.comments }}</td>
@@ -97,7 +131,7 @@
       </div>
     </div>
   </div>
-  <div class="forSubAdmin" *ngIf="userType===0 &&isShowSubAdmin ">
+  <div class="forSubAdmin" *ngIf="userType === 0 && isShowSubAdmin">
     <div class="row my-3">
       <div class="col">
         <input
@@ -122,7 +156,7 @@
         <tbody>
           <tr
             *ngFor="
-              let item of subAdminListData  | filter : searchSubAdmin;
+              let item of subAdminListData | filter : searchSubAdmin;
               let i = index
             "
           >
@@ -130,13 +164,16 @@
             <td class="proposalId">{{ item.uuid }}</td>
             <td>{{ item.mobile }}</td>
             <td>
-              <span *ngIf="item.status === 1" class="green" >Active</span
-              ><span *ngIf="item.status === 0" class="red" >Inactive</span>
+              <span *ngIf="item.status === 1" class="green">Active</span
+              ><span *ngIf="item.status === 0" class="red">Inactive</span>
             </td>
 
             <td>
-              <div (click)="toggleStatus(item)" class="toggleStatus" >
-                <i class="fa-solid fa-arrows-rotate" [ngClass]="{'rotate': item.isRotating}"></i>
+              <div (click)="toggleStatus(item)" class="toggleStatus">
+                <i
+                  class="fa-solid fa-arrows-rotate"
+                  [ngClass]="{ rotate: item.isRotating }"
+                ></i>
               </div>
             </td>
           </tr>
@@ -144,16 +181,13 @@
       </table>
     </div>
   </div>
-
-
-
 </div>
 <div class="openModal" *ngIf="isShowVendorModal">
   <div class="modalWrapper col col-lg-7 col-md-7 col-sm-10">
     <span class="closeModal" (click)="closeModal()"
       ><i class="fa-solid fa-circle-xmark icon"></i
     ></span>
-    <div class="content">
+    <div class="content" *ngIf="action === 'view'">
       <h4>Vendor Details</h4>
       <div class="modalDetails">
         <h6>Personal Details:</h6>
@@ -221,14 +255,14 @@
       </div>
       <div class="actionButtons">
         <button
-        *ngIf="this.modalData.active === 1 && this.modalData.status !==0"
+          *ngIf="this.modalData.active === 1 && this.modalData.status !== 0"
           class="btn btn-success"
           (click)="changeStatus('approve', this.modalData)"
         >
           Approve
         </button>
         <button
-          *ngIf="this.modalData.active === 1 &&  this.modalData.status !==0"
+          *ngIf="this.modalData.active === 1 && this.modalData.status !== 0"
           class="btn btn-danger"
           (click)="changeStatus('reject', this.modalData)"
         >
@@ -236,28 +270,288 @@
         </button>
       </div>
     </div>
+    <div
+      class="content"
+      *ngIf="action === 'edit'"
+      [formGroup]="editvendorFormGroup"
+    >
+      <h4>Vendor Details</h4>
+      <div class="modalDetails">
+        <h6>Personal Details:</h6>
+        <div class="details">
+          <div class="edit-fields">
+            <label for="">Name:</label>
+            <input type="text" formControlName="name" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Age:</label>
+            <input type="text" formControlName="age" />
+          </div>
+
+          <div class="edit-fields">
+            <label for="">Gender:</label>
+            <select name="" id="" formControlName="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="edit-fields">
+            <label for="">Email:</label>
+            <input type="email" formControlName="email" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Phone:</label>
+            <input type="number" formControlName="phone" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Address:</label>
+            <textarea formControlName="address"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Conference Details</h6>
+        <div class="details">
+          <div class="edit-fields">
+            <label for="">Event Name:</label>
+            <input type="text" formControlName="eventname" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Organized By:</label>
+            <input type="text" formControlName="organizedby" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Category:</label>
+            <select
+              name="category"
+              id="category"
+              formControlName="category"
+              class="select"
+            >
+              <option [value]="item.id" *ngFor="let item of categories">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="edit-fields">
+            <label for="">State: </label>
+            <input type="text" formControlName="state" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Place: </label>
+            <input type="text" formControlName="place" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Pin: </label>
+            <input type="text" formControlName="pin" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Venu: </label>
+            <input type="text" formControlName="venu" />
+          </div>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Speaker Details</h6>
+        <div class="details">
+          <div class="edit-fields">
+            <label for="">Speaker Info: </label>
+            <input type="text" formControlName="speakerinfo" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Topic:</label>
+            <input type="text" formControlName="topic" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Duration: </label>
+            <input type="text" formControlName="duration" />
+          </div>
+          <div class="edit-fields">
+            <label for="">CME Points:</label>
+            <input type="text" formControlName="cme_point" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Speaker Name: </label>
+
+            <input type="text" formControlName="speaker_name" />
+          </div>
+          <div class="flex d-flex align-items-center">
+            <label for="">Session Name:</label>
+            <img src="{{ this.editData?.session_name }}" alt="" />
+            <label for="sessionname" class="sessionnameclass"
+              >Choose File</label
+            >
+            <input
+              type="file"
+              id="sessionname"
+              class="session_name"
+              accept=".pdf, .jpg, .jpeg"
+              (change)="handleSessionNameFile($event)"
+            />
+          </div>
+          <div class="flex d-flex align-items-center">
+            <label for="">Letter:</label>
+            <img src="{{ this.editData?.letter }}" alt="" />
+            <label for="letter" class="sessionnameclass">Choose File</label>
+            <input
+              type="file"
+              id="letter"
+              class="session_name"
+              accept=".pdf, .jpg, .jpeg"
+              (change)="handleLetterField($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modalDetails">
+        <h6>Payment Details</h6>
+        <div class="details">
+          <div class="edit-fields">
+            <label for="">Vendor Name:</label>
+            <input type="text" formControlName="vendorname" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Contact Email:</label>
+            <input type="text" formControlName="contactemail" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Contact Person: </label>
+            <input type="text" formControlName="contactperson" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Bank Name:</label>
+            <input type="text" formControlName="bankname" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Branch Name: </label>
+            <input type="text" formControlName="branchname" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Account Holder Name:</label>
+            <input type="text" formControlName="accountholdername" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Account Number: </label>
+            <input type="text" formControlName="accountnumber" />
+          </div>
+          <div class="edit-fields">
+            <label for="">IFSC Code: </label>
+            <input type="text" formControlName="ifsccode" />
+          </div>
+          <div class="edit-fields">
+            <label for="">SWIFT Code:</label>
+            <input type="text" formControlName="swiftcode" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Branch Address:</label>
+            <input type="text" formControlName="branchaddress" />
+          </div>
+          <div class="edit-fields">
+            <label for="subject">Select Subject:</label>
+            <select
+              name="subject"
+              id="subject"
+              formControlName="subject"
+              class="select"
+            >
+              <option value="" selected>--Select Subject--</option>
+              <option [value]="item.id" *ngFor="let item of subjectsListData">
+                {{ item.category_name }}
+              </option>
+            </select>
+          </div>
+          <div class="edit-fields">
+            <label for="subject">Select Sub Subject:</label>
+            <select
+              name="sub-subject"
+              id="sub-subject"
+              formControlName="sub_subject"
+              class="select"
+            >
+              <option value="" selected>--Select Sub Subject--</option>
+              <option
+                [value]="item.id"
+                *ngFor="let item of subSubjectsListData"
+              >
+                {{ item.subcategory_name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="actionButtons">
+        <button
+          class="btn btn-success"
+          [disabled]="!editvendorFormGroup.valid"
+          (click)="updateVendorData(editvendorFormGroup.value)"
+        >
+          Update
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="closeModal()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="openModal" *ngIf="isOpenAddSubAdmin" [formGroup]="subAdminFormGroup">
-  <div class="modalWrapper subAdmin  col col-lg-5 col-md-5 col-sm-10">
+<div
+  class="openModal"
+  *ngIf="isOpenAddSubAdmin"
+  [formGroup]="subAdminFormGroup"
+>
+  <div class="modalWrapper subAdmin col col-lg-5 col-md-5 col-sm-10">
     <h3 class="heading-sub">Add Sub-Admin</h3>
     <div class="fields col-lg-12 col-md-12 col-sm-10">
-      <input type="text" class="inp" placeholder="Enter Sub Admin Phone Number" required formControlName="mobile">
-      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('required') && subAdminFormGroup.get('mobile')?.touched">
+      <input
+        type="text"
+        class="inp"
+        placeholder="Enter Sub Admin Phone Number"
+        required
+        formControlName="mobile"
+      />
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('required') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
         Phone Number is Required
       </span>
-      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('minlength') && subAdminFormGroup.get('mobile')?.touched">
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('minlength') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
         Phone Number must be 10 digits long
       </span>
-      <span class="errors" *ngIf="subAdminFormGroup.get('mobile')?.hasError('maxlength') && subAdminFormGroup.get('mobile')?.touched">
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('maxlength') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
         Phone Number must be 10 digits long
       </span>
     </div>
     <div class="actBtns">
-      <button class="btn btn-primary adBtn" (click)="registerSubAdmin(subAdminFormGroup.value)" [disabled]="!subAdminFormGroup.valid">Add</button>
-      <button class="btn btn-primary adBtn canBtn" (click)="closeAddModal()">Cancel</button>
+      <button
+        class="btn btn-primary adBtn"
+        (click)="registerSubAdmin(subAdminFormGroup.value)"
+        [disabled]="!subAdminFormGroup.valid"
+      >
+        Add
+      </button>
+      <button class="btn btn-primary adBtn canBtn" (click)="closeAddModal()">
+        Cancel
+      </button>
     </div>
-
   </div>
 </div>

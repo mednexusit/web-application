@@ -8,195 +8,465 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.scss'
+  styleUrl: './admin-dashboard.component.scss',
 })
 export class AdminDashboardComponent implements OnInit {
-  vendorRequestListData:any=[];
-  toggleText:any='Show Deleted Requests';
-  isShowDeleted:boolean=false;
-  isOpenAddSubAdmin:boolean=false;
-  deletedVendorRequestListData:any=[];
-  searchTerm:any='';
-  isShowSubAdmin:boolean=false;
-  subAdminListData:any=[];
-  searchTermDel:any='';
-  modalData:any;
-  searchSubAdmin:any='';
-  userType:any;
-  activeVal:any;
-  isShowVendorModal:boolean=false;
-  subAdminPhoneNumber:any='';
-  changeStart:boolean=false;
-  subAdminFormGroup:any=FormGroup;
-  constructor(private router:Router,private adminServ:AdminservService, private toastr:ToastrService, private fb:FormBuilder, private sharedServ:SharedService){
-
-  }
+  vendorRequestListData: any = [];
+  toggleText: any = 'Show Deleted Requests';
+  isShowDeleted: boolean = false;
+  isOpenAddSubAdmin: boolean = false;
+  deletedVendorRequestListData: any = [];
+  searchTerm: any = '';
+  isShowSubAdmin: boolean = false;
+  subAdminListData: any = [];
+  searchTermDel: any = '';
+  modalData: any;
+  searchSubAdmin: any = '';
+  userType: any;
+  activeVal: any;
+  editData: any;
+  subjectsListData: any = [];
+  subSubjectsListData: any = [];
+  action: any = '';
+  isShowVendorModal: boolean = false;
+  subAdminPhoneNumber: any = '';
+  changeStart: boolean = false;
+  subAdminFormGroup: any = FormGroup;
+  editvendorFormGroup: any = FormGroup;
+  categories: any = [
+    { name: 'Conference(Online)', id: '1' },
+    { name: 'Conference(Offline)', id: '2' },
+    { name: 'Workshop', id: '3' },
+    { name: 'Expos', id: '4' },
+  ];
+  constructor(
+    private router: Router,
+    private adminServ: AdminservService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private sharedServ: SharedService
+  ) {}
 
   ngOnInit(): void {
+    this.getAllVendorRequestList();
+    this.subAdminFormGroup = this.fb.group({
+      mobile: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+        ]),
+      ],
+    });
+    this.userType = this.sharedServ.getUserType();
+    this.editvendorFormGroup = this.fb.group({
+      id: ['', Validators.required],
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
+      email: Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
+      phone: Validators.compose([
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+      ]),
+      address: ['', Validators.required],
+      organizedby: ['', Validators.required],
+      eventname: ['', Validators.required],
+      category: ['', Validators.required],
+      state: ['', Validators.required],
+      place: ['', Validators.required],
+      pin: ['', Validators.required],
+      venu: ['', Validators.required],
+      speakerinfo: ['', Validators.required],
+      session_name: ['', Validators.required],
+      topic: ['', Validators.required],
+      speaker_name: ['', Validators.required],
+      duration: ['', Validators.required],
+      letter: ['', Validators.required],
+      cme_point: ['', Validators.required],
+      vendorname: ['', Validators.required],
+      contactemail: Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
+      contactperson: ['', Validators.required],
+      contactphonenumber: '9876543210',
+      bankname: ['', Validators.required],
+      branchname: ['', Validators.required],
+      accountholdername: ['', Validators.required],
+      accountnumber: ['', Validators.required],
+      ifsccode: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
+        ]),
+      ],
+      swiftcode: [
+        '',
+        Validators.required
+      ],
+      branchaddress: ['', Validators.required],
+      subject: ['', Validators.required],
+      sub_subject: ['', Validators.required],
+    });
 
-      this.getAllVendorRequestList();
-      this.subAdminFormGroup = this.fb.group({
-        mobile:['', Validators.compose([Validators.required, Validators.minLength(10),Validators.maxLength(10)])]
-      })
-
-      this.userType=    this.sharedServ.getUserType();
-
+    this.editvendorFormGroup
+      .get('subject')
+      .valueChanges.subscribe((data: any) => {
+        if (data) {
+          this.getSubSubjectList(data);
+        }
+      });
   }
-  getAllVendorRequestList(){
+  getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
-      next:(data:any)=>{
-        this.vendorRequestListData= data.responseContents;
-        this.vendorRequestListData =  this.vendorRequestListData.filter((item:any)=> item.status===1)
-        this.deletedVendorRequestListData =  data.responseContents.filter((item:any)=> item.status===0)
+      next: (data: any) => {
+        this.vendorRequestListData = data.responseContents;
+        this.vendorRequestListData = this.vendorRequestListData.filter(
+          (item: any) => item.status === 1
+        );
+        this.deletedVendorRequestListData = data.responseContents.filter(
+          (item: any) => item.status === 0
+        );
+      },
+    });
+  }
+  openModal(data: any, action: any) {
+    this.action = action;
+    if (action === 'view') {
+      this.isShowVendorModal = true;
+      this.modalData = data;
+    }
+    if (action === 'edit') {
+      this.getSubjectList();
+      this.isShowVendorModal = true;
+      this.editData = data;
+      if(this.editData.subject){
+        this.editvendorFormGroup.get('subject').setValue(this.editData.subject);
+        if(this.editData.sub_subject){
+          this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
+        }
       }
-    })
-  }
-  openModal(data:any){
-    this.isShowVendorModal=true;
-    this.modalData=data;
-  }
-  toggleTables(){
-    this.isShowDeleted=!this.isShowDeleted;
-    this.toggleText = !this.isShowDeleted?"Show Deleted Requests":"Show Active Requests";
-  }
-  closeModal(){
-    this.isShowVendorModal=false;
-    this.modalData=[];
-  }
-  changeStatus(action:any,data:any){
-    if(action==='approve'){
-      this.activeVal=2
+      this.editvendorFormGroup.get('id').setValue(this.editData.id);
+      this.editvendorFormGroup.get('name').setValue(this.editData.name);
+      this.editvendorFormGroup.get('age').setValue(this.editData.age);
+      this.editvendorFormGroup.get('gender').setValue(this.editData.gender);
+      this.editvendorFormGroup.get('email').setValue(this.editData.email);
+      this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
+      this.editvendorFormGroup.get('address').setValue(this.editData.address);
+      this.editvendorFormGroup
+        .get('eventname')
+        .setValue(this.editData.eventname);
+      this.editvendorFormGroup.get('category').setValue(this.editData.category);
+      this.editvendorFormGroup
+        .get('organizedby')
+        .setValue(this.editData.organizedby);
+      this.editvendorFormGroup.get('state').setValue(this.editData.state);
+      this.editvendorFormGroup.get('place').setValue(this.editData.place);
+      this.editvendorFormGroup.get('pin').setValue(this.editData.pin);
+      this.editvendorFormGroup.get('venu').setValue(this.editData.venu);
+      this.editvendorFormGroup
+        .get('speakerinfo')
+        .setValue(this.editData.speakerinfo);
+      this.editvendorFormGroup
+        .get('session_name')
+        .setValue(this.editData.session_name);
+      this.editvendorFormGroup.get('topic').setValue(this.editData.topic);
+      this.editvendorFormGroup.get('duration').setValue(this.editData.duration);
+      this.editvendorFormGroup
+        .get('speaker_name')
+        .setValue(this.editData.speaker_name);
+      this.editvendorFormGroup
+        .get('cme_point')
+        .setValue(this.editData.cme_point);
+      this.editvendorFormGroup
+        .get('vendorname')
+        .setValue(this.editData.vendorname);
+      this.editvendorFormGroup
+        .get('contactemail')
+        .setValue(this.editData.contactemail);
+
+      this.editvendorFormGroup
+        .get('contactperson')
+        .setValue(this.editData.contactperson);
+      this.editvendorFormGroup
+        .get('contactphonenumber')
+        .setValue(this.editData.contactphonenumber);
+      this.editvendorFormGroup.get('bankname').setValue(this.editData.bankname);
+      this.editvendorFormGroup
+        .get('branchname')
+        .setValue(this.editData.branchname);
+
+      this.editvendorFormGroup
+        .get('accountholdername')
+        .setValue(this.editData.accountholdername);
+      this.editvendorFormGroup
+        .get('accountnumber')
+        .setValue(this.editData.accountnumber);
+      this.editvendorFormGroup.get('ifsccode').setValue(this.editData.ifsccode);
+      this.editvendorFormGroup
+        .get('swiftcode')
+        .setValue(this.editData.swiftcode);
+      this.editvendorFormGroup
+        .get('branchaddress')
+        .setValue(this.editData.branchaddress);
+        this.editvendorFormGroup
+        .get('session_name')
+        .setValue(this.editData.session_name);
+        this.editvendorFormGroup
+        .get('letter')
+        .setValue(this.editData.letter);
     }
-    if(action==='reject'){
-      this.activeVal=3
+  }
+  toggleTables() {
+    this.isShowDeleted = !this.isShowDeleted;
+    this.toggleText = !this.isShowDeleted
+      ? 'Show Deleted Requests'
+      : 'Show Active Requests';
+  }
+  closeModal() {
+    this.isShowVendorModal = false;
+    this.modalData = {};
+    this.editData = {};
+  }
+  changeStatus(action: any, data: any) {
+    if (action === 'approve') {
+      this.activeVal = 2;
     }
-    let dataToPass={
-      id:data.id,
-      active:this.activeVal
+    if (action === 'reject') {
+      this.activeVal = 3;
     }
+    let dataToPass = {
+      id: data.id,
+      active: this.activeVal,
+    };
     this.adminServ.approveRejectVendorRequest(dataToPass).subscribe({
-      next:(data:any)=>{
-        if(data.message){
-          this.toastr.success(data.message,'',{timeOut:1000})
-          this.isShowVendorModal=false;
+      next: (data: any) => {
+        if (data.message) {
+          this.toastr.success(data.message, '', { timeOut: 1000 });
+          this.isShowVendorModal = false;
           this.getAllVendorRequestList();
         }
       },
-      error:(err:any)=>{
-        this.toastr.error("Failed to update the status",'',{timeOut:1000});
-        this.isShowVendorModal=false;
-      }
-    })
-
+      error: (err: any) => {
+        this.toastr.error('Failed to update the status', '', { timeOut: 1000 });
+        this.isShowVendorModal = false;
+      },
+    });
   }
-  deleteRequest(data:any){
+  deleteRequest(data: any) {
     Swal.fire({
-      title:'Do you want to delete this request?',
-      icon:'warning',
-      showCancelButton:true,
-      input:'text',
-      inputLabel:"Enter Delete Comments",
-      inputValidator:result => !result && 'Enter Delete Comment!',
-      cancelButtonText:"No",
-      showConfirmButton:true,
-      confirmButtonText:"Yes",
-    }).then((result)=>{
-      if(result.isConfirmed && result.value!==null){
-        let dataToPass={
-          id:data.id,
-          comments:result.value
-        }
+      title: 'Do you want to delete this request?',
+      icon: 'warning',
+      showCancelButton: true,
+      input: 'text',
+      inputLabel: 'Enter Delete Comments',
+      inputValidator: (result) => !result && 'Enter Delete Comment!',
+      cancelButtonText: 'No',
+      showConfirmButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed && result.value !== null) {
+        let dataToPass = {
+          id: data.id,
+          comments: result.value,
+        };
         this.adminServ.deleteVendorRequests(dataToPass).subscribe({
-          next:(data:any)=>{
-            if(data.message){
-              this.toastr.success('Request Deleted Successfully','',{timeOut:1000});
+          next: (data: any) => {
+            if (data.message) {
+              this.toastr.success('Request Deleted Successfully', '', {
+                timeOut: 1000,
+              });
               this.getAllVendorRequestList();
             }
           },
-          error:(err:any)=>{
-            this.toastr.error('Failed to delete','',{timeOut:1000})
-          }
-        })
+          error: (err: any) => {
+            this.toastr.error('Failed to delete', '', { timeOut: 1000 });
+          },
+        });
+      } else {
       }
-      else{
-
-      }
-
-    })
+    });
   }
-  openAddSubAdmin(){
-    this.isOpenAddSubAdmin=true;
+  openAddSubAdmin() {
+    this.isOpenAddSubAdmin = true;
   }
-  registerSubAdmin(data:any){
-    let dataToPass={
-      mobile:`+91${data.mobile}`
-    }
-    if(data.mobile){
+  registerSubAdmin(data: any) {
+    let dataToPass = {
+      mobile: `+91${data.mobile}`,
+    };
+    if (data.mobile) {
       this.adminServ.createSubAdmin(dataToPass).subscribe({
-        next:(data:any)=>{
-          if(data.status){
-            this.toastr.success(data.msg,'',{
-              timeOut:1000
-            })
+        next: (data: any) => {
+          if (data.status) {
+            this.toastr.success(data.msg, '', {
+              timeOut: 1000,
+            });
             this.subAdminFormGroup.reset();
-            this.isOpenAddSubAdmin=false;
+            this.isOpenAddSubAdmin = false;
             this.getSubAdmin();
           }
-
         },
-        error:(err)=>{
-          console.log(err)
-          this.isOpenAddSubAdmin=false;
+        error: (err) => {
+          console.log(err);
+          this.isOpenAddSubAdmin = false;
           this.subAdminFormGroup.reset();
-          this.toastr.error('Failed to add sub admin')
-        }
-      })
+          this.toastr.error('Failed to add sub admin');
+        },
+      });
     }
   }
-  goToNewsFeed(){
-    this.router.navigate(['admin/adminhome/news-feed'])
+  goToNewsFeed() {
+    this.router.navigate(['admin/adminhome/news-feed']);
   }
-  closeAddModal(){
-    this.isOpenAddSubAdmin=false;
-
+  closeAddModal() {
+    this.isOpenAddSubAdmin = false;
   }
-  showSubAdmin(){
-    this.isShowSubAdmin= !this.isShowSubAdmin;
-    if(this.isShowSubAdmin){
+  showSubAdmin() {
+    this.isShowSubAdmin = !this.isShowSubAdmin;
+    if (this.isShowSubAdmin) {
       this.getSubAdmin();
     }
   }
-  getSubAdmin(){
+  getSubAdmin() {
     this.adminServ.getSubAdminList().subscribe({
-      next:(data:any)=>{
-        this.subAdminListData= data.responseContents;
-        this.subAdminListData = this.subAdminListData.map((item:any) => ({
+      next: (data: any) => {
+        this.subAdminListData = data.responseContents;
+        this.subAdminListData = this.subAdminListData.map((item: any) => ({
           ...item,
-          isRotating: false
+          isRotating: false,
         }));
-      }
-    })
+      },
+    });
   }
-  toggleStatus(data:any){
-    data.isRotating=!data.isRotating;
+  toggleStatus(data: any) {
+    data.isRotating = !data.isRotating;
     let statusTemp;
-    if(data.status===0){
-      statusTemp=1
+    if (data.status === 0) {
+      statusTemp = 1;
     }
-    if(data.status===1){
-      statusTemp=0
+    if (data.status === 1) {
+      statusTemp = 0;
     }
-    let dataToPass={
-      status:statusTemp,
-      user_id:data.uuid
-    }
+    let dataToPass = {
+      status: statusTemp,
+      user_id: data.uuid,
+    };
     this.adminServ.toggleSubAdminStatus(dataToPass).subscribe({
-      next:(data:any)=>{
+      next: (data: any) => {
         this.getSubAdmin();
+      },
+    });
+  }
+  handleSessionNameFile(file: any) {
+    let fileData: File = file.target.files[0];
+    if (fileData) {
+      const formData = new FormData();
+      formData.append('file', fileData, fileData.name);
+      this.sharedServ.uploadFileCommon(formData).subscribe({
+        next: (data: any) => {
+          if (data.img) {
+            this.toastr.success(
+              `File ${fileData.name} uploaded successfully`,
+              '',
+              {
+                timeOut: 1000,
+              }
+            );
+            this.editvendorFormGroup.get('session_name').setValue(data.img);
+            this.editvendorFormGroup
+              .get('session_name')
+              .updateValueAndValidity();
+            this.editData.session_name = data.img;
+          }
+        },
+        error: (err: any) => {
+          this.toastr.error('Failed to upload File', '', {
+            timeOut: 1000,
+          });
+        },
+      });
+    }
+  }
+  handleLetterField(file: any) {
+    let fileData: File = file.target.files[0];
+    if (fileData) {
+      const formData = new FormData();
+      formData.append('file', fileData, fileData.name);
+      this.sharedServ.uploadFileCommon(formData).subscribe({
+        next: (data: any) => {
+          if (data.img) {
+            this.toastr.success(
+              `File ${fileData.name} uploaded successfully`,
+              '',
+              {
+                timeOut: 1000,
+              }
+            );
+            this.editvendorFormGroup.get('letter').setValue(data.img);
+            this.editvendorFormGroup.get('letter').updateValueAndValidity();
+            this.editData.letter = data.img;
+          }
+        },
+        error: (err: any) => {
+          this.toastr.error('Failed to upload File', '', {
+            timeOut: 1000,
+          });
+        },
+      });
+    }
+  }
+  getSubjectList() {
+    this.adminServ.getSubjects().subscribe({
+      next: (data: any) => {
+        this.subjectsListData = data.responseContents;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
+
+  getSubSubjectList(id: any) {
+    let dataToPass = {
+      subject_id: id,
+    };
+    this.adminServ.getSubSubjects(dataToPass).subscribe({
+      next: (data: any) => {
+        this.subSubjectsListData = data.responseContents;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
+  updateVendorData(data:any){
+    if(data.gender==="Male"){
+      data.gender="1";
+    }
+    if(data.gender==="Female"){
+      data.gender="2"
+    }
+    data.subject=parseInt(data.subject);
+    data.sub_subject=parseInt(data.sub_subject)
+    this.adminServ.updateVendorDetails(data).subscribe({
+      next:(data:any)=>{
+        this.toastr.success("Vendor details updated",'',{timeOut:1000})
+        this.isShowVendorModal=false;
+        this.getAllVendorRequestList();
+      },
+      error:(err)=>{
+        this.toastr.error("Failed to update vendor",'',{timeOut:1000})
+
       }
     })
   }
