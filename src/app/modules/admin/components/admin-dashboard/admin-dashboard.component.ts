@@ -237,6 +237,8 @@ export class AdminDashboardComponent implements OnInit {
     this.isShowVendorModal = false;
     this.modalData = {};
     this.editData = {};
+    this.subjectsListData=[];
+    this.editvendorFormGroup.reset();
   }
   changeStatus(action: any, data: any) {
     if (action === 'approve') {
