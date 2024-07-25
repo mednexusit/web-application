@@ -463,6 +463,7 @@ export class AdminDashboardComponent implements OnInit {
         this.toastr.success("Vendor details updated",'',{timeOut:1000})
         this.isShowVendorModal=false;
         this.getAllVendorRequestList();
+        this.editvendorFormGroup.reset();
       },
       error:(err)=>{
         this.toastr.error("Failed to update vendor",'',{timeOut:1000})
