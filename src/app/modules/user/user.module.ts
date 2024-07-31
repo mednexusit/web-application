@@ -13,6 +13,9 @@ import { ConferenceComponent } from './components/conference/conference.componen
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SharedModuleModule } from '../../common/shared-module/shared-module.module';
 import { MainComponent } from './components/main/main.component';
+import { CommunitiesComponent } from './components/communities/communities.component';
+import { EducationComponent } from './components/education/education.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { MainComponent } from './components/main/main.component';
     FeaturesComponent,
     ConferenceComponent,
     AboutUsComponent,
-    MainComponent
+    MainComponent,
+    CommunitiesComponent,
+    EducationComponent,
+    ContactusComponent
   ],
   imports: [
     CommonModule,

@@ -8,31 +8,12 @@ import { SharedService } from '../../../../shared/shared.service';
   styleUrl: './main.component.scss',
 })
 export class MainComponent {
-  homeIcon: string;
-  aboutIcon: string;
-  communitiesIcon: string;
-  conferenceIcon: string;
-  educationIcon: string;
-  contactIcon: string;
+
 
   constructor(
-    private themeServ: ThememanageService,
-    private sharedServ: SharedService
+
   ) {
-    this.sharedServ.getTheme().subscribe((data: any) => {
-      this.homeIcon = this.themeServ.getHomeIcon();
-      this.aboutIcon = this.themeServ.getAboutIcon();
-      this.communitiesIcon = this.themeServ.getCommIcon();
-      this.conferenceIcon = this.themeServ.getConfIcon();
-      this.educationIcon = this.themeServ.getEduIcon();
-      this.contactIcon = this.themeServ.getContactIcon();
-    });
-    this.homeIcon = this.themeServ.getHomeIcon();
-    this.aboutIcon = this.themeServ.getAboutIcon();
-    this.communitiesIcon = this.themeServ.getCommIcon();
-    this.conferenceIcon = this.themeServ.getConfIcon();
-    this.educationIcon = this.themeServ.getEduIcon();
-    this.contactIcon = this.themeServ.getContactIcon();
+
   }
   categories: any = [
     { name: 'My Profile', value: 'profile', icon: 'fa-solid fa-user catIcon' },

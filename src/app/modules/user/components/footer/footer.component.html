@@ -1,3 +1,42 @@
 <footer>
-
+  <div class="bottom-navigation">
+    <div class="menus">
+      <a [routerLink]="[ '' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="homeIcon" alt="">
+        </div>
+        <span>Home</span>
+      </a>
+      <a [routerLink]="[ 'aboutus' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="aboutIcon" alt="">
+        </div>
+        <span>About Us</span>
+      </a>
+      <a [routerLink]="[ 'communities' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="communitiesIcon" alt="">
+        </div>
+        <span>Communities</span>
+      </a>
+      <a [routerLink]="[ 'conferences' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="conferenceIcon" alt="">
+        </div>
+        <span>Conference</span>
+      </a>
+      <a [routerLink]="[ 'education' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="educationIcon" alt="">
+        </div>
+        <span>Education</span>
+      </a>
+      <a [routerLink]="[ 'contactus' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <div class="icon">
+          <img [src]="contactIcon" alt="">
+        </div>
+        <span>Contact us</span>
+      </a>
+    </div>
+  </div>
 </footer>
