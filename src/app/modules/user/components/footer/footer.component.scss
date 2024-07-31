@@ -1,17 +1,23 @@
 footer{
 width:100%;
-min-height: 50px;
+min-height: 7vw;
 background: transparent;
 position: fixed;
-bottom: 15px;
+bottom: 0;
+display: flex;
+justify-content: center;
+align-items: flex-end;
 }
 .bottom-navigation{
+  margin-bottom: 5px;
+  position: relative;
+  width: 100%;
   .menus{
     display: flex;
     justify-content: center;
     a{
-      height: 6.5vw;
-      width: 6.5vw;
+      height: 6vw;
+      width: 6vw;
       background: #fff;
       display: flex;
       flex-direction: column;
@@ -23,6 +29,22 @@ bottom: 15px;
         color: #000;
         font-size: 0.8vw;
       }
+      .icon{
+
+        img{
+          height: 2.5vw;
+          width: 2.5vw;
+
+        }
+      }
     }
   }
+}
+.white-line{
+  height: 1px;
+  width: 88vw;
+  border: 1px solid #cdcaca94;
+  position: absolute;
+  top: -10px;
+  left: 2.5vw;
 }
