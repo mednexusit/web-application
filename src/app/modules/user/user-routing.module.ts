@@ -7,6 +7,7 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { SupportComponent } from './components/support/support.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [{path:'',component:HomeComponent,children:[
   {path:'aboutus',component:AboutUsComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [{path:'',component:HomeComponent,children:[
   {path:'features',component:FeaturesComponent},
   {path:'support',component:SupportComponent},
   {path:'userlogin',component:UserLoginComponent},
+  {path:'',component:MainComponent}
 ]}];
 
 @NgModule({

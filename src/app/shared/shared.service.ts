@@ -27,6 +27,17 @@ export class SharedService {
     return this.routeFrom.asObservable();
   }
 
+  themeNow = new BehaviorSubject<any>(false);
+  sendTheme(data: any) {
+    this.themeNow.next(data);
+  }
+
+  getTheme() {
+    return this.themeNow.asObservable();
+  }
+
+
+
   uploadFileCommon(data:any){
     return this.http.post(this.baseURL+'upload/category',data)
   }

@@ -51,6 +51,16 @@ app-home{
   justify-content: center;
   width: 100%;
 }
+app-main{
+  height: 100%;
+  width: 100%;
+  display: block;
+  background:url('./assets/backgrounduser.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
 app-signup{
   display: flex;
   height: 100%;
@@ -123,4 +133,37 @@ app-admin-footer{
 .mainSection{
   flex-grow: 1;
   width: 100%;
+}
+
+.light-theme {
+  --primary-color: #0EFCD9;
+  --secondary-color: #009A88;
+  --background-color: #fff;
+  --text-color: #000000;
+  --logo-color:#fff;
+  --gradient-color:linear-gradient(#029888 100%, #1B627A 100%);
+  --overlay-color:#0effd966;
+  --rect-color:#07bca4;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --primary-color: #FA4E06;
+  --secondary-color: #FD5803;
+  --background-color: #303030;
+  --text-color: #ffffff;
+  --gradient-color:linear-gradient(#FF6200 100%,#F12711 100%);
+  --logo-color:#303030;
+  --overlay-color:#000000cc;
+  --rect-color:#FD5803;
+}
+
+body.light-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }

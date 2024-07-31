@@ -1,98 +1,161 @@
-@import "../../../../../variables";
+// @import "../../../../../variables";
 
-.desktop {
+// .desktop {
+//   display: flex;
+// }
+
+// .mobile {
+//   display: none;
+//   position: relative;
+// }
+
+// .hamburger, .closeBtn {
+//   background: none;
+//   border: none;
+//   font-size: 30px;
+//   margin-left: 10px;
+//   cursor: pointer;
+//   color: $whiteColor;
+// }
+
+// .closeBtn {
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+// }
+
+// @media only screen and (max-width: 600px) {
+//   .desktop {
+//     display: none !important;
+//   }
+
+//   .mobile {
+//     display: block;
+//     height: auto;
+//     width: 100%;
+//     z-index: 1000;
+//     left: 0%;
+//     background: $themePrimaryColor;
+//   }
+
+//   .navbar {
+//     width: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: -100%;
+//     background: $themePrimaryColor;
+//     transition: left 0.3s;
+//   }
+
+//   .navbar.show {
+//     left: 0;
+//   }
+
+//   ul {
+//     flex-direction: column;
+//     display: flex;
+//     width: 100%;
+//     margin: 0px;
+//     padding: 0;
+//   }
+
+//   li {
+//     width: 100%;
+//   }
+
+//   a {
+//     display: flex;
+//     width: 100% !important;
+//     padding: 15px;
+//     color: $whiteColor;
+//     text-decoration: none;
+//   }
+// }
+
+// header {
+//   width: 100%;
+//   background: $themePrimaryColor;
+//   height: 70px;
+//   .logo {
+//     width: 200px;
+//     height: 100%;
+//   }
+//   .navbar {
+//     margin: 0;
+//     ul {
+//       margin: 0;
+//       display: flex;
+//       list-style-type: none;
+//       li {
+//         margin-right: 10px;
+//         a {
+//           text-decoration: none;
+//           color: $whiteColor;
+//           padding: 10px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+header{
   display: flex;
-}
-
-.mobile {
-  display: none;
-  position: relative;
-}
-
-.hamburger, .closeBtn {
-  background: none;
-  border: none;
-  font-size: 30px;
-  margin-left: 10px;
-  cursor: pointer;
-  color: $whiteColor;
-}
-
-.closeBtn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-@media only screen and (max-width: 600px) {
-  .desktop {
-    display: none !important;
-  }
-
-  .mobile {
-    display: block;
-    height: auto;
-    width: 100%;
-    z-index: 1000;
-    left: 0%;
-    background: $themePrimaryColor;
-  }
-
-  .navbar {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    background: $themePrimaryColor;
-    transition: left 0.3s;
-  }
-
-  .navbar.show {
-    left: 0;
-  }
-
-  ul {
-    flex-direction: column;
+  justify-content: space-between;
+  .logoArea{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border-bottom-right-radius: 25px;
+    position: relative;
+    z-index: 100000;
+    background: var(--logo-color);
+    .logo{
+      height: 70px;
+      width: 350px;
+    }
+  }
+  .actionArea{
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+    padding-top: 15px;
+  }
+
+}
+.searchArea{
+  width: 50%;
+  border: 1px solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  .searchIcon{
+    margin-left: 10px;
+  }
+  .search{
+    padding: 12.4px;
     width: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+  }
+}
+.actions{
+  display: flex;
+  ul{
+    display: flex;
+    list-style-type: none;
     margin: 0px;
-    padding: 0;
-  }
-
-  li {
-    width: 100%;
-  }
-
-  a {
-    display: flex;
-    width: 100% !important;
-    padding: 15px;
-    color: $whiteColor;
-    text-decoration: none;
-  }
-}
-
-header {
-  width: 100%;
-  background: $themePrimaryColor;
-  height: 70px;
-  .logo {
-    width: 200px;
-    height: 100%;
-  }
-  .navbar {
-    margin: 0;
-    ul {
-      margin: 0;
-      display: flex;
-      list-style-type: none;
-      li {
-        margin-right: 10px;
-        a {
-          text-decoration: none;
-          color: $whiteColor;
-          padding: 10px;
-        }
+    margin-right: 20px;
+    li{
+      cursor: pointer;
+      height: 52px;
+      width: 52px;
+      margin-right: 10px;
+      img{
+        width: 100%;
+        height: 100%;
       }
     }
   }
