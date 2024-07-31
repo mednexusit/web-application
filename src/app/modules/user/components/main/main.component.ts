@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThememanageService } from '../../theme/thememanage.service';
 import { SharedService } from '../../../../shared/shared.service';
 
@@ -7,8 +7,15 @@ import { SharedService } from '../../../../shared/shared.service';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
+  icons = ['fa-solid fa-home', 'fa-solid fa-star', 'fa-solid fa-heart', 'fa-solid fa-user', 'fa-solid fa-search', ' fa-solid fa-gear', 'fa-solid fa-info', 'fa-solid fa-circle-h', 'fa-solid fa-lock', 'fa-solid fa-circle-check'];
+  displayedIcons:any = [];
+  startIndex = 0;
+  iconsToShow = 10;
 
+  ngOnInit(): void {
+    this.updateDisplayedIcons();
+  }
 
   constructor(
 
@@ -43,4 +50,20 @@ export class MainComponent {
       icon: 'fa-solid fa-newspaper catIcon',
     },
   ];
+  updateDisplayedIcons() {
+    this.displayedIcons = [];
+    for (let i = 0; i < this.iconsToShow; i++) {
+      this.displayedIcons.push(this.icons[(this.startIndex + i) % this.icons.length]);
+    }
+  }
+
+  prev() {
+    this.startIndex = (this.startIndex - 1 + this.icons.length) % this.icons.length;
+    this.updateDisplayedIcons();
+  }
+
+  next() {
+    this.startIndex = (this.startIndex + 1) % this.icons.length;
+    this.updateDisplayedIcons();
+  }
 }

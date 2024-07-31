@@ -144,6 +144,7 @@ app-admin-footer{
   --gradient-color:linear-gradient(#029888 100%, #1B627A 100%);
   --overlay-color:#0effd966;
   --rect-color:#07bca4;
+  --dots-color:#fff;
 }
 
 /* Dark Theme */
@@ -156,6 +157,7 @@ app-admin-footer{
   --logo-color:#303030;
   --overlay-color:#000000cc;
   --rect-color:#FD5803;
+  --dots-color:#FD5803;
 }
 
 body.light-theme {
