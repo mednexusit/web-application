@@ -137,10 +137,11 @@
   justify-content: space-between;
 }
 label{
-  height: 15px;
-  width: 15px;
-  border: 1px solid #fff;
-  margin: 5px;
+  height: 1.3vw;
+  width: 1.3vw;
+  border: 1px solid gray;
+  margin: 3px;
+  border-radius: 5px;
   cursor: pointer;
 }
 #slide1:checked ~ .imageArea{
