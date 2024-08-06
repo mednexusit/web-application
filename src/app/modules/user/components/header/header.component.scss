@@ -99,65 +99,81 @@
 // }
 
 header{
-  display: flex;
-  justify-content: space-between;
-  .logoArea{
+  height: 5vw;
+  padding-right: 5vw;
+  // .logoArea{
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   padding: 25px;
+  //   border-bottom-right-radius: 25px;
+  //   position: relative;
+  //   z-index: 100000;
+  //   background: var(--logo-color);
+  //   .logo{
+  //     height: 5vw;
+  //     width: 18vw;
+  //     object-fit: scale-down;
+  //   }
+  // }
+  // .actionArea{
+  //   display: flex;
+  //   align-items: start;
+  //   justify-content: flex-end;
+  //   padding-top: 15px;
+  // }
+  .logo{
+    width: 20vw;
+    position: relative;
+    top: 3vw;
+    left: 3vw;
+  }
+  .searchArea{
+    width: 45vw;
+    margin-right: 6px;
+    // border: 1px solid;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 25px;
-    border-bottom-right-radius: 25px;
-    position: relative;
-    z-index: 100000;
-    background: var(--logo-color);
-    .logo{
-      height: 5vw;
-      width: 18vw;
-      object-fit: scale-down;
+    .searchIcon{
+      margin-left: 10px;
+    }
+    .search{
+      // padding: 12.4px;
+      padding-left: 0.5vw;
+      width: 100%;
+      outline: none;
+      border: none;
+      background: transparent;
+      // color: var(--text-color);
+      color:#D9D9D9;
+      height: 2.3vw;
     }
   }
-  .actionArea{
+  .actions{
     display: flex;
-    align-items: start;
-    justify-content: flex-end;
-    padding-top: 15px;
-  }
-
-}
-.searchArea{
-  width: 45vw;
-  border: 1px solid;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  .searchIcon{
-    margin-left: 10px;
-  }
-  .search{
-    padding: 12.4px;
-    width: 100%;
-    outline: none;
-    border: none;
-    background: transparent;
-    color: var(--text-color);
-  }
-}
-.actions{
-  display: flex;
-  ul{
-    display: flex;
-    list-style-type: none;
-    margin: 0px;
-    margin-right: 20px;
-    li{
-      cursor: pointer;
-      height: 2.5vw;
-      width: 2.5vw;
-      margin-right: 10px;
-      img{
-        width: 100%;
-        height: 100%;
+    ul{
+      display: flex;
+      list-style-type: none;
+      li{
+        cursor: pointer;
+        height: 2.3vw;
+        width: 2.3vw;
+        margin-left: 1vw;
+        // &switch{
+        //   height: 2.5vw !important;
+        //   width: 2.5vw !important;
+        // }
+        // margin-right: 10px;
+        img{
+          width: 100%;
+          height: 100%;
+          vertical-align: baseline !important;
+        }
       }
     }
   }
 }
+
+
