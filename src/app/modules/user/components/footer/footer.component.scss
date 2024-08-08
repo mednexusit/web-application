@@ -16,8 +16,8 @@ align-items: flex-end;
     display: flex;
     justify-content: center;
     a{
-      height: 6vw;
-      width: 6vw;
+      height: 5vw;
+      width: 5vw;
       background: #fff;
       display: flex;
       flex-direction: column;
@@ -25,9 +25,11 @@ align-items: flex-end;
       align-items: center;
       margin-left: 20px;
       text-decoration: none;
+      border-radius: 6px;
       span{
         color: #000;
         font-size: 0.8vw;
+        margin-top: 2px;
       }
       .icon{
 
@@ -42,9 +44,10 @@ align-items: flex-end;
 }
 .white-line{
   height: 1px;
-  width: 88vw;
+  width: 85vw;
   border: 1px solid #cdcaca94;
   position: absolute;
   top: -10px;
-  left: 2.5vw;
+  // left: 2.5vw;
+  left: calc((100% - 87vw) / 2);
 }
