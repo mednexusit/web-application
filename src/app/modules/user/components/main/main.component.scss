@@ -332,6 +332,7 @@
           width: 100%;
           display: flex;
           justify-content: center;
+          margin-top: 10px;
         }
         label{
           height: 1.3vw;
@@ -344,6 +345,7 @@
         }
         #slide1:checked ~ .imageArea{
           transform: translateX(0%);
+          background-color: #ffffff;
         }
         #slide2:checked ~ .imageArea{
           transform: translateX(-100%);
