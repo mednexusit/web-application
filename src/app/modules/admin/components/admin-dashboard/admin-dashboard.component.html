@@ -446,6 +446,11 @@
             <label for="">Branch Address:</label>
             <input type="text" formControlName="branchaddress" />
           </div>
+          <div class="subjectsBlock">
+            <button (click)="addSubjects()">+</button>
+            <div class="subjectsarea" formArrayName="subjects">
+
+              <div class="subjects" *ngFor="let item of subjectsListArray.controls;let i=index" [formGroupName]="i">
           <div class="edit-fields">
             <label for="subject">Select Subject:</label>
             <select
@@ -477,6 +482,9 @@
               </option>
             </select>
           </div>
+        </div>
+        </div>
+        </div>
         </div>
       </div>
       <div class="actionButtons">

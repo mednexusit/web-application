@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminservService } from '../../services/adminserv.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
 import { Router } from '@angular/router';
 
@@ -115,17 +115,41 @@ export class AdminDashboardComponent implements OnInit {
         Validators.required
       ],
       branchaddress: ['', Validators.required],
-      subject: ['', Validators.required],
-      sub_subject: ['', Validators.required],
+      subjects:this.fb.array([this.getSubjects()]),
     });
 
-    this.editvendorFormGroup
-      .get('subject')
-      .valueChanges.subscribe((data: any) => {
-        if (data) {
-          this.getSubSubjectList(data);
-        }
-      });
+    // this.editvendorFormGroup
+    //   .get('subjects')
+    //   .valueChanges.subscribe((data: any) => {
+    //     if (data) {
+    //       this.getSubSubjectList(data);
+    //     }
+    //   });
+  }
+
+  subscribeToSubjectValueChanges(){
+    this.subjectsListArray.controls.forEach((control:FormGroup<any>,index:number)=>{
+        control.valueChanges.subscribe((value:any)=>{
+          console.log(value)
+        })
+    })
+  }
+
+  // get items(): FormArray {
+  //   return this.myForm.get('items') as FormArray;
+  // }
+
+  get subjectsListArray(){
+    return this.editvendorFormGroup.get('subjects') ;
+  }
+  getSubjects(){
+    return this.fb.group({
+      subject: ['', Validators.required],
+      sub_subject: ['', Validators.required]
+    })
+  }
+  addSubjects(){
+    this.subjectsListArray.push(this.getSubjects())
   }
   getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
@@ -151,9 +175,22 @@ export class AdminDashboardComponent implements OnInit {
       this.isShowVendorModal = true;
       this.editData = data;
       if(this.editData.subject){
-        this.editvendorFormGroup.get('subject').setValue(this.editData.subject);
+        //this.editvendorFormGroup.get('subject').setValue(this.editData.subject);
+        let items = this.editvendorFormGroup.get('subjects');
+        console.log("ITEMS",items)
+        items.controls.forEach((ele:any) => {
+            console.log("Ele",ele)
+
+        });
+
+        items.value.forEach((sub:any,index:any) => {
+
+        });
+        // items.forEach((el:any) => {
+
+        // });
         if(this.editData.sub_subject){
-          this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
+        //  this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
         }
       }
       this.editvendorFormGroup.get('id').setValue(this.editData.id);
