@@ -176,4 +176,9 @@ header{
   }
 }
 
-
+@media only screen and (max-width: 600px) {
+  header{
+    height: 10vw;
+    background: #E9E9E9;
+  }
+}
