@@ -247,7 +247,7 @@
             >Account Number: {{ this.modalData.accountnumber }}</label
           >
           <label for="">IFSC Code: {{ this.modalData.ifsccode }}</label>
-          <label for="">SWIFT Code: {{ this.modalData.swiftcode }}</label>
+          <label for="">PAN NO: {{ this.modalData.panno }}</label>
           <label for=""
             >Branch Address: {{ this.modalData.branchaddress }}</label
           >
@@ -439,52 +439,69 @@
             <input type="text" formControlName="ifsccode" />
           </div>
           <div class="edit-fields">
-            <label for="">SWIFT Code:</label>
-            <input type="text" formControlName="swiftcode" />
+            <label for="">PAN NO:</label>
+            <input type="text" formControlName="panno" />
           </div>
           <div class="edit-fields">
             <label for="">Branch Address:</label>
             <input type="text" formControlName="branchaddress" />
           </div>
           <div class="subjectsBlock">
-            <button (click)="addSubjects()">+</button>
+            <div class="addSubjects d-flex align-items-center m-10">
+              <label for="">Add Subjects</label>
+              <button (click)="addSubjects()" class="addBtn">+</button>
+            </div>
             <div class="subjectsarea" formArrayName="subjects">
-
-              <div class="subjects" *ngFor="let item of subjectsListArray.controls;let i=index" [formGroupName]="i">
-          <div class="edit-fields">
-            <label for="subject">Select Subject:</label>
-            <select
-              name="subject"
-              id="subject"
-              formControlName="subject"
-              class="select"
-            >
-              <option value="" selected>--Select Subject--</option>
-              <option [value]="item.id" *ngFor="let item of subjectsListData">
-                {{ item.category_name }}
-              </option>
-            </select>
-          </div>
-          <div class="edit-fields">
-            <label for="subject">Select Sub Subject:</label>
-            <select
-              name="sub-subject"
-              id="sub-subject"
-              formControlName="sub_subject"
-              class="select"
-            >
-              <option value="" selected>--Select Sub Subject--</option>
-              <option
-                [value]="item.id"
-                *ngFor="let item of subSubjectsListData"
+              <div
+                class="subjects"
+                *ngFor="let item of subjectsListArray.controls; let i = index"
+                [formGroupName]="i"
               >
-                {{ item.subcategory_name }}
-              </option>
-            </select>
+                <div class="edit-fields d-flex">
+                  <label for="subject">Select Subject:</label>
+                  <select
+                    name="subject"
+                    id="subject"
+                    formControlName="subject"
+                    class="select"
+                    (change)="getSelectedSubject($event, i)"
+                  >
+                    <option value="" selected>--Select Subject--</option>
+                    <option
+                      [value]="item.id"
+                      *ngFor="let item of subjectsListData"
+                    >
+                      {{ item.category_name }}
+                    </option>
+                  </select>
+                  <button
+                    *ngIf="i != 0"
+                    (click)="removeSubject(i)"
+                    class="remBtn"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="edit-fields">
+                  <label for="subject">Select Sub Subject:</label>
+                  <select
+                    name="sub-subject"
+                    id="sub-subject"
+                    formControlName="sub_subject"
+                    class="select"
+                  >
+                    <option value="" selected>--Select Sub Subject--</option>
+                    <option
+                      [value]="item.id"
+                      *ngFor="let item of subSubjectListDataArray[i]"
+                    >
+                      {{ item.subcategory_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
-        </div>
         </div>
       </div>
       <div class="actionButtons">
@@ -495,12 +512,7 @@
         >
           Update
         </button>
-        <button
-          class="btn btn-danger"
-          (click)="closeModal()"
-        >
-          Cancel
-        </button>
+        <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
       </div>
     </div>
   </div>
