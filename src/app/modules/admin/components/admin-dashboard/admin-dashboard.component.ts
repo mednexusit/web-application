@@ -30,6 +30,7 @@ export class AdminDashboardComponent implements OnInit {
   editData: any;
   subjectsListData: any = [];
   subSubjectsListData: any = [];
+  subSubjectListDataArray:any=[];
   action: any = '';
   isShowVendorModal: boolean = false;
   subAdminPhoneNumber: any = '';
@@ -110,7 +111,7 @@ export class AdminDashboardComponent implements OnInit {
           Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
         ]),
       ],
-      swiftcode: [
+      panno: [
         '',
         Validators.required
       ],
@@ -127,12 +128,9 @@ export class AdminDashboardComponent implements OnInit {
     //   });
   }
 
-  subscribeToSubjectValueChanges(){
-    this.subjectsListArray.controls.forEach((control:FormGroup<any>,index:number)=>{
-        control.valueChanges.subscribe((value:any)=>{
-          console.log(value)
-        })
-    })
+  getSelectedSubject(e:any,i:any){
+    console.log("SelectedSubject",e.target.value,i)
+    this.getSubSubjectList(e.target.value,i)
   }
 
   // get items(): FormArray {
@@ -149,7 +147,16 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
   addSubjects(){
-    this.subjectsListArray.push(this.getSubjects())
+    if(this.subjectsListArray.length <=8){
+      this.subjectsListArray.push(this.getSubjects())
+    }
+    else{
+      return
+    }
+
+  }
+  removeSubject(index:any){
+    this.subjectsListArray.removeAt(index)
   }
   getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
@@ -179,7 +186,7 @@ export class AdminDashboardComponent implements OnInit {
         let items = this.editvendorFormGroup.get('subjects');
         console.log("ITEMS",items)
         items.controls.forEach((ele:any) => {
-            console.log("Ele",ele)
+            console.log("Ele",ele.value)
 
         });
 
@@ -251,8 +258,8 @@ export class AdminDashboardComponent implements OnInit {
         .setValue(this.editData.accountnumber);
       this.editvendorFormGroup.get('ifsccode').setValue(this.editData.ifsccode);
       this.editvendorFormGroup
-        .get('swiftcode')
-        .setValue(this.editData.swiftcode);
+        .get('panno')
+        .setValue(this.editData.panno);
       this.editvendorFormGroup
         .get('branchaddress')
         .setValue(this.editData.branchaddress);
@@ -475,13 +482,17 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  getSubSubjectList(id: any) {
+  getSubSubjectList(id: any,index:any) {
+    console.log("index",index)
     let dataToPass = {
       subject_id: id,
     };
     this.adminServ.getSubSubjects(dataToPass).subscribe({
       next: (data: any) => {
+        console.log("sss",this.subjectsListArray)
         this.subSubjectsListData = data.responseContents;
+        this.subSubjectListDataArray[index]=this.subSubjectsListData;
+        console.log("subSubjectListDataArray",this.subSubjectListDataArray)
       },
       error: (err: any) => {
         console.error(err);
