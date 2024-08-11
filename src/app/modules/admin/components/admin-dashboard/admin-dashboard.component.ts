@@ -189,6 +189,22 @@ export class AdminDashboardComponent implements OnInit {
     if (action === 'view') {
       this.isShowVendorModal = true;
       this.modalData = data;
+      console.log("MODALDATA",this.modalData);
+
+      let subjectDetailsData=[];
+      // this.modalData.subject_details.forEach((item:any) => {
+
+      // });
+      for (let i = 0; i < this.modalData.subject_details.length; i++) {
+
+          subjectDetailsData.push({subject:this.modalData.subject_details[i],sub_subject:this.modalData.sub_subject_details[i]});
+
+      }
+
+      this.modalData.subjectDetailsData=subjectDetailsData;
+      console.log(this.modalData);
+
+
     }
     if (action === 'edit') {
       this.getSubjectList();

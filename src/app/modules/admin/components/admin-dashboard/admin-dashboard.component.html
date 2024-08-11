@@ -253,6 +253,17 @@
           >
         </div>
       </div>
+      <div class="modalDetails">
+        <h6>Subject Details</h6>
+        <div class="chipsWrapper">
+          <span class="chips" *ngFor="let item of this.modalData.subjectDetailsData">
+            <span>{{item.subject.subject_name}} -</span>
+
+            <span>{{item.sub_subject.sub_subject_name}}</span>
+          </span>
+        </div>
+
+      </div>
       <div class="actionButtons">
         <button
           *ngIf="this.modalData.active === 1 && this.modalData.status !== 0"

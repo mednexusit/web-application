@@ -235,3 +235,17 @@ h4 {
     font-weight: 800;
   }
 }
+.chipsWrapper{
+  margin-top: 20px;
+  .chips{
+    background: $themePrimaryColor;
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    span{
+      color: #fff;
+      margin-left: 10px;
+    }
+  }
+}
+
