@@ -470,13 +470,14 @@
                     <option
                       [value]="item.id"
                       *ngFor="let item of subjectsListData"
+                      [disabled]="item.isSelected"
                     >
-                      {{ item.category_name }}
+                     {{ item.category_name }}
                     </option>
                   </select>
                   <button
                     *ngIf="i != 0"
-                    (click)="removeSubject(i)"
+                    (click)="removeSubject(i,$event)"
                     class="remBtn"
                   >
                     <i class="fa-solid fa-trash"></i>

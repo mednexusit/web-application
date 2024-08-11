@@ -30,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
   editData: any;
   subjectsListData: any = [];
   subSubjectsListData: any = [];
-  subSubjectListDataArray:any=[];
+  subSubjectListDataArray: any = [];
   action: any = '';
   isShowVendorModal: boolean = false;
   subAdminPhoneNumber: any = '';
@@ -111,12 +111,9 @@ export class AdminDashboardComponent implements OnInit {
           Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
         ]),
       ],
-      panno: [
-        '',
-        Validators.required
-      ],
+      panno: ['', Validators.required],
       branchaddress: ['', Validators.required],
-      subjects:this.fb.array([this.getSubjects()]),
+      subjects: this.fb.array([this.getSubjects()]),
     });
 
     // this.editvendorFormGroup
@@ -128,35 +125,44 @@ export class AdminDashboardComponent implements OnInit {
     //   });
   }
 
-  getSelectedSubject(e:any,i:any){
-    console.log("SelectedSubject",e.target.value,i)
-    this.getSubSubjectList(e.target.value,i)
+  getSelectedSubject(e: any, i: any) {
+    this.getSubSubjectList(e.target.value, i);
+    const item = this.subjectsListData.find(
+      (item: any) => item.id == e.target.value
+    );
+    if (item) {
+      item.isSelected = true;
+    }
   }
 
   // get items(): FormArray {
   //   return this.myForm.get('items') as FormArray;
   // }
 
-  get subjectsListArray(){
-    return this.editvendorFormGroup.get('subjects') ;
+  get subjectsListArray() {
+    return this.editvendorFormGroup.get('subjects');
   }
-  getSubjects(){
+  getSubjects() {
     return this.fb.group({
       subject: ['', Validators.required],
-      sub_subject: ['', Validators.required]
-    })
+      sub_subject: ['', Validators.required],
+    });
   }
-  addSubjects(){
-    if(this.subjectsListArray.length <=8){
-      this.subjectsListArray.push(this.getSubjects())
+  addSubjects() {
+    if (this.subjectsListArray.length <= 8) {
+      this.subjectsListArray.push(this.getSubjects());
+    } else {
+      return;
     }
-    else{
-      return
-    }
-
   }
-  removeSubject(index:any){
-    this.subjectsListArray.removeAt(index)
+  removeSubject(index: any, data: any) {
+  const subjectId = this.subjectsListArray.at(index).get('subject').value;
+  const subject = this.subjectsListData.find((item: any) => item.id == subjectId);
+  if (subject) {
+    subject.isSelected = false;
+  }
+  this.subjectsListArray.removeAt(index);
+  this.subSubjectListDataArray.splice(index, 1);
   }
   getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
@@ -181,23 +187,17 @@ export class AdminDashboardComponent implements OnInit {
       this.getSubjectList();
       this.isShowVendorModal = true;
       this.editData = data;
-      if(this.editData.subject){
+      if (this.editData.subject) {
         //this.editvendorFormGroup.get('subject').setValue(this.editData.subject);
         let items = this.editvendorFormGroup.get('subjects');
-        console.log("ITEMS",items)
-        items.controls.forEach((ele:any) => {
-            console.log("Ele",ele.value)
+        items.controls.forEach((ele: any) => {});
 
-        });
-
-        items.value.forEach((sub:any,index:any) => {
-
-        });
+        items.value.forEach((sub: any, index: any) => {});
         // items.forEach((el:any) => {
 
         // });
-        if(this.editData.sub_subject){
-        //  this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
+        if (this.editData.sub_subject) {
+          //  this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
         }
       }
       this.editvendorFormGroup.get('id').setValue(this.editData.id);
@@ -257,18 +257,14 @@ export class AdminDashboardComponent implements OnInit {
         .get('accountnumber')
         .setValue(this.editData.accountnumber);
       this.editvendorFormGroup.get('ifsccode').setValue(this.editData.ifsccode);
-      this.editvendorFormGroup
-        .get('panno')
-        .setValue(this.editData.panno);
+      this.editvendorFormGroup.get('panno').setValue(this.editData.panno);
       this.editvendorFormGroup
         .get('branchaddress')
         .setValue(this.editData.branchaddress);
-        this.editvendorFormGroup
+      this.editvendorFormGroup
         .get('session_name')
         .setValue(this.editData.session_name);
-        this.editvendorFormGroup
-        .get('letter')
-        .setValue(this.editData.letter);
+      this.editvendorFormGroup.get('letter').setValue(this.editData.letter);
     }
   }
   toggleTables() {
@@ -281,7 +277,7 @@ export class AdminDashboardComponent implements OnInit {
     this.isShowVendorModal = false;
     this.modalData = {};
     this.editData = {};
-    this.subjectsListData=[];
+    this.subjectsListData = [];
     this.editvendorFormGroup.reset();
   }
   changeStatus(action: any, data: any) {
@@ -475,6 +471,9 @@ export class AdminDashboardComponent implements OnInit {
     this.adminServ.getSubjects().subscribe({
       next: (data: any) => {
         this.subjectsListData = data.responseContents;
+        this.subjectsListData.forEach((item: any) => {
+          item.isSelected = false;
+        });
       },
       error: (err: any) => {
         console.error(err);
@@ -482,43 +481,40 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  getSubSubjectList(id: any,index:any) {
-    console.log("index",index)
+  getSubSubjectList(id: any, index: any) {
     let dataToPass = {
       subject_id: id,
     };
     this.adminServ.getSubSubjects(dataToPass).subscribe({
       next: (data: any) => {
-        console.log("sss",this.subjectsListArray)
         this.subSubjectsListData = data.responseContents;
-        this.subSubjectListDataArray[index]=this.subSubjectsListData;
-        console.log("subSubjectListDataArray",this.subSubjectListDataArray)
+        this.subSubjectListDataArray[index] = this.subSubjectsListData;
       },
       error: (err: any) => {
         console.error(err);
       },
     });
   }
-  updateVendorData(data:any){
-    if(data.gender==="Male"){
-      data.gender="1";
+  updateVendorData(data: any) {
+    console.log(data)
+    if (data.gender === 'Male') {
+      data.gender = '1';
     }
-    if(data.gender==="Female"){
-      data.gender="2"
+    if (data.gender === 'Female') {
+      data.gender = '2';
     }
-    data.subject=parseInt(data.subject);
-    data.sub_subject=parseInt(data.sub_subject)
+    data.subject = data.subjects.map((item:any)=>parseInt(item.subject) )
+    data.sub_subject = data.subjects.map((item:any)=>parseInt(item.sub_subject) )
     this.adminServ.updateVendorDetails(data).subscribe({
-      next:(data:any)=>{
-        this.toastr.success("Vendor details updated",'',{timeOut:1000})
-        this.isShowVendorModal=false;
+      next: (data: any) => {
+        this.toastr.success('Vendor details updated', '', { timeOut: 1000 });
+        this.isShowVendorModal = false;
         this.getAllVendorRequestList();
         this.editvendorFormGroup.reset();
       },
-      error:(err)=>{
-        this.toastr.error("Failed to update vendor",'',{timeOut:1000})
-
-      }
-    })
+      error: (err) => {
+        this.toastr.error('Failed to update vendor', '', { timeOut: 1000 });
+      },
+    });
   }
 }
