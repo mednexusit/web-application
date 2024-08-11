@@ -151,16 +151,13 @@ export class AdminDashboardComponent implements OnInit {
   addSubjects() {
     if (this.subjectsListArray.length <= 8) {
       this.subjectsListArray.push(this.getSubjects());
-      console.log("SSSSSSSSS",this.editvendorFormGroup.get('subjects').value)
       let selectedSubjectItems = this.editvendorFormGroup.get('subjects').value;
       selectedSubjectItems = selectedSubjectItems.map((item:any)=> item.subject );
-      console.log(selectedSubjectItems)
       this.subjectsListData.forEach((subject:any) => {
         if (selectedSubjectItems.includes(subject.id.toString())) {
           subject.isSelected = true;
         }
       });
-      console.log("SSSSSSSSSSSCCCCCCCCCCCCCCCCC",this.subjectsListData)
     } else {
       return;
     }
@@ -484,7 +481,6 @@ export class AdminDashboardComponent implements OnInit {
         this.subjectsListData.forEach((item: any) => {
           item.isSelected = false;
         });
-        console.log(this.subjectsListData)
       },
       error: (err: any) => {
         console.error(err);
@@ -507,7 +503,6 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
   updateVendorData(data: any) {
-    console.log(data)
     if (data.gender === 'Male') {
       data.gender = '1';
     }
