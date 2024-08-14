@@ -29,7 +29,7 @@ export class SharedService {
 
   otpData = new BehaviorSubject<any>('');
   sendOTP(data: any) {
-    this.routeFrom.next(data);
+    this.otpData.next(data);
   }
 
   getOTP() {

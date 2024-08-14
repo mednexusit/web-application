@@ -28,8 +28,9 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
     this.sharedServ.getRoute().subscribe((data:any)=>{
       this.routeFrom=data;
+      console.log("ROUTE FROM",data);
     })
-    this.sharedServ.getRoute().subscribe((data:any)=>{
+    this.sharedServ.getOTP().subscribe((data:any)=>{
       this.otpGenerated = data;
     })
   }
