@@ -70,9 +70,9 @@
   }
 }
 .NgxEditor__Wrapper{
-  height: 20vw;
-  min-height: 20vw;
-  max-height: 20vw;
+  height: 30vw;
+  min-height: 30vw;
+  max-height: 30vw;
   overflow-y: scroll;
   @media only screen and (max-width: 600px) {
     height: 100vw;
@@ -85,4 +85,48 @@
 h3{
   margin: 1.5vw 0;
   color: $themePrimaryColor;
+}
+.imageLinkWrapper{
+  margin: 10px;
+  b{
+    color: red
+  }
+  .tip{
+    color: $themePrimaryColor;
+    font-weight: 800;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  .imagearea{
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+    color: $themePrimaryColor;
+    label{
+      background: $themePrimaryColor;
+      color: #fff;
+      padding: 7px 8px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  }
+}
+.chsImage{
+  margin-right: 10px;
+}
+
+.linkarea{
+  border: 1px solid coral;
+  padding: 7px 10px;
+  border-radius: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  .copyIcon{
+    margin-left: 1vw;
+  }
+}
+.copyIcon:hover{
+  color: blue;
+}
+.blue{
+  color: blue !important;
 }

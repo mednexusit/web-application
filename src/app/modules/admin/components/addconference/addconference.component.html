@@ -29,6 +29,27 @@
       Location
     </div>
   </div>
+<div class="imageLinkWrapper">
+  <span class="tip">
+    <b>Note :</b>
+    <span> To get the image link upload image </span>
+
+  </span>
+  <div class="imagearea">
+    <label for="chooseImage" class="chsImage"
+    >Choose Image  <i class="fa-solid fa-upload"></i></label
+  >
+  {{fileName}}
+  <input
+    type="file"
+    accept="image/png, image/jpeg"
+    id="chooseImage"
+    hidden
+    (change)="onFileSelection($event)"
+  />
+  <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
+  </div>
+</div>
   <div class="content">
     <div *ngIf="currentStep === 1" class="sub-content">
       <h3>About Conference :</h3>
