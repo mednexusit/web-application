@@ -28,6 +28,7 @@
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "ng-otp-input": "^1.9.3",
+    "ngx-editor": "^17.5.4",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.12.1",

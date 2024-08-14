@@ -1,0 +1,88 @@
+@import '../../../../../variables';
+.steps{
+  display: flex;
+  width: 100%;
+}
+.step {
+  width: 25%;
+  padding: 10px;
+  margin: 2px;
+  text-align: center;
+  background-color: lightgrey;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  animation: appear 0.5s linear;
+}
+
+.step.active {
+  background-color: $themePrimaryColor;
+  color: white;
+}
+// .editor{
+//   height: 30vw;
+// }
+
+.editor {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  .NgxEditor__MenuBar {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .NgxEditor {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: none;
+  }
+
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    margin-bottom: 0.7rem;
+
+    pre {
+      white-space: pre !important;
+    }
+  }
+}
+
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-top: 20px;
+  button {
+    padding: 10px 15px;
+    height: 50px;
+    border: 2px solid #fff;
+    background: $themePrimaryColor;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+  }
+  button:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
+}
+.NgxEditor__Wrapper{
+  height: 20vw;
+  min-height: 20vw;
+  max-height: 20vw;
+  overflow-y: scroll;
+  @media only screen and (max-width: 600px) {
+    height: 100vw;
+    min-height: 100vw;
+    max-height: 100vw;
+    overflow-y: scroll;
+  }
+}
+
+h3{
+  margin: 1.5vw 0;
+  color: $themePrimaryColor;
+}

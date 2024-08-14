@@ -6,7 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -538,5 +539,14 @@ export class AdminDashboardComponent implements OnInit {
         this.toastr.error('Failed to update vendor', '', { timeOut: 1000 });
       },
     });
+  }
+  openAddConference(data:any){
+    console.log("DATA",data)
+    const navigationExtras:NavigationExtras={
+      queryParams:data,
+      skipLocationChange:true,
+      state:data
+    }
+    this.router.navigate(['admin/adminhome/add-conference'], navigationExtras);
   }
 }
