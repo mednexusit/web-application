@@ -14,6 +14,7 @@ export class VerifyOtpComponent implements OnInit {
   @Output() closeOtpModal = new EventEmitter();
   @Output() resendNewOtp = new EventEmitter();
   routeFrom:any='';
+  otpGenerated:any;
 
   isOtpValid: boolean = false;
   otpVal: any;
@@ -27,6 +28,9 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
     this.sharedServ.getRoute().subscribe((data:any)=>{
       this.routeFrom=data;
+    })
+    this.sharedServ.getRoute().subscribe((data:any)=>{
+      this.otpGenerated = data;
     })
   }
   onOtpChange(otp: any) {

@@ -58,6 +58,13 @@
 
   }
 }
+.otpg{
+  color: $themePrimaryColor;
+  font-size: 10px;
+  span{
+    font-weight: 800;
+  }
+}
 .verifyBtn{
   cursor: pointer;
 }

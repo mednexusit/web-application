@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
     }
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log(data)
         this.isShowVerifyOtp=true;
         this.sharedServ.sendRoute(this.route.url)
+        this.sharedServ.sendOTP(data.otp)
       },
       error:(err:any)=>{
         console.log(err)
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     this.sharedServ.userLogin(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log(data)
+        this.sharedServ.sendOTP(data.otp);
         this.isShowVerifyOtp=true;
       },
       error:(err:any)=>{

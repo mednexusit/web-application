@@ -14,8 +14,8 @@ export class SharedService {
     return this.http.post(this.baseURL + 'auth/checklogin', data);
   }
 
-  verifyOtp(data:any){
-    return this.http.post(this.baseURL+'auth/login',data);
+  verifyOtp(data: any) {
+    return this.http.post(this.baseURL + 'auth/login', data);
   }
 
   routeFrom = new BehaviorSubject<any>('');
@@ -27,6 +27,15 @@ export class SharedService {
     return this.routeFrom.asObservable();
   }
 
+  otpData = new BehaviorSubject<any>('');
+  sendOTP(data: any) {
+    this.routeFrom.next(data);
+  }
+
+  getOTP() {
+    return this.otpData.asObservable();
+  }
+
   themeNow = new BehaviorSubject<any>(false);
   sendTheme(data: any) {
     this.themeNow.next(data);
@@ -36,27 +45,22 @@ export class SharedService {
     return this.themeNow.asObservable();
   }
 
-
-
-  uploadFileCommon(data:any){
-    return this.http.post(this.baseURL+'upload/category',data)
+  uploadFileCommon(data: any) {
+    return this.http.post(this.baseURL + 'upload/category', data);
   }
 
-  submitVendorProposalForm(data:any){
-    return this.http.post('http://3.109.153.67/reguser/PersonalVendor',data)
+  submitVendorProposalForm(data: any) {
+    return this.http.post('http://3.109.153.67/reguser/PersonalVendor', data);
   }
 
-  getUserType(){
-    let userData:any= localStorage.getItem("userData");
+  getUserType() {
+    let userData: any = localStorage.getItem('userData');
     let userType;
-    if(userData){
+    if (userData) {
       userData = JSON.parse(userData);
-      userType= userData['usertype'];
+      userType = userData['usertype'];
     }
     return userType;
   }
-
-
-
 
 }

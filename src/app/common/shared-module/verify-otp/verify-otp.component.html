@@ -6,6 +6,7 @@
       <span class="pvText">Enter your OTP code here</span>
       <span class="pnText">Send to +91 {{ mobNumber }}</span>
     </p>
+    <span class="otpg"><span>OTP IS : </span>{{otpGenerated}}</span>
     <ng-otp-input
       (onInputChange)="onOtpChange($event)"
       [config]="config"
