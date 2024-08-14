@@ -101,6 +101,9 @@ h3{
     font-size: 10px;
     align-items: center;
     color: $themePrimaryColor;
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
     label{
       background: $themePrimaryColor;
       color: #fff;
