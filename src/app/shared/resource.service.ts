@@ -4,71 +4,70 @@ import { environment } from '../../environments/environment';
 import { map, retry } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResourceService {
-  resourceAPI= environment.resourceAPIURL;
+  resourceAPI = environment.resourceAPIURL;
 
-  constructor(private http:HttpClient) { }
-  getStates(){
-    let authToken= localStorage.getItem("LoggedInUser")
+  constructor(private http: HttpClient) {}
+  getStates() {
+    let authToken = localStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.get(this.resourceAPI+'getstatelist', httpOptions).pipe(
-      map((data:any) => data.responseContents.map((item:any) => item))
+    return this.http
+      .get(this.resourceAPI + 'getstatelist', httpOptions)
+      .pipe(map((data: any) => data.responseContents.map((item: any) => item)));
+  }
+  getColleges(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(
+      this.resourceAPI + 'getcollegebystate',
+      data,
+      httpOptions
     );
   }
-  getColleges(data:any){
-    let authToken= localStorage.getItem("LoggedInUser")
+  getMSList() {
+    let authToken = localStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.post(this.resourceAPI+'getcollegebystate',data,httpOptions);
+    return this.http.get(this.resourceAPI + 'getmslist', httpOptions);
   }
-  getMSList(){
-    let authToken= localStorage.getItem("LoggedInUser")
+  getMDList() {
+    let authToken = localStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.get(this.resourceAPI+'getmslist',httpOptions)
+    return this.http.get(this.resourceAPI + 'getmdlist', httpOptions);
   }
-  getMDList(){
-    let authToken= localStorage.getItem("LoggedInUser")
+  getMCHList() {
+    let authToken = localStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.get(this.resourceAPI+'getmdlist',httpOptions)
+    return this.http.get(this.resourceAPI + 'getmchlist', httpOptions);
   }
-  getMCHList(){
-    let authToken=localStorage .getItem("LoggedInUser")
+  getDNBList() {
+    let authToken = localStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
       }),
     };
-    return this.http.get(this.resourceAPI+'getmchlist',httpOptions)
+    return this.http.get(this.resourceAPI + 'specialty', httpOptions);
   }
-  getDNBList(){
-    let authToken=localStorage .getItem("LoggedInUser")
-    let httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${authToken}`,
-      }),
-    };
-    return this.http.get(this.resourceAPI+'specialty',httpOptions)
-  }
-
-
-
-
-
 }

@@ -24,7 +24,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
     BrowserAnimationsModule
   ],
   providers: [
-    {provide:LocationStrategy,useClass:PathLocationStrategy},
+    {provide:LocationStrategy,useClass:HashLocationStrategy},
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
