@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {NgxEditorModule} from 'ngx-editor'
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
     HttpClientModule,
     FontAwesomeModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
-    {provide:LocationStrategy,useClass:HashLocationStrategy},
+    {provide:LocationStrategy,useClass:PathLocationStrategy},
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
