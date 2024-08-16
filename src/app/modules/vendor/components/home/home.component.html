@@ -56,6 +56,7 @@
               <input
                 type="text"
                 formControlName="name"
+                placeholder="Name"
                 [class.valid]="
                   personalInfo.get('name').valid &&
                   (personalInfo.get('name').dirty ||
@@ -83,6 +84,7 @@
                 <input
                   type="text"
                   formControlName="phoneNumber"
+                  placeholder="Phone"
                   [class.valid]="
                     personalInfo.get('phoneNumber').valid &&
                     (personalInfo.get('phoneNumber').dirty ||
@@ -111,6 +113,7 @@
             <input
               type="text"
               formControlName="email"
+              placeholder="Email"
               [class.valid]="
                 personalInfo.get('email').valid &&
                 (personalInfo.get('email').dirty ||
@@ -139,6 +142,7 @@
               <input
                 type="number"
                 formControlName="age"
+                placeholder="Age"
                 [class.valid]="
                   personalInfo.get('age').valid &&
                   (personalInfo.get('age').dirty || personalInfo.get('age').touched)
@@ -163,6 +167,7 @@
               <select
                 name=""
                 id="sex"
+                required
                 formControlName="gender"
                 class="select"
                 [class.valid]="
@@ -228,6 +233,7 @@
             <input
               type="text"
               formControlName="address"
+              placeholder="Address"
               [class.valid]="
                 personalInfo.get('address').valid &&
                 (personalInfo.get('address').dirty ||
@@ -262,7 +268,7 @@
             <div class="fields w-100 d-flex my-3">
               <div class="left-data d-flex flex-column w-50">
                 <label for="">Event Name<span class="reruired-form-field">*</span></label>
-                <input type="text" formControlName="eventname" [class.valid]="
+                <input type="text" placeholder="Event Name" formControlName="eventname" [class.valid]="
                                   conferenceInfo.get('eventname').valid &&
                                   (conferenceInfo.get('eventname').dirty ||
                                     conferenceInfo.get('eventname').touched)
@@ -284,6 +290,7 @@
                 <input
                   type="text"
                   formControlName="organisedby"
+                  placeholder="Organised By"
                   [class.valid]="
                     conferenceInfo.get('organisedby').valid &&
                     (conferenceInfo.get('organisedby').dirty ||
@@ -312,6 +319,7 @@
               <select
                 name="category"
                 id="category"
+                required=""
                 formControlName="category"
                 class="select"
                 [class.valid]="
@@ -353,6 +361,7 @@
                 <input
                   type="text"
                   formControlName="state"
+                  placeholder="State"
                   [class.valid]="
                     conferenceInfo.get('state').valid &&
                     (conferenceInfo.get('state').dirty ||
@@ -380,6 +389,7 @@
                 <input
                   type="text"
                   formControlName="place"
+                  placeholder="Place"
                   [class.valid]="
                     conferenceInfo.get('place').valid &&
                     (conferenceInfo.get('place').dirty ||
@@ -409,6 +419,7 @@
               <input
                 type="number"
                 formControlName="pin"
+                placeholder="Pin"
                 [class.valid]="
                   conferenceInfo.get('pin').valid &&
                   (conferenceInfo.get('pin').dirty ||
@@ -436,6 +447,7 @@
               <input
                 type="text"
                 formControlName="venu"
+                placeholder="Venu"
                 [class.valid]="
                   conferenceInfo.get('venu').valid &&
                   (conferenceInfo.get('venu').dirty ||
@@ -473,6 +485,7 @@
             <input
               type="text"
               formControlName="speakerinfo"
+              placeholder="Speaker Info"
               [class.valid]="
                 speakerInfo.get('speakerinfo').valid &&
                 (speakerInfo.get('speakerinfo').dirty ||
@@ -504,6 +517,7 @@
                 type="file"
                 id="sessionname"
                 class="session_name"
+                placeholder="Session Details"
                 accept=".pdf, .jpg, .jpeg"
                 (change)="handleSessionNameFile($event)"
               />

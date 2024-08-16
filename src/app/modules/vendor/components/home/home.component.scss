@@ -198,10 +198,27 @@ display: none;
         .right-data{
           margin-left: 5px;
         }
+        select:required:invalid {
+          color: gray;
+          font-size: 12px;
+        }
+        option[value=""][disabled] {
+          display: none;
+        }
+       
         input,select,.choose-file-container{
           border: 1.49px solid #CECECE;
           border-radius: 2px;   
           height: 40px;
+          &::placeholder{
+            font-family: Open Sans;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 28.48px;
+            text-align: left;
+            color: #CECECE;
+            padding-left: 6px;
+          }
         }
         label{
           font-family: Open Sans;
@@ -325,6 +342,7 @@ display: none;
       }
       input,select{
         height: 35px !important;
+        
       }
       .fields{
         flex-direction: column !important;
@@ -378,4 +396,9 @@ display: none;
       }
     }
   }
+}
+input:focus{
+  color: #009b87 !important;
+  outline: none;
+  border: 1px solid #009B87;
 }
