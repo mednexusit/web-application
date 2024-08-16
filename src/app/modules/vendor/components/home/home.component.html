@@ -509,8 +509,8 @@
               />
             </div>
           </div>
-          <div class="fields d-flex flex-column">
-            <label for="">Enter Manually:</label>
+          <div class="fields d-flex flex-column my-3">
+            <label for="">Enter Manually<span class="reruired-form-field">*</span></label>
             <div class="field d-flex">
               <div class="item">
                 <input type="text" placeholder="Topic" formControlName="topic" />
@@ -565,20 +565,22 @@
           <div class="fields d-flex m-top-10">
             <label for="" *ngIf="showCMEPoints">CME Points:</label>
           </div>
-          <div class="fields d-flex flex-row align-items-center">
-            <label for="">Upload Letter:</label>
-            <label for="chooseLetter" class="sessionnameclass"
+          <div class="fields w-100 d-flex my-3 flex-column">
+            <label for="">Upload Letter<span class="reruired-form-field">*</span></label>
+            <div class="choose-file-container">
+              <label for="chooseLetter" class="sessionnameclass"
               >Choose Letter</label
             >
-            <input
-              type="file"
-              id="chooseLetter"
-              class="session_name"
-              accept=".pdf, .jpg, .jpeg"
-              (change)="handleLetterField($event)"
-            />
+              <input
+                type="file"
+                id="chooseLetter"
+                class="session_name"
+                accept=".pdf, .jpg, .jpeg"
+                (change)="handleLetterField($event)"
+              />
+            </div>
           </div>
-          <div class="fields">
+          <div class="fields w-100 d-flex my-3 flex-column">
             <label for="">CME Points:</label>
             <input
               type="number"
@@ -599,15 +601,16 @@
         </form>
       </div>
       <div *ngIf="currentStep === 4">
-        <h3>Payment Information :</h3>
+        <h3>Payment Information</h3>
+        <h6>Welcome! Please enter your credentials</h6>
         <form
           [formGroup]="paymentInfo"
-          class="personalInfo d-flex flex-wrap bank col col-lg-10 col-md-10 col-sm-12"
+          class="personalInfo d-flex flex-wrap bank w-100"
         >
-          <div class="vendorInfo col col-lg-6 col-md-6 col-sm-12">
-            <div class="fieldsWrappper d-flex">
+          <div class="vendorInfo w-100">
+            <div class="fieldsWrappper d-flex my-3">
               <div class="fields">
-                <label for="">Vendor Name:</label>
+                <label for="">Vendor Name<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Vendor Name"
@@ -634,8 +637,8 @@
                   Vendor name is required.
                 </div>
               </div>
-              <div class="fields">
-                <label for="">Contact Person:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">Contact Person<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Contact Person"
@@ -662,10 +665,8 @@
                   Contact person is required.
                 </div>
               </div>
-            </div>
-            <div class="fieldsWrapper d-flex">
-              <div class="fields">
-                <label for="">Contact Email:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">Contact Email<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Contact Email"
@@ -692,8 +693,11 @@
                   Contact email is required.
                 </div>
               </div>
+            </div>
+            <div class="fieldsWrappper d-flex my-3">
+              
               <div class="fields">
-                <label for="">Contact Phone:</label>
+                <label for="">Contact Phone<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Contact Phone Number"
@@ -720,10 +724,8 @@
                   Contact phone number is required.
                 </div>
               </div>
-            </div>
-            <div class="fieldsWrapper d-flex">
-              <div class="fields">
-                <label for="">Bank Name:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">Bank Name<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Bank Name"
@@ -750,8 +752,8 @@
                   Bank name is required.
                 </div>
               </div>
-              <div class="fields">
-                <label for="">Branch Name:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">Branch Name<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Branch Name"
@@ -779,9 +781,9 @@
                 </div>
               </div>
             </div>
-            <div class="fieldsWrapper d-flex">
+            <div class="fieldsWrappper d-flex my-3">
               <div class="fields">
-                <label for="">Account Holder:</label>
+                <label for="">Account Holder<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Account Holder's Name"
@@ -808,8 +810,8 @@
                   Account holder name is required.
                 </div>
               </div>
-              <div class="fields">
-                <label for="">Account Number:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">Account Number<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Account Number"
@@ -836,10 +838,8 @@
                   Account number is required.
                 </div>
               </div>
-            </div>
-            <div class="fieldsWrapper d-flex">
-              <div class="fields">
-                <label for="">IFSC Code:</label>
+              <div class="fields" style="margin-left: 10px;">
+                <label for="">IFSC Code<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="IFSC CODE"
@@ -866,13 +866,16 @@
                   IFSC code is required.
                 </div>
               </div>
-              <div class="fields">
-                <label for="">PAN Number</label>
+            </div>
+            <div class="fieldsWrappper d-flex my-3">
+              <div class="fields" style="width: 32.5%;">
+                <label for="">PAN Number<span class="reruired-form-field">*</span></label>
   
                 <input
                   type="text"
                   placeholder="PAN Card"
                   formControlName="pan"
+                  class="w-100"
                   [class.valid]="
                     paymentInfo.get('pan').valid &&
                     (paymentInfo.get('pan').dirty || paymentInfo.get('pan').touched)
@@ -892,10 +895,8 @@
                   PAN is required.
                 </div>
               </div>
-            </div>
-            <div class="fieldsWrapper d-flex">
-              <div class="fields">
-                <label for="">Branch Address:</label>
+              <div class="fields d-flex flex-column" style="margin-left: 10px;width: calc(100% - (32.5%));">
+                <label for="">Branch Address<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   placeholder="Branch Address"
@@ -923,12 +924,11 @@
                 </div>
               </div>
             </div>
-  
           </div>
-          <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
+          <!-- <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
             <h5>Payment Method(s) Accepted:</h5>
             <h6>Coming Soon...</h6>
-          </div>
+          </div> -->
         </form>
       </div>
       <div class="navigation w-100 text text-center mt-4">
@@ -937,6 +937,7 @@
         <button
           (click)="onSubmit()"
           *ngIf="currentStep === 4"
+          class="mx-2"
           [disabled]="
             !personalInfo.valid ||
             !paymentInfo.valid ||
