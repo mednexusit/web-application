@@ -1,61 +1,19 @@
-.stepper {
-  display: flex;
-  flex-direction: column;
-  // background-image: url("../../../../../assets/backgroundvendor.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  width: 100%;
-  height: 100%;
-}
 
-.steps {
-  display: flex;
-}
-.steps::after{
-  content: "";
-    display: block;
-    width: 220px;
-    background-color: #e1e1e1;
-}
-
-.step {
-  width: 25%;
-  padding: 10px;
-  text-align: center;
-  background-color: lightgrey;
-  cursor: pointer;
-  transition: all 0.2s linear;
-  animation: appear 0.5s linear;
-  
-}
-
-.step.active {
-  background-color: rgb(26, 23, 207);
-  color: white;
-}
-
-.content {
-  background: rgba($color: #0c0318, $alpha: 0.8);
-  padding: 10px;
-  height: 100%;
-  overflow-y: scroll  ;
-  h3,h4 {
-    margin-top: 10px;
-    color: #fff;
-  }
-}
 
 .navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 10px;
   button {
-    padding: 10px 15px;
-    height: 50px;
+    padding: 0px 3vw;
+    height: 2.5vw;
     border: 2px solid #fff;
-    background: rgb(26, 23, 207);
+    // background: rgb(26, 23, 207);
+    background: #3399FF;
+    box-shadow: 0px 2.81px 5.62px 0px #00000029;
+    font-family: Open Sans;
+    font-size: 1.2vw;
+    font-weight: 800;
     color: #fff;
     border-radius: 10px;
     outline: none;
@@ -63,58 +21,61 @@
   button:disabled {
     background: gray;
     cursor: not-allowed;
+    border: none;
+    height: 2.4vw;
+    margin-top: 1px;
   }
 }
 
-.personalInfo {
-  animation: appear 0.5s linear;
-  .fields {
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    margin:10px;
-    input {
-      width: 100%;
-      padding: 5px 7px;
-      margin-top: 5px;
-      border: 1px solid gray;
-      border-radius: 5px;
-    }
-    textarea {
-      width: 100%;
-      padding: 10px 15px;
-      margin-top: 5px;
-      border: 1px solid gray;
-      border-radius: 5px;
-    }
-    label {
-      color: #fff;
-      font-weight: 800;
-      width: 40%;
-      white-space: nowrap;
-    }
-    .select {
-      width: 100%;
-      padding: 10px 15px;
-      margin-top: 5px;
-      border: 1px solid gray;
-      border-radius: 5px;
-      .option {
-        width: 50%;
-      }
-    }
-  }
-}
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+// .personalInfo {
+//   animation: appear 0.5s linear;
+//   .fields {
+//     justify-content: space-between;
+//     align-items: center;
+//     flex-grow: 1;
+//     margin:10px;
+//     input {
+//       width: 100%;
+//       padding: 5px 7px;
+//       margin-top: 5px;
+//       border: 1px solid gray;
+//       border-radius: 5px;
+//     }
+//     textarea {
+//       width: 100%;
+//       padding: 10px 15px;
+//       margin-top: 5px;
+//       border: 1px solid gray;
+//       border-radius: 5px;
+//     }
+//     label {
+//       color: #fff;
+//       font-weight: 800;
+//       width: 40%;
+//       white-space: nowrap;
+//     }
+//     .select {
+//       width: 100%;
+//       padding: 10px 15px;
+//       margin-top: 5px;
+//       border: 1px solid gray;
+//       border-radius: 5px;
+//       .option {
+//         width: 50%;
+//       }
+//     }
+//   }
+// }
+// @keyframes appear {
+//   from {
+//     opacity: 0;
+//     transform: scale(0.8);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+// }
 
 .paymentMethods {
   flex-grow: 1;
@@ -132,19 +93,25 @@
   outline: none;
   border: 0px solid !important  ;
 }
+.choose-file-container{
+  display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1vw;
+}
 h5{
   color: cornflowerblue;
   margin-top: 10px;
 }
-.speakerInfoStyles{
-  .fields{
-    align-items: start;
-    margin-top: 10px;
-  }
-  label{
-    margin-top: 10px;
-  }
-}
+// .speakerInfoStyles{
+//   .fields{
+//     align-items: start;
+//     margin-top: 10px;
+//   }
+//   label{
+//     margin-top: 10px;
+//   }
+// }
 .error{
   font-size: 0.8em;
   color: red;
@@ -158,11 +125,13 @@ display: none;
 display: none;
 }
 .sessionnameclass{
-  padding: 7px 10px;
-  background: cornflowerblue;
-  color: #fff;
+  padding: 0 3vw;
+  background: #A1A1A1;
+  border: 1px solid #A1A1A1;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 400 !important;
+  font-size: 1.2vw !important;
 }
 .vendor-container{
   .left{
@@ -199,11 +168,55 @@ display: none;
   .right{
     width: 60%;
     height: 100%;
+    overflow-y: auto;
     .stepper-wrapper {
-      margin-top: 50px;
+      margin-top: 20px;
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
+    }
+    .content-part {
+      width: 100%;
+      padding: 0 6vw;
+      h3{
+        font-family: Open Sans;
+        font-size: 2vw;
+        font-weight: 800;
+        text-align: left;
+      }
+      h6{
+        font-family: Open Sans;
+        font-size: 1.1vw;
+        font-weight: 700;
+        text-align: left;
+        color: #A1A1A1;
+      }
+      .fields{
+        .left-data{
+          margin-right: 5px;
+        }
+        .right-data{
+          margin-left: 5px;
+        }
+        input,select,.choose-file-container{
+          border: 1.49px solid #CECECE;
+          border-radius: 2px;   
+          height: 40px;
+        }
+        label{
+          font-family: Open Sans;
+          font-size: 1.5vw;
+          font-weight: 700;
+          text-align: left;
+          color: #3D3D3D;
+          .reruired-form-field{
+            font-family: Open Sans;
+            font-size: 1.5vw;
+            font-weight: 700;
+            color: #FF0E59;
+          }
+        }
+      }
     }
     .stepper-item {
       position: relative;
@@ -251,7 +264,16 @@ display: none;
     }
     
     .stepper-item.active {
-      background: #009B87;
+      .step-counter{
+        background: #009B87;
+        color: #FFFFFF;
+      }
+    }
+    .step-counter{
+      font-family: Open Sans;
+      font-size: 2vw;
+      background: #6F6F6F;
+      cursor: pointer;
     }
     
     // .stepper-item.completed .step-counter {
