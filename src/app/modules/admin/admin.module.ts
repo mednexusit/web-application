@@ -1,3 +1,4 @@
+import { NgxEditorModule } from 'ngx-editor';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +17,7 @@ import { SettingComponent } from './components/setting/setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+import { AddconferenceComponent } from './components/addconference/addconference.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
           FinancialReportsComponent,
           SettingComponent,
           FilterPipe,
-          NewsfeedComponent
+          NewsfeedComponent,
+          AddconferenceComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
     FormsModule,
     SharedModuleModule,
     HttpClientModule,
+    NgxEditorModule
   ]
 })
 export class AdminModule { }

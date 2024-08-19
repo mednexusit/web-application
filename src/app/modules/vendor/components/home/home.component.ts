@@ -158,7 +158,7 @@ export class HomeComponent implements OnInit {
       accountholdername: this.paymentInfo.get('accountholdername').value,
       accountnumber: this.paymentInfo.get('accountnumber').value,
       ifsccode: this.paymentInfo.get('ifsccode').value,
-      swiftcode: this.paymentInfo.get('swiftcode').value,
+      panno: this.paymentInfo.get('panno').value,
       branchaddress: this.paymentInfo.get('branchaddress').value,
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({

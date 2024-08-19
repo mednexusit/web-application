@@ -1,0 +1,123 @@
+<div class="stepper">
+  <div class="steps">
+    <div
+      class="step"
+      (click)="changeCurrentStep(1)"
+      [class.active]="currentStep === 1"
+    >
+      About Conference
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(2)"
+      [class.active]="currentStep === 2"
+    >
+      Schedule
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(3)"
+      [class.active]="currentStep === 3"
+    >
+      Speakers
+    </div>
+    <div
+      class="step"
+      (click)="changeCurrentStep(4)"
+      [class.active]="currentStep === 4"
+    >
+      Location
+    </div>
+  </div>
+<div class="imageLinkWrapper">
+  <span class="tip">
+    <b>Note :</b>
+    <span> To get the image link upload image </span>
+
+  </span>
+  <div class="imagearea">
+    <label for="chooseImage" class="chsImage"
+    >Choose Image  <i class="fa-solid fa-upload"></i></label
+  >
+  {{fileName}}
+  <input
+    type="file"
+    accept="image/png, image/jpeg"
+    id="chooseImage"
+    hidden
+    (change)="onFileSelection($event)"
+  />
+  <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
+  </div>
+</div>
+  <div class="content">
+    <div *ngIf="currentStep === 1" class="sub-content">
+      <h3>About Conference :</h3>
+      <div class="NgxEditor__Wrapper" [formGroup]="aboutConferenceFG">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          formControlName="aboutconferencedata"
+          [disabled]="false"
+          [placeholder]="'Type here...'"
+          class="editor"
+        ></ngx-editor>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 2" class="sub-content">
+      <h3>Schedule :</h3>
+      <div class="NgxEditor__Wrapper" [formGroup]="scheduleFG">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          formControlName="scheduledata"
+          [disabled]="false"
+          [placeholder]="'Type here...'"
+          class="editor"
+        ></ngx-editor>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 3" class="sub-content">
+      <h3>Speakers :</h3>
+      <div class="NgxEditor__Wrapper" [formGroup]="speakerFG">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          formControlName="speakerdata"
+          [disabled]="false"
+          [placeholder]="'Type here...'"
+          class="editor"
+        ></ngx-editor>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 4" class="sub-content">
+      <h3>Location :</h3>
+      <div class="NgxEditor__Wrapper" [formGroup]="locationFG">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          formControlName="locationdata"
+          [disabled]="false"
+          [placeholder]="'Type here...'"
+          class="editor"
+        ></ngx-editor>
+      </div>
+    </div>
+    <div class="navigation col col-lg-4 col-md-4 col-sm-12">
+      <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
+      <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
+      <button (click)="onSubmit()" *ngIf="currentStep === 4"
+      [disabled]="
+      !aboutConferenceFG.valid ||
+      !speakerFG.valid ||
+      !scheduleFG.valid ||
+      !locationFG.valid
+    "
+      >Submit</button>
+    </div>
+  </div>
+</div>

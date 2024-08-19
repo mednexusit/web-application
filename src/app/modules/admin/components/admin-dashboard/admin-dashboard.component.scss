@@ -1,8 +1,8 @@
-@import '../../../../../variables';
+@import "../../../../../variables";
 .table-responsive {
   margin: 20px 0;
 }
-.openModal{
+.openModal {
   display: flex; /* Hidden by default */
   justify-content: center;
   align-items: center;
@@ -14,14 +14,14 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  .modalWrapper{
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  .modalWrapper {
     min-height: 400px;
     position: relative;
     background: #fff;
     min-width: 300px;
-    .closeModal{
+    .closeModal {
       position: absolute;
       right: 15px;
       top: -20px;
@@ -29,14 +29,14 @@
       font-size: 32px;
       color: coral;
       cursor: pointer;
-      .icon{
+      .icon {
         border-radius: 50%;
         box-shadow: 0 0 10px 2px gray;
         background: #fff;
       }
     }
   }
-  .content{
+  .content {
     min-height: 400px;
     min-width: 300px;
     max-height: 400px;
@@ -46,19 +46,19 @@
     padding: 10px;
     position: relative;
 
-    .modalDetails{
-      h6{
+    .modalDetails {
+      h6 {
         color: cornflowerblue;
         margin-top: 10px;
         margin-bottom: 10px;
       }
-      .details{
+      .details {
         display: flex;
         flex-direction: column;
-        label{
-          margin: 5px ;
+        label {
+          margin: 5px;
         }
-        img{
+        img {
           height: 200px;
           width: 200px;
           object-fit: scale-down;
@@ -67,132 +67,187 @@
     }
   }
 }
-.proposalId{
+.proposalId {
   color: red;
   cursor: pointer;
 }
-.actionButtons{
+.actionButtons {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
 }
-h4{
+h4 {
   color: $themePrimaryColor;
 }
-.deleteIcon:hover{
+.deleteIcon:hover {
   color: $themePrimaryColor;
   cursor: pointer;
 }
-.pending{
+.pending {
   color: $themePrimaryColor;
   font-weight: 800;
 }
-.approved{
+.approved {
   color: green;
   font-weight: 800;
 }
-.rejected{
+.rejected {
   font-weight: 800;
   color: red;
 }
-.btns{
+.btns {
   margin-left: 10px;
 }
-.heading-sub{
+.heading-sub {
   margin: 10px;
 }
-.fields{
+.fields {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .inp{
+  .inp {
     padding: 10px 12px;
     width: 80%;
   }
 }
-.subAdmin{
+.subAdmin {
   min-height: 300px !important;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .adBtn{
+  .adBtn {
     margin-top: 20px;
   }
 }
 
-.errors{
+.errors {
   color: red;
-  font-size: 10px;;
+  font-size: 10px;
 }
-.actBtns{
+.actBtns {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin-top: 20px;
 }
-.green{
+.green {
   color: green;
 }
-.red{
+.red {
   color: red;
 }
-.canBtn{
+.canBtn {
   background: red !important;
   border: none;
 }
-.rotate{
+.rotate {
   animation: rotate 1s linear;
 }
 
 @keyframes rotate {
-  0%{
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
-.toggleStatus{
+.toggleStatus {
   cursor: pointer;
 }
-.theme{
+.theme {
   background: $themePrimaryColor;
   border: none;
 }
-.editIcon{
+.editIcon {
   margin-left: 10px;
   cursor: pointer;
 }
-.editIcon:hover{
+.editIcon:hover {
   color: $themePrimaryColor;
 }
-.edit-fields{
+.edit-fields {
   margin-top: 10px;
-  label{
+  label {
     width: 20%;
   }
-  input{
+  input {
     padding: 7px 10px;
   }
-  select{
+  select {
     padding: 7px 10px;
   }
 }
-#sessionname{
+#sessionname {
   appearance: none;
   display: none;
-  }
-  .session_name{
-    appearance: none;
+}
+.session_name {
+  appearance: none;
   display: none;
+}
+.sessionnameclass {
+  padding: 7px 10px;
+  background: cornflowerblue;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.addBtn{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 30px;
+  background: coral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.remBtn{
+  margin-left: 10px;
+  padding: 1vw;
+  border: none;
+  outline: none;
+  font-size: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: coral;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.checkIcon{
+  color: green;
+}
+
+.addSubjects{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  label{
+    color: $themePrimaryColor;
+    font-weight: 800;
   }
-  .sessionnameclass{
-    padding: 7px 10px;
-    background: cornflowerblue;
-    color: #fff;
+}
+.chipsWrapper{
+  margin-top: 20px;
+  .chips{
+    background: $themePrimaryColor;
+    margin-left: 5px;
+    padding: 10px;
     border-radius: 5px;
-    cursor: pointer;
+    span{
+      color: #fff;
+      margin-left: 10px;
+    }
   }
+}
+.conferenceIcon{
+  margin-left:10px ;
+}
