@@ -163,7 +163,7 @@ display: none;
         background-repeat: no-repeat;
       }
     }
-   
+
   }
   .right{
     width: 60%;
@@ -205,10 +205,10 @@ display: none;
         option[value=""][disabled] {
           display: none;
         }
-       
+
         input,select,.choose-file-container{
           border: 1.49px solid #CECECE;
-          border-radius: 2px;   
+          border-radius: 2px;
           height: 40px;
           &::placeholder{
             font-family: Open Sans;
@@ -241,12 +241,12 @@ display: none;
       flex-direction: column;
       align-items: center;
       flex: 1;
-    
+
       @media (max-width: 768px) {
         font-size: 12px;
       }
     }
-    
+
     .stepper-item::before {
       position: absolute;
       content: "";
@@ -256,7 +256,7 @@ display: none;
       left: -50%;
       z-index: 2;
     }
-    
+
     .stepper-item::after {
       position: absolute;
       content: "";
@@ -266,7 +266,7 @@ display: none;
       left: 50%;
       z-index: 2;
     }
-    
+
     .stepper-item .step-counter {
       position: relative;
       z-index: 5;
@@ -279,7 +279,7 @@ display: none;
       background: #ccc;
       margin-bottom: 6px;
     }
-    
+
     .stepper-item.active {
       .step-counter{
         background: #009B87;
@@ -292,11 +292,11 @@ display: none;
       background: #6F6F6F;
       cursor: pointer;
     }
-    
+
     // .stepper-item.completed .step-counter {
     //   background-color: #4bb543;
     // }
-    
+
     // .stepper-item.completed::after {
     //   position: absolute;
     //   content: "";
@@ -306,14 +306,14 @@ display: none;
     //   left: 50%;
     //   z-index: 3;
     // }
-    
+
     .stepper-item:first-child::before {
       content: none;
     }
     .stepper-item:last-child::after {
       content: none;
     }
-    
+
   }
 }
 .personalInfo{
@@ -342,7 +342,7 @@ display: none;
       }
       input,select{
         height: 35px !important;
-        
+
       }
       .fields{
         flex-direction: column !important;
@@ -361,6 +361,10 @@ display: none;
         .mx-2{
           height: 27px !important;
         }
+        button:disabled{
+          cursor: not-allowed;
+          background: gray;
+        }
       }
     }
     .personalInfo{
@@ -371,7 +375,7 @@ display: none;
           display: flex;
           flex-direction: column;
           width: 100% !important;
-          
+
           .item{
             width: 100% !important;
             margin-top: 10px !important;

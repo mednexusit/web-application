@@ -5,7 +5,7 @@
         <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
       </div>
       <p class="mt-4 mb-0">
-        Readily source and screen candidates using intelligent candidate 
+        Readily source and screen candidates using intelligent candidate
         matching and AI-Enabled Talent Acquisition solution.
       </p>
       <div class="vendor-bottom text-center">
@@ -200,7 +200,7 @@
               </div>
             </div>
           </div>
-         
+
           <!-- <div class="fields">
             <label for="">Phone:</label>
             <input
@@ -528,7 +528,7 @@
             <div class="field d-flex">
               <div class="item">
                 <input type="text" placeholder="Topic" formControlName="topic" />
-  
+
                 <div
                   *ngIf="
                     speakerInfo.get('topic').invalid &&
@@ -710,7 +710,7 @@
               </div>
             </div>
             <div class="fieldsWrappper d-flex my-3">
-              
+
               <div class="fields">
                 <label for="">Contact Phone<span class="reruired-form-field">*</span></label>
                 <input
@@ -885,25 +885,25 @@
             <div class="fieldsWrappper d-flex my-3">
               <div class="fields" style="width: 32.5%;">
                 <label for="">PAN Number<span class="reruired-form-field">*</span></label>
-  
+
                 <input
                   type="text"
                   placeholder="PAN Card"
-                  formControlName="pan"
+                  formControlName="panno"
                   class="w-100"
                   [class.valid]="
-                    paymentInfo.get('pan').valid &&
-                    (paymentInfo.get('pan').dirty || paymentInfo.get('pan').touched)
+                    paymentInfo.get('panno').valid &&
+                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
                   "
                   [class.invalid]="
-                    paymentInfo.get('pan').invalid &&
-                    (paymentInfo.get('pan').dirty || paymentInfo.get('pan').touched)
+                    paymentInfo.get('panno').invalid &&
+                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
                   "
                 />
                 <div
                   *ngIf="
-                    paymentInfo.get('pan').invalid &&
-                    (paymentInfo.get('pan').dirty || paymentInfo.get('pan').touched)
+                    paymentInfo.get('panno').invalid &&
+                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
                   "
                   class="error"
                 >
