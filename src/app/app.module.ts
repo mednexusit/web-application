@@ -25,7 +25,7 @@ import {NgxEditorModule} from 'ngx-editor'
     BrowserAnimationsModule,
   ],
   providers: [
-    {provide:LocationStrategy,useClass:PathLocationStrategy},
+    {provide:LocationStrategy,useClass:HashLocationStrategy},
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

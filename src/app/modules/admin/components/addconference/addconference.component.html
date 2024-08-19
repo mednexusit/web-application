@@ -47,7 +47,7 @@
     hidden
     (change)="onFileSelection($event)"
   />
-  <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea col col-lg-12 col-sm-6 col-md-6" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
+  <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
   </div>
 </div>
   <div class="content">
