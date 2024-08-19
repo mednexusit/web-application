@@ -244,6 +244,9 @@
       }
     }
   }
+  .prevnextBtns{
+    height: auto !important;
+  }
 }
 .middle-swiper:has(#slide1:checked) .dot1,
 .middle-swiper:has(#slide2:checked) .dot2,
