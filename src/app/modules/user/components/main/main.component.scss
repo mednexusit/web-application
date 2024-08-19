@@ -245,3 +245,8 @@
     }
   }
 }
+.middle-swiper:has(#slide1:checked) .dot1,
+.middle-swiper:has(#slide2:checked) .dot2,
+.middle-swiper:has(#slide3:checked) .dot3 {
+  background: #fff;
+}
