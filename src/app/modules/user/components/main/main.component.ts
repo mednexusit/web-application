@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ThememanageService } from '../../theme/thememanage.service';
 import { SharedService } from '../../../../shared/shared.service';
 
@@ -7,21 +7,42 @@ import { SharedService } from '../../../../shared/shared.service';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent implements OnInit{
-  icons = ['fa-solid fa-home', 'fa-solid fa-star', 'fa-solid fa-heart', 'fa-solid fa-user', 'fa-solid fa-search', ' fa-solid fa-gear', 'fa-solid fa-info', 'fa-solid fa-circle-h', 'fa-solid fa-lock', 'fa-solid fa-circle-check'];
-  displayedIcons:any = [];
+export class MainComponent implements OnInit {
+  icons = [
+    'fa-solid fa-home',
+    'fa-solid fa-star',
+    'fa-solid fa-heart',
+    'fa-solid fa-user',
+    'fa-solid fa-search',
+    ' fa-solid fa-gear',
+    'fa-solid fa-info',
+    'fa-solid fa-circle-h',
+    'fa-solid fa-lock',
+    'fa-solid fa-circle-check',
+  ];
+  displayedIcons: any = [];
   startIndex = 0;
   iconsToShow = 10;
+  screenWidth: any;
 
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    this.iconsToShow = this.screenWidth <= 768 ? 4 : 10;
     this.updateDisplayedIcons();
   }
 
-  constructor(
-
-  ) {
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateIconsToShow();
+    this.updateDisplayedIcons();
   }
+
+  updateIconsToShow() {
+    this.screenWidth = window.innerWidth;
+    this.iconsToShow = this.screenWidth <= 768 ? 4 : 10; // Adjust the screen width threshold as needed
+  }
+
+  constructor() {}
   categories: any = [
     { name: 'My Profile', value: 'profile', icon: 'fa-solid fa-user catIcon' },
     {
@@ -53,12 +74,15 @@ export class MainComponent implements OnInit{
   updateDisplayedIcons() {
     this.displayedIcons = [];
     for (let i = 0; i < this.iconsToShow; i++) {
-      this.displayedIcons.push(this.icons[(this.startIndex + i) % this.icons.length]);
+      this.displayedIcons.push(
+        this.icons[(this.startIndex + i) % this.icons.length]
+      );
     }
   }
 
   prev() {
-    this.startIndex = (this.startIndex - 1 + this.icons.length) % this.icons.length;
+    this.startIndex =
+      (this.startIndex - 1 + this.icons.length) % this.icons.length;
     this.updateDisplayedIcons();
   }
 

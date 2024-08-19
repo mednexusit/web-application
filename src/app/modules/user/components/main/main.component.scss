@@ -1,175 +1,3 @@
-// .main-wrapper{
-//   background: var(--overlay-color);
-//   height: 100%;
-//   width: 100%;
-//   display: flex;
-//   padding: 2vw;
-//   .left-section{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-//     .categories{
-//       display:flex;
-//       flex-direction: column;
-//       .category{
-//         background: #fff;
-//         margin-top: 7px;
-//         border-bottom-right-radius: 5px;
-//         border-top-right-radius: 5px;
-//         box-shadow: 0px 3px 0px 0px #000;
-//         position: relative;
-//         display: flex;
-//         height: 35px;
-//         align-items: center;
-//         width: 20vw;
-//         cursor: pointer;
-//         .rect{
-//           height: 100%;
-//           width: 10px;
-//           background: var(--rect-color);
-//         }
-//         .catIcon{
-//           margin: 0px 10px;
-//           color: var(--rect-color);
-//         }
-//         .link{
-//           text-decoration: none;
-//           span{
-//             color: #000;
-//             text-align: center;
-//             text-transform: uppercase;
-//             font-family: Roboto;
-//           }
-//         }
-//       }
-
-//     }
-//   }
-//   .right-section{
-//     display: flex;
-//     flex-direction: column;
-//     height: 100%;
-//     .top-swiper{
-//       height: 100px;
-//       width: 100%;
-//       display: block;
-//     }
-//     .middle-swiper{
-//       display: flex;
-//       height: 400px;
-//       width: 100%;
-//       justify-content: center;
-//       margin-top: 1.2vw;
-//     }
-
-//   }
-// }
-
-// .slider-container {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-top: 10px;
-// }
-
-// .icons-wrapper {
-//   display: flex;
-//   overflow: hidden;
-// }
-
-// .icon-swiper {
-//   flex: 0 0 auto;
-//   width: 50px; /* Adjust as needed */
-//   text-align: center;
-//   height: 5vw;
-//   width: 5vw;
-//   background: #fff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 5px;
-//   transition: all 0.3s linear;
-//   i{
-//     font-size: 2.2vw;
-//     color: var(--rect-color);
-//   }
-// }
-// .prevnextBtns{
-//   border: none;
-//   outline: none;
-//   background: transparent;
-//   height: 35px;
-//   width: 35px;
-//   img{
-//     object-fit: scale-down;
-//     height: 100%;
-//     width: 100%;
-//   }
-// }
-// .imageArea{
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-start;
-//   transition: all 0.3s linear;
-//   height: 22vw;
-//   width: 65vw;
-//   .item{
-//     height: 22vw;
-//     width: 65vw;
-//     video{
-//       height: 22vw;
-//       width: 65vw;
-//       object-fit: cover;
-//     }
-//     img{
-//       width: 65vw;
-//       height: 22vw;
-//       object-fit: cover;
-//     }
-//   }
-
-// }
-// .labels{
-//   position: absolute;
-//   bottom: 10px;
-//   left: 45%;
-//   display: flex;
-//   justify-content: space-between;
-// }
-// label{
-//   height: 1.3vw;
-//   width: 1.3vw;
-//   border: 1px solid gray;
-//   margin: 3px;
-//   border-radius: 5px;
-//   cursor: pointer;
-// }
-// #slide1:checked ~ .imageArea{
-//   transform: translateX(0%);
-// }
-// #slide2:checked ~ .imageArea{
-//   transform: translateX(-100%);
-// }
-// #slide3:checked ~ .imageArea{
-//   transform: translateX(-200%);
-// }
-// #slide1:checked ~ .labels .dot1{
-//   background: var(--dots-color);
-// }
-// #slide2:checked ~ .labels .dot2{
-//   background: var(--dots-color);
-// }
-// #slide3:checked ~ .labels .dot3{
-//   background: var(--dots-color);
-// }
-// .wrapper{
-//   height: 25vw;
-//   width: 55vw;
-//   overflow: hidden;
-//   display: block;
-//   position: relative;
-// }
 .main-wrapper{
   .top-section{
     width: 100%;
@@ -354,13 +182,13 @@
           transform: translateX(-200%);
         }
         #slide1:checked ~ .labels .dot1{
-          background: var(--dots-color);
+          background: #fff;
         }
         #slide2:checked ~ .labels .dot2{
-          background: var(--dots-color);
+          background: #fff;
         }
         #slide3:checked ~ .labels .dot3{
-          background: var(--dots-color);
+          background: #fff;
         }
       }
   }
@@ -381,6 +209,7 @@
 
     }
     .right-section{
+      width: 100% !important;
       order: 1;
       height: auto !important;
       .top-swiper{
@@ -391,6 +220,27 @@
           width: 6.5vw !important;
         }
 
+      }
+      .middle-swiper{
+        .wrapper{
+          width: 100% !important;
+          .imageArea{
+            width: 100% !important;
+            .item{
+              width: 100% !important;
+              video{
+                width: 100% !important;
+                min-width: 100vw !important;
+                max-width: 100vw !important;
+              }
+              img{
+                width: 100% !important;
+                min-width: 100vw !important;
+                max-width: 100vw !important;
+              }
+            }
+          }
+        }
       }
     }
   }
