@@ -371,3 +371,27 @@
     height: 25%;
   }
 }
+@media only screen and (max-width: 600px) {
+  .top-section{
+    height: auto !important;
+    flex-direction: column;
+    .left-section{
+      order: 2;
+      height: auto !important;
+
+    }
+    .right-section{
+      order: 1;
+      height: auto !important;
+      .top-swiper{
+        width: 100%;
+        height: auto;
+        .icon-swiper{
+          height: 6.5vw !important;
+          width: 6.5vw !important;
+        }
+
+      }
+    }
+  }
+}

@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
           Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
         ]),
       ],
-      pan: ['', Validators.compose([Validators.required,Validators.pattern('/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/')])],
+      panno: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')])],
       branchaddress: ['', Validators.required],
     });
   }
@@ -210,6 +210,8 @@ export class HomeComponent implements OnInit {
       formData.append('file', fileData, fileData.name);
       this.sharedServ.uploadFileCommon(formData).subscribe({
         next: (data: any) => {
+          console.log("test data",data);
+          
           if (data.img) {
             this.showCMEPoints = true;
             this.toast.success(

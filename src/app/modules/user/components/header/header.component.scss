@@ -180,5 +180,24 @@ header{
   header{
     height: 10vw;
     background: #E9E9E9;
+    padding: 0 5vw;
+    .logo{
+      width: 40vw;
+      top: 0vw;
+      left: 0vw;
+    }
+    .searchArea{
+      width: 5vw;
+      border: none;
+      margin-top: 1vw;
+    }
+    .actions{
+      ul{
+        li{
+          height: 5vw;
+          width: 5vw;
+        }
+      }
+    }
   }
 }
