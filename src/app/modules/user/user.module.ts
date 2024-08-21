@@ -16,6 +16,7 @@ import { MainComponent } from './components/main/main.component';
 import { CommunitiesComponent } from './components/communities/communities.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { FollowusComponent } from './components/followus/followus.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     MainComponent,
     CommunitiesComponent,
     EducationComponent,
-    ContactusComponent
+    ContactusComponent,
+    FollowusComponent
   ],
   imports: [
     CommonModule,
