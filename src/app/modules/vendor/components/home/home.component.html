@@ -1,12 +1,14 @@
 <div class="vendor-container w-100 h-100 d-flex">
   <div class="left p-4 pb-0">
     <div class="left-container w-100">
-      <div class="text-center">
+      <div class="text-center w-100">
         <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
       </div>
       <p class="mt-4 mb-0">
-        Readily source and screen candidates using intelligent candidate
-        matching and AI-Enabled Talent Acquisition solution.
+        Showcase your conference on Mednexus and reach a broad network of healthcare professionals. 
+        Our platform ensures your event gains the attention it deserves, helping you connect with 
+        passionate professionals eager to learn and grow. Maximize your conference's impact by joining 
+        a community dedicated to advancing medical knowledge.
       </p>
       <div class="vendor-bottom text-center">
         <!-- <img src="../../../../../assets/vendor-bottom.png" alt="Vendor bottom"> -->
@@ -56,7 +58,7 @@
               <input
                 type="text"
                 formControlName="name"
-                placeholder="Name"
+                placeholder="Enter Name"
                 [class.valid]="
                   personalInfo.get('name').valid &&
                   (personalInfo.get('name').dirty ||
@@ -80,11 +82,11 @@
               </div>
             </div>
             <div class="right-data d-flex flex-column w-50">
-                <label for="">Phone<span class="reruired-form-field">*</span></label>
+                <label for="">Phone Number<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
                   formControlName="phoneNumber"
-                  placeholder="Phone"
+                  placeholder="Enter Phone Number"
                   [class.valid]="
                     personalInfo.get('phoneNumber').valid &&
                     (personalInfo.get('phoneNumber').dirty ||
@@ -113,7 +115,7 @@
             <input
               type="text"
               formControlName="email"
-              placeholder="Email"
+              placeholder="Enter Email"
               [class.valid]="
                 personalInfo.get('email').valid &&
                 (personalInfo.get('email').dirty ||
@@ -142,7 +144,7 @@
               <input
                 type="number"
                 formControlName="age"
-                placeholder="Age"
+                placeholder="Enter Age"
                 [class.valid]="
                   personalInfo.get('age').valid &&
                   (personalInfo.get('age').dirty || personalInfo.get('age').touched)
@@ -233,7 +235,7 @@
             <input
               type="text"
               formControlName="address"
-              placeholder="Address"
+              placeholder="Enter Address"
               [class.valid]="
                 personalInfo.get('address').valid &&
                 (personalInfo.get('address').dirty ||
@@ -268,7 +270,7 @@
             <div class="fields w-100 d-flex my-3">
               <div class="left-data d-flex flex-column w-50">
                 <label for="">Event Name<span class="reruired-form-field">*</span></label>
-                <input type="text" placeholder="Event Name" formControlName="eventname" [class.valid]="
+                <input type="text" placeholder="Enter Event Name" formControlName="eventname" [class.valid]="
                                   conferenceInfo.get('eventname').valid &&
                                   (conferenceInfo.get('eventname').dirty ||
                                     conferenceInfo.get('eventname').touched)
@@ -389,7 +391,7 @@
                 <input
                   type="text"
                   formControlName="place"
-                  placeholder="Place"
+                  placeholder="Enter Place"
                   [class.valid]="
                     conferenceInfo.get('place').valid &&
                     (conferenceInfo.get('place').dirty ||
@@ -419,7 +421,7 @@
               <input
                 type="number"
                 formControlName="pin"
-                placeholder="Pin"
+                placeholder="Enter Pin"
                 [class.valid]="
                   conferenceInfo.get('pin').valid &&
                   (conferenceInfo.get('pin').dirty ||
@@ -447,7 +449,7 @@
               <input
                 type="text"
                 formControlName="venu"
-                placeholder="Venue"
+                placeholder="Enter Venue"
                 [class.valid]="
                   conferenceInfo.get('venu').valid &&
                   (conferenceInfo.get('venu').dirty ||
@@ -485,7 +487,7 @@
             <input
               type="text"
               formControlName="speakerinfo"
-              placeholder="Speaker Info"
+              placeholder="Enter Speaker Info"
               [class.valid]="
                 speakerInfo.get('speakerinfo').valid &&
                 (speakerInfo.get('speakerinfo').dirty ||
@@ -625,10 +627,10 @@
           <div class="vendorInfo w-100">
             <div class="fieldsWrappper d-flex my-3">
               <div class="fields">
-                <label for="">Vendor Name<span class="reruired-form-field">*</span></label>
+                <label for="">Conference Name<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
-                  placeholder="Vendor Name"
+                  placeholder="Conference Name"
                   formControlName="vendorname"
                   [class.valid]="
                     paymentInfo.get('vendorname').valid &&
