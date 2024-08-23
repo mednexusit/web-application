@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   padding: 0 10px;
+  margin-bottom: 50px;
   button {
     padding: 0px 3vw;
     height: 2.5vw;
@@ -26,7 +27,21 @@
     margin-top: 1px;
   }
 }
-
+.footer{
+    background: #f5f5f5;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  p{
+    font-family: Open Sans;
+    font-size: 17px;
+    font-weight: 400;
+    color: #a1a1a1;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+  }
+}
 // .personalInfo {
 //   animation: appear 0.5s linear;
 //   .fields {
@@ -137,7 +152,7 @@ display: none;
   .left{
     width: 40%;
     height: 100%;
-    background-image: url('../../../../../assets/vendor-bg.png');
+    background-image: url('../../../../../assets/vendor-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     .left-container{
@@ -331,7 +346,30 @@ display: none;
     }
   }
 }
+
 @media only screen and (max-width: 600px) {
+  .only-mobile{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px !important;
+    background: #009B87;
+    .stepper-wrapper{
+      margin-bottom: 0 !important;
+    }
+    .logo{
+      img{
+        width: 32vw;
+        height: 10vw;
+      }
+    }
+  }
+  .footer{
+    p{
+      font-size: 12px;
+    }
+  }
   .vendor-container{
     .left{
       display: none;
@@ -340,9 +378,18 @@ display: none;
       width: 100% !important;
       h3{
         font-size: 3vw !important;
+        position: absolute;
+        right: 7vw;
+        top: 3vw;
+        color: #FFFFFF !important;
       }
       h6{
         font-size: 1.6vw !important;
+        // position: absolute;
+        // right: 7vw;
+        // top: 7vw;
+        // color: #FFFFFF !important;
+        display: none;
       }
       label{
         font-size: 14px !important;
@@ -360,13 +407,13 @@ display: none;
         }
       }
       .navigation{
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         button{
           height: 25px !important;
           font-size: 14px !important;
         }
         .mx-2{
-          height: 27px !important;
+          height: 23px !important;
         }
         button:disabled{
           cursor: not-allowed;
