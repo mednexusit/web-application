@@ -1,12 +1,13 @@
 footer{
 width:100%;
-min-height: 7vw;
+min-height: 10vw;
 background: transparent;
-position: fixed;
+// position: fixed;
 bottom: 0;
 display: flex;
 justify-content: center;
 align-items: flex-end;
+height: 100%;
 }
 .bottom-navigation{
   margin-bottom: 5px;
@@ -50,4 +51,31 @@ align-items: flex-end;
   top: -10px;
   // left: 2.5vw;
   left: calc((100% - 87vw) / 2);
+}
+@media only screen and (max-width: 600px) {
+  footer{
+    margin-bottom: 3vw !important;
+    .bottom-navigation{
+      .menus{
+        flex-wrap: wrap !important;
+      .items-anchor-tag{
+        a{
+          height: 12vw !important;
+          width: 21vw !important;
+          margin: 2vw;
+          border-radius: 4px !important;
+          .icon{
+            img{
+              height: 5.5vw !important;
+              width: 5.5vw !important;
+            }
+          }
+          span{
+            font-size: 2.8vw;
+          }
+        }
+      }
+      }
+    }
+  }
 }
