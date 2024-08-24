@@ -1,968 +1,983 @@
-<div class="vendor-container w-100 h-100 d-flex">
-  <div class="left p-4 pb-0">
-    <div class="left-container w-100">
-      <div class="text-center">
-        <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
-      </div>
-      <p class="mt-4 mb-0">
-        Readily source and screen candidates using intelligent candidate
-        matching and AI-Enabled Talent Acquisition solution.
-      </p>
-      <div class="vendor-bottom text-center">
-        <!-- <img src="../../../../../assets/vendor-bottom.png" alt="Vendor bottom"> -->
-      </div>
-    </div>
-  </div>
-  <div class="right">
-    <div class="stepper-wrapper">
-      <!-- <div class="stepper-item ">
-        <div class="step-counter" (click)="changeCurrentStep(1)"
-        [class.active]="currentStep === 1">
-          1
+<div class="vendor-container w-100 h-100 position-relative">
+  <div class="w-100 d-flex w-100 h-100">
+    <div class="left p-4 pb-0">
+      <div class="left-container w-100">
+        <div class="text-center w-100">
+          <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
         </div>
-      </div> -->
-      <!-- <div class="stepper-item ">
-        <div class="step-counter" (click)="changeCurrentStep(2)"
-        [class.active]="currentStep === 2">2</div>
-      </div> -->
-      <div class="stepper-item " (click)="changeCurrentStep(1)"
-      [class.active]="currentStep === 1">
-        <div class="step-counter">1</div>
-      </div>
-      <div class="stepper-item " (click)="changeCurrentStep(2)"
-      [class.active]="currentStep === 2">
-        <div class="step-counter">2</div>
-      </div>
-      <div class="stepper-item " (click)="changeCurrentStep(3)"
-      [class.active]="currentStep === 3">
-        <div class="step-counter">3</div>
-      </div>
-      <div class="stepper-item"  (click)="changeCurrentStep(4)"
-      [class.active]="currentStep === 4">
-        <div class="step-counter">4</div>
+        <p class="mt-4 mb-0">
+          Showcase your conference on Mednexus and reach a broad network of healthcare professionals. 
+          Our platform ensures your event gains the attention it deserves, helping you connect with 
+          passionate professionals eager to learn and grow. Maximize your conference's impact by joining 
+          a community dedicated to advancing medical knowledge.
+        </p>
+        <div class="vendor-bottom text-center">
+          <!-- <img src="../../../../../assets/vendor-bottom.png" alt="Vendor bottom"> -->
+        </div>
       </div>
     </div>
-    <div class="content-part">
-      <div *ngIf="currentStep === 1">
-        <h3>Personal Information</h3>
-        <h6>Welcome! Please enter your credentials</h6>
-        <form
-          [formGroup]="personalInfo"
-          class="personalInfo w-100"
-        >
-          <div class="fields w-100 d-flex my-3">
-            <div class="left-data d-flex flex-column w-50">
-              <label for="">Name<span class="reruired-form-field">*</span></label>
-              <input
-                type="text"
-                formControlName="name"
-                placeholder="Name"
-                [class.valid]="
-                  personalInfo.get('name').valid &&
-                  (personalInfo.get('name').dirty ||
-                    personalInfo.get('name').touched)
-                "
-                [class.invalid]="
-                  personalInfo.get('name').invalid &&
-                  (personalInfo.get('name').dirty ||
-                    personalInfo.get('name').touched)
-                "
-              />
-              <div
-                *ngIf="
-                  personalInfo.get('name').invalid &&
-                  (personalInfo.get('name').dirty ||
-                    personalInfo.get('name').touched)
-                "
-                class="error"
-              >
-                Name is required.
-              </div>
-            </div>
-            <div class="right-data d-flex flex-column w-50">
-                <label for="">Phone<span class="reruired-form-field">*</span></label>
+    <div class="right">
+      <div class="only-mobile d-none">
+        <div class="logo px-3">
+          <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
+        </div>
+        <div class="right-content-data">
+
+        </div>
+      </div>
+      <div class="stepper-wrapper">
+        <!-- <div class="stepper-item ">
+          <div class="step-counter" (click)="changeCurrentStep(1)"
+          [class.active]="currentStep === 1">
+            1
+          </div>
+        </div> -->
+        <!-- <div class="stepper-item ">
+          <div class="step-counter" (click)="changeCurrentStep(2)"
+          [class.active]="currentStep === 2">2</div>
+        </div> -->
+        <div class="stepper-item " (click)="changeCurrentStep(1)"
+        [class.active]="currentStep === 1">
+          <div class="step-counter">1</div>
+        </div>
+        <div class="stepper-item " (click)="changeCurrentStep(2)"
+        [class.active]="currentStep === 2">
+          <div class="step-counter">2</div>
+        </div>
+        <div class="stepper-item " (click)="changeCurrentStep(3)"
+        [class.active]="currentStep === 3">
+          <div class="step-counter">3</div>
+        </div>
+        <div class="stepper-item"  (click)="changeCurrentStep(4)"
+        [class.active]="currentStep === 4">
+          <div class="step-counter">4</div>
+        </div>
+      </div>
+      <div class="content-part">
+        <div *ngIf="currentStep === 1">
+          <h3>Personal Information</h3>
+          <h6>Welcome! Please enter your credentials</h6>
+          <form
+            [formGroup]="personalInfo"
+            class="personalInfo w-100"
+          >
+            <div class="fields w-100 d-flex my-3">
+              <div class="left-data d-flex flex-column w-50">
+                <label for="">Name<span class="reruired-form-field">*</span></label>
                 <input
                   type="text"
-                  formControlName="phoneNumber"
-                  placeholder="Phone"
+                  formControlName="name"
+                  placeholder="Enter Name"
                   [class.valid]="
-                    personalInfo.get('phoneNumber').valid &&
-                    (personalInfo.get('phoneNumber').dirty ||
-                      personalInfo.get('phoneNumber').touched)
+                    personalInfo.get('name').valid &&
+                    (personalInfo.get('name').dirty ||
+                      personalInfo.get('name').touched)
                   "
                   [class.invalid]="
-                    personalInfo.get('phoneNumber').invalid &&
-                    (personalInfo.get('phoneNumber').dirty ||
-                      personalInfo.get('phoneNumber').touched)
+                    personalInfo.get('name').invalid &&
+                    (personalInfo.get('name').dirty ||
+                      personalInfo.get('name').touched)
                   "
                 />
                 <div
                   *ngIf="
-                    personalInfo.get('phoneNumber').invalid &&
-                    (personalInfo.get('phoneNumber').dirty ||
-                      personalInfo.get('phoneNumber').touched)
+                    personalInfo.get('name').invalid &&
+                    (personalInfo.get('name').dirty ||
+                      personalInfo.get('name').touched)
                   "
                   class="error"
                 >
-                  Enter valid phome number.
-                </div>
-            </div>
-          </div>
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label for="">Email<span class="reruired-form-field">*</span></label>
-            <input
-              type="text"
-              formControlName="email"
-              placeholder="Email"
-              [class.valid]="
-                personalInfo.get('email').valid &&
-                (personalInfo.get('email').dirty ||
-                  personalInfo.get('email').touched)
-              "
-              [class.invalid]="
-                personalInfo.get('email').invalid &&
-                (personalInfo.get('email').dirty ||
-                  personalInfo.get('email').touched)
-              "
-            />
-            <div
-              *ngIf="
-                personalInfo.get('email').invalid &&
-                (personalInfo.get('email').dirty ||
-                  personalInfo.get('email').touched)
-              "
-              class="error"
-            >
-              Enter valid email.
-            </div>
-          </div>
-          <div class="fields w-100 d-flex my-3">
-            <div class="left-data d-flex flex-column w-50">
-              <label for="">Age<span class="reruired-form-field">*</span></label>
-              <input
-                type="number"
-                formControlName="age"
-                placeholder="Age"
-                [class.valid]="
-                  personalInfo.get('age').valid &&
-                  (personalInfo.get('age').dirty || personalInfo.get('age').touched)
-                "
-                [class.invalid]="
-                  personalInfo.get('age').invalid &&
-                  (personalInfo.get('age').dirty || personalInfo.get('age').touched)
-                "
-              />
-              <div
-                *ngIf="
-                  personalInfo.get('age').invalid &&
-                  (personalInfo.get('age').dirty || personalInfo.get('age').touched)
-                "
-                class="error"
-              >
-                Age is required and must be number.
-              </div>
-            </div>
-            <div class="right-data d-flex flex-column w-50">
-              <label for="">Gender:</label>
-              <select
-                name=""
-                id="sex"
-                required
-                formControlName="gender"
-                class="select"
-                [class.valid]="
-                  personalInfo.get('gender').valid &&
-                  (personalInfo.get('gender').dirty ||
-                    personalInfo.get('gender').touched)
-                "
-                [class.invalid]="
-                  personalInfo.get('gender').invalid &&
-                  (personalInfo.get('gender').dirty ||
-                    personalInfo.get('gender').touched)
-                "
-              >
-                <option value="" selected class="option">
-                  ---Select Gender---
-                </option>
-                <option value="1" class="option">Male</option>
-                <option value="0" class="option">Female</option>
-                <option value="other" class="option">Other</option>
-              </select>
-              <div
-                *ngIf="
-                  personalInfo.get('gender').invalid &&
-                  (personalInfo.get('gender').dirty ||
-                    personalInfo.get('gender').touched)
-                "
-                class="error"
-              >
-                Gender is required.
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="fields">
-            <label for="">Phone:</label>
-            <input
-              type="text"
-              formControlName="phoneNumber"
-              [class.valid]="
-                personalInfo.get('phoneNumber').valid &&
-                (personalInfo.get('phoneNumber').dirty ||
-                  personalInfo.get('phoneNumber').touched)
-              "
-              [class.invalid]="
-                personalInfo.get('phoneNumber').invalid &&
-                (personalInfo.get('phoneNumber').dirty ||
-                  personalInfo.get('phoneNumber').touched)
-              "
-            />
-            <div
-              *ngIf="
-                personalInfo.get('phoneNumber').invalid &&
-                (personalInfo.get('phoneNumber').dirty ||
-                  personalInfo.get('phoneNumber').touched)
-              "
-              class="error"
-            >
-              Enter valid phome number.
-            </div>
-          </div> -->
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label for="">Address<span class="reruired-form-field">*</span></label>
-            <input
-              type="text"
-              formControlName="address"
-              placeholder="Address"
-              [class.valid]="
-                personalInfo.get('address').valid &&
-                (personalInfo.get('address').dirty ||
-                  personalInfo.get('address').touched)
-              "
-              [class.invalid]="
-                personalInfo.get('address').invalid &&
-                (personalInfo.get('address').dirty ||
-                  personalInfo.get('address').touched)
-              "
-            />
-            <div
-              *ngIf="
-                personalInfo.get('address').invalid &&
-                (personalInfo.get('address').dirty ||
-                  personalInfo.get('address').touched)
-              "
-              class="error"
-            >
-              Address is required.
-            </div>
-          </div>
-        </form>
-      </div>
-      <div *ngIf="currentStep === 2">
-        <h3>Conference Information</h3>
-        <h6>Welcome! Please enter your credentials</h6>
-        <form
-          [formGroup]="conferenceInfo"
-          class="personalInfo w-100"
-        >
-            <div class="fields w-100 d-flex my-3">
-              <div class="left-data d-flex flex-column w-50">
-                <label for="">Event Name<span class="reruired-form-field">*</span></label>
-                <input type="text" placeholder="Event Name" formControlName="eventname" [class.valid]="
-                                  conferenceInfo.get('eventname').valid &&
-                                  (conferenceInfo.get('eventname').dirty ||
-                                    conferenceInfo.get('eventname').touched)
-                                " [class.invalid]="
-                                  conferenceInfo.get('eventname').invalid &&
-                                  (conferenceInfo.get('eventname').dirty ||
-                                    conferenceInfo.get('eventname').touched)
-                                " />
-                <div *ngIf="
-                                  conferenceInfo.get('eventname').invalid &&
-                                  (conferenceInfo.get('eventname').dirty ||
-                                    conferenceInfo.get('eventname').touched)
-                                " class="error">
-                  Event name is required.
+                  Name is required.
                 </div>
               </div>
               <div class="right-data d-flex flex-column w-50">
-                <label for="">Organised By<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  formControlName="organisedby"
-                  placeholder="Organised By"
-                  [class.valid]="
-                    conferenceInfo.get('organisedby').valid &&
-                    (conferenceInfo.get('organisedby').dirty ||
-                      conferenceInfo.get('organisedby').touched)
-                  "
-                  [class.invalid]="
-                    conferenceInfo.get('organisedby').invalid &&
-                    (conferenceInfo.get('organisedby').dirty ||
-                      conferenceInfo.get('organisedby').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    conferenceInfo.get('organisedby').invalid &&
-                    (conferenceInfo.get('organisedby').dirty ||
-                      conferenceInfo.get('organisedby').touched)
-                  "
-                  class="error"
-                >
-                  Organiser details is required.
-                </div>
+                  <label for="">Phone Number<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    formControlName="phoneNumber"
+                    placeholder="Enter Phone Number"
+                    [class.valid]="
+                      personalInfo.get('phoneNumber').valid &&
+                      (personalInfo.get('phoneNumber').dirty ||
+                        personalInfo.get('phoneNumber').touched)
+                    "
+                    [class.invalid]="
+                      personalInfo.get('phoneNumber').invalid &&
+                      (personalInfo.get('phoneNumber').dirty ||
+                        personalInfo.get('phoneNumber').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      personalInfo.get('phoneNumber').invalid &&
+                      (personalInfo.get('phoneNumber').dirty ||
+                        personalInfo.get('phoneNumber').touched)
+                    "
+                    class="error"
+                  >
+                    Enter valid phome number.
+                  </div>
               </div>
             </div>
             <div class="fields w-100 d-flex my-3 flex-column">
-              <label for="">Category<span class="reruired-form-field">*</span></label>
-              <select
-                name="category"
-                id="category"
-                required=""
-                formControlName="category"
-                class="select"
+              <label for="">Email<span class="reruired-form-field">*</span></label>
+              <input
+                type="text"
+                formControlName="email"
+                placeholder="Enter Email"
                 [class.valid]="
-                  conferenceInfo.get('category').valid &&
-                  (conferenceInfo.get('category').dirty ||
-                    conferenceInfo.get('category').touched)
+                  personalInfo.get('email').valid &&
+                  (personalInfo.get('email').dirty ||
+                    personalInfo.get('email').touched)
                 "
                 [class.invalid]="
-                  conferenceInfo.get('category').invalid &&
-                  (conferenceInfo.get('category').dirty ||
-                    conferenceInfo.get('category').touched)
+                  personalInfo.get('email').invalid &&
+                  (personalInfo.get('email').dirty ||
+                    personalInfo.get('email').touched)
                 "
-              >
-                <option value="" selected class="option">
-                  ---Select Category---
-                </option>
-                <option
-                  [value]="item.id"
-                  *ngFor="let item of categories"
-                  class="option"
-                >
-                  {{ item.name }}
-                </option>
-              </select>
+              />
               <div
                 *ngIf="
-                  conferenceInfo.get('category').invalid &&
-                  (conferenceInfo.get('category').dirty ||
-                    conferenceInfo.get('category').touched)
+                  personalInfo.get('email').invalid &&
+                  (personalInfo.get('email').dirty ||
+                    personalInfo.get('email').touched)
                 "
                 class="error"
               >
-                Category is required.
+                Enter valid email.
               </div>
             </div>
             <div class="fields w-100 d-flex my-3">
               <div class="left-data d-flex flex-column w-50">
-                <label for="">State<span class="reruired-form-field">*</span></label>
+                <label for="">Age<span class="reruired-form-field">*</span></label>
                 <input
-                  type="text"
-                  formControlName="state"
-                  placeholder="State"
+                  type="number"
+                  formControlName="age"
+                  placeholder="Enter Age"
                   [class.valid]="
-                    conferenceInfo.get('state').valid &&
-                    (conferenceInfo.get('state').dirty ||
-                      conferenceInfo.get('state').touched)
+                    personalInfo.get('age').valid &&
+                    (personalInfo.get('age').dirty || personalInfo.get('age').touched)
                   "
                   [class.invalid]="
-                    conferenceInfo.get('state').invalid &&
-                    (conferenceInfo.get('state').dirty ||
-                      conferenceInfo.get('state').touched)
+                    personalInfo.get('age').invalid &&
+                    (personalInfo.get('age').dirty || personalInfo.get('age').touched)
                   "
                 />
                 <div
                   *ngIf="
-                    conferenceInfo.get('state').invalid &&
-                    (conferenceInfo.get('state').dirty ||
-                      conferenceInfo.get('state').touched)
+                    personalInfo.get('age').invalid &&
+                    (personalInfo.get('age').dirty || personalInfo.get('age').touched)
                   "
                   class="error"
                 >
-                  State is required.
+                  Age is required and must be number.
                 </div>
               </div>
               <div class="right-data d-flex flex-column w-50">
-                <label for="">Place<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  formControlName="place"
-                  placeholder="Place"
+                <label for="">Gender:</label>
+                <select
+                  name=""
+                  id="sex"
+                  required
+                  formControlName="gender"
+                  class="select"
                   [class.valid]="
-                    conferenceInfo.get('place').valid &&
-                    (conferenceInfo.get('place').dirty ||
-                      conferenceInfo.get('place').touched)
+                    personalInfo.get('gender').valid &&
+                    (personalInfo.get('gender').dirty ||
+                      personalInfo.get('gender').touched)
                   "
                   [class.invalid]="
-                    conferenceInfo.get('place').invalid &&
-                    (conferenceInfo.get('place').dirty ||
-                      conferenceInfo.get('place').touched)
+                    personalInfo.get('gender').invalid &&
+                    (personalInfo.get('gender').dirty ||
+                      personalInfo.get('gender').touched)
                   "
-                />
+                >
+                  <option value="" selected class="option">
+                    ---Select Gender---
+                  </option>
+                  <option value="1" class="option">Male</option>
+                  <option value="0" class="option">Female</option>
+                  <option value="other" class="option">Other</option>
+                </select>
                 <div
                   *ngIf="
-                    conferenceInfo.get('place').invalid &&
-                    (conferenceInfo.get('place').dirty ||
-                      conferenceInfo.get('place').touched)
+                    personalInfo.get('gender').invalid &&
+                    (personalInfo.get('gender').dirty ||
+                      personalInfo.get('gender').touched)
                   "
                   class="error"
                 >
-                  Place is required.
+                  Gender is required.
                 </div>
               </div>
             </div>
-          <div class="fields w-100 d-flex my-3">
-            <div class="left-data d-flex flex-column w-50">
-              <label for="">Pin<span class="reruired-form-field">*</span></label>
-              <input
-                type="number"
-                formControlName="pin"
-                placeholder="Pin"
-                [class.valid]="
-                  conferenceInfo.get('pin').valid &&
-                  (conferenceInfo.get('pin').dirty ||
-                    conferenceInfo.get('pin').touched)
-                "
-                [class.invalid]="
-                  conferenceInfo.get('pin').invalid &&
-                  (conferenceInfo.get('pin').dirty ||
-                    conferenceInfo.get('pin').touched)
-                "
-              />
-              <div
-                *ngIf="
-                  conferenceInfo.get('pin').invalid &&
-                  (conferenceInfo.get('pin').dirty ||
-                    conferenceInfo.get('pin').touched)
-                "
-                class="error"
-              >
-                Pin is required.
-              </div>
-            </div>
-            <div class="right-data d-flex flex-column w-50">
-              <label for="">Venue<span class="reruired-form-field">*</span></label>
+
+            <!-- <div class="fields">
+              <label for="">Phone:</label>
               <input
                 type="text"
-                formControlName="venu"
-                placeholder="Venue"
+                formControlName="phoneNumber"
                 [class.valid]="
-                  conferenceInfo.get('venu').valid &&
-                  (conferenceInfo.get('venu').dirty ||
-                    conferenceInfo.get('venu').touched)
+                  personalInfo.get('phoneNumber').valid &&
+                  (personalInfo.get('phoneNumber').dirty ||
+                    personalInfo.get('phoneNumber').touched)
                 "
                 [class.invalid]="
-                  conferenceInfo.get('venu').invalid &&
-                  (conferenceInfo.get('venu').dirty ||
-                    conferenceInfo.get('venu').touched)
+                  personalInfo.get('phoneNumber').invalid &&
+                  (personalInfo.get('phoneNumber').dirty ||
+                    personalInfo.get('phoneNumber').touched)
                 "
               />
               <div
                 *ngIf="
-                  conferenceInfo.get('venu').invalid &&
-                  (conferenceInfo.get('venu').dirty ||
-                    conferenceInfo.get('venu').touched)
+                  personalInfo.get('phoneNumber').invalid &&
+                  (personalInfo.get('phoneNumber').dirty ||
+                    personalInfo.get('phoneNumber').touched)
                 "
                 class="error"
               >
-                Pin is required.
+                Enter valid phome number.
               </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div *ngIf="currentStep === 3">
-        <h3>Speaker and Session Details</h3>
-        <h6>Welcome! Please enter your credentials</h6>
-        <form
-          [formGroup]="speakerInfo"
-          class="personalInfo speakerInfoStyles w-100"
-        >
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label for="">Speaker Info<span class="reruired-form-field">*</span></label>
-            <input
-              type="text"
-              formControlName="speakerinfo"
-              placeholder="Speaker Info"
-              [class.valid]="
-                speakerInfo.get('speakerinfo').valid &&
-                (speakerInfo.get('speakerinfo').dirty ||
-                  speakerInfo.get('speakerinfo').touched)
-              "
-              [class.invalid]="
-                speakerInfo.get('speakerinfo').invalid &&
-                (speakerInfo.get('speakerinfo').dirty ||
-                  speakerInfo.get('speakerinfo').touched)
-              "
-            />
-            <div
-              *ngIf="
-                speakerInfo.get('speakerinfo').invalid &&
-                (speakerInfo.get('speakerinfo').dirty ||
-                  speakerInfo.get('speakerinfo').touched)
-              "
-              class="error"
-            >
-              Speaker Info is required.
-            </div>
-          </div>
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label>Session Details<span class="reruired-form-field">*</span></label>
-            <div class="choose-file-container">
-              <label for="">Upload PDF/JPG:</label>
-              <label for="sessionname" class="sessionnameclass">Choose File</label>
+            </div> -->
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label for="">Address<span class="reruired-form-field">*</span></label>
               <input
-                type="file"
-                id="sessionname"
-                class="session_name"
-                placeholder="Session Details"
-                accept=".pdf, .jpg, .jpeg"
-                (change)="handleSessionNameFile($event)"
+                type="text"
+                formControlName="address"
+                placeholder="Enter Address"
+                [class.valid]="
+                  personalInfo.get('address').valid &&
+                  (personalInfo.get('address').dirty ||
+                    personalInfo.get('address').touched)
+                "
+                [class.invalid]="
+                  personalInfo.get('address').invalid &&
+                  (personalInfo.get('address').dirty ||
+                    personalInfo.get('address').touched)
+                "
               />
+              <div
+                *ngIf="
+                  personalInfo.get('address').invalid &&
+                  (personalInfo.get('address').dirty ||
+                    personalInfo.get('address').touched)
+                "
+                class="error"
+              >
+                Address is required.
+              </div>
             </div>
-          </div>
-          <div class="fields d-flex flex-column my-3">
-            <label for="">Enter Manually<span class="reruired-form-field">*</span></label>
-            <div class="field d-flex">
-              <div class="item">
-                <input type="text" placeholder="Topic" formControlName="topic" />
-
+          </form>
+        </div>
+        <div *ngIf="currentStep === 2">
+          <h3>Conference Information</h3>
+          <h6>Welcome! Please enter your credentials</h6>
+          <form
+            [formGroup]="conferenceInfo"
+            class="personalInfo w-100"
+          >
+              <div class="fields w-100 d-flex my-3">
+                <div class="left-data d-flex flex-column w-50">
+                  <label for="">Event Name<span class="reruired-form-field">*</span></label>
+                  <input type="text" placeholder="Enter Event Name" formControlName="eventname" [class.valid]="
+                                    conferenceInfo.get('eventname').valid &&
+                                    (conferenceInfo.get('eventname').dirty ||
+                                      conferenceInfo.get('eventname').touched)
+                                  " [class.invalid]="
+                                    conferenceInfo.get('eventname').invalid &&
+                                    (conferenceInfo.get('eventname').dirty ||
+                                      conferenceInfo.get('eventname').touched)
+                                  " />
+                  <div *ngIf="
+                                    conferenceInfo.get('eventname').invalid &&
+                                    (conferenceInfo.get('eventname').dirty ||
+                                      conferenceInfo.get('eventname').touched)
+                                  " class="error">
+                    Event name is required.
+                  </div>
+                </div>
+                <div class="right-data d-flex flex-column w-50">
+                  <label for="">Organised By<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    formControlName="organisedby"
+                    placeholder="Organised By"
+                    [class.valid]="
+                      conferenceInfo.get('organisedby').valid &&
+                      (conferenceInfo.get('organisedby').dirty ||
+                        conferenceInfo.get('organisedby').touched)
+                    "
+                    [class.invalid]="
+                      conferenceInfo.get('organisedby').invalid &&
+                      (conferenceInfo.get('organisedby').dirty ||
+                        conferenceInfo.get('organisedby').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      conferenceInfo.get('organisedby').invalid &&
+                      (conferenceInfo.get('organisedby').dirty ||
+                        conferenceInfo.get('organisedby').touched)
+                    "
+                    class="error"
+                  >
+                    Organiser details is required.
+                  </div>
+                </div>
+              </div>
+              <div class="fields w-100 d-flex my-3 flex-column">
+                <label for="">Category<span class="reruired-form-field">*</span></label>
+                <select
+                  name="category"
+                  id="category"
+                  required=""
+                  formControlName="category"
+                  class="select"
+                  [class.valid]="
+                    conferenceInfo.get('category').valid &&
+                    (conferenceInfo.get('category').dirty ||
+                      conferenceInfo.get('category').touched)
+                  "
+                  [class.invalid]="
+                    conferenceInfo.get('category').invalid &&
+                    (conferenceInfo.get('category').dirty ||
+                      conferenceInfo.get('category').touched)
+                  "
+                >
+                  <option value="" selected class="option">
+                    ---Select Category---
+                  </option>
+                  <option
+                    [value]="item.id"
+                    *ngFor="let item of categories"
+                    class="option"
+                  >
+                    {{ item.name }}
+                  </option>
+                </select>
                 <div
                   *ngIf="
-                    speakerInfo.get('topic').invalid &&
-                    (speakerInfo.get('topic').dirty ||
-                      speakerInfo.get('topic').touched)
+                    conferenceInfo.get('category').invalid &&
+                    (conferenceInfo.get('category').dirty ||
+                      conferenceInfo.get('category').touched)
                   "
                   class="error"
                 >
-                  Topic is required.
+                  Category is required.
                 </div>
               </div>
-              <div class="item">
-                <input
-                  type="text"
-                  placeholder="Speaker Name"
-                  formControlName="speaker_name"
-                />
-                <div
-                  *ngIf="
-                    speakerInfo.get('speaker_name').invalid &&
-                    (speakerInfo.get('speaker_name').dirty ||
-                      speakerInfo.get('speaker_name').touched)
-                  "
-                  class="error"
-                >
-                  Speaker name is required.
+              <div class="fields w-100 d-flex my-3">
+                <div class="left-data d-flex flex-column w-50">
+                  <label for="">State<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    formControlName="state"
+                    placeholder="State"
+                    [class.valid]="
+                      conferenceInfo.get('state').valid &&
+                      (conferenceInfo.get('state').dirty ||
+                        conferenceInfo.get('state').touched)
+                    "
+                    [class.invalid]="
+                      conferenceInfo.get('state').invalid &&
+                      (conferenceInfo.get('state').dirty ||
+                        conferenceInfo.get('state').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      conferenceInfo.get('state').invalid &&
+                      (conferenceInfo.get('state').dirty ||
+                        conferenceInfo.get('state').touched)
+                    "
+                    class="error"
+                  >
+                    State is required.
+                  </div>
+                </div>
+                <div class="right-data d-flex flex-column w-50">
+                  <label for="">Place<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    formControlName="place"
+                    placeholder="Enter Place"
+                    [class.valid]="
+                      conferenceInfo.get('place').valid &&
+                      (conferenceInfo.get('place').dirty ||
+                        conferenceInfo.get('place').touched)
+                    "
+                    [class.invalid]="
+                      conferenceInfo.get('place').invalid &&
+                      (conferenceInfo.get('place').dirty ||
+                        conferenceInfo.get('place').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      conferenceInfo.get('place').invalid &&
+                      (conferenceInfo.get('place').dirty ||
+                        conferenceInfo.get('place').touched)
+                    "
+                    class="error"
+                  >
+                    Place is required.
+                  </div>
                 </div>
               </div>
-              <div class="item">
+            <div class="fields w-100 d-flex my-3">
+              <div class="left-data d-flex flex-column w-50">
+                <label for="">Pin<span class="reruired-form-field">*</span></label>
                 <input
                   type="number"
-                  placeholder="Duration"
-                  formControlName="duration"
+                  formControlName="pin"
+                  placeholder="Enter Pin"
+                  [class.valid]="
+                    conferenceInfo.get('pin').valid &&
+                    (conferenceInfo.get('pin').dirty ||
+                      conferenceInfo.get('pin').touched)
+                  "
+                  [class.invalid]="
+                    conferenceInfo.get('pin').invalid &&
+                    (conferenceInfo.get('pin').dirty ||
+                      conferenceInfo.get('pin').touched)
+                  "
                 />
                 <div
                   *ngIf="
-                    speakerInfo.get('duration').invalid &&
-                    (speakerInfo.get('duration').dirty ||
-                      speakerInfo.get('duration').touched)
+                    conferenceInfo.get('pin').invalid &&
+                    (conferenceInfo.get('pin').dirty ||
+                      conferenceInfo.get('pin').touched)
                   "
                   class="error"
                 >
-                  Duration is required.
+                  Pin is required.
+                </div>
+              </div>
+              <div class="right-data d-flex flex-column w-50">
+                <label for="">Venue<span class="reruired-form-field">*</span></label>
+                <input
+                  type="text"
+                  formControlName="venu"
+                  placeholder="Enter Venue"
+                  [class.valid]="
+                    conferenceInfo.get('venu').valid &&
+                    (conferenceInfo.get('venu').dirty ||
+                      conferenceInfo.get('venu').touched)
+                  "
+                  [class.invalid]="
+                    conferenceInfo.get('venu').invalid &&
+                    (conferenceInfo.get('venu').dirty ||
+                      conferenceInfo.get('venu').touched)
+                  "
+                />
+                <div
+                  *ngIf="
+                    conferenceInfo.get('venu').invalid &&
+                    (conferenceInfo.get('venu').dirty ||
+                      conferenceInfo.get('venu').touched)
+                  "
+                  class="error"
+                >
+                  Pin is required.
                 </div>
               </div>
             </div>
-          </div>
-          <div class="fields d-flex m-top-10">
-            <label for="" *ngIf="showCMEPoints">CME Points:</label>
-          </div>
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label for="">Upload Letter<span class="reruired-form-field">*</span></label>
-            <div class="choose-file-container">
-              <label for="">Upload PDF/JPG:</label>
-              <label for="chooseLetter" class="sessionnameclass"
-              >Choose Letter</label
-            >
+          </form>
+        </div>
+        <div *ngIf="currentStep === 3">
+          <h3>Speaker and Session Details</h3>
+          <h6>Welcome! Please enter your credentials</h6>
+          <form
+            [formGroup]="speakerInfo"
+            class="personalInfo speakerInfoStyles w-100"
+          >
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label for="">Speaker Info<span class="reruired-form-field">*</span></label>
               <input
-                type="file"
-                id="chooseLetter"
-                class="session_name"
-                accept=".pdf, .jpg, .jpeg"
-                (change)="handleLetterField($event)"
+                type="text"
+                formControlName="speakerinfo"
+                placeholder="Enter Speaker Info"
+                [class.valid]="
+                  speakerInfo.get('speakerinfo').valid &&
+                  (speakerInfo.get('speakerinfo').dirty ||
+                    speakerInfo.get('speakerinfo').touched)
+                "
+                [class.invalid]="
+                  speakerInfo.get('speakerinfo').invalid &&
+                  (speakerInfo.get('speakerinfo').dirty ||
+                    speakerInfo.get('speakerinfo').touched)
+                "
               />
-            </div>
-          </div>
-          <div class="fields w-100 d-flex my-3 flex-column">
-            <label for="">CME Points:</label>
-            <input
-              type="number"
-              placeholder="Enter CME Points"
-              formControlName="cme_point"
-            />
-            <div
-              *ngIf="
-                speakerInfo.get('cme_point').invalid &&
-                (speakerInfo.get('cme_point').dirty ||
-                  speakerInfo.get('cme_point').touched)
-              "
-              class="error"
-            >
-              CME points is required.
-            </div>
-          </div>
-        </form>
-      </div>
-      <div *ngIf="currentStep === 4">
-        <h3>Payment Information</h3>
-        <h6>Welcome! Please enter your credentials</h6>
-        <form
-          [formGroup]="paymentInfo"
-          class="personalInfo d-flex flex-wrap bank w-100"
-        >
-          <div class="vendorInfo w-100">
-            <div class="fieldsWrappper d-flex my-3">
-              <div class="fields">
-                <label for="">Vendor Name<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Vendor Name"
-                  formControlName="vendorname"
-                  [class.valid]="
-                    paymentInfo.get('vendorname').valid &&
-                    (paymentInfo.get('vendorname').dirty ||
-                      paymentInfo.get('vendorname').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('vendorname').invalid &&
-                    (paymentInfo.get('vendorname').dirty ||
-                      paymentInfo.get('vendorname').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('vendorname').invalid &&
-                    (paymentInfo.get('vendorname').dirty ||
-                      paymentInfo.get('vendorname').touched)
-                  "
-                  class="error"
-                >
-                  Vendor name is required.
-                </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">Contact Person<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Contact Person"
-                  formControlName="contactperson"
-                  [class.valid]="
-                    paymentInfo.get('contactperson').valid &&
-                    (paymentInfo.get('contactperson').dirty ||
-                      paymentInfo.get('contactperson').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('contactperson').invalid &&
-                    (paymentInfo.get('contactperson').dirty ||
-                      paymentInfo.get('contactperson').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('contactperson').invalid &&
-                    (paymentInfo.get('contactperson').dirty ||
-                      paymentInfo.get('contactperson').touched)
-                  "
-                  class="error"
-                >
-                  Contact person is required.
-                </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">Contact Email<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Contact Email"
-                  formControlName="contactemail"
-                  [class.valid]="
-                    paymentInfo.get('contactemail').valid &&
-                    (paymentInfo.get('contactemail').dirty ||
-                      paymentInfo.get('contactemail').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('contactemail').invalid &&
-                    (paymentInfo.get('contactemail').dirty ||
-                      paymentInfo.get('contactemail').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('contactemail').invalid &&
-                    (paymentInfo.get('contactemail').dirty ||
-                      paymentInfo.get('contactemail').touched)
-                  "
-                  class="error"
-                >
-                  Contact email is required.
-                </div>
+              <div
+                *ngIf="
+                  speakerInfo.get('speakerinfo').invalid &&
+                  (speakerInfo.get('speakerinfo').dirty ||
+                    speakerInfo.get('speakerinfo').touched)
+                "
+                class="error"
+              >
+                Speaker Info is required.
               </div>
             </div>
-            <div class="fieldsWrappper d-flex my-3">
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label>Session Details<span class="reruired-form-field">*</span></label>
+              <div class="choose-file-container">
+                <label for="">Upload PDF/JPG:</label>
+                <label for="sessionname" class="sessionnameclass">Choose File</label>
+                <input
+                  type="file"
+                  id="sessionname"
+                  class="session_name"
+                  placeholder="Session Details"
+                  accept=".pdf, .jpg, .jpeg"
+                  (change)="handleSessionNameFile($event)"
+                />
+              </div>
+            </div>
+            <div class="fields d-flex flex-column my-3">
+              <label for="">Enter Manually<span class="reruired-form-field">*</span></label>
+              <div class="field d-flex">
+                <div class="item">
+                  <input type="text" placeholder="Topic" formControlName="topic" />
 
-              <div class="fields">
-                <label for="">Contact Phone<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Contact Phone Number"
-                  formControlName="contactphonenumber"
-                  [class.valid]="
-                    paymentInfo.get('contactphonenumber').valid &&
-                    (paymentInfo.get('contactphonenumber').dirty ||
-                      paymentInfo.get('contactphonenumber').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('contactphonenumber').invalid &&
-                    (paymentInfo.get('contactphonenumber').dirty ||
-                      paymentInfo.get('contactphonenumber').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('contactphonenumber').invalid &&
-                    (paymentInfo.get('contactphonenumber').dirty ||
-                      paymentInfo.get('contactphonenumber').touched)
-                  "
-                  class="error"
-                >
-                  Contact phone number is required.
+                  <div
+                    *ngIf="
+                      speakerInfo.get('topic').invalid &&
+                      (speakerInfo.get('topic').dirty ||
+                        speakerInfo.get('topic').touched)
+                    "
+                    class="error"
+                  >
+                    Topic is required.
+                  </div>
                 </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">Bank Name<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Bank Name"
-                  formControlName="bankname"
-                  [class.valid]="
-                    paymentInfo.get('bankname').valid &&
-                    (paymentInfo.get('bankname').dirty ||
-                      paymentInfo.get('bankname').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('bankname').invalid &&
-                    (paymentInfo.get('bankname').dirty ||
-                      paymentInfo.get('bankname').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('bankname').invalid &&
-                    (paymentInfo.get('bankname').dirty ||
-                      paymentInfo.get('bankname').touched)
-                  "
-                  class="error"
-                >
-                  Bank name is required.
+                <div class="item">
+                  <input
+                    type="text"
+                    placeholder="Speaker Name"
+                    formControlName="speaker_name"
+                  />
+                  <div
+                    *ngIf="
+                      speakerInfo.get('speaker_name').invalid &&
+                      (speakerInfo.get('speaker_name').dirty ||
+                        speakerInfo.get('speaker_name').touched)
+                    "
+                    class="error"
+                  >
+                    Speaker name is required.
+                  </div>
                 </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">Branch Name<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Branch Name"
-                  formControlName="branchname"
-                  [class.valid]="
-                    paymentInfo.get('branchname').valid &&
-                    (paymentInfo.get('branchname').dirty ||
-                      paymentInfo.get('branchname').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('branchname').invalid &&
-                    (paymentInfo.get('branchname').dirty ||
-                      paymentInfo.get('branchname').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('branchname').invalid &&
-                    (paymentInfo.get('branchname').dirty ||
-                      paymentInfo.get('branchname').touched)
-                  "
-                  class="error"
-                >
-                  Branch name is required.
+                <div class="item">
+                  <input
+                    type="number"
+                    placeholder="Duration"
+                    formControlName="duration"
+                  />
+                  <div
+                    *ngIf="
+                      speakerInfo.get('duration').invalid &&
+                      (speakerInfo.get('duration').dirty ||
+                        speakerInfo.get('duration').touched)
+                    "
+                    class="error"
+                  >
+                    Duration is required.
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="fieldsWrappper d-flex my-3">
-              <div class="fields">
-                <label for="">Account Holder<span class="reruired-form-field">*</span></label>
+            <div class="fields d-flex m-top-10">
+              <label for="" *ngIf="showCMEPoints">CME Points:</label>
+            </div>
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label for="">Upload Letter<span class="reruired-form-field">*</span></label>
+              <div class="choose-file-container">
+                <label for="">Upload PDF/JPG:</label>
+                <label for="chooseLetter" class="sessionnameclass"
+                >Choose Letter</label
+              >
                 <input
-                  type="text"
-                  placeholder="Account Holder's Name"
-                  formControlName="accountholdername"
-                  [class.valid]="
-                    paymentInfo.get('accountholdername').valid &&
-                    (paymentInfo.get('accountholdername').dirty ||
-                      paymentInfo.get('accountholdername').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('accountholdername').invalid &&
-                    (paymentInfo.get('accountholdername').dirty ||
-                      paymentInfo.get('accountholdername').touched)
-                  "
+                  type="file"
+                  id="chooseLetter"
+                  class="session_name"
+                  accept=".pdf, .jpg, .jpeg"
+                  (change)="handleLetterField($event)"
                 />
-                <div
-                  *ngIf="
-                    paymentInfo.get('accountholdername').invalid &&
-                    (paymentInfo.get('accountholdername').dirty ||
-                      paymentInfo.get('accountholdername').touched)
-                  "
-                  class="error"
-                >
-                  Account holder name is required.
-                </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">Account Number<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Account Number"
-                  formControlName="accountnumber"
-                  [class.valid]="
-                    paymentInfo.get('accountnumber').valid &&
-                    (paymentInfo.get('accountnumber').dirty ||
-                      paymentInfo.get('accountnumber').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('accountnumber').invalid &&
-                    (paymentInfo.get('accountnumber').dirty ||
-                      paymentInfo.get('accountnumber').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('accountnumber').invalid &&
-                    (paymentInfo.get('accountnumber').dirty ||
-                      paymentInfo.get('accountnumber').touched)
-                  "
-                  class="error"
-                >
-                  Account number is required.
-                </div>
-              </div>
-              <div class="fields" style="margin-left: 10px;">
-                <label for="">IFSC Code<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="IFSC CODE"
-                  formControlName="ifsccode"
-                  [class.valid]="
-                    paymentInfo.get('ifsccode').valid &&
-                    (paymentInfo.get('ifsccode').dirty ||
-                      paymentInfo.get('ifsccode').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('ifsccode').invalid &&
-                    (paymentInfo.get('ifsccode').dirty ||
-                      paymentInfo.get('ifsccode').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('ifsccode').invalid &&
-                    (paymentInfo.get('ifsccode').dirty ||
-                      paymentInfo.get('ifsccode').touched)
-                  "
-                  class="error"
-                >
-                  IFSC code is required.
-                </div>
               </div>
             </div>
-            <div class="fieldsWrappper d-flex my-3">
-              <div class="fields" style="width: 32.5%;">
-                <label for="">PAN Number<span class="reruired-form-field">*</span></label>
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label for="">CME Points:</label>
+              <input
+                type="number"
+                placeholder="Enter CME Points"
+                formControlName="cme_point"
+              />
+              <div
+                *ngIf="
+                  speakerInfo.get('cme_point').invalid &&
+                  (speakerInfo.get('cme_point').dirty ||
+                    speakerInfo.get('cme_point').touched)
+                "
+                class="error"
+              >
+                CME points is required.
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="currentStep === 4">
+          <h3>Payment Information</h3>
+          <h6>Welcome! Please enter your credentials</h6>
+          <form
+            [formGroup]="paymentInfo"
+            class="personalInfo d-flex flex-wrap bank w-100"
+          >
+            <div class="vendorInfo w-100">
+              <div class="fieldsWrappper d-flex my-3">
+                <div class="fields">
+                  <label for="">Conference Name<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Conference Name"
+                    formControlName="vendorname"
+                    [class.valid]="
+                      paymentInfo.get('vendorname').valid &&
+                      (paymentInfo.get('vendorname').dirty ||
+                        paymentInfo.get('vendorname').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('vendorname').invalid &&
+                      (paymentInfo.get('vendorname').dirty ||
+                        paymentInfo.get('vendorname').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('vendorname').invalid &&
+                      (paymentInfo.get('vendorname').dirty ||
+                        paymentInfo.get('vendorname').touched)
+                    "
+                    class="error"
+                  >
+                    Vendor name is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">Contact Person<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Contact Person"
+                    formControlName="contactperson"
+                    [class.valid]="
+                      paymentInfo.get('contactperson').valid &&
+                      (paymentInfo.get('contactperson').dirty ||
+                        paymentInfo.get('contactperson').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('contactperson').invalid &&
+                      (paymentInfo.get('contactperson').dirty ||
+                        paymentInfo.get('contactperson').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('contactperson').invalid &&
+                      (paymentInfo.get('contactperson').dirty ||
+                        paymentInfo.get('contactperson').touched)
+                    "
+                    class="error"
+                  >
+                    Contact person is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">Contact Email<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Contact Email"
+                    formControlName="contactemail"
+                    [class.valid]="
+                      paymentInfo.get('contactemail').valid &&
+                      (paymentInfo.get('contactemail').dirty ||
+                        paymentInfo.get('contactemail').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('contactemail').invalid &&
+                      (paymentInfo.get('contactemail').dirty ||
+                        paymentInfo.get('contactemail').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('contactemail').invalid &&
+                      (paymentInfo.get('contactemail').dirty ||
+                        paymentInfo.get('contactemail').touched)
+                    "
+                    class="error"
+                  >
+                    Contact email is required.
+                  </div>
+                </div>
+              </div>
+              <div class="fieldsWrappper d-flex my-3">
 
-                <input
-                  type="text"
-                  placeholder="PAN Card"
-                  formControlName="panno"
-                  class="w-100"
-                  [class.valid]="
-                    paymentInfo.get('panno').valid &&
-                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('panno').invalid &&
-                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('panno').invalid &&
-                    (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
-                  "
-                  class="error"
-                >
-                  PAN is required.
+                <div class="fields">
+                  <label for="">Contact Phone<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Contact Phone Number"
+                    formControlName="contactphonenumber"
+                    [class.valid]="
+                      paymentInfo.get('contactphonenumber').valid &&
+                      (paymentInfo.get('contactphonenumber').dirty ||
+                        paymentInfo.get('contactphonenumber').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('contactphonenumber').invalid &&
+                      (paymentInfo.get('contactphonenumber').dirty ||
+                        paymentInfo.get('contactphonenumber').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('contactphonenumber').invalid &&
+                      (paymentInfo.get('contactphonenumber').dirty ||
+                        paymentInfo.get('contactphonenumber').touched)
+                    "
+                    class="error"
+                  >
+                    Contact phone number is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">Bank Name<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Bank Name"
+                    formControlName="bankname"
+                    [class.valid]="
+                      paymentInfo.get('bankname').valid &&
+                      (paymentInfo.get('bankname').dirty ||
+                        paymentInfo.get('bankname').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('bankname').invalid &&
+                      (paymentInfo.get('bankname').dirty ||
+                        paymentInfo.get('bankname').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('bankname').invalid &&
+                      (paymentInfo.get('bankname').dirty ||
+                        paymentInfo.get('bankname').touched)
+                    "
+                    class="error"
+                  >
+                    Bank name is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">Branch Name<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Branch Name"
+                    formControlName="branchname"
+                    [class.valid]="
+                      paymentInfo.get('branchname').valid &&
+                      (paymentInfo.get('branchname').dirty ||
+                        paymentInfo.get('branchname').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('branchname').invalid &&
+                      (paymentInfo.get('branchname').dirty ||
+                        paymentInfo.get('branchname').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('branchname').invalid &&
+                      (paymentInfo.get('branchname').dirty ||
+                        paymentInfo.get('branchname').touched)
+                    "
+                    class="error"
+                  >
+                    Branch name is required.
+                  </div>
                 </div>
               </div>
-              <div class="fields d-flex flex-column" style="margin-left: 10px;width: calc(100% - (32.5%));">
-                <label for="">Branch Address<span class="reruired-form-field">*</span></label>
-                <input
-                  type="text"
-                  placeholder="Branch Address"
-                  formControlName="branchaddress"
-                  [class.valid]="
-                    paymentInfo.get('branchaddress').valid &&
-                    (paymentInfo.get('branchaddress').dirty ||
-                      paymentInfo.get('branchaddress').touched)
-                  "
-                  [class.invalid]="
-                    paymentInfo.get('branchaddress').invalid &&
-                    (paymentInfo.get('branchaddress').dirty ||
-                      paymentInfo.get('branchaddress').touched)
-                  "
-                />
-                <div
-                  *ngIf="
-                    paymentInfo.get('branchaddress').invalid &&
-                    (paymentInfo.get('branchaddress').dirty ||
-                      paymentInfo.get('branchaddress').touched)
-                  "
-                  class="error"
-                >
-                  Branch address is required.
+              <div class="fieldsWrappper d-flex my-3">
+                <div class="fields">
+                  <label for="">Account Holder<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Account Holder's Name"
+                    formControlName="accountholdername"
+                    [class.valid]="
+                      paymentInfo.get('accountholdername').valid &&
+                      (paymentInfo.get('accountholdername').dirty ||
+                        paymentInfo.get('accountholdername').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('accountholdername').invalid &&
+                      (paymentInfo.get('accountholdername').dirty ||
+                        paymentInfo.get('accountholdername').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('accountholdername').invalid &&
+                      (paymentInfo.get('accountholdername').dirty ||
+                        paymentInfo.get('accountholdername').touched)
+                    "
+                    class="error"
+                  >
+                    Account holder name is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">Account Number<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Account Number"
+                    formControlName="accountnumber"
+                    [class.valid]="
+                      paymentInfo.get('accountnumber').valid &&
+                      (paymentInfo.get('accountnumber').dirty ||
+                        paymentInfo.get('accountnumber').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('accountnumber').invalid &&
+                      (paymentInfo.get('accountnumber').dirty ||
+                        paymentInfo.get('accountnumber').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('accountnumber').invalid &&
+                      (paymentInfo.get('accountnumber').dirty ||
+                        paymentInfo.get('accountnumber').touched)
+                    "
+                    class="error"
+                  >
+                    Account number is required.
+                  </div>
+                </div>
+                <div class="fields" style="margin-left: 10px;">
+                  <label for="">IFSC Code<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="IFSC CODE"
+                    formControlName="ifsccode"
+                    [class.valid]="
+                      paymentInfo.get('ifsccode').valid &&
+                      (paymentInfo.get('ifsccode').dirty ||
+                        paymentInfo.get('ifsccode').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('ifsccode').invalid &&
+                      (paymentInfo.get('ifsccode').dirty ||
+                        paymentInfo.get('ifsccode').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('ifsccode').invalid &&
+                      (paymentInfo.get('ifsccode').dirty ||
+                        paymentInfo.get('ifsccode').touched)
+                    "
+                    class="error"
+                  >
+                    IFSC code is required.
+                  </div>
+                </div>
+              </div>
+              <div class="fieldsWrappper d-flex my-3">
+                <div class="fields" style="width: 32.5%;">
+                  <label for="">PAN Number<span class="reruired-form-field">*</span></label>
+
+                  <input
+                    type="text"
+                    placeholder="PAN Card"
+                    formControlName="panno"
+                    class="w-100"
+                    [class.valid]="
+                      paymentInfo.get('panno').valid &&
+                      (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('panno').invalid &&
+                      (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('panno').invalid &&
+                      (paymentInfo.get('panno').dirty || paymentInfo.get('panno').touched)
+                    "
+                    class="error"
+                  >
+                    PAN is required.
+                  </div>
+                </div>
+                <div class="fields d-flex flex-column" style="margin-left: 10px;width: calc(100% - (32.5%));">
+                  <label for="">Branch Address<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="text"
+                    placeholder="Branch Address"
+                    formControlName="branchaddress"
+                    [class.valid]="
+                      paymentInfo.get('branchaddress').valid &&
+                      (paymentInfo.get('branchaddress').dirty ||
+                        paymentInfo.get('branchaddress').touched)
+                    "
+                    [class.invalid]="
+                      paymentInfo.get('branchaddress').invalid &&
+                      (paymentInfo.get('branchaddress').dirty ||
+                        paymentInfo.get('branchaddress').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      paymentInfo.get('branchaddress').invalid &&
+                      (paymentInfo.get('branchaddress').dirty ||
+                        paymentInfo.get('branchaddress').touched)
+                    "
+                    class="error"
+                  >
+                    Branch address is required.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
-            <h5>Payment Method(s) Accepted:</h5>
-            <h6>Coming Soon...</h6>
-          </div> -->
-        </form>
-      </div>
-      <div class="navigation w-100 text text-center mt-4">
-        <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
-        <button class="mx-2" (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
-        <button
-          (click)="onSubmit()"
-          *ngIf="currentStep === 4"
-          class="mx-2"
-          [disabled]="
-            !personalInfo.valid ||
-            !paymentInfo.valid ||
-            !speakerInfo.valid ||
-            !conferenceInfo.valid
-          "
-        >
-          Submit
-        </button>
+            <!-- <div class="paymentMethods col col-lg-5 col-md-5 col-sm-12">
+              <h5>Payment Method(s) Accepted:</h5>
+              <h6>Coming Soon...</h6>
+            </div> -->
+          </form>
+        </div>
+        <div class="navigation w-100 text text-center mt-4">
+          <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
+          <button class="mx-2" (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
+          <button
+            (click)="onSubmit()"
+            *ngIf="currentStep === 4"
+            class="mx-2"
+            [disabled]="
+              !personalInfo.valid ||
+              !paymentInfo.valid ||
+              !speakerInfo.valid ||
+              !conferenceInfo.valid
+            "
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="footer">
+    <p>© Copyright 2024 mednexus. All Rights Reserved.</p>
   </div>
 </div>

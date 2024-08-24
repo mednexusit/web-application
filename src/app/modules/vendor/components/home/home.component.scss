@@ -4,10 +4,11 @@
   display: flex;
   justify-content: center;
   padding: 0 10px;
+  margin-bottom: 50px;
   button {
     padding: 0px 3vw;
-    height: 2.5vw;
-    border: 2px solid #fff;
+    // height: 2.5vw;
+    border: 2px solid #3399FF;
     // background: rgb(26, 23, 207);
     background: #3399FF;
     box-shadow: 0px 2.81px 5.62px 0px #00000029;
@@ -22,11 +23,25 @@
     background: gray;
     cursor: not-allowed;
     border: none;
-    height: 2.4vw;
+    // height: 2.4vw;
     margin-top: 1px;
   }
 }
-
+.footer{
+    background: #f5f5f5;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  p{
+    font-family: Open Sans;
+    font-size: 17px;
+    font-weight: 400;
+    color: #a1a1a1;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+  }
+}
 // .personalInfo {
 //   animation: appear 0.5s linear;
 //   .fields {
@@ -137,12 +152,18 @@ display: none;
   .left{
     width: 40%;
     height: 100%;
-    background-image: url('../../../../../assets/vendor-bg.png');
+    background-image: url('../../../../../assets/vendor-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     .left-container{
-      position: relative;
-      top: 4vw;
+      // position: relative;
+      // top: 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+
       .vendor-logo{
         width: auto;
         height: 5vw;
@@ -152,16 +173,16 @@ display: none;
         font-size: 18px;
         font-weight: 300;
         line-height: 22.26px;
-        text-align: center;
+        text-align: left;
         color: #FFFFFF;
       }
-      .vendor-bottom{
-        width: 100%;
-        height: 26vw;
-        background-image: url(../../../../../assets/vendor-bottom.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
+      // .vendor-bottom{
+      //   width: 100%;
+      //   height: 26vw;
+      //   background-image: url(../../../../../assets/vendor-bottom.png);
+      //   background-size: cover;
+      //   background-repeat: no-repeat;
+      // }
     }
 
   }
@@ -210,6 +231,7 @@ display: none;
           border: 1.49px solid #CECECE;
           border-radius: 2px;
           height: 40px;
+          padding-left: 6px;
           &::placeholder{
             font-family: Open Sans;
             font-size: 12px;
@@ -217,7 +239,7 @@ display: none;
             line-height: 28.48px;
             text-align: left;
             color: #CECECE;
-            padding-left: 6px;
+            
           }
         }
         label{
@@ -324,7 +346,30 @@ display: none;
     }
   }
 }
+
 @media only screen and (max-width: 600px) {
+  .only-mobile{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px !important;
+    background: #009B87;
+    .stepper-wrapper{
+      margin-bottom: 0 !important;
+    }
+    .logo{
+      img{
+        width: 32vw;
+        height: 10vw;
+      }
+    }
+  }
+  .footer{
+    p{
+      font-size: 12px;
+    }
+  }
   .vendor-container{
     .left{
       display: none;
@@ -333,9 +378,18 @@ display: none;
       width: 100% !important;
       h3{
         font-size: 3vw !important;
+        position: absolute;
+        right: 7vw;
+        top: 3vw;
+        color: #FFFFFF !important;
       }
       h6{
         font-size: 1.6vw !important;
+        // position: absolute;
+        // right: 7vw;
+        // top: 7vw;
+        // color: #FFFFFF !important;
+        display: none;
       }
       label{
         font-size: 14px !important;
@@ -353,13 +407,13 @@ display: none;
         }
       }
       .navigation{
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         button{
-          height: 25px !important;
+          // height: 23px !important;
           font-size: 14px !important;
         }
         .mx-2{
-          height: 27px !important;
+          // height: 23px !important;
         }
         button:disabled{
           cursor: not-allowed;
@@ -401,8 +455,8 @@ display: none;
     }
   }
 }
-input:focus{
+input[type=text]:focus{
   color: #009b87 !important;
   outline: none;
-  border: 1px solid #009B87;
+  border: 1px solid #009B87 !important;
 }
