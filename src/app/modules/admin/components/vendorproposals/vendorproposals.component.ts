@@ -87,10 +87,10 @@ export class VendorproposalsComponent implements OnInit {
       next:(data:any)=>{
         this.vendorProposalDetailData = data.responseContents;
         console.log(this.vendorProposalDetailData)
-        this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0].about_conference);
-        this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0].about_location);
-        this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0].about_schedule);
-        this.aboutSpeakerData=  this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0].about_speakers);
+        this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_conference);
+        this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_location);
+        this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_schedule);
+        this.aboutSpeakerData=  this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_speakers);
       },
       error:(err:any)=>{
         console.log(err)
