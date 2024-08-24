@@ -10,6 +10,7 @@ import { FinancialReportsComponent } from './components/financial-reports/financ
 import { SettingComponent } from './components/setting/setting.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { AddconferenceComponent } from './components/addconference/addconference.component';
+import { VendorproposalsComponent } from './components/vendorproposals/vendorproposals.component';
 
 const routes: Routes = [
   { path: '', component: AdminloginComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
       {path:'financialreports', component:FinancialReportsComponent},
       {path:'adminsettings',component:SettingComponent},
       {path:'news-feed',component:NewsfeedComponent},
-      {path:'add-conference',component:AddconferenceComponent}
+      {path:'add-conference',component:AddconferenceComponent},
+      {path:'vendor-proposals',component:VendorproposalsComponent}
     ]
   },
 ];

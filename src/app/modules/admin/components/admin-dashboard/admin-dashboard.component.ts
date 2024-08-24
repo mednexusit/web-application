@@ -549,4 +549,9 @@ export class AdminDashboardComponent implements OnInit {
     }
     this.router.navigate(['admin/adminhome/add-conference'], navigationExtras);
   }
+
+  goToVendorsProposal(){
+    this.router.navigate(['admin/adminhome/vendor-proposals'])
+  }
+
 }

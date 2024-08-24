@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Editor, schema, toHTML, Toolbar } from 'ngx-editor';
 import { SharedService } from '../../../../shared/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { AdminservService } from '../../services/adminserv.service';
 
 @Component({
   selector: 'app-addconference',
@@ -37,31 +38,41 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private sharedServ: SharedService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private adminServ:AdminservService
   ) {}
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe((data: any) => {
-      console.log(data);
       this.vendorData = data;
     });
     this.editor = new Editor({});
     this.aboutConferenceFG = this.fb.group({
-      aboutconferencedata: ['', Validators.required],
+      about_conference: ['', Validators.required],
     });
     this.scheduleFG = this.fb.group({
-      scheduledata: ['', Validators.required],
+      about_schedule: ['', Validators.required],
     });
     this.speakerFG = this.fb.group({
-      speakerdata: ['', Validators.required],
+      about_speakers: ['', Validators.required],
     });
     this.locationFG = this.fb.group({
-      locationdata: ['', Validators.required],
+      about_location: ['', Validators.required],
     });
+    this.getInitialDataMapped();
   }
   changeCurrentStep(data: number) {
     this.currentStep = data;
   }
+
+  getInitialDataMapped(){
+    this.aboutConferenceFG.get('about_conference').setValue(this.vendorData?.about_conference);
+    this.scheduleFG.get('about_schedule').setValue(this.vendorData?.about_schedule);
+    this.speakerFG.get('about_speakers').setValue(this.vendorData?.about_speakers);
+    this.locationFG.get('about_location').setValue(this.vendorData?.about_location);
+  }
+
 
   nextStep() {
     this.imageURL = '';
@@ -78,12 +89,30 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(
-      this.aboutConferenceFG.value,
-      this.scheduleFG.value,
-      this.speakerFG.value,
-      this.locationFG.value
-    );
+
+    let dataToPass={
+      vendor_id: parseInt(this.vendorData.id),
+      about_conference:this.aboutConferenceFG.get('about_conference').value,
+      about_schedule:this.scheduleFG.get('about_schedule').value,
+      about_speakers:this.speakerFG.get('about_speakers').value,
+      about_location:this.locationFG.get('about_location').value
+    }
+
+    this.adminServ.submitConferenceDetails(dataToPass).subscribe({
+      next:(data:any)=>{
+        this.toast.success("Conference",data.responseContents,{
+          timeOut:1000
+        })
+
+      },
+      error:(err:any)=>{
+        this.toast.error("Failed to save conference details","",{
+          timeOut:1000
+        })
+      }
+    })
+
+
   }
   ngOnDestroy(): void {
     this.editor.destroy();

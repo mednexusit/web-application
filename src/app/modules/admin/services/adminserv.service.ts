@@ -185,4 +185,55 @@ export class AdminservService {
       httpOptions
     );
   }
+
+  submitConferenceDetails(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+"reguser/addPersonalVendoraboutus",data,httpOptions)
+  }
+
+  getVendorProposalDetailsList(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+"reguser/getPersonalVendoraccepeted",data,httpOptions)
+  }
+
+  deleteVendorProposalDetails(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+"reguser/deletePersonalVendoraboutus",data,httpOptions)
+  }
+
+  getVendorProposalDetail(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+"reguser/getPersonalVendoraboutus",data,httpOptions)
+  }
+
+  acceptRejectVendorProposalDetail(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+"reguser/accepetandrejectPersonalVendoraboutus",data,httpOptions)
+  }
+
 }

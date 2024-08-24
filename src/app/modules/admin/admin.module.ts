@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { AddconferenceComponent } from './components/addconference/addconference.component';
+import { VendorproposalsComponent } from './components/vendorproposals/vendorproposals.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AddconferenceComponent } from './components/addconference/addconference
           SettingComponent,
           FilterPipe,
           NewsfeedComponent,
-          AddconferenceComponent
+          AddconferenceComponent,
+          VendorproposalsComponent
   ],
   imports: [
     CommonModule,

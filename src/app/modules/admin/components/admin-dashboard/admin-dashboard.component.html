@@ -24,6 +24,12 @@
   >
     News Feed <i class="fa-solid fa-newspaper"></i>
   </button>
+  <button
+  class="btn btn-primary btns theme"
+  (click)="goToVendorsProposal()"
+>
+  Show Vendors Proposal List <i class="fa-solid fa-eye"></i>
+</button>
 
   <div class="forAdmin" *ngIf="!isShowSubAdmin">
     <div class="current" *ngIf="!isShowDeleted">
@@ -76,7 +82,7 @@
                   class="fa-solid fa-pen editIcon"
                   (click)="openModal(item, 'edit')"
                 ></i>
-                <i class="fa-solid fa-users editIcon conferenceIcon" title="Add Conference Details"(click)="openAddConference(item)">+</i>
+                <i class="fa-solid fa-users editIcon conferenceIcon" *ngIf="userType  == 1" title="Add Conference Details"(click)="openAddConference(item)">+</i>
               </td>
             </tr>
           </tbody>

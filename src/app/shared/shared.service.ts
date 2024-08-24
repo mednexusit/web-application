@@ -63,4 +63,12 @@ export class SharedService {
     return userType;
   }
 
+  getUserData(){
+    let userData: any = localStorage.getItem('userData');
+    if (userData) {
+      userData = JSON.parse(userData);
+      return userData;
+    }
+  }
+
 }

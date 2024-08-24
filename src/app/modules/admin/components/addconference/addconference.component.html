@@ -58,7 +58,7 @@
         </ngx-editor-menu>
         <ngx-editor
           [editor]="editor"
-          formControlName="aboutconferencedata"
+          formControlName="about_conference"
           [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
@@ -72,7 +72,7 @@
         </ngx-editor-menu>
         <ngx-editor
           [editor]="editor"
-          formControlName="scheduledata"
+          formControlName="about_schedule"
           [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
@@ -86,7 +86,7 @@
         </ngx-editor-menu>
         <ngx-editor
           [editor]="editor"
-          formControlName="speakerdata"
+          formControlName="about_speakers"
           [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
@@ -100,7 +100,7 @@
         </ngx-editor-menu>
         <ngx-editor
           [editor]="editor"
-          formControlName="locationdata"
+          formControlName="about_location"
           [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
@@ -111,12 +111,6 @@
       <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
       <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
       <button (click)="onSubmit()" *ngIf="currentStep === 4"
-      [disabled]="
-      !aboutConferenceFG.valid ||
-      !speakerFG.valid ||
-      !scheduleFG.valid ||
-      !locationFG.valid
-    "
       >Submit</button>
     </div>
   </div>
