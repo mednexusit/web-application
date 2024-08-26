@@ -8,7 +8,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
 import { Router, NavigationExtras } from '@angular/router';
 
-
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -153,8 +152,10 @@ export class AdminDashboardComponent implements OnInit {
     if (this.subjectsListArray.length <= 8) {
       this.subjectsListArray.push(this.getSubjects());
       let selectedSubjectItems = this.editvendorFormGroup.get('subjects').value;
-      selectedSubjectItems = selectedSubjectItems.map((item:any)=> item.subject );
-      this.subjectsListData.forEach((subject:any) => {
+      selectedSubjectItems = selectedSubjectItems.map(
+        (item: any) => item.subject
+      );
+      this.subjectsListData.forEach((subject: any) => {
         if (selectedSubjectItems.includes(subject.id.toString())) {
           subject.isSelected = true;
         }
@@ -164,13 +165,15 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
   removeSubject(index: any, data: any) {
-  const subjectId = this.subjectsListArray.at(index).get('subject').value;
-  const subject = this.subjectsListData.find((item: any) => item.id == subjectId);
-  if (subject) {
-    subject.isSelected = false;
-  }
-  this.subjectsListArray.removeAt(index);
-  this.subSubjectListDataArray.splice(index, 1);
+    const subjectId = this.subjectsListArray.at(index).get('subject').value;
+    const subject = this.subjectsListData.find(
+      (item: any) => item.id == subjectId
+    );
+    if (subject) {
+      subject.isSelected = false;
+    }
+    this.subjectsListArray.removeAt(index);
+    this.subSubjectListDataArray.splice(index, 1);
   }
   getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
@@ -190,22 +193,19 @@ export class AdminDashboardComponent implements OnInit {
     if (action === 'view') {
       this.isShowVendorModal = true;
       this.modalData = data;
-      console.log("MODALDATA",this.modalData);
 
-      let subjectDetailsData=[];
+      let subjectDetailsData = [];
       // this.modalData.subject_details.forEach((item:any) => {
 
       // });
       for (let i = 0; i < this.modalData.subject_details.length; i++) {
-
-          subjectDetailsData.push({subject:this.modalData.subject_details[i],sub_subject:this.modalData.sub_subject_details[i]});
-
+        subjectDetailsData.push({
+          subject: this.modalData.subject_details[i],
+          sub_subject: this.modalData.sub_subject_details[i],
+        });
       }
 
-      this.modalData.subjectDetailsData=subjectDetailsData;
-      console.log(this.modalData);
-
-
+      this.modalData.subjectDetailsData = subjectDetailsData;
     }
     if (action === 'edit') {
       this.getSubjectList();
@@ -526,8 +526,10 @@ export class AdminDashboardComponent implements OnInit {
     if (data.gender === 'Female') {
       data.gender = '2';
     }
-    data.subject = data.subjects.map((item:any)=>parseInt(item.subject) )
-    data.sub_subject = data.subjects.map((item:any)=>parseInt(item.sub_subject) )
+    data.subject = data.subjects.map((item: any) => parseInt(item.subject));
+    data.sub_subject = data.subjects.map((item: any) =>
+      parseInt(item.sub_subject)
+    );
     this.adminServ.updateVendorDetails(data).subscribe({
       next: (data: any) => {
         this.toastr.success('Vendor details updated', '', { timeOut: 1000 });
@@ -540,18 +542,14 @@ export class AdminDashboardComponent implements OnInit {
       },
     });
   }
-  openAddConference(data:any){
-    console.log("DATA",data)
-    const navigationExtras:NavigationExtras={
-      queryParams:data,
-      skipLocationChange:true,
-      state:data
-    }
+  openAddConference(data: any) {
+    const navigationExtras: NavigationExtras = {
+      state: data,
+    };
     this.router.navigate(['admin/adminhome/add-conference'], navigationExtras);
   }
 
-  goToVendorsProposal(){
-    this.router.navigate(['admin/adminhome/vendor-proposals'])
+  goToVendorsProposal() {
+    this.router.navigate(['admin/adminhome/vendor-proposals']);
   }
-
 }

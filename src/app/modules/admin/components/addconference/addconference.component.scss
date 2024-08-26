@@ -70,9 +70,9 @@
   }
 }
 .NgxEditor__Wrapper{
-  height: 30vw;
-  min-height: 30vw;
-  max-height: 30vw;
+  height: 25vw;
+  min-height: 25vw;
+  max-height: 25vw;
   overflow-y: scroll;
   @media only screen and (max-width: 600px) {
     height: 100vw;
@@ -133,4 +133,14 @@ h3{
 }
 .blue{
   color: blue !important;
+}
+
+.backBtn{
+  background: $themePrimaryColor;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
 }

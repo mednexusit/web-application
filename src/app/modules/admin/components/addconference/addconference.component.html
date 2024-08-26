@@ -1,3 +1,4 @@
+<button class="btn btn-primary backBtn" (click)="goBack()">Back</button>
 <div class="stepper">
   <div class="steps">
     <div
@@ -59,9 +60,9 @@
         <ngx-editor
           [editor]="editor"
           formControlName="about_conference"
-          [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
+          [id]="1"
         ></ngx-editor>
       </div>
     </div>
@@ -73,9 +74,9 @@
         <ngx-editor
           [editor]="editor"
           formControlName="about_schedule"
-          [disabled]="false"
           [placeholder]="'Type here...'"
           class="editor"
+          [id]="2"
         ></ngx-editor>
       </div>
     </div>
@@ -87,8 +88,8 @@
         <ngx-editor
           [editor]="editor"
           formControlName="about_speakers"
-          [disabled]="false"
           [placeholder]="'Type here...'"
+          [id]="3"
           class="editor"
         ></ngx-editor>
       </div>
@@ -101,8 +102,8 @@
         <ngx-editor
           [editor]="editor"
           formControlName="about_location"
-          [disabled]="false"
           [placeholder]="'Type here...'"
+          [id]="4"
           class="editor"
         ></ngx-editor>
       </div>

@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Editor, schema, toHTML, Toolbar } from 'ngx-editor';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Editor, schema, toHTML, Toolbar, toDoc } from 'ngx-editor';
 import { SharedService } from '../../../../shared/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 import { AdminservService } from '../../services/adminserv.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AdminservService } from '../../services/adminserv.service';
   templateUrl: './addconference.component.html',
   styleUrl: './addconference.component.scss',
 })
-export class AddconferenceComponent implements OnInit, OnDestroy {
+export class AddconferenceComponent implements OnInit {
   aboutConferenceFG: any = FormGroup;
   scheduleFG: any = FormGroup;
   speakerFG: any = FormGroup;
@@ -36,18 +37,25 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private sharedServ: SharedService,
     private toast: ToastrService,
-    private adminServ:AdminservService
-  ) {}
+    private adminServ: AdminservService
+  ) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras && navigation.extras.state) {
+      this.vendorData = navigation.extras.state;
+    }
+  }
 
   ngOnInit(): void {
-
-    this.route.queryParams.subscribe((data: any) => {
-      this.vendorData = data;
+    // this.route.queryParams.subscribe((data: any) => {
+    //   this.vendorData = data;
+    // });
+    this.editor = new Editor({
+      content: '',
     });
-    this.editor = new Editor({});
     this.aboutConferenceFG = this.fb.group({
       about_conference: ['', Validators.required],
     });
@@ -66,13 +74,20 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
     this.currentStep = data;
   }
 
-  getInitialDataMapped(){
-    this.aboutConferenceFG.get('about_conference').setValue(this.vendorData?.about_conference);
-    this.scheduleFG.get('about_schedule').setValue(this.vendorData?.about_schedule);
-    this.speakerFG.get('about_speakers').setValue(this.vendorData?.about_speakers);
-    this.locationFG.get('about_location').setValue(this.vendorData?.about_location);
+  getInitialDataMapped() {
+    this.aboutConferenceFG
+      .get('about_conference')
+      .setValue(toDoc(this.vendorData?.about_conference));
+    this.scheduleFG
+      .get('about_schedule')
+      .setValue(toDoc(this.vendorData?.about_schedule));
+    this.speakerFG
+      .get('about_speakers')
+      .setValue(toDoc(this.vendorData?.about_speakers));
+    this.locationFG
+      .get('about_location')
+      .setValue(toDoc(this.vendorData?.about_location));
   }
-
 
   nextStep() {
     this.imageURL = '';
@@ -89,34 +104,46 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    try {
+      let conf = '';
+      let sch = '';
+      let spe = '';
+      let loc = '';
+      conf = toHTML(this.aboutConferenceFG.get('about_conference').value);
+      sch = toHTML(this.scheduleFG.get('about_schedule').value);
+      spe = toHTML(this.speakerFG.get('about_speakers').value);
+      loc = toHTML(this.locationFG.get('about_location').value);
+      let dataToPass = {
+        vendor_id: parseInt(this.vendorData.id),
+        about_conference: conf.toString(),
+        about_schedule: sch.toString(),
+        about_speakers: spe.toString(),
+        about_location: loc.toString(),
+      };
 
-    let dataToPass={
-      vendor_id: parseInt(this.vendorData.id),
-      about_conference:this.aboutConferenceFG.get('about_conference').value,
-      about_schedule:this.scheduleFG.get('about_schedule').value,
-      about_speakers:this.speakerFG.get('about_speakers').value,
-      about_location:this.locationFG.get('about_location').value
+      this.adminServ.submitConferenceDetails(dataToPass).subscribe({
+        next: (data: any) => {
+          this.toast.success('Conference', data.responseContents, {
+            timeOut: 1000,
+          });
+
+          this.aboutConferenceFG.reset();
+          this.scheduleFG.reset();
+          this.speakerFG.reset();
+          this.locationFG.reset();
+          this.router.navigate(['admin/adminhome']);
+        },
+        error: (err: any) => {
+          this.toast.error('Failed to save conference details', err, {
+            timeOut: 1000,
+          });
+        },
+      });
+    } catch (error) {
+      console.log(error);
     }
-
-    this.adminServ.submitConferenceDetails(dataToPass).subscribe({
-      next:(data:any)=>{
-        this.toast.success("Conference",data.responseContents,{
-          timeOut:1000
-        })
-
-      },
-      error:(err:any)=>{
-        this.toast.error("Failed to save conference details","",{
-          timeOut:1000
-        })
-      }
-    })
-
-
   }
-  ngOnDestroy(): void {
-    this.editor.destroy();
-  }
+
   onFileSelection(file: any) {
     let fileData: File = file.target.files[0];
     this.fileName = fileData.name;
@@ -125,7 +152,6 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
       formData.append('file', fileData, fileData.name);
       this.sharedServ.uploadFileCommon(formData).subscribe({
         next: (data: any) => {
-          console.log('IMAGE DSATA', data);
           if (data.img) {
             this.imageURL = data.img;
             this.toast.success(
@@ -153,5 +179,8 @@ export class AddconferenceComponent implements OnInit, OnDestroy {
     copyItem && copyItem.select();
     navigator.clipboard.writeText(this.imageURL);
     this.toast.success('Link Copied To Clipboard');
+  }
+  goBack(){
+    this.router.navigate(['admin/adminhome'])
   }
 }
