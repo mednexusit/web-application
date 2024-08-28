@@ -35,7 +35,7 @@ export class ThememanageService {
   }
 
   getLogo(): string {
-    return this.currentTheme === 'dark-theme' ? '../../../../../assets/mednexuslogo-dark.png' : '../../../../../assets/mednexuslogo.png';
+    return this.currentTheme === 'dark-theme' ? '../../../../../assets/logo-header.svg' : '../../../../../assets/logo-header.svg';
   }
   getUserLogo(): string {
     return this.currentTheme === 'dark-theme' ? '../../../../../assets/user-dark.svg' : '../../../../../assets/user-light.svg';
