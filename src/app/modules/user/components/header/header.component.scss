@@ -101,6 +101,8 @@
 header{
   height: 5vw;
   padding-right: 5vw;
+  position: relative;
+  z-index: 9;
   // .logoArea{
   //   display: flex;
   //   align-items: center;

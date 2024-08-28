@@ -1,0 +1,50 @@
+.aboutus-container{
+    position: absolute;
+    height: 100% !important;
+    background-color: #fff !important;
+    // top: -5vw;
+    z-index: 9;
+    .header-container{
+        width: 100%;
+        height: 109px;
+        background: #0F6C73;
+
+    }
+    .banner{
+        background-image: url(../../../../../assets/aboutus-banner.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 25vw;
+    }
+    ul{
+        list-style-type: none;
+        top: 0;
+        display: flex;
+        right: 2vw;
+        li{
+           a{
+            font-family: Open Sans;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32.68px;
+            text-align: left;
+            color: #263238;
+            text-decoration: none;
+            &.active{
+                color: #25BBA4;
+
+            }
+           }
+
+        }
+    }
+    .page-heading{
+        font-family: Open Sans;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 54.47px;
+        text-align: left;
+        color: #000000;
+
+    }
+}
