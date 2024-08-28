@@ -4,6 +4,7 @@ import { AdminservService } from '../../services/adminserv.service';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {Location} from '@angular/common';
 
 
 
@@ -22,7 +23,7 @@ export class VendorproposalsComponent implements OnInit {
   aboutSpeakerData:SafeHtml='';
   aboutSchedule:SafeHtml='';
   isModalOpen:boolean=false;
-  constructor(private sharedServ:SharedService, private adminServ:AdminservService, private toast:ToastrService, private sanitizer:DomSanitizer){
+  constructor(private location:Location,private sharedServ:SharedService, private adminServ:AdminservService, private toast:ToastrService, private sanitizer:DomSanitizer){
 
   }
   ngOnInit(): void {
@@ -36,10 +37,8 @@ export class VendorproposalsComponent implements OnInit {
     let dataToPass={
       user_type:parseInt(userType)
     }
-    console.log("DATA to Pass",dataToPass);
     this.adminServ.getVendorProposalDetailsList(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log("DATAA IS",data);
         this.proposalListData = data.responseContents;
       }
     })
@@ -86,7 +85,6 @@ export class VendorproposalsComponent implements OnInit {
     this.adminServ.getVendorProposalDetail(dataToPass).subscribe({
       next:(data:any)=>{
         this.vendorProposalDetailData = data.responseContents;
-        console.log(this.vendorProposalDetailData)
         this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_conference);
         this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_location);
         this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_schedule);
@@ -117,6 +115,9 @@ export class VendorproposalsComponent implements OnInit {
     })
   }
 
+  goBack(){
+    this.location.back();
+  }
 
 
 }
