@@ -1,0 +1,43 @@
+.cancellation-container{
+    position: absolute;
+    height: 100% !important;
+    background-color: #fff !important;
+    // top: -5vw;
+    z-index: 9;
+    top: 0;
+    overflow-y: auto;
+    .header-container{
+        width: 100%;
+        height: 109px;
+        background: #0F6C73; 
+    }
+    .page-heading{
+        font-size: 3.6vw;
+        margin-top: 1.5vw;
+    }
+    .page-sub-heading{
+        font-size: 3vw;
+        margin-top: 1.5vw;
+    }
+    h1,li{
+        font-size: 2.4vw;
+        margin-top: 1.5vw;
+    }
+    .para-text{
+        font-family: Roboto;
+        font-size: 2vw;
+        font-weight: 400;
+        color: #3D3D3D;
+
+    }
+    ol{
+        padding: 0;
+        margin: 2vw 6vw;
+    }
+}
+:host ::ng-deep header{
+    height: 100% !important;
+    img{
+     top: 0 !important;
+    }
+ }
