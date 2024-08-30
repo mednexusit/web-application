@@ -55,4 +55,24 @@
     img{
      top: 0 !important;
     }
+    .searchArea{
+     background-color: #ffffff !important;
+    }
+    .logo-white{
+         display: block !important;
+         width: 15vw !important;
+         left: 3vw;
+         position: relative;
+     }
+     .user-logo-white{
+         display: block !important;
+     }
+     .logo,.user-logo{
+         display: none;
+     }
+     .actions{
+         .pt-1{
+             height: 2.5vw !important;
+         }
+     }
  }
