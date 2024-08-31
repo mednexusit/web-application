@@ -236,4 +236,15 @@ export class AdminservService {
     return this.http.post(this.baseURL2+"reguser/accepetandrejectPersonalVendoraboutus",data,httpOptions)
   }
 
+
+  updateNewsBody(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.post(this.baseURL2+'resorceapi/detailsUpdatesNewsfeed',data,httpOptions)
+  }
+
 }

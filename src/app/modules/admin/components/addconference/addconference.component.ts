@@ -55,6 +55,7 @@ export class AddconferenceComponent implements OnInit {
     // });
     this.editor = new Editor({
       content: '',
+
     });
     this.aboutConferenceFG = this.fb.group({
       about_conference: ['', Validators.required],
@@ -115,12 +116,13 @@ export class AddconferenceComponent implements OnInit {
       loc = toHTML(this.locationFG.get('about_location').value);
       let dataToPass = {
         vendor_id: parseInt(this.vendorData.id),
-        about_conference: conf.toString(),
-        about_schedule: sch.toString(),
-        about_speakers: spe.toString(),
-        about_location: loc.toString(),
+        about_conference: conf,
+        about_schedule: sch,
+        about_speakers: spe,
+        about_location: loc,
       };
 
+      console.log("DATA TO PASS", JSON.stringify(dataToPass))
       this.adminServ.submitConferenceDetails(dataToPass).subscribe({
         next: (data: any) => {
           this.toast.success('Conference', data.responseContents, {

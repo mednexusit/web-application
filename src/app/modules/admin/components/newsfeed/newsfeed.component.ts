@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SharedService } from '../../../../shared/shared.service';
 import Swal from 'sweetalert2';
+import { Editor, toDoc, Toolbar } from 'ngx-editor';
+import { toHtml } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-newsfeed',
@@ -14,13 +16,29 @@ import Swal from 'sweetalert2';
 export class NewsfeedComponent implements OnInit {
   newFeedData: any = [];
   searchTerm: any = '';
+  isAddBody: boolean = false;
   userData: any;
   headText: any = '';
   fileName: any = '';
   isAddNews: boolean = false;
   editUserData: any;
+  newsData: any;
   imgUrl: any = '';
   newsFeedForm: any = FormGroup;
+  editor: any;
+  html: any;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['undo', 'redo'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
+  newsDetails: any = FormGroup;
   constructor(
     private router: Router,
     private adminServ: AdminservService,
@@ -29,6 +47,7 @@ export class NewsfeedComponent implements OnInit {
     private sharedServ: SharedService
   ) {}
   ngOnInit(): void {
+    this.editor = new Editor({});
     this.getNewsFeedData();
     this.userData = localStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
@@ -36,6 +55,10 @@ export class NewsfeedComponent implements OnInit {
       heading: ['', Validators.required],
       subheading: ['', Validators.required],
       img_url: ['', Validators.required],
+    });
+
+    this.newsDetails = this.fb.group({
+      details: ['', Validators.required],
     });
   }
 
@@ -67,8 +90,8 @@ export class NewsfeedComponent implements OnInit {
       });
     }
   }
-  goBackHome(){
-    this.router.navigate(['admin/adminhome'])
+  goBackHome() {
+    this.router.navigate(['admin/adminhome']);
   }
   getNewsFeedData() {
     this.adminServ.getNewsFeed().subscribe({
@@ -79,7 +102,7 @@ export class NewsfeedComponent implements OnInit {
   }
   openModal(data: any) {
     this.newsFeedForm.reset();
-    this.imgUrl='';
+    this.imgUrl = '';
     this.headText = data;
     this.isAddNews = true;
   }
@@ -94,6 +117,7 @@ export class NewsfeedComponent implements OnInit {
   }
   closeModal() {
     this.isAddNews = false;
+    this.isAddBody = false;
   }
   deleteNewsFeed(data: any) {
     let dataToPass = {
@@ -173,5 +197,33 @@ export class NewsfeedComponent implements OnInit {
         },
       });
     }
+  }
+
+  openBodyModal(data: any) {
+    this.isAddBody = true;
+    this.newsData = data;
+    if (data.details) {
+      this.newsDetails.get('details').setValue(data.details);
+    }
+  }
+  submitNewsDetails(data: any) {
+    let dataToPass = {
+      details: `${data.details}`,
+      id: this.newsData.id,
+      user_type: parseInt(this.sharedServ.getUserType()),
+    };
+    this.adminServ.updateNewsBody(dataToPass).subscribe({
+      next: (data: any) => {
+        if (data.status) {
+          this.toast.success(data.msg, '', { timeOut: 1000 });
+          this.isAddBody = false;
+          this.getNewsFeedData();
+          this.newsDetails.reset();
+        }
+      },
+      error: (err) => {
+        this.toast.error('Failed to update details', '', { timeOut: 1000 });
+      },
+    });
   }
 }
