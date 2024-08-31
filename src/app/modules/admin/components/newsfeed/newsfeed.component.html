@@ -41,6 +41,7 @@
               (click)="deleteNewsFeed(item)"
             ></i>
             <i title="Edit News" class="fa-solid fa-pen editIcon" (click)="openEditModal(item)"></i>
+            <i title="Edit News" class="fa-solid fa-keyboard editIcon" (click)="openBodyModal(item)"></i>
           </td>
         </tr>
       </tbody>
@@ -99,9 +100,25 @@
           </div>
         </div>
         <div class="btnsArea">
-          <button class="fbtn theme btns" [disabled]="!newsFeedForm.valid" (click)="submitNewsFeed(newsFeedForm.value)">Submit News Feed</button>
-          <button class="btn btn-danger btns" (click)="closeModal()">Cancel</button>
+          <button class="fbtn theme btns" [disabled]="!newsFeedForm.valid" (click)="submitNewsFeed(newsFeedForm.value)">Submit</button>
+          <button class="btn canBtn  btns" (click)="closeModal()">Cancel</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf="isAddBody">
+  <div class="modalWrapper">
+    <div class="content" [formGroup]="newsDetails">
+      <h2>Add News Details</h2>
+      <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" class="editor" formControlName="details" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+      </div>
+      <div class="btnsArea">
+        <button class="fbtn theme btns" [disabled]="!newsDetails.valid" (click)="submitNewsDetails(this.newsDetails.value)">Submit</button>
+        <button class=" btn canBtn  btns" (click)="closeModal()">Cancel</button>
       </div>
     </div>
   </div>
