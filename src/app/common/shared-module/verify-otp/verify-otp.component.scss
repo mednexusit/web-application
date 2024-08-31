@@ -58,6 +58,13 @@
 
   }
 }
+.theme{
+  background: $themePrimaryColor;
+  border: none;
+  margin-top: 10px;
+  color: #fff;
+  cursor: pointer !important;
+}
 .otpg{
   color: $themePrimaryColor;
   font-size: 10px;

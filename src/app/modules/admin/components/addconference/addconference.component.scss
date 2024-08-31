@@ -5,18 +5,25 @@
 }
 .step {
   width: 25%;
+  border-radius: 30px;
   padding: 10px;
   margin: 2px;
   text-align: center;
   background-color: lightgrey;
+  border-radius: 57px;
+  background: #e9e7e9;
+  box-shadow: inset 7px 7px 14px #b3b2b3,
+              inset -7px -7px 14px #ffffff;
   cursor: pointer;
   transition: all 0.2s linear;
   animation: appear 0.5s linear;
 }
 
 .step.active {
-  background-color: $themePrimaryColor;
-  color: white;
+  background-color: #7c2ba1;
+  color: #fff;
+  box-shadow: 0 0 5px 0px #7c2ba5, inset 0 0px 1px 4px #965cb1;
+  border-radius: 30px;
 }
 // .editor{
 //   height: 30vw;

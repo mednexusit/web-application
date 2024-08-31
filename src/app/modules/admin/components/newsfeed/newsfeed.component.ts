@@ -67,7 +67,9 @@ export class NewsfeedComponent implements OnInit {
       });
     }
   }
-
+  goBackHome(){
+    this.router.navigate(['admin/adminhome'])
+  }
   getNewsFeedData() {
     this.adminServ.getNewsFeed().subscribe({
       next: (data: any) => {

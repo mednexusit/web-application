@@ -1,6 +1,6 @@
 @import '../../../../../variables';
 header{
-  background: $themePrimaryColor;
+  background: linear-gradient(45deg,white 20%, $themePrimaryColor 50%);
   width: 100%;
   height: 100%;
   display: flex;
@@ -97,8 +97,9 @@ header{
 
 header {
   width: 100%;
-  background: $themePrimaryColor;
+  background: linear-gradient(45deg,rgb(251, 251, 251) 20%, $themePrimaryColor 50%);
   height: 70px;
+  box-shadow: 0  0 5px 2px $themePrimaryColor;
   .logo {
     width: 200px;
     height: 100%;
@@ -125,4 +126,9 @@ header {
       }
     }
   }
+}
+.router-link-active{
+  border-bottom: 2px solid #fff;
+  transition: all 0.3s linear;
+
 }

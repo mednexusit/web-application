@@ -1,6 +1,6 @@
 
 <div class="container">
-  <button class="btn btn-success backBtn" (click)="goBack()">Back</button>
+  <button class="btn btn-success backBtn myBtn" (click)="goBack()">Back</button>
   <div class="row my-3">
     <div class="col">
       <input
@@ -37,9 +37,9 @@
             #{{ item.id }}
           </td>
           <td>
-            <span *ngIf="item.active === 1" class="pending">Pending</span
-            ><span *ngIf="item.active === 2" class="approved">Approved</span
-            ><span *ngIf="item.active === 3" class="rejected"
+
+            <span *ngIf="item.aboutus_status === 4" class="approved">Approved</span
+            ><span *ngIf="item.aboutus_status === 5" class="rejected"
               >Rejected</span
             >
           </td>
@@ -196,7 +196,7 @@
         <div class="value" [innerHTML]="aboutSchedule"></div>
       </div>
     </div>
-    <div class="actions" *ngIf="vendorProposalDetailData.length">
+    <div class="actions" *ngIf="vendorProposalDetailData[0].aboutus_status== 2 ">
       <button class="btn btn-success" *ngIf="vendorProposalDetailData[0].status==1" (click)="actionApplied(4,vendorProposalDetailData[0]?.id)">Accept</button>
       <button class="btn btn-danger" *ngIf="vendorProposalDetailData[0].status==1" (click)="actionApplied(5,vendorProposalDetailData[0]?.id)">Reject</button>
     </div>
