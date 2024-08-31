@@ -10,7 +10,9 @@
   border: none;
   margin-top: 10px;
 }
-
+.fbtn{
+  color: #fff;
+}
 .modal{
   display: flex; /* Hidden by default */
   justify-content: center;
@@ -105,6 +107,9 @@
 }
 .deleteIcon{
   cursor: pointer;
+}
+.bckBtn{
+  margin-right: 10px;
 }
 .chsImage{
   padding: 7px 10px;

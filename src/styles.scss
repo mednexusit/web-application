@@ -180,7 +180,7 @@ html,body{
   height: 100%;
 }
 body{
- 
+
   &.light-theme{
     .userMain{
       width: 100%;
@@ -202,4 +202,17 @@ body{
       }
     }
   }
+}
+
+.myBtn{
+  border-radius: 57px;
+background: #9d08d4;
+box-shadow: inset 7px 7px 14px #7906a3,
+            inset -7px -7px 14px #c10aff;
+}
+.btns{
+  padding: 10px 12px;
+  border-radius: 10px !important;
+  color: #fff;
+  font-size: 12px;
 }
