@@ -78,22 +78,27 @@ export class VendorproposalsComponent implements OnInit {
   }
 
   openModal(data:any){
+    this.vendorProposalDetailData = [data];
+    this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_conference);
+    this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_location);
+    this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_schedule);
+    this.aboutSpeakerData=  this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_speakers);
     this.isModalOpen=true;
-    let dataToPass={
-      vendor_id:data.id
-    }
-    this.adminServ.getVendorProposalDetail(dataToPass).subscribe({
-      next:(data:any)=>{
-        this.vendorProposalDetailData = data.responseContents;
-        this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_conference);
-        this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_location);
-        this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_schedule);
-        this.aboutSpeakerData=  this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_speakers);
-      },
-      error:(err:any)=>{
-        console.log(err)
-      }
-    })
+  //   let dataToPass={
+  //     vendor_id:data.id
+  //   }
+  //   this.adminServ.getVendorProposalDetail(dataToPass).subscribe({
+  //     next:(data:any)=>{
+  //       this.vendorProposalDetailData = data.responseContents;
+  //       this.aboutConferenceData = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_conference);
+  //       this.aboutLocationData= this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_location);
+  //       this.aboutSchedule = this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_schedule);
+  //       this.aboutSpeakerData=  this.sanitizer.bypassSecurityTrustHtml(this.vendorProposalDetailData[0]?.about_speakers);
+  //     },
+  //     error:(err:any)=>{
+  //       console.log(err)
+  //     }
+  //   })
   }
 
   actionApplied(action:number,id:any){
