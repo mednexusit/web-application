@@ -55,7 +55,6 @@ export class AddconferenceComponent implements OnInit {
     // });
     this.editor = new Editor({
       content: '',
-
     });
     this.aboutConferenceFG = this.fb.group({
       about_conference: ['', Validators.required],
@@ -122,7 +121,6 @@ export class AddconferenceComponent implements OnInit {
         about_location: loc,
       };
 
-      console.log("DATA TO PASS", JSON.stringify(dataToPass))
       this.adminServ.submitConferenceDetails(dataToPass).subscribe({
         next: (data: any) => {
           this.toast.success('Conference', data.responseContents, {
@@ -182,7 +180,7 @@ export class AddconferenceComponent implements OnInit {
     navigator.clipboard.writeText(this.imageURL);
     this.toast.success('Link Copied To Clipboard');
   }
-  goBack(){
-    this.router.navigate(['admin/adminhome'])
+  goBack() {
+    this.router.navigate(['admin/adminhome']);
   }
 }
