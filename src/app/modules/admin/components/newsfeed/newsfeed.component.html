@@ -112,6 +112,27 @@
   <div class="modalWrapper">
     <div class="content" [formGroup]="newsDetails">
       <h2>Add News Details</h2>
+      <div class="imageLinkWrapper">
+        <span class="tip">
+          <b>Note :</b>
+          <span> To get the image link upload image </span>
+
+        </span>
+        <div class="imagearea">
+          <label for="chooseImage" class="chsImage"
+          >Choose Image  <i class="fa-solid fa-upload"></i></label
+        >
+        {{fileName}}
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          id="chooseImage"
+          hidden
+          (change)="onFileSelection($event)"
+        />
+        <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
+        </div>
+      </div>
       <div class="NgxEditor__Wrapper">
         <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
         <ngx-editor [editor]="editor" class="editor" formControlName="details" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>

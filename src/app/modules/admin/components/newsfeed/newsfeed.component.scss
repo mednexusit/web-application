@@ -157,3 +157,31 @@
 .NgxEditor__Wrapper{
   height: 15vw;
 }
+
+.imageLinkWrapper{
+  margin: 10px;
+  b{
+    color: red
+  }
+  .tip{
+    color: $themePrimaryColor;
+    font-weight: 800;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  .imagearea{
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+    color: $themePrimaryColor;
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    label{
+      background: $themePrimaryColor;
+      color: #fff;
+      padding: 7px 8px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  }
+}

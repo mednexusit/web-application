@@ -22,6 +22,7 @@ export class NewsfeedComponent implements OnInit {
   fileName: any = '';
   isAddNews: boolean = false;
   editUserData: any;
+  imageURL:any='';
   newsData: any;
   imgUrl: any = '';
   newsFeedForm: any = FormGroup;
@@ -71,6 +72,7 @@ export class NewsfeedComponent implements OnInit {
       this.sharedServ.uploadFileCommon(formData).subscribe({
         next: (data: any) => {
           if (data.img) {
+            this.imageURL = data.img;
             this.toast.success(
               `File ${fileData.name} uploaded successfully`,
               '',
@@ -100,6 +102,7 @@ export class NewsfeedComponent implements OnInit {
       },
     });
   }
+
   openModal(data: any) {
     this.newsFeedForm.reset();
     this.imgUrl = '';
@@ -114,6 +117,15 @@ export class NewsfeedComponent implements OnInit {
     this.newsFeedForm.get('subheading').setValue(data.subheading);
     this.newsFeedForm.get('img_url').setValue(data.img_url);
     this.imgUrl = data.img_url;
+  }
+  getCopyLink(){
+    let copyItem = document.getElementById('#imgURL') as HTMLInputElement;
+    let imageArea = document.querySelector('.imagearea') as HTMLDivElement;
+    copyItem && copyItem.classList.add('blue');
+    imageArea && imageArea.classList.add('blue');
+    copyItem && copyItem.select();
+    navigator.clipboard.writeText(this.imageURL);
+    this.toast.success('Link Copied To Clipboard');
   }
   closeModal() {
     this.isAddNews = false;
