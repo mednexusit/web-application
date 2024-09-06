@@ -17,6 +17,10 @@ import { CommunitiesComponent } from './components/communities/communities.compo
 import { EducationComponent } from './components/education/education.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { FollowusComponent } from './components/followus/followus.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -34,12 +38,16 @@ import { FollowusComponent } from './components/followus/followus.component';
     CommunitiesComponent,
     EducationComponent,
     ContactusComponent,
-    FollowusComponent
+    FollowusComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserModule { }

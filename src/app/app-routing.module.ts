@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
-import { SignupComponent } from './common/shared-module/signup/signup.component';
+import { LoginComponent } from './modules/user/components/login/login.component';
+import { SignupComponent } from './modules/user/components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/vendor/vendor.module').then((m) => m.VendorModule),
   },
-  {path:'signup',component:SignupComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   {path:'**',component:PagenotfoundComponent}
 ];
 

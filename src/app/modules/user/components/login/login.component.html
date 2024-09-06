@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="login-left">
+    <div class="brand-logo mt-5">
+      <img src="../../../../../assets/logo-white.png" alt="">
+    </div>
+    <p class="text-center mt-5">
+      Readily source and screen candidates using intelligent candidate <br>matching and AI-Enabled Talent Acquisition
+      solution.
+    </p>
+    <img src="../../../../../assets/bgimg.png" alt="" class="img-fluid">
+  </div>
+
+  <div class="login-right">
+    <div class="login-form" *ngIf="!isVerificationStage">
+      <h2>Welcome!</h2>
+      <p class="caption-sign">Sign in to access your account</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="input-group mt-4">
+          <div class="input-row">
+            <span class="country-code">+91</span>
+            <input type="text" id="phone" placeholder="Enter phone number" formControlName="phone" />
+          </div>
+          <div class="error" *ngIf="loginForm.controls['phone'].invalid && loginForm.controls['phone'].touched">
+            Phone number is required and must be 10 digits.
+          </div>
+        </div>
+  
+        <div class="input-group d-flex gap-5 mt-4">
+          <label>Get Notifications and updates on WhatsApp</label>
+          <label class="switch">
+            <input type="checkbox" formControlName="whatsappNotifications" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+  
+        <button type="submit" class="w-25">Continue</button>
+      </form>
+    </div>
+  
+    <div class="verification-form p-5" *ngIf="isVerificationStage">
+      <h2>Almost there</h2>
+      <p class="caption-sign">Please enter the 5-digit code sent to your mobile number {{ maskedPhoneNumber }} for verification</p>
+      <div class="code-input">
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" autofocus />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" />
+      </div>
+      <button class="w-25" (click)="verifyCode()">VERIFY</button>
+      <p class="caption-sign mt-2">Request new code in 00:30s</p>
+      <div class="rec-do mt-3">
+        <a href="#" (click)="resendCode()">Didn’t receive any code?</a>
+      </div>
+    </div>
+  </div>
+  
+</div>

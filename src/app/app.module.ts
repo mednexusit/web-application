@@ -9,12 +9,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import {NgxEditorModule} from 'ngx-editor'
+import {NgxEditorModule} from 'ngx-editor';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,9 @@ import {NgxEditorModule} from 'ngx-editor'
     HttpClientModule,
     FontAwesomeModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {provide:LocationStrategy,useClass:PathLocationStrategy},

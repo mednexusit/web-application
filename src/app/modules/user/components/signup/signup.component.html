@@ -1,0 +1,115 @@
+<div class="signup-container">
+    <div class="signup-left">
+      <div class="brand-logo mt-5">
+        <img src="../../../../../assets/logo-white.png" alt="">
+      </div>
+      <p class="text-center mt-5">
+        Readily source and screen candidates using intelligent candidate <br>matching and AI-Enabled Talent Acquisition
+        solution.
+      </p>
+      <img src="../../../../../assets/bgimg.png" alt="" class="img-fluid">
+    </div>
+  
+    <div class="signup-right">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h2 class="mb-4">Signup</h2>
+        <p class="caption-sign">Bt Creating a free account</p>
+    
+        <div class="row">
+          <div class="col-md-12 mb-2 p-2">
+            <input class="form-control" formControlName="name" placeholder="Enter Name" />
+          </div>
+          <div class="col-md-12 mb-2 p-2">
+            <input class="form-control" formControlName="email" placeholder="Enter Email" />
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-12 mb-2 p-2 d-flex align-items-center">
+            <label for="emailNotifications" class="me-3">Get Notification for E-Mails</label>
+            <label class="switch">
+              <input type="checkbox" formControlName="whatsappNotifications" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="col-md-12 mb-2 p-2">
+            <input class="form-control" formControlName="phone" placeholder="Enter Phone/Whatsapp" />
+          </div>
+        </div>
+    
+        <div class="row ">
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="dob" placeholder="DOB (D/M/Y)" />
+          </div>
+          <div class="col-md-6 mb-2 p-2">
+            <select class="form-select" formControlName="gender">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6 mb-2 p-2">
+            <select class="form-select" formControlName="course">
+              <option value="">Select Course</option>
+              <!-- Add more course options here -->
+            </select>
+          </div>
+          <div class="col-md-6 mb-2 p-2">
+            <select class="form-select" formControlName="type">
+              <option value="">Select Type</option>
+              <!-- Add more type options here -->
+            </select>
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="collegeName" placeholder="Enter College Name" />
+          </div>
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="year" placeholder="Enter Year" />
+          </div>
+        </div>
+    
+        <div class="row ">
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="position" placeholder="Current position" />
+          </div>
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="experience" placeholder="Exp In years" />
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6  mb-2 p-2">
+            <input class="form-control" formControlName="organization" placeholder="Enter Current organization" />
+          </div>
+          <div class="col-md-6 mb-2 p-2">
+            <input class="form-control" formControlName="councilState" placeholder="Council State" />
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6 p-2">
+            <input class="form-control" formControlName="medicalRegNo" placeholder="Enter Medical Cou. Reg. Number" />
+          </div>
+          <div class="col-md-6  p-2">
+            <input class="form-control" formControlName="yearOfReg" placeholder="Year of Registration" />
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    
+  </div>
+  
