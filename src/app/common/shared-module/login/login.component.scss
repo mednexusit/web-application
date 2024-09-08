@@ -9,11 +9,12 @@
 
 .loginBlock {
   padding: 20px;
-  border-radius: 10px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  background: $themePrimaryColor;
+  background: rgba($color: $themePrimaryColor, $alpha: 0.8);
+  box-shadow: 0 0 21px 2px #9d4bc3,inset 0 0 11px 15px #490f63cc;
+
   h1,
   h3 {
     background: $blackColor;
@@ -148,8 +149,22 @@
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
 }
 h2{
   color: #fff;
+  font-size: 50px;
 }
+.adminLoginWrapper{
+  background-position: center;
+  background-image: url('../../../../assets/adminbackground.jpg');
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

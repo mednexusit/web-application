@@ -22,4 +22,10 @@ export class AuthService {
     localStorage.clear();
     this.route.navigate(["login"]);
   }
+  logoutUser(){
+    localStorage.removeItem("LoggedInUser");
+    sessionStorage.clear();
+    localStorage.clear();
+    this.route.navigate(['']);
+  }
 }

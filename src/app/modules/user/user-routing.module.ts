@@ -11,8 +11,9 @@ import { MainComponent } from './components/main/main.component';
 import { CommunitiesComponent } from './components/communities/communities.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
-const routes: Routes = [{path:'',component:HomeComponent,children:[
+const routes: Routes = [{path:'',component:HomeComponent ,children:[
   {path:'aboutus',component:AboutUsComponent},
   {path:'conferences',component:ConferenceComponent},
   {path:'addevent',component:AddEventComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [{path:'',component:HomeComponent,children:[
   {path:'communities',component:CommunitiesComponent},
   {path:'education',component:EducationComponent},
   {path:'contactus',component:ContactusComponent},
+  {path:'dashboard',component:UserDashboardComponent},
   {path:'',component:MainComponent}
 ]}];
 

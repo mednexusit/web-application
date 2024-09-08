@@ -20,6 +20,7 @@ import { FollowusComponent } from './components/followus/followus.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
 
 
@@ -40,7 +41,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ContactusComponent,
     FollowusComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserDashboardComponent
   ],
   imports: [
     CommonModule,

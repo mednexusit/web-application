@@ -18,41 +18,47 @@
         <div class="input-group mt-4">
           <div class="input-row">
             <span class="country-code">+91</span>
-            <input type="text" id="phone" placeholder="Enter phone number" formControlName="phone" />
+            <input type="text" id="phone" placeholder="Enter phone number" formControlName="mobile" />
           </div>
-          <div class="error" *ngIf="loginForm.controls['phone'].invalid && loginForm.controls['phone'].touched">
+          <div class="error" *ngIf="loginForm.controls['mobile'].invalid && loginForm.controls['mobile'].touched">
             Phone number is required and must be 10 digits.
           </div>
         </div>
-  
+
         <div class="input-group d-flex gap-5 mt-4">
           <label>Get Notifications and updates on WhatsApp</label>
           <label class="switch">
-            <input type="checkbox" formControlName="whatsappNotifications" />
+            <input type="checkbox" formControlName="whatsapp_status" />
             <span class="slider round"></span>
           </label>
         </div>
-  
+
         <button type="submit" class="w-25">Continue</button>
       </form>
     </div>
-  
+
     <div class="verification-form p-5" *ngIf="isVerificationStage">
       <h2>Almost there</h2>
       <p class="caption-sign">Please enter the 5-digit code sent to your mobile number {{ maskedPhoneNumber }} for verification</p>
+      <span class="caption-sign red" >{{tempOtp}}</span>
       <div class="code-input">
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" autofocus />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]" />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]" />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" autofocus  (input)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]"   (change)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]"   (change)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" (change)="getOtpChecked()" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" (change)="getOtpChecked()" />
       </div>
-      <button class="w-25" (click)="verifyCode()">VERIFY</button>
-      <p class="caption-sign mt-2">Request new code in 00:30s</p>
-      <div class="rec-do mt-3">
-        <a href="#" (click)="resendCode()">Didn’t receive any code?</a>
-      </div>
+      <button class="w-25 verifyBtn" [disabled]='isEnabled' (click)="verifyCodeS()">VERIFY</button>
+      <!-- <p class="caption-sign mt-2">Request new code in 00:30s</p> -->
+      <p class="caption-sign mt-2">
+        Request new code in
+        <span *ngIf="countdown > 0">00:{{ countdown | number: '2.0' }}s</span>
+        <span *ngIf="countdown === 0" (click)="resendCode()" class="resentCodeLink">Request new code</span>
+      </p>
+      <!-- <div class="rec-do mt-3">
+        <button (click)="resendCode()" class="resentCodeLink">Didn’t receive any code?</button>
+      </div> -->
     </div>
   </div>
-  
+
 </div>

@@ -36,11 +36,12 @@
           <img src="../../../../../assets/userlogo-white.png" class="user-logo-white" alt="">
         </li>
         <li class="mt-2">
-          <a [routerLink]="['/login']" class="text-dark"><i class="fa-solid fa-right-to-bracket"></i></a>
+          <a [routerLink]="['/login']" title="Login" class="text-dark" *ngIf="!isLoggedInUser"><i class="fa-solid fa-right-to-bracket logIcon"></i></a>
+          <a [routerLink]="['']" *ngIf="isLoggedInUser" title="Logout" (click)="logoutUser()" class="text-dark"><i class="fa-solid fa-right-from-bracket logIcon"></i></a>
         </li>
-        <li class="mt-2">
-          <a [routerLink]="['/signup']" class="text-dark"><i class="fa-solid fa-user-plus"></i></a>
-        </li>
+        <!-- <li class="mt-2">
+          <a [routerLink]="['/signup']" class="text-dark" *ngIf="!isLoggedInUser"><i class="fa-solid fa-user-plus"></i></a>
+        </li> -->
         <!-- <li (click)="toggleTheme()" class="switch pt-1">
           <img [src]="toggleLogoSrc" alt="" />
         </li> -->

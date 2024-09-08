@@ -1,6 +1,8 @@
 import { SharedService } from './../../../../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { ThememanageService } from '../../theme/thememanage.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,17 +14,23 @@ export class HeaderComponent implements OnInit {
   logoSrc: string;
   userLogoSrc:string;
   toggleLogoSrc:string;
+  isLoggedInUser:boolean=false;
 
 
-  constructor(private themeService: ThememanageService, private SharedService:SharedService) {
+  constructor(private themeService: ThememanageService, private SharedService:SharedService, private authServ:AuthService, private router:Router) {
     this.logoSrc = this.themeService.getLogo();
     this.userLogoSrc=this.themeService.getUserLogo();
     this.toggleLogoSrc=this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
+   this.isLoggedInUser =  localStorage.getItem('LoggedInUser') !== null;
+  }
+  logoutUser(){
+    this.authServ.logoutUser();
+    this.router.navigate(['']);
+    this.isLoggedInUser =  localStorage.getItem('LoggedInUser') !== null;
 
   }
-
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
     this.themeService.toggleTheme(this.isDarkTheme);

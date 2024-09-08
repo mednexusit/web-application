@@ -62,9 +62,9 @@ export class VerifyOtpComponent implements OnInit {
           if(this.routeFrom==='/admin'){
             this.router.navigate(['admin/adminhome'])
           }
-          if(this.routeFrom==='/userlogin'){
-            this.router.navigate(['']);
-          }
+          // if(this.routeFrom==='/userlogin'){
+          //   this.router.navigate(['']);
+          // }
 
         }
       },
