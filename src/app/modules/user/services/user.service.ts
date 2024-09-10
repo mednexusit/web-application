@@ -8,4 +8,8 @@ import { environment } from '../../../../environments/environment';
 export class UserService {
 baseURL=environment.baseURL;
   constructor(private http:HttpClient) { }
+
+  submitContactForm(data:any){
+   return this.http.post(this.baseURL+'contactus/submit',data)
+  }
 }

@@ -33,12 +33,12 @@
             </div>
             <div class="right-side-content-wraper mb-4">
                 <div class="call-us-content">
-                    <form action="" class="d-flex flex-column">
-                        <input type="text" placeholder="Name">
-                        <input type="text" placeholder="Email">
-                        <input type="text" placeholder="Phone Number">
-                        <textarea name="" id="" placeholder="Comments"></textarea>
-                        <button type="button">Submit</button>
+                    <form action="" class="d-flex flex-column" [formGroup]="contactUsForm">
+                        <input type="text" placeholder="Name" formControlName="name">
+                        <input type="text" placeholder="Email" formControlName="email">
+                        <input type="text" placeholder="Phone Number" formControlName="mobile">
+                        <textarea name="" id="" placeholder="Comments" formControlName="comments"></textarea>
+                        <button type="button" [disabled]="!contactUsForm.valid" (click)="submitContactForm(contactUsForm.value)">Submit</button>
                     </form>
                 </div>
             </div>
