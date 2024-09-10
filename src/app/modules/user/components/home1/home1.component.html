@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="logo" *ngIf="isSidebarOpen">
+        <img src="assets/logo.png" alt="MedNexus Logo">
+      </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <mat-menu>
+        <button mat-menu-item>My Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home1">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="isSidebarOpen">Home</span>
+        </a>
+        <a mat-list-item routerLink="/my-interest">
+          <mat-icon>favorite</mat-icon>
+          <span *ngIf="isSidebarOpen">My Interest</span>
+        </a>
+        <a mat-list-item routerLink="/search">
+          <mat-icon>search</mat-icon>
+          <span *ngIf="isSidebarOpen">Search</span>
+        </a>
+        <a mat-list-item routerLink="/nexus">
+          <mat-icon>group</mat-icon>
+          <span *ngIf="isSidebarOpen">Nexus</span>
+        </a>
+        <a mat-list-item routerLink="/education1">
+          <mat-icon>school</mat-icon>
+          <span *ngIf="isSidebarOpen">Education</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <div class="content">
+        Welcome to
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

@@ -4,6 +4,7 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
 @import 'ngx-toastr/toastr';
 @import './variables';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 *{
   padding: 0;
@@ -215,4 +216,28 @@ box-shadow: inset 7px 7px 14px #7906a3,
   border-radius: 10px !important;
   color: #fff;
   font-size: 12px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+/* Custom sidebar color */
+.mat-sidenav {
+  background-color: #2E3B55;
+}
+
+/* Custom toolbar color */
+.mat-toolbar {
+  background-color: #00838F;
+  color: white;
+}
+
+.mat-list-item {
+  color: white;
+}
+
+.mat-list-item:hover {
+  background-color: #1C2638;
 }

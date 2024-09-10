@@ -12,20 +12,39 @@ import { CommunitiesComponent } from './components/communities/communities.compo
 import { EducationComponent } from './components/education/education.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-const routes: Routes = [{path:'',component:HomeComponent ,children:[
-  {path:'aboutus',component:AboutUsComponent},
-  {path:'conferences',component:ConferenceComponent},
-  {path:'addevent',component:AddEventComponent},
-  {path:'features',component:FeaturesComponent},
-  {path:'support',component:SupportComponent},
-  {path:'userlogin',component:UserLoginComponent},
-  {path:'communities',component:CommunitiesComponent},
-  {path:'education',component:EducationComponent},
-  {path:'contactus',component:ContactusComponent},
-  {path:'dashboard',component:UserDashboardComponent},
-  {path:'',component:MainComponent}
-]}];
+import { Home1Component } from './components/home1/home1.component';
+import { MyInterestComponent } from './components/my-interest/my-interest.component';
+import { SearchComponent } from './components/search/search.component';
+import { NexusComponent } from './components/nexus/nexus.component';
+import { Education1Component } from './components/education1/education1.component';
+
+
+
+const routes: Routes = [{
+  path: '', component: HomeComponent, children: [
+    { path: 'aboutus', component: AboutUsComponent },
+    { path: 'conferences', component: ConferenceComponent },
+    { path: 'addevent', component: AddEventComponent },
+    { path: 'features', component: FeaturesComponent },
+    { path: 'support', component: SupportComponent },
+    { path: 'userlogin', component: UserLoginComponent },
+    { path: 'communities', component: CommunitiesComponent },
+    { path: 'education', component: EducationComponent },
+    { path: 'contactus', component: ContactusComponent },
+    { path: 'dashboard', component: UserDashboardComponent },
+    { path: 'sidebar', component: SidebarComponent },
+
+    { path: 'home1', component: Home1Component },
+    { path: 'my-interest', component: MyInterestComponent },
+    { path: 'search', component: SearchComponent },
+    { path: 'nexus', component: NexusComponent },
+    { path: 'education1', component: Education1Component },
+    { path: '', component: MainComponent }
+
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

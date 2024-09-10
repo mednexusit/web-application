@@ -11,12 +11,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {NgxEditorModule} from 'ngx-editor';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +34,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatTabsModule,
+    MatRadioModule
   ],
   providers: [
     {provide:LocationStrategy,useClass:PathLocationStrategy},
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

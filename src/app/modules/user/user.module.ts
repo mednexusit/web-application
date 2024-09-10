@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { UserRoutingModule } from './user-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -21,7 +29,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { Home1Component } from './components/home1/home1.component';
+import { MyInterestComponent } from './components/my-interest/my-interest.component';
+import { SearchComponent } from './components/search/search.component';
+import { NexusComponent } from './components/nexus/nexus.component';
+import { Education1Component } from './components/education1/education1.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+ 
 
 
 @NgModule({
@@ -42,14 +57,29 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
     FollowusComponent,
     LoginComponent,
     SignupComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    Home1Component,
+    MyInterestComponent,
+    SearchComponent,
+    NexusComponent,
+    Education1Component,
+    SidebarComponent,
+
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModuleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatRadioModule
   ]
 })
 export class UserModule { }

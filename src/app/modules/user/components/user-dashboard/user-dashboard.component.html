@@ -1,5 +1,1700 @@
-<div class="wrapper">
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
 
-  <h1>WELCOME TO THE DASHBOARD PAGE</h1>
-  <h2>Content Coming Soon.....................</h2>
-</div>
+		<span class="logo" *ngIf="isSidebarOpen">
+			<img src="../../../../../assets/vendor-logo.png" alt="MedNexus Logo">
+		</span>
+		<button mat-icon-button (click)="toggleSidebar()">
+			<mat-icon>menu</mat-icon>
+		</button>
+
+		<span class="spacer"></span>
+		<button mat-icon-button>
+			<mat-icon>notifications</mat-icon>
+		</button>
+
+		<div>
+			<button mat-icon-button [matMenuTriggerFor]="menu">
+				<i class="fa-solid fa-user-tie"></i>
+			</button>
+		</div>
+
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item>
+				<mat-icon>person</mat-icon>
+				My Profile
+			</button>
+			<button mat-menu-item>
+				<mat-icon>badge</mat-icon>
+				Professional Credentials
+			</button>
+			<button mat-menu-item>
+				<mat-icon>event</mat-icon>
+				Add Conference
+			</button>
+			<button mat-menu-item>
+				<mat-icon>stars</mat-icon>
+				Premium
+			</button>
+			<button mat-menu-item>
+				<mat-icon>settings</mat-icon>
+				Settings
+			</button>
+			<button mat-menu-item>
+				<mat-icon>new_releases</mat-icon>
+				What's New in App
+			</button>
+			<button mat-menu-item>
+
+				<a [routerLink]="['/login']" title="Login" class="text-dark"
+					*ngIf="!isLoggedInUser"><mat-icon>logout</mat-icon></a>
+				<a [routerLink]="['']" *ngIf="isLoggedInUser" title="Logout" (click)="logoutUser()"
+					class="text-dark"><mat-icon>logout</mat-icon></a>
+				Logout
+			</button>
+		</mat-menu>
+
+		<!-- <div>
+      <a [routerLink]="['/login']" title="Login" class="text-dark" *ngIf="!isLoggedInUser"><i
+          class="fa-solid fa-right-to-bracket logIcon"></i></a>
+      <a [routerLink]="['']" *ngIf="isLoggedInUser" title="Logout" (click)="logoutUser()" class="text-dark"><i
+          class="fa-solid fa-right-from-bracket logIcon text-light"></i></a>
+    </div> -->
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
+		<mat-nav-list>
+			<a class="active" mat-list-item routerLink="/dashboard">
+				<img src="../../../../../assets/home-light.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Home</span>
+			</a>
+			<a mat-list-item routerLink="/my-interest">
+				<img src="../../../../../assets/My-Interest.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">My Interest</span>
+			</a>
+			<a mat-list-item routerLink="/search">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Search</span>
+			</a>
+			<a mat-list-item routerLink="/nexus">
+				<img src="../../../../../assets/nexus.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Nexus</span>
+			</a>
+			<a mat-list-item routerLink="/education1">
+				<img src="../../../../../assets/educte.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Education</span>
+			</a>
+		</mat-nav-list>
+	</mat-sidenav>
+
+
+	<mat-sidenav-content>
+		<div class="content">
+			<section>
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<div class="cards-wrapper">
+											<div class="card">
+												<div class="title">S.V. MEDICAL COLLEGE ALUMNI ASSOCIATION</div>
+												<div class="conference">48th Conference (Webinar)</div>
+												<div class="details">
+													On <strong>28.07.2024</strong><br>
+													Morning Session from <strong>8:30 to 1:30PM</strong>
+												</div>
+												<div class="location">Location: Tirupati</div>
+												<div class="guest1">
+													<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+												</div>
+												<div class="guest">
+													<img src="../../../../../assets/card-logo.png" alt="Chief Guest">
+													<div class="guest-name">
+														Chief Guest<br>
+														Dr. Hara Prasad Pati<br>
+														M.D, FICP, FIMSA, FISHIM
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="title">S.V. MEDICAL COLLEGE ALUMNI ASSOCIATION</div>
+												<div class="conference">48th Conference (Webinar)</div>
+												<div class="details">
+													On <strong>28.07.2024</strong><br>
+													Morning Session from <strong>8:30 to 1:30PM</strong>
+												</div>
+												<div class="location">Location: Tirupati</div>
+												<div class="guest1">
+													<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+												</div>
+												<div class="guest">
+													<img src="../../../../../assets/card-logo.png">
+													<div class="guest-name">
+														Chief Guest<br>
+														Dr. Hara Prasad Pati<br>
+														M.D, FICP, FIMSA, FISHIM
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="title">S.V. MEDICAL COLLEGE ALUMNI ASSOCIATION</div>
+												<div class="conference">48th Conference (Webinar)</div>
+												<div class="details">
+													On <strong>28.07.2024</strong><br>
+													Morning Session from <strong>8:30 to 1:30PM</strong>
+												</div>
+												<div class="location">Location: Tirupati</div>
+												<div class="guest1">
+													<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+												</div>
+												<div class="guest">
+													<img src="../../../../../assets/card-logo.png" alt="Chief Guest">
+													<div class="guest-name">
+														Chief Guest<br>
+														Dr. Hara Prasad Pati<br>
+														M.D, FICP, FIMSA, FISHIM
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section>
+				<div class="container">
+
+					<div class="d-flex">
+						<h1 class="head mt-5">Remainders</h1>
+						<h1 class="cat-tittle mt-5" style="margin-left: auto;"> <b>View All</b> </h1>
+					</div>
+					<hr>
+					<div class="row">
+						<!-- Coupon 1 -->
+						<div class="col-md-3">
+							<div class="coupon d-flex">
+								<span>
+									<img src="../../../../../assets/remid.png" alt="Coupon Icon">
+								</span>
+								<span>
+									<p class="coupon-caption">Get 10% Off a minimum Purchase of ₹699 on all..</p>
+									<p><strong>Code: NHPEE09</strong></p>
+								</span>
+
+
+
+							</div>
+						</div>
+						<!-- Coupon 2 -->
+						<div class="col-md-3">
+							<div class="coupon d-flex">
+								<span>
+									<img src="../../../../../assets/remid.png" alt="Coupon Icon">
+								</span>
+								<span>
+									<p class="coupon-caption">Get 10% Off a minimum Purchase of ₹699 on all..</p>
+									<p><strong>Code: NHPEE09</strong></p>
+								</span>
+
+
+
+							</div>
+						</div>
+						<!-- Coupon 3 -->
+						<div class="col-md-3">
+							<div class="coupon d-flex">
+								<span>
+									<img src="../../../../../assets/remid.png" alt="Coupon Icon">
+								</span>
+								<span>
+									<p class="coupon-caption">Get 10% Off a minimum Purchase of ₹699 on all..</p>
+									<p><strong>Code: NHPEE09</strong></p>
+								</span>
+
+
+
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-3">
+							<div class="coupon d-flex">
+								<span>
+									<img src="../../../../../assets/remid.png" alt="Coupon Icon">
+								</span>
+								<span>
+									<p class="coupon-caption">Get 10% Off a minimum Purchase of ₹699 on all..</p>
+									<p><strong>Code: NHPEE09</strong></p>
+								</span>
+
+
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recommended For You Section -->
+			<section>
+				<div class="container">
+					<h1 class="head mt-3">Recommended For You</h1>
+					<div class="row">
+						<div class="col-md-1">
+							<div class="recommendation-icon">
+								MN
+							</div>
+						</div>
+						<div class="col-md-1">
+							<div class="recommendation-icon">
+								+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!---Add Category-->
+			<section>
+				<div class="container">
+					<div class="d-flex">
+						<h1 class="head mt-5">Add Category</h1>
+						<h1 class="cat-tittle mt-5" style="margin-left: auto;">Back to Home</h1>
+					</div>
+					<hr class="hr">
+					<div class="row">
+						<!-- Coupon 1 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/anatomy.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Anatomy</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 2 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Physiology.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Physiology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 3 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Biochemistry.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Biochemistry</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Pathology.png"></div>
+											</div>
+											<h1 class="cat-tittle">Pathology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Pharmology.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Pharmology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 2 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Micro.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Micro Biology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 3 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Forensic.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Forensic Medicine</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/PSM.svg"></div>
+											</div>
+											<h1 class="cat-tittle">PSM</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 5 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/ENT.svg"></div>
+											</div>
+											<h1 class="cat-tittle">ENT</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 6 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Ophthal.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Ophthal</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 7 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/g.png"></div>
+											</div>
+											<h1 class="cat-tittle">General Medicine</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 8 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Obstetric.png"></div>
+											</div>
+											<h1 class="cat-tittle">Obstetric & Gyneac</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 9 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Paediatrics.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Paediatrics</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 10 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Orthopaedic.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Orthopaedic</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 11 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Anaesthiology.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Anaesthiology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 12 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Dermatology.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Dermatology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 13 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Psychiatry.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Psychiatry</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 14 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Radiology.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Radiology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Emergency.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Emergency Medicine</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Special.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Special Category</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/MBBS.svg"></div>
+											</div>
+											<h1 class="cat-tittle">MBBS</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
+														stroke-width="2" fill="none"> </circle>
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Surgery.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Surgery</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!---Anatomy-->
+			<section>
+				<div class="container">
+					<div class="d-flex">
+						<h1 class="head mt-5">Anatomy</h1>
+						<h1 class="cat-tittle mt-5" style="margin-left: auto;">Reset</h1>
+					</div>
+					<hr class="hr">
+					<div class="row">
+						<!-- Coupon 1 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Clinica.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Clinical Anatomy</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 2 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Neuro.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Neuro Anatomy</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 3 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Histo.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Histo Pathology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Embryology.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Embryology & Developmental Biology</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Medical.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Medical Education</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 2 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Radiological.svg">
+												</div>
+											</div>
+											<h1 class="cat-tittle">Radiological Anatomy</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 3 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Clinical.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Clinical Research</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Coupon 4 -->
+						<div class="col-md-2">
+							<div class="wrapper">
+								<div class="iconbox-top md-align-center">
+									<div class="iconbox-top-content">
+										<div class="hover-holder">
+											<div class="icon-holder">
+												<svg class="svg-circle">
+													<!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
+												</svg>
+												<div class="icon"><img src="../../../../../assets/Forensic.svg"></div>
+											</div>
+											<h1 class="cat-tittle">Forensic Anatomy</h1>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+
+			<section>
+				<div class="container">
+					<div class="d-flex">
+						<h1 class="head mt-5">Events</h1>
+						<h1 class="cat-tittle mt-5" style="margin-left: auto;">Back to Home</h1>
+						
+					</div>
+					<hr class="hr">
+					
+					<div class="row">
+						<mat-tab-group>
+						
+							<mat-tab>
+								<ng-template mat-tab-label>
+									<mat-radio-button value="all">ALL</mat-radio-button>
+								  </ng-template>
+							  <!-- Content for Hot Jobs tab -->
+							  <div class="row">
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">S.V. MEDICAL COLLEGE ALUMNI ASSOCIATION</div>
+									
+										<div class="tab-details">
+											On <strong>28.07.2024</strong>
+										</div>
+										<div class="location">Location: Tirupati</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Dare Diabeticon <br>- 2024 </div>
+									
+										<div class="tab-details">
+											On <strong>July 2024 9am-5pm</strong>
+										</div>
+										<div class="location">Location: Hyderabad</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">INDIRA GANDHI MEDICAL COLLEGE 
+											& RESEARCH INSTITUTE PUDUCHERRY</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 3rd, 2024</strong>
+										</div>
+										<div class="location">Location: Puducherry</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Hands-on Endogynecology <br>Course</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 9th & 10th, 2024</strong>
+										</div>
+										<div class="location">Location: Chennai</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Hands-on Endogynecology<br> Course</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 9th & 10th, 2024</strong>
+										</div>
+										<div class="location">Location: Chennai</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Hands-on Workshop on Female Contraception</div>
+									
+										<div class="tab-details">
+											On <strong>On December 2-6, 2024.</strong>
+										</div>
+										<div class="location">Location: ICMR-NIRRCH</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Suture Script Laparoscopic Suturing & Live Bariatric Surgery Workshop</div>
+									
+										<div class="tab-details">
+											On <strong>On July 27th & 28th, 2024</strong>
+										</div>
+										<div class="location">Location: Pune</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">INDIRA GANDHI MEDICAL COLLEGE & RESEARCH INSTITUTE PUDUCHERRY</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 3rd, 2024</strong>
+										</div>
+										<div class="location">Location: PUDUCHERRY</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+									
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">S.V. MEDICAL COLLEGE ALUMNI ASSOCIATION</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 3rd, 2024</strong>
+										</div>
+										<div class="location">Location: Tirupati</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+									
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">Dare Diabeticon<br> - 2024 </div>
+									
+										<div class="tab-details">
+											On <strong>July 2024 9am-5pm</strong>
+										</div>
+										<div class="location">Location: Hyderabad</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+									
+								</div>
+								<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="tab-card1">
+										<div class="tab-title">INDIRA GANDHI MEDICAL COLLEGE & RESEARCH INSTITUTE PUDUCHERRY</div>
+									
+										<div class="tab-details">
+											On <strong>On Aug 3rd, 2024</strong>
+										</div>
+										<div class="location">Location: PUDUCHERRY</div>
+										<div class="guest1">
+											<img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+								
+							  
+							</mat-tab>
+							<mat-tab>
+								<ng-template mat-tab-label>
+									
+										<mat-radio-button value="recentjobs">ONLINE</mat-radio-button>
+									  </ng-template>
+									
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of recentjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">OFFLINE</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">WEBINARS</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">WORKSHOP</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">EXPOSE</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							
+						  </mat-tab-group>
+					</div>
+				</div>
+				
+
+			</section>
+
+			
+			<section>
+				<div class="container">
+					<div class="d-flex">
+						<h1 class=" mt-5">S.V. MEDICAL COLLEGE</h1>
+						<h1 class="cat-tittle mt-5" style="margin-left: auto;">Back to Home</h1>
+						
+					</div>
+					<hr class="hr">
+					
+					<div class="row">
+						<mat-tab-group>
+						
+							<mat-tab>
+								<ng-template mat-tab-label>
+									<mat-radio-button value="all">About conference</mat-radio-button>
+								  </ng-template>
+							  <!-- Content for Hot Jobs tab -->
+							  <div class="row">
+								<div class="col-md-12 col-lg-12  text-center d-flex justify-content-center" *ngFor="let job of hotJobs">
+								<span class="head "> <h3>Share Me:</h3></span>	<a
+									  class="btn btn-lg btn-floating mx-2"
+									  style="background-color: #0077b5; color: white; border: none;"
+									  href="#!"
+									  role="button"
+									  ><i class="fab fa-linkedin"></i
+									></a>
+								  
+									<a
+									  class="btn btn-lg btn-floating mx-2"
+									  style="background-color: #25D366; color: white; border: none;"
+									  href="#!"
+									  role="button"
+									  ><i class="fab fa-whatsapp"></i
+									></a>
+								  
+									<a
+									  class="btn btn-lg btn-floating mx-2"
+									  style="background-color: #1DA1F2; color: white; border: none;"
+									  href="#!"
+									  role="button"
+									  ><i class="fab fa-twitter"></i
+									></a>
+								  
+									<a
+									  class="btn btn-lg btn-floating mx-2"
+									  style="background-color: #E1306C; color: white; border: none;"
+									  href="#!"
+									  role="button"
+									  ><i class="fab fa-instagram"></i
+									></a>
+								  
+									<a
+									  class="btn btn-lg btn-floating mx-2"
+									  style="background-color: #FF0000; color: white; border: none;"
+									  href="#!"
+									  role="button"
+									  ><i class="fab fa-youtube"></i
+									></a>
+								  </div>
+								  
+								  <div class="col-md-12 col-lg-12  text-center d-flex justify-content-center" *ngFor="let job of hotJobs">
+
+									
+									</div>
+							</div>
+								
+							  
+							</mat-tab>
+							<mat-tab>
+								<ng-template mat-tab-label>
+									
+										<mat-radio-button value="recentjobs">Schedule</mat-radio-button>
+									  </ng-template>
+									
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of recentjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">Speakers</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">Locations</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">Personal Details</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							<mat-tab >
+								<ng-template mat-tab-label>
+									
+									<mat-radio-button value="Popular Jobs">Payments</mat-radio-button>
+								  </ng-template>
+								<div class="row">
+									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
+										<div class="job-item">
+											<div class="item-overlay">
+											  <div class="job-info">
+												<a href="#" class="btn btn-primary">{{ job.type }}</a>
+												<span class="tr-title">
+												  <a href="#">{{ job.title }}</a>
+												  <span><a href="#">{{ job.company }}</a></span>
+												</span>
+												<ul class="tr-list job-meta">
+												  <li><i class="fa fa-map-signs" aria-hidden="true"></i>{{ job.location }}</li>
+												  <li><i class="fa fa-briefcase" aria-hidden="true"></i>{{ job.level }}</li>
+												  <li><i class="fa fa-money" aria-hidden="true"></i>{{ job.salary }}</li>
+												</ul>
+												<ul class="job-social tr-list">
+												  <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+												  <li><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+												</ul>
+											  </div>
+											</div>
+											<div class="job-info">
+											  <div class="company-logo">
+												<img [src]="job.logoUrl" alt="images" class="img-fluid">
+											  </div>
+											  <span class="tr-title">
+												<a href="#">{{ job.title }}</a>
+												<span><a href="#">{{ job.company }}</a></span>
+											  </span>
+											  <ul class="tr-list job-meta">
+												<li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>{{ job.location }}</li>
+												<li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>{{ job.level }}</li>
+												<li><span><i class="fa fa-money" aria-hidden="true"></i></span>{{ job.salary }}</li>
+											  </ul>
+											  <div class="time">
+												<a href="#"><span>{{ job.type }}</span></a>
+												<span class="pull-right">Posted {{ job.postedTime }} ago</span>
+											  </div>
+											</div>
+										  </div>
+									</div> -->
+								  </div>
+							</mat-tab>
+							
+						  </mat-tab-group>
+					</div>
+				</div>
+				
+
+			</section>
+			  
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>
