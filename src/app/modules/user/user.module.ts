@@ -8,6 +8,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { UserRoutingModule } from './user-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -79,7 +83,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatListModule,
     MatMenuModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSlideToggleModule
   ]
 })
 export class UserModule { }

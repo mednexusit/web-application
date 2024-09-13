@@ -4,6 +4,8 @@ import { SharedService } from './../../../../shared/shared.service';
 import { ThememanageService } from '../../theme/thememanage.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-user-dashboard',
@@ -13,6 +15,20 @@ import { AuthService } from '../../../../auth.service';
 export class UserDashboardComponent {
   isSidebarOpen = true; // Sidebar initially open
   sidenavMode: MatDrawerMode = 'side'; // Correctly typing the sidenavMode as MatDrawerMode
+  selectedValueTab1: string = 'all' ;
+  selectedValueTab2: string = 'aboutConference'; 
+
+
+  private dialogRef: MatDialogRef<any> | null = null;
+
+
+  onTabChange(event: any) {
+    if (event.index === 0) {
+      this.selectedValueTab1 = 'all';  // Reset Tab 1
+    } else if (event.index === 1) {
+      this.selectedValueTab2 = 'aboutConference';  // Reset Tab 2
+    }
+  }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -27,7 +43,7 @@ export class UserDashboardComponent {
   isLoggedInUser:boolean=false;
 
 
-  constructor(private themeService: ThememanageService, private SharedService:SharedService, private authServ:AuthService, private router:Router) {
+  constructor(private themeService: ThememanageService, private SharedService:SharedService, private authServ:AuthService, private router:Router, public dialog: MatDialog) {
     this.logoSrc = this.themeService.getLogo();
     this.userLogoSrc=this.themeService.getUserLogo();
     this.toggleLogoSrc=this.themeService.getToggleLogo();
@@ -93,6 +109,38 @@ export class UserDashboardComponent {
     }
 
   ];
+
+
+  openPersonalDetails() {
+    if (this.dialogRef) {
+      this.dialogRef.close(); // Close any previously opened modal
+    }
+
+    this.dialogRef = this.dialog.open(UserDashboardComponent, {
+      width: '400px',
+      height: '100%',
+      position: { top: '0', right: '0' },
+      panelClass: 'custom-modalbox',
+      disableClose: false, // Allow outside click to close
+      backdropClass: 'modal-backdrop',
+    });
+
+    document.body.style.overflow = 'hidden'; // Disable body scroll when modal is open
+
+    this.dialogRef.afterClosed().subscribe(() => {
+      document.body.style.overflow = ''; // Restore scroll after closing modal
+      this.dialogRef = null; // Clear the reference when closed
+    });
+  }
+
+  closeModal() {
+    if (this.dialogRef) {
+      this.dialogRef.close(); // Close the dialog when close button is clicked
+    }
+  }
+  
+  
+  
   
 
   

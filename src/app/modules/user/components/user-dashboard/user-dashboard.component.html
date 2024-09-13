@@ -19,29 +19,29 @@
 			</button>
 		</div>
 
-		<mat-menu #menu="matMenu">
+		<mat-menu #menu="matMenu" class="prof-menu">
 			<button mat-menu-item>
-				<mat-icon>person</mat-icon>
+				<img src="../../../../../assets/profile.svg" alt="profile"/>
 				My Profile
 			</button>
 			<button mat-menu-item>
-				<mat-icon>badge</mat-icon>
+				<img src="../../../../../assets/profissional.svg" alt="profile"/>
 				Professional Credentials
 			</button>
 			<button mat-menu-item>
-				<mat-icon>event</mat-icon>
+				<img src="../../../../../assets/add-conf.svg" alt="profile"/>
 				Add Conference
 			</button>
 			<button mat-menu-item>
-				<mat-icon>stars</mat-icon>
+				<img src="../../../../../assets/premium.svg" alt="profile"/>
 				Premium
 			</button>
 			<button mat-menu-item>
-				<mat-icon>settings</mat-icon>
+				<img src="../../../../../assets/setting.svg" alt="profile"/>
 				Settings
 			</button>
 			<button mat-menu-item>
-				<mat-icon>new_releases</mat-icon>
+				<img src="../../../../../assets/whatnew.svg" alt="profile"/>
 				What's New in App
 			</button>
 			<button mat-menu-item>
@@ -49,7 +49,7 @@
 				<a [routerLink]="['/login']" title="Login" class="text-dark"
 					*ngIf="!isLoggedInUser"><mat-icon>logout</mat-icon></a>
 				<a [routerLink]="['']" *ngIf="isLoggedInUser" title="Logout" (click)="logoutUser()"
-					class="text-dark"><mat-icon>logout</mat-icon></a>
+					class="text-dark"><img src="../../../../../assets/logout.svg" alt="profile"/></a>
 				Logout
 			</button>
 		</mat-menu>
@@ -514,7 +514,7 @@
 												</svg>
 												<div class="icon"><img src="../../../../../assets/PSM.svg"></div>
 											</div>
-											<h1 class="cat-tittle">PSM</h1>
+											<h1 class="catt-tittle">PSM</h1>
 										</div>
 
 
@@ -1011,8 +1011,9 @@
 
 							<mat-tab>
 								<ng-template mat-tab-label>
-									<mat-radio-button value="all">ALL</mat-radio-button>
+									<mat-radio-button class="custom-radio" value="all" checked>ALL</mat-radio-button>
 								</ng-template>
+
 								<!-- Content for Hot Jobs tab -->
 								<div class="row">
 									<div class="col-md-6 col-lg-4" *ngFor="let job of hotJobs">
@@ -1208,13 +1209,11 @@
 
 									</div>
 								</div>
-
-
 							</mat-tab>
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="recentjobs">ONLINE</mat-radio-button>
+									<mat-radio-button class="custom-radio" value="recentjobs">ONLINE</mat-radio-button>
 								</ng-template>
 
 								<div class="row">
@@ -1265,7 +1264,8 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">OFFLINE</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">OFFLINE</mat-radio-button>
 								</ng-template>
 								<div class="row">
 									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
@@ -1315,7 +1315,8 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">WEBINARS</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">WEBINARS</mat-radio-button>
 								</ng-template>
 								<div class="row">
 									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
@@ -1366,7 +1367,8 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">WORKSHOP</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">WORKSHOP</mat-radio-button>
 								</ng-template>
 								<div class="row">
 									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
@@ -1416,7 +1418,8 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">EXPOSE</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">EXPOSE</mat-radio-button>
 								</ng-template>
 								<div class="row">
 									<!-- <div class="col-md-6 col-lg-3" *ngFor="let job of popularjobs">
@@ -1473,7 +1476,7 @@
 
 
 			<section>
-				<div class="container">
+				<div class="container mt-5">
 					<div class="d-flex">
 						<h1 class="head mt-5">S.V. MEDICAL COLLEGE</h1>
 						<h1 class="cat-tittle mt-5" style="margin-left: auto;"><span><i
@@ -1487,14 +1490,15 @@
 
 							<mat-tab>
 								<ng-template mat-tab-label>
-									<mat-radio-button value="all">About conference</mat-radio-button>
+									<mat-radio-button class="custom-radio" name="group2" value="aboutConference"
+										checked>About conference</mat-radio-button>
 								</ng-template>
 								<!-- Content for Hot Jobs tab -->
 								<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center"
 										*ngFor="let job of hotJobs">
 										<span>
-											<h3 class="head">Share Me:</h3>
+											<h4 class="head">Share :</h4>
 										</span>
 										<a class="btn btn-lg btn-floating mx-2"
 											style="background-color: #0077b5; color: white; border: none;" href="#!"
@@ -1621,7 +1625,8 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="recentjobs">Schedule</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="recentjobs">Schedule</mat-radio-button>
 								</ng-template>
 
 
@@ -1629,7 +1634,7 @@
 									<div class="col-12 col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center"
 										*ngFor="let job of hotJobs">
 										<span>
-											<h3 class="head">Share Me:</h3>
+											<h4 class="head">Share :</h4>
 										</span>
 										<a class="btn btn-lg btn-floating mx-2"
 											style="background-color: #0077b5; color: white; border: none;" href="#!"
@@ -1675,10 +1680,10 @@
 
 										<table class="table table-bordered">
 											<thead>
-												<tr>
-													<th>Time</th>
-													<th>Activity</th>
-													<th>Venue</th>
+												<tr class="table-head">
+													<th class="table-head">Time</th>
+													<th class="table-head">Activity</th>
+													<th class="table-head">Venue</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -1688,6 +1693,7 @@
 													<td>Academic Block</td>
 												</tr>
 												<tr>
+													<td></td>
 													<td>Breakfast</td>
 													<td colspan="2">Near Academic Block</td>
 												</tr>
@@ -1709,10 +1715,11 @@
 
 										<h1 class="head">Morning Session</h1>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class=" border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> The evolution of forensic medicine: From
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class=" border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> The evolution of forensic
+													medicine: From
 													Fingerprints to DNA & Beyond</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1723,9 +1730,9 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class=" border p-2 rounded">
-											<div class="">
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class=" border p-2 rounded shadow">
+											<div class="cardd-row">
 												<p class="list-p"><strong>Conference Inauguration</strong></p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1734,10 +1741,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> Current Trends & Technologies in Forensic
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> Current Trends & Technologies
+													in Forensic
 													Science: Cutting-Edge Tools & Techniques</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1747,10 +1755,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> Trace Evidence Analysis: Unmasking the
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> Trace Evidence Analysis:
+													Unmasking the
 													Unspoken Stories</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1763,8 +1772,8 @@
 								</div>
 
 								<!-- Lunch Break -->
-								<div class="row mt-4 ">
-									<div class="col-12 lab-d d-flex justify-content-center text-center">
+								<div class="row mt-4 d-flex justify-content-center">
+									<div class="col-12 lab-d text-center">
 										<h4 class="bg-primary text-white p-2 rounded">Lunch Break (12:30 PM TO 1:30
 											PM)</h4>
 									</div>
@@ -1778,10 +1787,11 @@
 
 										<h1 class="head">Afternoon Session</h1>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> Looking at recent evolution in Toxicology
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> Looking at recent evolution in
+													Toxicology
 													through legal lens</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1792,10 +1802,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 col-md-3 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> Forensic Psychiatry & Psychology:
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> Forensic Psychiatry &
+													Psychology:
 													Understanding the criminal mind and motive</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1806,10 +1817,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 col-md-3 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Topic:</strong> Applying Forensic techniques to real-world
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Topic:</strong> Applying Forensic techniques
+													to real-world
 													investigations</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1820,10 +1832,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 col-md-3 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Venue:</strong> Panchdeep Corridor, 1st Floor, Academic Block
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Venue:</strong> Panchdeep Corridor, 1st Floor,
+													Academic Block
 												</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
@@ -1834,10 +1847,11 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-sm-12 col-xl-4 col-lg-4 col-md-4 mb-3">
-										<div class="border p-2 rounded">
-											<div class="">
-												<p class="list-p"><strong>Venue:</strong> Sushruta Hall, 1st Floor, Academic Block</p>
+									<div class="col-12 col-sm-12 col-xl-3 col-lg-3 col-md-3 mb-3">
+										<div class="border p-2 rounded shadow">
+											<div class="cardd-row">
+												<p class="list-p"><strong>Venue:</strong> Sushruta Hall, 1st Floor,
+													Academic Block</p>
 												<div class="lab-d">
 													<h5 class="bg-primary text-white p-2 rounded"><strong>Time:</strong>
 														2:00
@@ -1863,15 +1877,15 @@
 
 							<mat-tab>
 								<ng-template mat-tab-label>
-
-									<mat-radio-button value="Popular Jobs">Speakers</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">Speakers</mat-radio-button>
 								</ng-template>
 
 								<div class="row">
 									<div class="col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center"
 										*ngFor="let job of hotJobs">
 										<span class="head ">
-											<h3>Share Me:</h3>
+											<h4 class="head">Share :</h4>
 										</span>
 										<a class="btn btn-lg btn-floating mx-2"
 											style="background-color: #0077b5; color: white; border: none;" href="#!"
@@ -1903,18 +1917,16 @@
 									</div>
 								</div>
 
-
 								<div class="row mt-3">
 									<div class="col-12">
-
 										<h1 class="head">Speakers</h1>
 									</div>
-									<div class="col-md-9 col-lg-9 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-9 col-lg-9 mt-3">
 										<div class="label">
-											<div class="text">Cheif Patron</div>
+											<div class="text">Chief Patron</div>
 										</div>
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/kamal.png" alt="Kamal Kishore Soan">
 											<div class="card-text">
 												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
 												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
@@ -1923,10 +1935,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-3 col-lg-3 mt-3" *ngFor="let job of hotJobs">
-
+									<div class="col-md-3 col-lg-3 mt-3">
 										<h4 class="head">Click Button to Navigate the conference</h4>
-
 										<button class="btn btn-success">ATTEND CONFERENCE</button>
 									</div>
 								</div>
@@ -1934,139 +1944,118 @@
 								<div class="row mt-3">
 									<div class="col-12 d-flex justify-content-center">
 										<div class="label">
-											<div class="text">Cheif Patron</div>
+											<div class="text">Patron</div>
 										</div>
 									</div>
-
-									<div class="col-md-4 col-lg-4 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-4 col-lg-4 mt-3">
 
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/ashit.png" alt="Dr. Ashit Mullick">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Ashit Mullick</h3>
+												<p>Medical Commissioner (Medical Education)<br>Employee's State
+													Insurance Corporation</p>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-md-4 col-lg-4 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-4 col-lg-4 mt-3">
 
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/narayan.png" alt="Dr. K. Narayanasamy">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. K. Narayanasamy</h3>
+												<p>Vice Chancellor<br>Tamil Nadu Dr. M.G.R. Medical University, Chennai,
+													Tamilnadu</p>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-md-4 col-lg-4 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-4 col-lg-4 mt-3">
 
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/sunita.png" alt="Dr. Sunita Chopra">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Sunita Chopra</h3>
+												<p>Medical Commissioner (South Zone)<br>ESIC, Panchdeep Bhawan,
+													Bangalore, Karnataka</p>
 											</div>
 										</div>
 									</div>
 								</div>
-
 
 								<div class="row mt-3">
 
-									<div class="col-md-6 col-lg-6 mt-3" *ngFor="let job of hotJobs">
-										<div class="d-flex justify-content-center">
-											<div class="label">
-												<div class="text">Cheif Patron</div>
-											</div>
+									<div class="col-md-6 col-lg-6 mt-3">
+										<div class="label">
+											<div class="text">Organizing Chairman</div>
 										</div>
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/kalidas.png"
+												alt="Dr. Kalidas Dattatraya Chavan">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Kalidas Dattatraya Chavan</h3>
+												<p>Dean of ESIC Medical College & Hospital, Chennai, Tamilnadu</p>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-md-6 col-lg-6 mt-3" *ngFor="let job of hotJobs">
-										<div class="d-flex justify-content-center">
-											<div class="label">
-												<div class="text">Cheif Patron</div>
-											</div>
+									<div class="col-md-6 col-lg-6 mt-3">
+										<div class="label">
+											<div class="text">Organizing Secretary</div>
 										</div>
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/vijayakanth.png" alt="Dr. Vijayanath V">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Vijayanath V</h3>
+												<p>Prof & HOD, Dept. FMT, ESIC MCH, Chennai, Tamilnadu</p>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="row">
+								<div class="row mt-3">
 									<div class="col-12 d-flex justify-content-center">
 										<div class="label">
-											<div class="text">Cheif Patron</div>
+											<div class="text">Joint Secretary</div>
 										</div>
 									</div>
-
-
-									<div class="col-md-6 col-lg-6 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-6 col-lg-6 mt-3">
 
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/ravindra.png" alt="Dr. Ravindra Dekar">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Ravindra Dekar</h3>
+												<p>ADJ. Prof., Dept. FMT, Seth GSMC & KEMH, Mumbai, Maharashtra</p>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-md-6 col-lg-6 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-6 col-lg-6 mt-3">
+
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/rajesh.png" alt="Dr. Rajesh D.R">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Rajesh D.R</h3>
+												<p>Assoc. Prof., Dept. FMT, IGMC, Pondicherry</p>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="row">
+								<div class="row mt-3">
 									<div class="col-12 d-flex justify-content-center">
 										<div class="label">
-											<div class="text">Cheif Patron</div>
+											<div class="text">Treasurer</div>
 										</div>
 									</div>
-
-
-									<div class="col-md-6 col-lg-6 mt-3" *ngFor="let job of hotJobs">
+									<div class="col-md-12 col-lg-12 mt-3">
 
 										<div class="speaker-card">
-											<img src="https://via.placeholder.com/80" alt="Kamal Kishore Soan">
+											<img src="../../../../../assets/bheem.png" alt="Dr. Beemesetty Rajesh">
 											<div class="card-text">
-												<h3>Mr. Kamal Kishore Soan (IAS)</h3>
-												<p>Director General<br>Employee's State Insurance Corporation, Panchdeep
-													Bhawan, New Delhi</p>
-												<p><em>Union Ministry of Labour & Employment, Govt. of India</em></p>
+												<h3>Dr. Beemesetty Rajesh</h3>
+												<p>Assoc. Prof., Dept. FMT, ESIC MCH, Chennai, Tamilnadu</p>
 											</div>
 										</div>
 									</div>
@@ -2074,10 +2063,12 @@
 							</mat-tab>
 
 
+
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">Locations</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">Locations</mat-radio-button>
 								</ng-template>
 
 								<div class="row">
@@ -2095,13 +2086,14 @@
 									<div class="col-12">
 										<h1 class="head">Venue:</h1>
 									</div>
-									<div class="col-md-8 col-lg-8" *ngFor="let job of hotJobs">
-										<table class="table p-2">
-											<thead>
-												<tr>
-													<th>Venue</th>
-													<th>Date</th>
-													<th>Location</th>
+									<div class="col-12 col-sm-12 col-xl-8 col-md-8 col-lg-8"
+										*ngFor="let job of hotJobs">
+										<table class="table table-bordered">
+											<thead class="table-head">
+												<tr class="table-head">
+													<th class="table-head">Venue</th>
+													<th class="table-head">Date</th>
+													<th class="table-head">Location</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -2116,7 +2108,7 @@
 									</div>
 
 
-									<div class="col-md-4 col-lg-4" *ngFor="let job of hotJobs">
+									<div class="col-12 col-xl-4 col-md-4 col-lg-4" *ngFor="let job of hotJobs">
 
 										<h4 class="head">Click Button to Navigate the conference</h4>
 
@@ -2128,15 +2120,16 @@
 
 							<mat-tab>
 								<ng-template mat-tab-label>
+									<mat-radio-button class="custom-radio" (click)="openPersonalDetails()"
+										value="Popular Jobs">Personal Details</mat-radio-button>
 
-									<mat-radio-button value="Popular Jobs">Personal Details</mat-radio-button>
 								</ng-template>
 
 								<div class="row">
 									<div class="col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center"
 										*ngFor="let job of hotJobs">
 										<span class="head ">
-											<h3>Share Me:</h3>
+											<h4 class="head">Share :</h4>
 										</span>
 										<a class="btn btn-lg btn-floating mx-2"
 											style="background-color: #0077b5; color: white; border: none;" href="#!"
@@ -2160,6 +2153,105 @@
 
 									</div>
 								</div>
+
+								<div class="personal-details-modal">
+									<span class="close-modal" (click)="closeModal()">X</span>
+									<h2 class="modal-title">Confirm Details</h2>
+						
+									<div class="form-container">
+										<form>
+											<div class="form-group">
+												<input type="text" placeholder="Enter Name" class="form-control" />
+											</div>
+											<div class="form-group">
+												<input type="email" placeholder="Enter Email" class="form-control" />
+											</div>
+											<div class="form-group">
+												<label for="notify">Set Notification for E-Mails</label>
+												<input type="checkbox" id="notify" class="form-check-input ms-2">
+											</div>
+											<div class="form-group">
+												<input type="text" placeholder="Enter Phone/WhatsApp" class="form-control" />
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="DOB (D/M/Y)" class="form-control" />
+												</div>
+												<div class="form-group col-md-6">
+													<select class="form-select" aria-label="Select Gender">
+														<option selected>Select Gender</option>
+														<option value="male">Male</option>
+														<option value="female">Female</option>
+													</select>
+												</div>
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<select class="form-select" aria-label="Select Course">
+														<option selected>Select Course</option>
+														<option value="course1">Course 1</option>
+														<option value="course2">Course 2</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Enter Year" class="form-control" />
+												</div>
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<select class="form-select" aria-label="Select Type">
+														<option selected>Select Type</option>
+														<option value="full-time">Full Time</option>
+														<option value="part-time">Part Time</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<select class="form-select" aria-label="Current Position">
+														<option selected>Select Current Position</option>
+														<option value="manager">Manager</option>
+														<option value="executive">Executive</option>
+													</select>
+												</div>
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Enter College Name" class="form-control" />
+												</div>
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Exp In Years" class="form-control" />
+												</div>
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Enter Current Organization" class="form-control" />
+												</div>
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Council State" class="form-control" />
+												</div>
+											</div>
+						
+											<div class="form-row row">
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Enter Medical Cou.Reg.Number" class="form-control" />
+												</div>
+												<div class="form-group col-md-6">
+													<input type="text" placeholder="Year of Registration" class="form-control" />
+												</div>
+											</div>
+						
+											<div class="buttons text-center">
+												<button type="submit" class="btn btn-primary confirm-btn">CONFIRM</button>
+												<button type="button" class="btn btn-outline-primary add-member-btn">ADD NEW MEMBER</button>
+											</div>
+										</form>
+									</div>
+								</div>
+
 
 							</mat-tab>
 
@@ -2167,14 +2259,15 @@
 							<mat-tab>
 								<ng-template mat-tab-label>
 
-									<mat-radio-button value="Popular Jobs">Payments</mat-radio-button>
+									<mat-radio-button class="custom-radio"
+										value="Popular Jobs">Payments</mat-radio-button>
 								</ng-template>
 
 								<div class="row">
 									<div class="col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center"
 										*ngFor="let job of hotJobs">
 										<span class="head ">
-											<h3>Share Me:</h3>
+											<h4 class="head">Share :</h4>
 										</span>
 										<a class="btn btn-lg btn-floating mx-2"
 											style="background-color: #0077b5; color: white; border: none;" href="#!"
@@ -2200,75 +2293,82 @@
 								</div>
 
 
-								<div class="row mt-3">
-									<div class="col-md-6 col-lg-6">
+								<div class="row mt-5">
+
+									<div class="col-12 col-xl-7 col-md-7 col-lg-7">
 										<h4 class="head">Pay directly with your favourite UPI apps </h4>
-										<div class="d-flex gap-10">
-											<div>
+										<div class="d-flex justify-space-between gap-10">
+											<div class="net-img">
 												<img src="../../../../../assets/google pay.svg" alt="">
 												<br>
 												<label>GPay</label>
 											</div>
-											<div>
+											<div class="net-img">
 												<img src="../../../../../assets/Vector.svg" alt="">
 												<br>
 												<label>PhonePe</label>
 											</div>
-											<div>
+											<div class="net-img">
 												<img src="../../../../../assets/Bhmi.svg" alt="">
 												<br>
 												<label>BHIM</label>
 											</div>
-											<div>
+											<div class="net-img">
 												<img src="../../../../../assets/Paytm.svg" alt="">
 												<br>
 												<label>Paytm</label>
 											</div>
 										</div>
-										<div class="mt-3">
+										<div class="net-img-swip mt-3">
 											<img src="../../../../../assets/pay.svg" alt="">
 										</div>
 									</div>
-									<div class="col-md-6 col-lg-6 d-flex justify-content-end">
-										<table border="1" cellspacing="0" cellpadding="10">
-											<tr>
-												<th colspan="2">Confirm Details</th>
-											</tr>
-											<tr>
-												<td>Date</td>
-												<td>30 Aug 2024</td>
-											</tr>
-											<tr>
-												<td>Location</td>
-												<td>Tirupati</td>
-											</tr>
-											<tr>
-												<td>College</td>
-												<td>S.V. Medical College</td>
-											</tr>
-											<tr>
-												<td>Name</td>
-												<td>Lokesh</td>
-											</tr>
-											<tr>
-												<td>Phone</td>
-												<td>9703440987</td>
-											</tr>
-											<tr>
-												<td>Email</td>
-												<td>lokeshmPuttagmail.com</td>
-											</tr>
+
+									<div class="col-12 col-xl-5 col-md-5 col-lg-5 px-3 d-flex justify-content-end">
+
+										<table class="table table-bordered">
+											<thead class="table-head">
+												<tr class="table-head">
+													<th colspan="2" class="table-head text-center">Confirm Details</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Date</td>
+													<td class="table-p">03 AUG 2024</td>
+												</tr>
+												<tr>
+													<td>Location</td>
+													<td class="table-p">Tirupati</td>
+												</tr>
+												<tr>
+													<td>College</td>
+													<td class="table-p">S.V. Medical College</td>
+												</tr>
+												<tr>
+													<td>Name</td>
+													<td class="table-p">Lokesh</td>
+												</tr>
+												<tr>
+													<td>Phone</td>
+													<td class="table-p">9703440987</td>
+												</tr>
+												<tr>
+													<td>Email</td>
+													<td class="table-p">lokeshmPuttagmail.com</td>
+												</tr>
+											</tbody>
 										</table>
 
+
 									</div>
-									<div class="col-md-6 col-lg-6">
+									<div class="col-12 col-xl-6 col-md-6 col-lg-6">
 										<h4 class="head">Other Payments Methods</h4>
 										<div>
-											<div class="header">
-												Secured by Trusted Indian Banks
-											</div>
 
 											<div class="swipe-container">
+												<h4 class="head text-light">Secured by Trusted Indian Banks</h4>
 												<button class="swipe-button">
 													<span class="swipe-text">Swipe to Pay</span>
 												</button>
@@ -2278,12 +2378,12 @@
 												<div class="payment-option">
 													<img src="../../../../../assets/net.svg" alt="Net Banking Icon"
 														class="icon">
-													<span>Net Banking</span>
+													<span class="list-p">Net Banking</span>
 												</div>
 												<div class="payment-option">
 													<img src="../../../../../assets/net.svg" alt="CRED Pay Icon"
 														class="icon">
-													<span>CRED Pay</span>
+													<span class="list-p">CRED Pay</span>
 												</div>
 											</div>
 
@@ -2313,26 +2413,27 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-7 col-lg-7">
+						<div class="col-12 col-xl-7 col-md-7 col-lg-7">
 							<div class="image-section">
-								<img src="../../../../../assets/ed-ban.png" alt="Webinar Image" class="webinar-image">
+								<img src="../../../../../assets/ed-ban.png" alt="Webinar Image"
+									class="webinar-image img-fluid" />
 							</div>
 						</div>
-						<div class="col-md-5 col-lg-5">
+						<div class="col-12 col-xl-5 col-md-5 col-lg-5">
 							<div class="info-section">
 								<div class="info-item">
 									<img src="../../../../../assets/news.svg" alt="News Feed Icon" class="icon">
-									<span>News Feed</span>
+									<span class="list-t">News Feed</span>
 									<button class="arrow-button">➤</button>
 								</div>
 								<div class="info-item">
 									<img src="../../../../../assets/web.svg" alt="Webinars Icon" class="icon">
-									<span>Webinars</span>
+									<span class="list-t">Webinars</span>
 									<button class="arrow-button">➤</button>
 								</div>
 								<div class="info-item">
 									<img src="../../../../../assets/webor.svg" alt="Organizers Icon" class="icon">
-									<span>Webinars Organizers</span>
+									<span class="list-t">Webinars Organizers</span>
 									<button class="arrow-button">➤</button>
 								</div>
 							</div>
@@ -2357,27 +2458,27 @@
 						<!-- Coupon 1 -->
 						<div class="col-md-6 col-lg-4">
 							<div class="tab-card2 img-fluid">
-								<div class="top-trending-label"> Trending</div>
+								<div class="top-trending-label list-p"> Trending</div>
 								<img _ngcontent-ng-c3382033611="" src="../../../../../assets/news1.png"
-									alt="Webinar Image" class="new-image">
+									alt="Webinar Image " class="new-image img-fluid">
 
 							</div>
 						</div>
 						<!-- Coupon 2 -->
 						<div class="col-md-6 col-lg-4">
 							<div class="tab-card2 img-fluid">
-								<div class="top-trending-label"> Trending</div>
+								<div class="top-trending-label list-p"> Trending</div>
 								<img _ngcontent-ng-c3382033611="" src="../../../../../assets/new2.png"
-									alt="Webinar Image" class="new-image">
+									alt="Webinar Image " class="new-image img-fluid">
 
 							</div>
 						</div>
 						<!-- Coupon 3 -->
 						<div class="col-md-6 col-lg-4">
 							<div class="tab-card2 img-fluid">
-								<div class="top-trending-label">Trending</div>
+								<div class="top-trending-label list-p">Trending</div>
 								<img _ngcontent-ng-c3382033611="" src="../../../../../assets/new3.png"
-									alt="Webinar Image" class="new-image">
+									alt="Webinar Image" class="new-image img-fluid">
 
 							</div>
 						</div>
@@ -2406,11 +2507,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2422,11 +2523,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2438,11 +2539,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2453,11 +2554,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2468,11 +2569,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2483,11 +2584,11 @@
 							<div class="speaker-card">
 								<img src="../../../../../assets/post1.png" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>Long COVID Risk Has Dropped Since Start...</h3>
+									<h4 class="side-text">Long COVID Risk Has Dropped Since Start...</h4>
 
 									<div class="card-footer">
-										<p class="left-text">Health News <br>July 19, 2024 26</p>
-										<p class="right-text"> <b>1 Day ago</b></p>
+										<h5 class="left-text"><b>Health News July 19, 2024 26</b></h5>
+										<h6 class="right-text"> <b>1 Day ago</b></h6>
 									</div>
 								</div>
 							</div>
@@ -2522,7 +2623,7 @@
 						<div class="row align-items-center">
 							<div class="col-md-6">
 								<h2 class="head text-start">Long COVID Risk Has Dropped Since Start of Pandemic</h2>
-								<p>Ralph Ellis, July 19, 2024</p>
+								<p><b>Ralph Ellis, July 19, 2024</b></p>
 							</div>
 							<div class="col-md-6">
 								<div class="d-flex justify-content-end">
@@ -2557,13 +2658,16 @@
 					<div class="row">
 						<!-- Coupon 1 -->
 						<div class="col-md-12 col-lg-12 mt-3">
-							<p>Your chances of developing long COVID have significantly decreased since the pandemic
+							<p class="list-p">Your chances of developing long COVID have significantly decreased since
+								the pandemic
 								began, offering a glimmer of hope and a sign of progress in the ongoing battle against
 								the virus.</p>
-							<p>That's according to a new study published in The New England Journal of Medicine.
+							<p class="list-p">That's according to a new study published in The New England Journal of
+								Medicine.
 								Researchers at Washington University in St. Louis, who conducted the study, said that
 								the drop was caused by vaccinations and changes in the virus itself. </p>
-							<p>"You can see a clear and significant difference in risk during the delta and omicron eras
+							<p class="list-p">"You can see a clear and significant difference in risk during the delta
+								and omicron eras
 								between the vaccinated and unvaccinated," Ziyad Al-Aly, MD, director of the Clinical
 								Epidemiology Center at the VA St. Louis Health Care System and head of the research and
 								development service, said in a statement. "So, if people think COVID is no big deal and
@@ -2608,11 +2712,11 @@
 					</div>
 					<div class="row">
 						<!-- Coupon 1 -->
-						<div class="col-md-6 col-lg-6">
+						<div class="col-12 col-sm-12 col-xl-6 col-md-6 col-lg-6">
 							<div class="speaker-card new1-card">
-								<img src="../../../../../assets/s1.png" alt="Kamal Kishore Soan">
+								<img src="../../../../../assets/s1.png" class="img-fluid" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>A Paradigme shift of Cancer Diagnosis and Management</h3>
+									<h4><b>A Paradigme shift of Cancer Diagnosis and Management</b></h4>
 									<div class="conference">29th August 2024, 03:00 PM</div>
 
 									<p><b>Oncology</b></p>
@@ -2621,11 +2725,11 @@
 
 
 						</div>
-						<div class="col-md-6 col-lg-6">
+						<div class="col-12 col-sm-12 col-xl-6 col-md-6 col-lg-6">
 							<div class="speaker-card new1-card">
-								<img src="../../../../../assets/s2.png" alt="Kamal Kishore Soan">
+								<img src="../../../../../assets/s2.png" class="img-fluid" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>A Paradigme shift of Cancer Diagnosis and Management</h3>
+									<h4><b>A Paradigme shift of Cancer Diagnosis and Management</b></h4>
 									<div class="conference">29th August 2024, 03:00 PM</div>
 
 									<p><b>Oncology</b></p>
@@ -2634,11 +2738,11 @@
 
 
 						</div>
-						<div class="col-md-6 col-lg-6">
+						<div class="col-12 col-sm-12 col-xl-6 col-md-6 col-lg-6">
 							<div class="speaker-card new1-card">
-								<img src="../../../../../assets/s2.png" alt="Kamal Kishore Soan">
+								<img src="../../../../../assets/s2.png" class="img-fluid" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>A Paradigme shift of Cancer Diagnosis and Management</h3>
+									<h4><b>A Paradigme shift of Cancer Diagnosis and Management</b></h4>
 									<div class="conference">29th August 2024, 03:00 PM</div>
 									<p><b>Oncology</b></p>
 								</div>
@@ -2646,11 +2750,11 @@
 
 
 						</div>
-						<div class="col-md-6 col-lg-6">
+						<div class="col-12 col-sm-12 col-xl-6 col-md-6 col-lg-6">
 							<div class="speaker-card new1-card">
-								<img src="../../../../../assets/s1.png" alt="Kamal Kishore Soan">
+								<img src="../../../../../assets/s1.png" class="img-fluid" alt="Kamal Kishore Soan">
 								<div class="card-text">
-									<h3>A Paradigme shift of Cancer Diagnosis and Management</h3>
+									<h4><b>A Paradigme shift of Cancer Diagnosis and Management</b></h4>
 									<div class="conference">29th August 2024, 03:00 PM</div>
 									<p><b>Oncology</b></p>
 								</div>
@@ -2658,10 +2762,6 @@
 
 
 						</div>
-
-
-
-
 					</div>
 				</div>
 			</section>
@@ -2690,7 +2790,8 @@
 										alt="Kamal Kishore Soan" class="small-image">
 									<div class="card-text">
 										<h2 class="mt-2"><b>Dr. Somarat </b></h2>
-										<p style="text-align: center;">Medical Director and Senior Radiation Oncologist
+										<p style="text-align: center;" class="list-p">Medical Director and Senior
+											Radiation Oncologist
 											at HCG Cancer Centre, Bangalore</p>
 										<div class="conference" style="text-align: center;">29th August 2024, 03:00 PM
 										</div>
@@ -2708,7 +2809,8 @@
 
 						<div class="col-md-12 col-lg-12 mt-3">
 							<h2 class="head">Overview</h2>
-							<p>A Paradigme shift of Cancer Diagnosis and Management. Is India's fastest growing
+							<p class="list-p">A Paradigme shift of Cancer Diagnosis and Management. Is India's fastest
+								growing
 								Healthcare Learning and Patient Education Platform designed and developed to help
 								doctors and other medical professionals to cater educational and training needs and to
 								discover, discuss and learn the latest and best practices across 100+ medical

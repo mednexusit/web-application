@@ -19,7 +19,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio'; 
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatButtonModule,
     MatListModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSlideToggleModule
   ],
   providers: [
     {provide:LocationStrategy,useClass:PathLocationStrategy},
