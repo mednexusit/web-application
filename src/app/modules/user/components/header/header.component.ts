@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
    console.log(this.router.url)
    if(this.router.url=='/dashboard'){
     let whitelogo = document.querySelector('.logo') as HTMLImageElement;
-    console.log(whitelogo)
      whitelogo.style.opacity = "0";
    }
   }
