@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
 import { LoginComponent } from './modules/user/components/login/login.component';
-import { SignupComponent } from './modules/user/components/signup/signup.component';
+import { SignupComponent } from './common/shared-module/signup/signup.component';
 
 const routes: Routes = [
   {
