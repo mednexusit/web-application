@@ -1,7 +1,7 @@
 import { SharedService } from './../../../../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { ThememanageService } from '../../theme/thememanage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../../auth.service';
 
 @Component({
@@ -17,13 +17,19 @@ export class HeaderComponent implements OnInit {
   isLoggedInUser:boolean=false;
 
 
-  constructor(private themeService: ThememanageService, private SharedService:SharedService, private authServ:AuthService, private router:Router) {
+  constructor(private rt: ActivatedRoute,private themeService: ThememanageService, private SharedService:SharedService, private authServ:AuthService, private router:Router) {
     this.logoSrc = this.themeService.getLogo();
     this.userLogoSrc=this.themeService.getUserLogo();
     this.toggleLogoSrc=this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
    this.isLoggedInUser =  localStorage.getItem('LoggedInUser') !== null;
+   console.log(this.router.url)
+   if(this.router.url=='/dashboard'){
+    let whitelogo = document.querySelector('.logo') as HTMLImageElement;
+    console.log(whitelogo)
+     whitelogo.style.opacity = "0";
+   }
   }
   logoutUser(){
     this.authServ.logoutUser();
