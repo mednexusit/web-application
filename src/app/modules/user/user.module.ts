@@ -39,6 +39,7 @@ import { SearchComponent } from './components/search/search.component';
 import { NexusComponent } from './components/nexus/nexus.component';
 import { Education1Component } from './components/education1/education1.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
  
 
@@ -68,6 +69,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     NexusComponent,
     Education1Component,
     SidebarComponent,
+    DashboardComponent,
 
   ],
   imports: [

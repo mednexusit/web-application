@@ -17,7 +17,7 @@
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
-  
+
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
       <mat-nav-list>
@@ -25,7 +25,7 @@
           <mat-icon>home</mat-icon>
           <span *ngIf="isSidebarOpen">Home</span>
         </a>
-        <a mat-list-item routerLink="/my-interest">
+        <a mat-list-item routerLink="dashboard/my-interest">
           <mat-icon>favorite</mat-icon>
           <span *ngIf="isSidebarOpen">My Interest</span>
         </a>
@@ -43,11 +43,10 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-  
+
     <mat-sidenav-content>
       <div class="content">
         Welcome to
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  

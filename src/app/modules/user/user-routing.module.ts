@@ -19,35 +19,46 @@ import { MyInterestComponent } from './components/my-interest/my-interest.compon
 import { SearchComponent } from './components/search/search.component';
 import { NexusComponent } from './components/nexus/nexus.component';
 import { Education1Component } from './components/education1/education1.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: 'aboutus', component: AboutUsComponent },
+      { path: 'conferences', component: ConferenceComponent },
+      { path: 'addevent', component: AddEventComponent },
+      { path: 'features', component: FeaturesComponent },
+      { path: 'support', component: SupportComponent },
+      { path: 'userlogin', component: UserLoginComponent },
+      { path: 'communities', component: CommunitiesComponent },
+      { path: 'education', component: EducationComponent },
+      { path: 'contactus', component: ContactusComponent },
+      {
+        path: 'dashboard',
+        component: UserDashboardComponent,
+        children: [
+          { path: 'my-interest', component: MyInterestComponent },
+          {path:'',component:DashboardComponent},
+          { path: 'search', component: SearchComponent },
+          { path: 'nexus', component: NexusComponent },
+          { path: 'education1', component: Education1Component },
+        ],
+      },
+      { path: 'sidebar', component: SidebarComponent },
+
+      { path: 'home1', component: Home1Component },
+      { path: 'search', component: SearchComponent },
 
 
-
-const routes: Routes = [{
-  path: '', component: HomeComponent, children: [
-    { path: 'aboutus', component: AboutUsComponent },
-    { path: 'conferences', component: ConferenceComponent },
-    { path: 'addevent', component: AddEventComponent },
-    { path: 'features', component: FeaturesComponent },
-    { path: 'support', component: SupportComponent },
-    { path: 'userlogin', component: UserLoginComponent },
-    { path: 'communities', component: CommunitiesComponent },
-    { path: 'education', component: EducationComponent },
-    { path: 'contactus', component: ContactusComponent },
-    { path: 'dashboard', component: UserDashboardComponent },
-    { path: 'sidebar', component: SidebarComponent },
-
-    { path: 'home1', component: Home1Component },
-    { path: 'my-interest', component: MyInterestComponent },
-    { path: 'search', component: SearchComponent },
-    { path: 'nexus', component: NexusComponent },
-    { path: 'education1', component: Education1Component },
-    { path: '', component: MainComponent }
-
-  ]
-}];
+      { path: '', component: MainComponent },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}
