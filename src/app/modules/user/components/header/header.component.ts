@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
    this.isLoggedInUser =  localStorage.getItem('LoggedInUser') !== null;
    console.log(this.router.url)
-   if(this.router.url=='/dashboard'){
+   if(this.router.url.includes('/dashboard')){
     let whitelogo = document.querySelector('.logo') as HTMLImageElement;
      whitelogo.style.opacity = "0";
    }
