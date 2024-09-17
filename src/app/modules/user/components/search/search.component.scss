@@ -58,9 +58,9 @@ $text-color: #ffffff;
       transition: opacity 0.3s ease;
     }
 
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+    // &:hover {
+    //   background-color: rgba(255, 255, 255, 0.1);
+    // }
   }
 }
 
@@ -88,7 +88,7 @@ li{
 
 
 a.mat-mdc-list-item.mdc-list-item.active.mat-mdc-list-item-interactive.mat-mdc-list-item-single-line.mdc-list-item--with-one-line{
-  background-color: #0F7C7F;
+  //background-color: #0F7C7F;
   color: #f5f5f5;
 }
 
@@ -1402,76 +1402,75 @@ padding: 20px;
     box-shadow: 0 4px 10px #0003;
     position: relative;
     margin-top: 20px;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
   }
-  
-  @media (max-width: 768px) { 
+
+  @media (max-width: 768px) {
     .tab-card1 {
-        width: 100%; 
+        width: 100%;
         padding: 15px;
         margin-top: 15px;
     }
   }
-  
-  @media (max-width: 576px) { 
+
+  @media (max-width: 576px) {
     .tab-card1 {
-        width: 100%; 
+        width: 100%;
         padding: 10px;
         margin-top: 10px;
     }
   }
-  
-  @media (max-width: 400px) { 
+
+  @media (max-width: 400px) {
     .tab-card1 {
         width: 100%;
         padding: 8px;
         margin-top: 8px;
     }
   }
-  
-  
+
+
   .tab-title {
     font-weight: 700;
     font-size: 15px;
     line-height: 25.36px;
-    transition: font-size 0.3s ease; 
+    transition: font-size 0.3s ease;
   }
-  
-  @media (max-width: 768px) { 
+
+  @media (max-width: 768px) {
     .tab-title {
-        font-size: 14px; 
+        font-size: 14px;
     }
   }
-  
-  @media (max-width: 576px) { 
+
+  @media (max-width: 576px) {
     .tab-title {
-        font-size: 13px; 
+        font-size: 13px;
     }
   }
-  
-  @media (max-width: 400px) { 
+
+  @media (max-width: 400px) {
     .tab-title {
-        font-size: 12px; 
+        font-size: 12px;
     }
   }
-  
+
   .location {
     background-color: #06c;
     padding: 5px;
     border-radius: 5px;
     width: fit-content;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
   }
-  
+
   @media (max-width: 768px) {
     .location {
-        padding: 4px; 
+        padding: 4px;
     }
   }
-  
+
   @media (max-width: 576px) {
     .location {
-        padding: 3px; 
+        padding: 3px;
     }
   }
-  

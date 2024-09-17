@@ -1,22 +1,22 @@
 
-$primary-color: #0F7C7F; 
+$primary-color: #0F7C7F;
 $secondary-color: #EAEAEA;
-$background-color: #f5f5f5; 
+$background-color: #f5f5f5;
 $text-color: #ffffff;
 
 .mat-toolbar {
   background-color: $primary-color;
   color: $text-color;
   height: 64px;
-  
+
   .logo img {
     height: 40px;
   }
-  
+
   .spacer {
     flex: 1 1 auto;
   }
-  
+
   mat-icon {
     color: $text-color;
   }
@@ -46,7 +46,7 @@ $text-color: #ffffff;
     align-items: center;
     padding: 8px 16px;
     color: $text-color;
-    
+
     mat-icon {
       margin-right: 16px;
       width: 24px;
@@ -58,9 +58,9 @@ $text-color: #ffffff;
       transition: opacity 0.3s ease;
     }
 
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+    // &:hover {
+    //   background-color: rgba(255, 255, 255, 0.1);
+    // }
   }
 }
 
@@ -88,7 +88,7 @@ li{
 
 
 a.mat-mdc-list-item.mdc-list-item.active.mat-mdc-list-item-interactive.mat-mdc-list-item-single-line.mdc-list-item--with-one-line{
-  background-color: #0F7C7F;
+ // background-color: #0F7C7F;
   color: #f5f5f5;
 }
 
@@ -115,7 +115,13 @@ img.menu-ic {
   margin: 0 10px;
 }
 
-
+.router-link-active{
+  background-color: #0f7c7f;
+  color: #fff;
+  span{
+    color: #fff;
+  }
+}
 .carousel-inner {
   padding: 1em;
 }
@@ -190,7 +196,7 @@ img.menu-ic {
 }
 .tab-details{
   margin: 8px;
-  
+
 }
 .guest {
   position: absolute;
@@ -285,11 +291,11 @@ color: #2E2E2E;
     display: inline-block;
     max-width: 700px;
 }
-.iconbox-top .icon-holder {    
+.iconbox-top .icon-holder {
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 15px;  
+    margin-bottom: 15px;
     height: 100px;
     width: 100px;
 }
@@ -307,7 +313,7 @@ color: #2E2E2E;
   font-weight: normal;
   width: 75%;
   color: rgba(94,94,94,0.7);
-  
+
 }
 .iconbox-top .svg-circle{
   opacity:0;
@@ -317,21 +323,21 @@ color: #2E2E2E;
   stroke-dashoffset:360px;
 }
 .iconbox-top .hover-holder:hover .svg-circle circle
-{  
-  animation: dashIn 0.6s linear forwards ;  
+{
+  animation: dashIn 0.6s linear forwards ;
 }
 .iconbox-top .hover-holder:hover .svg-circle
-{  
-  opacity:1;  
+{
+  opacity:1;
 }
 
 .iconbox-top .hover-holder:not(:hover) .svg-circle circle
-{  
+{
   animation: dashOut 0.6s ease ;
 }
 .iconbox-top .hover-holder:not(:hover) .svg-circle
-{  
-  opacity:0.3;  
+{
+  opacity:0.3;
 }
 .iconbox-top .hover-holder:hover .icon{
   animation: iconIn 0.3s linear forwards;
@@ -357,10 +363,10 @@ color: #2E2E2E;
   }
 }
 @keyframes iconIn {
-  0%{   
+  0%{
     font-size:42px;
   }
-  100%{     
+  100%{
     font-size:38px;
   }
 }
@@ -449,8 +455,8 @@ color: #000;
 padding: 5px 30px;
 }
 
-.job-tab .nav-tabs>li>a.active, 
-.job-tab .nav-tabs>li a.active>:focus, 
+.job-tab .nav-tabs>li>a.active,
+.job-tab .nav-tabs>li a.active>:focus,
 .job-tab .nav-tabs>li>a.active:hover,
 .job-tab .nav-tabs>li>a:hover {
 border: none;
@@ -503,7 +509,7 @@ margin-bottom: 30px;
 
 .job-meta li,
 .job-meta li a {
-color: #646464;	
+color: #646464;
 }
 
 .job-meta li a:hover {
@@ -561,7 +567,7 @@ padding: 5px 10px;
 .job-item .time a span {
 color: #fff;
   background-color: #f1592a;
-  border-color: #f1592a;	
+  border-color: #f1592a;
 }
 
 .job-item .time a span.part-time {
@@ -571,7 +577,7 @@ border-color: #00aeef;
 
 .job-item .time a span.freelance {
 background-color: #92278f;
-border-color: #92278f;	
+border-color: #92278f;
 }
 
 .job-item .item-overlay {
@@ -665,7 +671,7 @@ background-color:#008def;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
-  transform: scale(0);	
+  transform: scale(0);
 }
 
 .job-social li a:hover:before {
@@ -699,7 +705,7 @@ color: #fff;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
   position: relative;
   margin-top: 20px;
- 
+
 }
 .tab-title{
   font-weight: bold;
@@ -1080,8 +1086,8 @@ border: none;
 
 
 
-.cardd-row{ 
-  padding: 20px;              
+.cardd-row{
+  padding: 20px;
   border-radius: 8px;         /* Optional rounded corners */
   min-height: 200px;          /* Ensures all cards have a minimum height */
 }

@@ -66,23 +66,23 @@
 <mat-sidenav-container class="sidenav-container">
 	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
 		<mat-nav-list>
-			<a class="active" mat-list-item routerLink="/dashboard">
+			<a class="active" mat-list-item [routerLink]="['/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/home-light.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Home</span>
 			</a>
-			<a mat-list-item routerLink="my-interest">
+			<a mat-list-item [routerLink]="['my-interest']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/My-Interest.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">My Interest</span>
 			</a>
-			<a mat-list-item routerLink="search">
+			<a mat-list-item [routerLink]="['search']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/search.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Search</span>
 			</a>
-			<a mat-list-item routerLink="nexus">
+			<a mat-list-item [routerLink]="['nexus']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/nexus.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Nexus</span>
 			</a>
-			<a mat-list-item routerLink="education1">
+			<a mat-list-item [routerLink]="['education1']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/educte.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Education</span>
 			</a>
