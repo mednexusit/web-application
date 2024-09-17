@@ -17,7 +17,8 @@ body {
 .login-container {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 100%;
+  overflow-x: hidden !important;
   font-family: 'Roboto', sans-serif;
 }
 

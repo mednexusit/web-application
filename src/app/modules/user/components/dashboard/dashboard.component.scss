@@ -163,45 +163,46 @@ img.menu-ic {
 
 
 .card {
-  width: 350px;
-  background: url('../../../../../assets/card-bg.png') no-repeat center center/cover;
+  width: 100%;
+  background: url("../../../../../assets/card-bg.png") no-repeat center center / cover;
   border-radius: 10px;
   padding: 20px;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  color: #fff;
+  box-shadow: 0 4px 10px #0003;
   position: relative;
+  flex: 1;
+  margin: 0 10px;
+  transition: all 0.3s ease; /* Smooth transition */
 }
+
 .title {
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
+  transition: font-size 0.3s ease; /* Smooth transition */
 }
+
 .conference {
   margin: 10px 0;
-  background-color: #00cc99;
+  background-color: #0c9;
   display: inline-block;
   padding: 5px 10px;
   border-radius: 5px;
   width: fit-content;
   font-size: 11px;
+  transition: font-size 0.3s ease; /* Smooth transition */
 }
+
 .details {
   margin: 25px 0;
   font-size: 12px;
+  transition: font-size 0.3s ease; /* Smooth transition */
 }
-.tab-details{
-  margin: 8px;
 
-}
-.guest {
-  position: absolute;
-  top: 20px;
-  right: 0px;
-  text-align: center;
-}
-.guest img {
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+.location {
+  background-color: #06c;
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
 }
 
 .guest1 {
@@ -210,22 +211,101 @@ img.menu-ic {
   right: 10px;
   text-align: center;
 }
+
 .guest1 img {
   border-radius: 50%;
   width: 60px;
   height: 60px;
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
 }
+
+.guest {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  text-align: center;
+}
+
+.guest img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
 .guest-name {
   margin-top: 10px;
   font-size: 11px;
   font-weight: 500;
+  transition: font-size 0.3s ease; /* Smooth transition */
 }
-.location {
-  background-color: #0066cc;
-  padding: 5px;
-  border-radius: 5px;
-  width: fit-content;
+
+/* Responsive Breakpoints */
+@media (max-width: 720px) {
+  .card {
+      padding: 15px;
+      margin: 0 8px;
+  }
+  .title {
+      font-size: 13px;
+  }
+  .conference {
+      font-size: 10px;
+  }
+  .details {
+      font-size: 11px;
+  }
+  .guest1 img,
+  .guest img {
+      width: 50px;
+      height: 50px;
+  }
 }
+
+@media (max-width: 576px) {
+  .card {
+      padding: 10px;
+      margin: 0 5px;
+  }
+  .title {
+      font-size: 12px;
+  }
+  .conference {
+      font-size: 9px;
+  }
+  .details {
+      font-size: 10px;
+  }
+  .guest1 img,
+  .guest img {
+      width: 45px;
+      height: 45px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+      padding: 8px;
+      margin: 0 3px;
+  }
+  .title {
+      font-size: 11px;
+  }
+  .conference {
+      font-size: 8px;
+  }
+  .details {
+      font-size: 9px;
+  }
+  .guest1 img,
+  .guest img {
+      width: 40px;
+      height: 40px;
+  }
+}
+
+
+
 
 .mat-mdc-list-base {
   display: block;
@@ -387,7 +467,7 @@ color: #2E2E2E;
 
 .cat-tittle{
   font-weight: 400;
-  font-size: 17.2px;
+  font-size: 12px;
   line-height: 20.15px;
   color: #009A88;
 }
@@ -690,17 +770,7 @@ color: #fff;
   list-style: none;
 }
 
-.tab-card1 {
-  width: 330px;
-  background: url('../../../../../assets/card-bg.png') no-repeat center center/cover;
-  border-radius: 10px;
-  padding: 20px;
-  color: white;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-  position: relative;
-  margin-top: 20px;
 
-}
 .tab-title{
   font-weight: bold;
   font-size: 15px;
@@ -1244,3 +1314,7 @@ border: none;
 line-height: 2.5;
 padding: 20px;
 }
+
+
+
+
