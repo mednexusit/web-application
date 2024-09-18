@@ -47,31 +47,62 @@ $text-color: #ffffff;
     padding: 8px 16px;
     color: $text-color;
 
-    mat-icon {
-      margin-right: 16px;
-      width: 24px;
-      height: 24px;
+    img.menu-ic {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
     }
 
     span {
       display: inline-block;
       transition: opacity 0.3s ease;
     }
-
-    // &:hover {
-    //   background-color: rgba(255, 255, 255, 0.1);
-    // }
   }
 }
 
+// Media query for mobile screens
+@media only screen and (max-width: 768px) {
+
+  img.menu-ic {
+    width: 20px;
+    margin: 0px;
+  }
+  .mat-sidenav {
+    width: 55px; // Sidebar shrinks to only icons
+  }
+
+  .mat-sidenav mat-nav-list a {
+    justify-content: center;
+
+    span {
+      display: none; // Hide the text on mobile screens
+    }
+
+    // Show text on hover in mobile view
+    &:hover span {
+      display: inline-block;
+      position: absolute;
+      left: 60px; // Show the text next to the icon on hover
+      background-color: $secondary-color;
+      padding: 4px 8px;
+      border-radius: 4px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Other global styles
 .sidenav-container {
   height: 100%;
   background-color: $background-color;
 }
 
 .content {
-  padding: 16px;
+  padding: 16px 2px;
 }
+
+
+
 li{
   text-decoration: none;
   list-style-type:none;
@@ -94,7 +125,7 @@ a.mat-mdc-list-item.mdc-list-item.active.mat-mdc-list-item-interactive.mat-mdc-l
 
 img.menu-ic {
   width: 20px;
-  margin: 15px;
+  margin: 0px;
 }
 
 

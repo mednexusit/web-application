@@ -12,36 +12,40 @@
         background: #0F6C73; 
     }
     h1{
-        font-size: 2.4vw;
+        // font-size: 2.4vw;
         margin-top: 1.5vw;
     }
     .para-text{
         font-family: Roboto;
-        font-size: 2vw;
+        font-size: 17px;
         font-weight: 400;
+        line-height: 2;
         color: #3D3D3D;
 
     }
+    .head{
+        font-size: 24px;
+        font-weight: 700;
+    }
     .vision{
-        margin-right: 10px;
+        margin-right: 0px;
     }
     
     .mision{
-        margin-left: 10px;
+        margin-left: 0px;
     }
     .vision,.mision{
         background-color: #ffffff;
         border-radius: 29px;
-        width: 50%;
         h1{
             font-family: Roboto;
-            font-size: 2.4vw;
+            // font-size: 2.4vw;
             font-weight: 500;
             color: #000000;
         }
         span{
             font-family: Roboto;
-            font-size: 2vw;
+            // font-size: 2vw;
             font-weight: 400;
             color: #3D3D3D;
         }
@@ -82,7 +86,7 @@
     }
     .page-heading{
         font-family: Open Sans;
-        font-size: 2.4vw;
+        // font-size: 2.4vw;
         font-weight: 800;
         margin-top: 1.5vw;
         line-height: 54.47px;

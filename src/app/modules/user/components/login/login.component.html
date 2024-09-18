@@ -43,11 +43,11 @@
       <p class="caption-sign">Please enter the 5-digit code sent to your mobile number {{ maskedPhoneNumber }} for verification</p>
       <span class="caption-sign red" >{{tempOtp}}</span>
       <div class="code-input">
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" autofocus  (input)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]"   (change)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]"   (change)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" (change)="getOtpChecked()" />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" (change)="getOtpChecked()" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" #otp1 (input)="moveToNext($event, otp2)" autofocus  (input)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]" #otp2 (input)="moveToNext($event, otp3)" (change)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]" #otp3 (input)="moveToNext($event, otp4)" (change)="getOtpChecked()"/>
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" #otp4 (input)="moveToNext($event, otp5)" (change)="getOtpChecked()" />
+        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" #otp5 (input)="moveToNext($event, null)" (change)="getOtpChecked()" />
       </div>
       <button class="w-auto verifyBtn" [disabled]='isEnabled' (click)="verifyCodeS()">VERIFY</button>
       <!-- <p class="caption-sign mt-2">Request new code in 00:30s</p> -->

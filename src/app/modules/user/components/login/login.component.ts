@@ -137,4 +137,11 @@ export class LoginComponent {
       });
     }
   }
+
+  moveToNext(event: any, nextElement: any) {
+    if (event.target.value.length === 1 && nextElement) {
+      nextElement.focus();
+    }
+  }
+  
 }
