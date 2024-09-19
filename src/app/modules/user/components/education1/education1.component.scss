@@ -1244,3 +1244,76 @@ border: none;
 line-height: 2.5;
 padding: 20px;
 }
+
+
+
+@media (max-width: 576px) {
+  .list-t {
+    font-size: 15px !important; /* Slightly smaller heading font for mobile */
+    line-height: 1.8; /* Adjust line height for better spacing */
+    margin-left: 0px !important;
+  }
+
+  .list-p {
+    font-size: 12px !important; /* Smaller paragraph font for mobile */
+    line-height: 1.6; /* Adjust line height */
+  }
+}
+
+/* Very small screens (320px width) */
+@media (max-width: 320px) {
+  .list-t {
+    font-size: 11px !important; /* Even smaller for 320px screens */
+    line-height: 1.6;
+    margin-left: 0px !important;
+  }
+
+}
+
+
+
+
+@media screen and (min-width: 577px) {
+  .content {
+    padding: 16px 5px;
+  }
+  .catt-tittle{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20.15px;
+  color: #2E2E2E;
+  }
+  .cat-tittle {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 32.15px;
+    color: #009a88;
+}
+}
+@media screen and (max-width: 576px) {
+
+  .content {
+    padding: 16px 5px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .catt-tittle{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20.15px;
+  color: #2E2E2E;
+  }
+  .cat-tittle {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 32.15px;
+    margin-top: 8px;
+    color: #009a88;
+}
+.head{
+font-weight: 600;
+font-size: 16px;
+}
+}

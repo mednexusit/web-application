@@ -1,56 +1,64 @@
 <div class="contactus-container w-100 h-100 bg-white">
-    <div class="header-container">
-        <app-header></app-header>
-    </div>
-    <ul class="m-2 p-0">
-        <li><a href="#">Home / </a></li>
-        <li><a href="#" class="active"> Contact Us</a></li>
-    </ul>
-    <div class="section-container w-100">
-        <div class="left w-50"></div>
-        <div class="right w-50 px-3">
-            <div class="contact-information">
-                <h1 class="head">Contact Information</h1>
-                <p class="para-text">
-                  For any questions or concerns regarding these Terms, <br />
-                  please contact us at Mail : [support&#64;mednexusns.com] , <br />
-                  Phone no : [9346122407,8074828657].
-                  Address:
+  <div class="header-container">
+    <app-header></app-header>
+  </div> 
+  <ul class="my-5 mx-3 p-0">
+    <li><a href="#">Home / </a></li>
+    <li><a href="#" class="active"> Contact Us</a></li>
+  </ul>
+  <div class="container mt-3">
+    <div class="row section-container">
+      <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+        <img src="../../../../../assets/contactus-banner.png" class="img-fluid" alt="banner">
+      </div>
+      <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+        <div class="right px-3">
+          <div class="contact-information">
+            <h1 class="head">Contact Information</h1>
+            <p class="para-text">
+              For any questions or concerns regarding these Terms, <br />
+              please contact us at <br />
+              <b>mail</b> : [support&#64;mednexusns.com] , <br />
+              <b>Phone no</b> : [9346122407,8074828657].<br/>
+              <b>Address</b> :
 
-                  Dno 17/992/7, 80 feet road, venugopal nagar, Anantapur, Andhra Pradesh -515001
-                </p>
+              Dno 17/992/7, 80 feet road, venugopal nagar, Anantapur, Andhra Pradesh -515001
+            </p>
+          </div>
+          <div class="right-data-wraper d-flex">
+            <div class="call-us m-1">
+              <a href="tel:+919346122407">
+                <img src="../../../../../assets/call-icon.png" alt="">
+                <h6>Call us</h6>
+              </a>
             </div>
-            <div class="right-data-wraper d-flex">
-                <div class="call-us m-1">
-                  <a href="tel:+919346122407">
-                    <img src="../../../../../assets/call-icon.png" alt="">
-                    <h6>Call us</h6>
-                  </a>
-                </div>
-                <div class="mail-us m-1">
-                  <a href="mailto:support@mednexusns.com">
-                    <img src="../../../../../assets/mail-us-icon.png" alt="">
-                    <h6>Mail Us</h6>
-                  </a>
-                </div>
-                <div class="chat-us m-1">
-                  <a href="https://wa.me/+919346122407">
-                    <img src="../../../../../assets/chat-us-icon.png" alt="">
-                    <h6>Chat us</h6>
-                  </a>
-                </div>
+            <div class="mail-us m-1">
+              <a href="mailto:support@mednexusns.com">
+                <img src="../../../../../assets/mail-us-icon.png" alt="">
+                <h6>Mail Us</h6>
+              </a>
             </div>
-            <div class="right-side-content-wraper mb-4">
-                <div class="call-us-content">
-                    <form action="" class="d-flex flex-column" [formGroup]="contactUsForm">
-                        <input type="text" placeholder="Name" formControlName="name">
-                        <input type="text" placeholder="Email" formControlName="email">
-                        <input type="text" placeholder="Phone Number" formControlName="mobile">
-                        <textarea name="" id="" placeholder="Comments" formControlName="comments"></textarea>
-                        <button type="button" [disabled]="!contactUsForm.valid" (click)="submitContactForm(contactUsForm.value)">Submit</button>
-                    </form>
-                </div>
+            <div class="chat-us m-1">
+              <a href="https://wa.me/+919346122407">
+                <img src="../../../../../assets/chat-us-icon.png" alt="">
+                <h6>Chat us</h6>
+              </a>
             </div>
+          </div>
+          <div class="right-side-content-wraper mb-4">
+            <div class="call-us-content">
+              <form action="" class="d-flex flex-column" [formGroup]="contactUsForm">
+                <input type="text" placeholder="Name" formControlName="name">
+                <input type="text" placeholder="Email" formControlName="email">
+                <input type="text" placeholder="Phone Number" formControlName="mobile">
+                <textarea name="" id="" placeholder="Comments" formControlName="comments"></textarea>
+                <button type="button" [disabled]="!contactUsForm.valid"
+                  (click)="submitContactForm(contactUsForm.value)">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
