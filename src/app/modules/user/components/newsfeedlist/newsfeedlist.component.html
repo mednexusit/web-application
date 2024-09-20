@@ -1,0 +1,91 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex">
+          <h1 class="head mt-5">News feed</h1>
+          <h1 class="cat-tittle mt-5" style="margin-left: auto" (click)="goBack()">
+            <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
+            Home
+          </h1>
+        </div>
+        <hr class="hr" />
+      </div>
+    </div>
+    <div class="row">
+      <!-- Coupon 1 -->
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="tab-card2 img-fluid">
+          <div class="top-trending-label list-p">Trending</div>
+          <img
+            _ngcontent-ng-c3382033611=""
+            src="../../../../../assets/news1.png"
+            alt="Webinar Image "
+            class="new-image img-fluid"
+          />
+        </div>
+      </div>
+      <!-- Coupon 2 -->
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="tab-card2 img-fluid">
+          <div class="top-trending-label list-p">Trending</div>
+          <img
+            _ngcontent-ng-c3382033611=""
+            src="../../../../../assets/new2.png"
+            alt="Webinar Image "
+            class="new-image img-fluid"
+          />
+        </div>
+      </div>
+      <!-- Coupon 3 -->
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="tab-card2 img-fluid">
+          <div class="top-trending-label list-p">Trending</div>
+          <img
+            _ngcontent-ng-c3382033611=""
+            src="../../../../../assets/new3.png"
+            alt="Webinar Image"
+            class="new-image img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex">
+          <h1 class="head mt-5">Recent Post</h1>
+          <h1 class="cat-tittle mt-5" style="margin-left: auto" (click)="goBack()">
+            <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
+            Home
+          </h1>
+        </div>
+        <hr class="hr" />
+      </div>
+    </div>
+    <div class="row">
+      <!-- Coupon 1 -->
+      <div class="col-md-6 col-lg-4 mb-3" *ngFor="let item of newsFeedData">
+        <div class="speaker-card" (click)="goToNewsDetails(item)">
+          <img [src]="item.img_url" alt="Kamal Kishore Soan" />
+          <div class="card-text">
+            <h4 class="side-text">{{ item.heading }}</h4>
+
+            <div class="card-footer">
+              <h5 class="left-text subheading-left-text">
+                <b>{{ item.subheading }}</b>
+              </h5>
+              <h6 class="right-text">
+                <b>{{ getTimeAgo(item.created_at) }}</b>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

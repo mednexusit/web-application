@@ -40,6 +40,8 @@ import { NexusComponent } from './components/nexus/nexus.component';
 import { Education1Component } from './components/education1/education1.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
+import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 
  
 
@@ -70,6 +72,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     Education1Component,
     SidebarComponent,
     DashboardComponent,
+    NewsfeedlistComponent,
+    NewsfeeddetailComponent,
 
   ],
   imports: [

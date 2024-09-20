@@ -20,6 +20,8 @@ import { SearchComponent } from './components/search/search.component';
 import { NexusComponent } from './components/nexus/nexus.component';
 import { Education1Component } from './components/education1/education1.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
+import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,8 @@ const routes: Routes = [
           { path: 'search', component: SearchComponent },
           { path: 'nexus', component: NexusComponent },
           { path: 'education1', component: Education1Component },
+          {path:'news-feed',component:NewsfeedlistComponent},
+          {path:'news-feed-detail/:id', component:NewsfeeddetailComponent}
         ],
       },
       { path: 'sidebar', component: SidebarComponent },
