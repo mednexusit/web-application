@@ -25,7 +25,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/web-application",
-            "allowedCommonJsDependencies":["sweetalert2"],
+            "allowedCommonJsDependencies": ["sweetalert2"],
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -75,6 +75,18 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "uat": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -87,6 +99,9 @@
             },
             "development": {
               "buildTarget": "web-application:build:development"
+            },
+            "uat": {
+              "buildTarget": "web-application:build:uat"
             }
           },
           "defaultConfiguration": "development"
