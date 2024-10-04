@@ -1,7 +1,14 @@
 <div class="mainWrapper">
-  <app-admin-header></app-admin-header>
-  <div class="mainSection">
+  <div
+    class="main col col-lg-2 col-md-2 col-sm-2"
+    [ngClass]="{ hide: isHideFlag }"
+  >
+    <app-sidenav></app-sidenav>
+  </div>
+
+  <div class="mainSection col col-lg-10 col-md-10 col-sm-10">
+    <app-admin-header></app-admin-header>
     <router-outlet></router-outlet>
   </div>
-  <app-admin-footer></app-admin-footer>
+  <!-- <app-admin-footer></app-admin-footer> -->
 </div>

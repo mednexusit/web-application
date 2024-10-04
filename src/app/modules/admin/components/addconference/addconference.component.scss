@@ -77,9 +77,9 @@
   }
 }
 .NgxEditor__Wrapper{
-  height: 25vw;
-  min-height: 25vw;
-  max-height: 25vw;
+  height: 18vw;
+  min-height: 18vw;
+  max-height: 18vw;
   overflow-y: scroll;
   @media only screen and (max-width: 600px) {
     height: 100vw;
@@ -150,4 +150,10 @@ h3{
   margin-top: 10px;
   margin-bottom: 5px;
   margin-left: 10px;
+}
+.leftIcon{
+  font-size: 1.5rem;
+  color: #7c2ba1;
+  margin: 5px;
+  cursor: pointer;
 }

@@ -1,0 +1,48 @@
+.heading{
+  padding: 10px 15px;
+  box-shadow: 0px 5px 5px 2px gray;
+  display: flex;
+  align-items: center;
+  h4{
+    margin: 0;
+    font-weight: 700;
+    color: #7c2ba1;
+  }
+}
+.subAdmin{
+  background:linear-gradient(45deg,#7c2ba1, #b047ca);
+  margin-top: 1rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 10px 5px 2px #7c2ba1;
+  .fields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .inp{
+      width: 50%;
+      border-radius: 5px;
+      padding: 10px 15px;
+      outline: none;
+      border: 1px solid #fff;
+    }
+    span{
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}
+.adBtn{
+  margin-top: 1.5rem;
+  background: #780994;
+  color: #fff !important;
+}
+.wrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

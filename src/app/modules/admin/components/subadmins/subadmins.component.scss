@@ -1,0 +1,21 @@
+.search-bar{
+  margin: 1rem;
+  .mat-mdc-form-field{
+    width: 100%;
+  }
+  .searchInp{
+    width: 100%;
+  }
+}
+.rotate {
+  animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

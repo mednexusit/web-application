@@ -6,15 +6,16 @@ import { AuthService } from '../../../../auth.service';
 @Component({
   selector: 'app-admin-header',
   templateUrl: './admin-header.component.html',
-  styleUrl: './admin-header.component.scss'
+  styleUrl: './admin-header.component.scss',
 })
 export class AdminHeaderComponent {
-   router= inject(Router);
-   sharedServ= inject(SharedService)
-   authServ= inject(AuthService);
-  logout(){
+  isHide: boolean = false;
+  router = inject(Router);
+  sharedServ = inject(SharedService);
+  authServ = inject(AuthService);
+  logout() {
     this.authServ.logout();
-    this.router.navigate(['/admin'])
+    this.router.navigate(['/admin']);
   }
   isMobileMenuOpen = false;
 
@@ -22,4 +23,8 @@ export class AdminHeaderComponent {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
+  hideSideNav() {
+    this.isHide = !this.isHide;
+    this.sharedServ.sendHideFlag(this.isHide);
+  }
 }

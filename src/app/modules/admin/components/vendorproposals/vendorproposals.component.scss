@@ -81,3 +81,12 @@
   outline: none;
   margin-top: 10px;
 }
+.search-bar{
+  margin: 1rem;
+  .mat-mdc-form-field{
+    width: 100%;
+  }
+  .searchInp{
+    width: 100%;
+  }
+}

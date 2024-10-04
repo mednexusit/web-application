@@ -1,0 +1,78 @@
+<div class="sidenav-wrapper col col-lg-12 col-md-12 col-sm-12">
+  <div class="homeLogo" (click)="goToHome()">
+    <img src="../../../../../assets/mednexuslogo.png" alt="" />
+  </div>
+  <div class="actionItems">
+    <div class="item" *ngIf="userType === 0">
+      <p (click)="openSubMenus()">
+        <i class="fa-brands fa-black-tie"></i>
+        <span *ngIf="!isHideFlag">Sub Admin</span>
+        <i
+          class="fa-solid fa-chevron-right rightIcon"
+          *ngIf="!openSubAdmin"
+        ></i>
+        <i class="fa-solid fa-chevron-down rightIcon" *ngIf="openSubAdmin"></i>
+      </p>
+      <a
+        *ngIf="openSubAdmin"
+        [routerLink]="['subadmins']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-user-tie"></i>
+        <span *ngIf="!isHideFlag">Sub Admin List</span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+      <a
+        *ngIf="openSubAdmin"
+        [routerLink]="['add-subadmin']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+        <span *ngIf="!isHideFlag">Add Sub Admin</span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+    </div>
+    <div class="item">
+      <a
+        [routerLink]="['/admin/adminhome/vendor-proposals']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-shop"></i>
+        <span *ngIf="!isHideFlag"> Vendor Proposals </span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+    </div>
+    <div class="item" *ngIf="userType === 2">
+      <p (click)="openNewsFeed()">
+        <i class="fa-brands fa-black-tie"></i>
+        <span *ngIf="!isHideFlag">News Feed</span>
+        <i
+          class="fa-solid fa-chevron-right rightIcon"
+          *ngIf="!isNewsFeedOpen"
+        ></i>
+        <i
+          class="fa-solid fa-chevron-down rightIcon"
+          *ngIf="isNewsFeedOpen"
+        ></i>
+      </p>
+      <a
+        *ngIf="isNewsFeedOpen"
+        [routerLink]="['news-feed']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-user-tie"></i>
+        <span *ngIf="!isHideFlag">News Feed List</span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+      <a
+        *ngIf="isNewsFeedOpen"
+        [routerLink]="['add-subadmin']"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+        <span *ngIf="!isHideFlag">Add News Feed</span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+    </div>
+  </div>
+</div>

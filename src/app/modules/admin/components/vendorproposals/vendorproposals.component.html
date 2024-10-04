@@ -1,183 +1,206 @@
+<div class="search-bar col col-lg-5 col-md-5 col-sm-12">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Type to search"
+      class="searchInp"
+    />
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Sr.No">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
 
-<div class="container">
-  <button class="btn btn-success backBtn myBtn" (click)="goBack()">Back</button>
-  <div class="row my-3">
-    <div class="col">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by ID or Name"
-        [(ngModel)]="searchterm"
-      />
-    </div>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Sr.No</th>
-          <th scope="col">Proposal ID</th>
-          <th scope="col">Status</th>
-          <th scope="col">Name</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let item of proposalListData | filter : searchterm;
-            let i = index
-          "
+    <!-- Name Column -->
+    <ng-container matColumnDef="Proposal ID">
+      <th mat-header-cell *matHeaderCellDef>UUID</th>
+      <td mat-cell *matCellDef="let element">#{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element.aboutus_status == 4" class="approved"
+          >Approved</span
+        ><span *ngIf="element.aboutus_status == 5" class="rejected"
+          >Rejected</span
         >
-          <td>{{ i + 1 }}</td>
-          <!-- <td class="proposalId" (click)="openModal(item, 'view')">
-            #{{ item.id }}
-          </td> -->
-          <td class="proposalId">
-            #{{ item.id }}
-          </td>
-          <td>
+        <span
+          *ngIf="
+            element.aboutus_status == 1 ||
+            element.aboutus_status == 2 ||
+            element.aboutus_status == 3
+          "
+          class="rejected"
+          >Pending</span
+        >
+      </td>
+    </ng-container>
 
-            <span *ngIf="item.aboutus_status === 4" class="approved">Approved</span
-            ><span *ngIf="item.aboutus_status === 5" class="rejected"
-              >Rejected</span
-            >
-          </td>
-          <td>{{ item.name }}</td>
-          <td>
-            <i
-            *ngIf="userType==2"
-              class="fa-solid fa-trash  deleteIcon"
-              (click)="deleteRequest(item)"
-            ></i>
-            <i
-            *ngIf="userType==0"
-              class="fa-solid fa-eye  deleteIcon"
-              (click)="openModal(item)"
-              title="Show Details"
-            ></i>
-           <!-- <i
-              class="fa-solid fa-pen editIcon"
-              (click)="openModal(item, 'edit')"
-            ></i>
-          <i
-            class="fa-solid fa-pen editIcon"
-          ></i>-->
-            <!-- <i class="fa-solid fa-users editIcon conferenceIcon" *ngIf="userType  == 1" title="Add Conference Details"(click)="openAddConference(item)">+</i> -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <i
+          *ngIf="userType == 2"
+          class="fa-solid fa-trash deleteIcon"
+          (click)="deleteRequest(element)"
+        ></i>
+        <i
+          *ngIf="userType == 0"
+          class="fa-solid fa-eye deleteIcon"
+          (click)="openModal(element)"
+          title="Show Details"
+        ></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
 </div>
 
 <div class="modalWrapper" *ngIf="isModalOpen">
   <div class="modalContent col col-sm-12 col-md-8 col-lg-8">
-    <button class="closeBtn" (click)="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <button class="closeBtn" (click)="closeModal()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <div class="details" *ngIf="vendorProposalDetailData.length">
       <div class="fields">
         <label for="">Name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.name}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.name }}</div>
       </div>
       <div class="fields">
         <label for="">Phone:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.phone}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.phone }}</div>
       </div>
       <div class="fields">
         <label for="">Email:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.email}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.email }}</div>
       </div>
       <div class="fields">
         <label for="">Organized By:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.organizedby}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.organizedby }}</div>
       </div>
       <div class="fields">
         <label for="">Place:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.place}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.place }}</div>
       </div>
       <div class="fields">
         <label for="">Pin:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.pin}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.pin }}</div>
       </div>
       <div class="fields">
         <label for="">State:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.state}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.state }}</div>
       </div>
       <div class="fields">
         <label for="">Topic:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.topic}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.topic }}</div>
       </div>
       <div class="fields">
         <label for="">Speaker name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.speaker_name}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.speaker_name }}</div>
       </div>
       <div class="fields">
         <label for="">Speaker Info:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.speakerinfo}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.speakerinfo }}</div>
       </div>
       <div class="fields">
         <label for="">Session Name:</label>
         <div class="value">
-          <img src="{{vendorProposalDetailData[0]?.session_name}}" alt="">
+          <img src="{{ vendorProposalDetailData[0]?.session_name }}" alt="" />
         </div>
       </div>
       <div class="fields">
         <label for="">Letter:</label>
         <div class="value">
-          <img src="{{vendorProposalDetailData[0]?.letter}}" alt="">
+          <img src="{{ vendorProposalDetailData[0]?.letter }}" alt="" />
         </div>
       </div>
       <div class="fields">
         <label for="">Vendor name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.vendorname}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.vendorname }}</div>
       </div>
       <div class="fields">
         <label for="">Venu:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.venu}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.venu }}</div>
       </div>
       <div class="fields">
         <label for="">Speaker name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.speaker_name}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.speaker_name }}</div>
       </div>
       <div class="fields">
         <label for="">Contact Person:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.contactperson}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.contactperson }}
+        </div>
       </div>
       <div class="fields">
         <label for="">Account Holder Name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.accountholdername}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.accountholdername }}
+        </div>
       </div>
       <div class="fields">
         <label for="">Account Number:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.accountnumber}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.accountnumber }}
+        </div>
       </div>
       <div class="fields">
         <label for="">Bank Name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.bankname}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.bankname }}</div>
       </div>
       <div class="fields">
         <label for="">Branch Name:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.branchname}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.branchname }}</div>
       </div>
       <div class="fields">
         <label for="">IFSC Code:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.ifsccode}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.ifsccode }}</div>
       </div>
       <div class="fields">
         <label for="">Contact Person:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.contactperson}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.contactperson }}
+        </div>
       </div>
       <div class="fields">
         <label for="">Contact Person Email:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.contactemail}}</div>
+        <div class="value">{{ vendorProposalDetailData[0]?.contactemail }}</div>
       </div>
       <div class="fields">
         <label for="">Contact Person Number:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.contactphonenumber}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.contactphonenumber }}
+        </div>
       </div>
       <div class="fields">
         <label for="">Contact Person:</label>
-        <div class="value"> {{vendorProposalDetailData[0]?.contactperson}}</div>
+        <div class="value">
+          {{ vendorProposalDetailData[0]?.contactperson }}
+        </div>
       </div>
       <div class="fields">
         <label for="">About Conference:</label>
@@ -196,12 +219,26 @@
         <div class="value" [innerHTML]="aboutSchedule"></div>
       </div>
     </div>
-    <div class="actions" *ngIf="vendorProposalDetailData[0].aboutus_status== 2 ">
-      <button class="btn btn-success" *ngIf="vendorProposalDetailData[0].status==1" (click)="actionApplied(4,vendorProposalDetailData[0]?.id)">Accept</button>
-      <button class="btn btn-danger" *ngIf="vendorProposalDetailData[0].status==1" (click)="actionApplied(5,vendorProposalDetailData[0]?.id)">Reject</button>
+    <div
+      class="actions"
+      *ngIf="vendorProposalDetailData[0].aboutus_status == 2"
+    >
+      <button
+        class="btn btn-success"
+        *ngIf="vendorProposalDetailData[0].status == 1"
+        (click)="actionApplied(4, vendorProposalDetailData[0]?.id)"
+      >
+        Accept
+      </button>
+      <button
+        class="btn btn-danger"
+        *ngIf="vendorProposalDetailData[0].status == 1"
+        (click)="actionApplied(5, vendorProposalDetailData[0]?.id)"
+      >
+        Reject
+      </button>
     </div>
 
     <h1 *ngIf="!vendorProposalDetailData.length">No Data To Show</h1>
-
   </div>
 </div>

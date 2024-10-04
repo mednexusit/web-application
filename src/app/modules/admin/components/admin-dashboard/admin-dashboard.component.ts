@@ -1,20 +1,27 @@
 import { map } from 'rxjs/operators';
 import { filter, timeout } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AdminservService } from '../../services/adminserv.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss',
 })
-export class AdminDashboardComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit, AfterViewInit {
   vendorRequestListData: any = [];
+  vendorRequestListDataArr: any = [];
+  dataSource = new MatTableDataSource<any>([]);
+  dataSource1 = new MatTableDataSource<any>([]);
+
+  displayedColumns: any = ['Sr.No', 'Proposal ID', 'Status', 'Name', 'Action'];
   toggleText: any = 'Show Deleted Requests';
   isShowDeleted: boolean = false;
   isOpenAddSubAdmin: boolean = false;
@@ -37,6 +44,8 @@ export class AdminDashboardComponent implements OnInit {
   changeStart: boolean = false;
   subAdminFormGroup: any = FormGroup;
   editvendorFormGroup: any = FormGroup;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator1!: MatPaginator;
   categories: any = [
     { name: 'Conference(Online)', id: '1' },
     { name: 'Conference(Offline)', id: '2' },
@@ -124,7 +133,11 @@ export class AdminDashboardComponent implements OnInit {
     //     }
     //   });
   }
-
+  ngAfterViewInit(): void {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator; // Assign paginator after data
+    }
+  }
   getSelectedSubject(e: any, i: any) {
     this.getSubSubjectList(e.target.value, i);
     // const item = this.subjectsListData.find(
@@ -178,15 +191,41 @@ export class AdminDashboardComponent implements OnInit {
   getAllVendorRequestList() {
     this.adminServ.getVendorRequestLists().subscribe({
       next: (data: any) => {
-        this.vendorRequestListData = data.responseContents;
-        this.vendorRequestListData = this.vendorRequestListData.filter(
+        this.vendorRequestListDataArr = data.responseContents;
+
+        this.vendorRequestListData = this.vendorRequestListDataArr.filter(
           (item: any) => item.status === 1
         );
-        this.deletedVendorRequestListData = data.responseContents.filter(
-          (item: any) => item.status === 0
-        );
+        this.dataSource.data = this.vendorRequestListData;
+        if (this.paginator) {
+          this.dataSource.paginator = this.paginator; // Assign paginator after data
+        }
+
+        // this.dataSource.data = this.deletedVendorRequestListData;
       },
     });
+  }
+
+  getDeletedVendorRequestList() {
+    this.adminServ.getVendorRequestLists().subscribe({
+      next: (data: any) => {
+        this.vendorRequestListDataArr = data.responseContents;
+        this.deletedVendorRequestListData =
+          this.vendorRequestListDataArr.filter(
+            (item: any) => item.status === 0
+          );
+        this.dataSource1.data = this.deletedVendorRequestListData;
+        if (this.paginator) {
+          this.dataSource1.paginator = this.paginator; // Assign paginator after data
+        }
+
+        // this.dataSource.data = this.deletedVendorRequestListData;
+      },
+    });
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   openModal(data: any, action: any) {
     this.action = action;
@@ -296,7 +335,17 @@ export class AdminDashboardComponent implements OnInit {
     this.toggleText = !this.isShowDeleted
       ? 'Show Deleted Requests'
       : 'Show Active Requests';
+
+    if (this.isShowDeleted) {
+      this.getDeletedVendorRequestList();
+    } else {
+      this.getAllVendorRequestList();
+    }
+
+    // Reassign paginator after the data changes
+    this.dataSource.paginator = this.paginator;
   }
+
   closeModal() {
     this.isShowVendorModal = false;
     this.modalData = {};

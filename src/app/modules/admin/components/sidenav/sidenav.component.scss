@@ -1,0 +1,60 @@
+@import "../../../../../_variables.scss";
+.homeLogo{
+  cursor: pointer;
+}
+.sidenav-wrapper{
+  background: #7c2ba1;
+  border-right: 1px solid #7c2ba1;
+  height: 100vh;
+  box-sizing: border-box;
+  transition: all 0.5s linear;
+  .homeLogo{
+    background: #fff;
+    padding: 5px;
+    img{
+      height: 50px;
+      width: 100%;
+      object-fit: scale-down;
+    }
+  }
+
+}
+.hide{
+  width: 0%;
+  transition: all 0.5s linear;
+}
+.actionItems{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 0.5rem;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border-radius: 10px;
+  p{
+    margin: 0;
+    display: flex;
+    padding: 7px 12px;
+  }
+  i{
+    margin-right: 5px;
+  }
+  a{
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 7px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.router-link-active{
+  background: linear-gradient(45deg,#a208fc,$themePrimaryColor);
+}
+.rightIcon{
+  margin-left: auto;
+}

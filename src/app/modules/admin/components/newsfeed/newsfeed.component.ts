@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminservService } from '../../services/adminserv.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,27 +7,33 @@ import { SharedService } from '../../../../shared/shared.service';
 import Swal from 'sweetalert2';
 import { Editor, toDoc, Toolbar } from 'ngx-editor';
 import { toHtml } from '@fortawesome/fontawesome-svg-core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
   styleUrl: './newsfeed.component.scss',
 })
-export class NewsfeedComponent implements OnInit {
+export class NewsfeedComponent implements OnInit, AfterViewInit {
   newFeedData: any = [];
+  dataSource = new MatTableDataSource([]);
+  displayedColumns = ['Sr.No', 'ID', 'Heading', 'Sub-Heading', 'Action'];
   searchTerm: any = '';
   isAddBody: boolean = false;
   userData: any;
+  userType: any;
   headText: any = '';
   fileName: any = '';
   isAddNews: boolean = false;
   editUserData: any;
-  imageURL:any='';
+  imageURL: any = '';
   newsData: any;
   imgUrl: any = '';
   newsFeedForm: any = FormGroup;
   editor: any;
   html: any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['undo', 'redo'],
@@ -50,6 +56,7 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit(): void {
     this.editor = new Editor({});
     this.getNewsFeedData();
+    this.userType = this.sharedServ.getUserType();
     this.userData = localStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.newsFeedForm = this.fb.group({
@@ -61,6 +68,12 @@ export class NewsfeedComponent implements OnInit {
     this.newsDetails = this.fb.group({
       details: ['', Validators.required],
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator; // Assign paginator after data
+    }
   }
 
   onFileSelection(file: any) {
@@ -99,8 +112,14 @@ export class NewsfeedComponent implements OnInit {
     this.adminServ.getNewsFeed().subscribe({
       next: (data: any) => {
         this.newFeedData = data.responseContents;
+        this.dataSource.data = this.newFeedData;
       },
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openModal(data: any) {
@@ -118,7 +137,7 @@ export class NewsfeedComponent implements OnInit {
     this.newsFeedForm.get('img_url').setValue(data.img_url);
     this.imgUrl = data.img_url;
   }
-  getCopyLink(){
+  getCopyLink() {
     let copyItem = document.getElementById('#imgURL') as HTMLInputElement;
     let imageArea = document.querySelector('.imagearea') as HTMLDivElement;
     copyItem && copyItem.classList.add('blue');

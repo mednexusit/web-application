@@ -1,0 +1,55 @@
+<div class="heading">
+  <h4>Add Sub Admin</h4>
+</div>
+
+<div class="wrapper">
+  <div
+    class="subAdmin col col-lg-6 col-md-6 col-sm-12"
+    [formGroup]="subAdminFormGroup"
+  >
+    <div class="fields col-lg-12 col-md-12 col-sm-10">
+      <input
+        type="number"
+        class="inp"
+        placeholder="Enter Sub Admin Phone Number"
+        required
+        formControlName="mobile"
+      />
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('required') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
+        Phone Number is Required
+      </span>
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('minlength') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
+        Phone Number must be 10 digits long
+      </span>
+      <span
+        class="errors"
+        *ngIf="
+          subAdminFormGroup.get('mobile')?.hasError('maxlength') &&
+          subAdminFormGroup.get('mobile')?.touched
+        "
+      >
+        Phone Number must be 10 digits long
+      </span>
+      <button
+        mat-stroked-button
+        class="adBtn"
+        (click)="registerSubAdmin(subAdminFormGroup.value)"
+        [disabled]="!subAdminFormGroup.valid"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+</div>

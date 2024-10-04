@@ -13,12 +13,17 @@ export class VerifyOtpComponent implements OnInit {
   @Input() mobNumber: any;
   @Output() closeOtpModal = new EventEmitter();
   @Output() resendNewOtp = new EventEmitter();
-  routeFrom:any='';
-  otpGenerated:any;
+  routeFrom: any = '';
+  otpGenerated: any;
 
   isOtpValid: boolean = false;
   otpVal: any;
-  constructor(private sharedServ: SharedService, private router: Router, private toastr:ToastrService, private authServ:AuthService) {}
+  constructor(
+    private sharedServ: SharedService,
+    private router: Router,
+    private toastr: ToastrService,
+    private authServ: AuthService
+  ) {}
 
   config = {
     length: 5,
@@ -26,13 +31,13 @@ export class VerifyOtpComponent implements OnInit {
     inputClass: 'inp-otp',
   };
   ngOnInit(): void {
-    this.sharedServ.getRoute().subscribe((data:any)=>{
-      this.routeFrom=data;
-      console.log("ROUTE FROM",data);
-    })
-    this.sharedServ.getOTP().subscribe((data:any)=>{
+    this.sharedServ.getRoute().subscribe((data: any) => {
+      this.routeFrom = data;
+      console.log('ROUTE FROM', data);
+    });
+    this.sharedServ.getOTP().subscribe((data: any) => {
       this.otpGenerated = data;
-    })
+    });
   }
   onOtpChange(otp: any) {
     this.otpVal = otp;
@@ -46,26 +51,25 @@ export class VerifyOtpComponent implements OnInit {
     let dataToPass = { mobile: '+91' + this.mobNumber, otp: this.otpVal };
     this.sharedServ.verifyOtp(dataToPass).subscribe({
       next: (data: any) => {
-        let userData={
-          userid:data.userid,
-          usertype:data.useridtype
-        }
-        localStorage.setItem('userData',JSON.stringify(userData))
+        let userData = {
+          userid: data.userid,
+          usertype: data.useridtype,
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
         this.authServ.sendToken(data.access_token);
         if (data.registrationinfo === null && !data.access_token) {
           this.router.navigate(['signup']);
-          this.toastr.success('OTP verification Success','',{
-            timeOut:1000
-          })
+          this.toastr.success('OTP verification Success', '', {
+            timeOut: 1000,
+          });
         }
-        if ( data.access_token) {
-          if(this.routeFrom==='/admin'){
-            this.router.navigate(['admin/adminhome'])
+        if (data.access_token) {
+          if (this.routeFrom === '/admin') {
+            this.router.navigate(['admin/adminhome']);
           }
           // if(this.routeFrom==='/userlogin'){
           //   this.router.navigate(['']);
           // }
-
         }
       },
       error: (err: any) => {

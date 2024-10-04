@@ -1,4 +1,8 @@
-<button class="btns backBtn myBtn" (click)="goBack()">Back</button>
+<i
+  class="fa-solid fa-circle-chevron-left leftIcon"
+  title="Go Back"
+  (click)="goBack()"
+></i>
 <div class="stepper">
   <div class="steps">
     <div
@@ -30,27 +34,37 @@
       Location
     </div>
   </div>
-<div class="imageLinkWrapper">
-  <span class="tip">
-    <b>Note :</b>
-    <span> To get the image link upload image </span>
-
-  </span>
-  <div class="imagearea">
-    <label for="chooseImage" class="chsImage"
-    >Choose Image  <i class="fa-solid fa-upload"></i></label
-  >
-  {{fileName}}
-  <input
-    type="file"
-    accept="image/png, image/jpeg"
-    id="chooseImage"
-    hidden
-    (change)="onFileSelection($event)"
-  />
-  <div role="input" (click)="getCopyLink()" id="imgURL" class="linkarea" *ngIf="imageURL.length">{{imageURL}} <span title="COPY LINK" class="copyIcon"><i class="fa-regular fa-copy"></i></span></div>
+  <div class="imageLinkWrapper">
+    <span class="tip">
+      <b>Note :</b>
+      <span> To get the image link upload image </span>
+    </span>
+    <div class="imagearea">
+      <label for="chooseImage" class="chsImage"
+        >Choose Image <i class="fa-solid fa-upload"></i
+      ></label>
+      {{ fileName }}
+      <input
+        type="file"
+        accept="image/png, image/jpeg"
+        id="chooseImage"
+        hidden
+        (change)="onFileSelection($event)"
+      />
+      <div
+        role="input"
+        (click)="getCopyLink()"
+        id="imgURL"
+        class="linkarea"
+        *ngIf="imageURL.length"
+      >
+        {{ imageURL }}
+        <span title="COPY LINK" class="copyIcon"
+          ><i class="fa-regular fa-copy"></i
+        ></span>
+      </div>
+    </div>
   </div>
-</div>
   <div class="content">
     <div *ngIf="currentStep === 1" class="sub-content">
       <h3>About Conference :</h3>
@@ -111,8 +125,7 @@
     <div class="navigation col col-lg-4 col-md-4 col-sm-12">
       <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
       <button (click)="nextStep()" *ngIf="currentStep < 4">Next</button>
-      <button (click)="onSubmit()" *ngIf="currentStep === 4"
-      >Submit</button>
+      <button (click)="onSubmit()" *ngIf="currentStep === 4">Submit</button>
     </div>
   </div>
 </div>

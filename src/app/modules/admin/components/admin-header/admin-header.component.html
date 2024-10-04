@@ -1,11 +1,10 @@
 <header class="d-flex justify-content-between desktop">
-  <div class="logo">
-    <!-- Logo content -->
-    <img src="../../../../../assets/mednexuslogo.png" alt="">
+  <div class="logo" (click)="hideSideNav()">
+    <i class="fa-solid fa-bars hamIcon"></i>
   </div>
   <nav class="navbar navbar-expand">
     <ul>
-      <li>
+      <!-- <li>
         <a
           [routerLink]="['/admin/adminhome']"
           routerLinkActive="router-link-active"
@@ -44,14 +43,14 @@
           [routerLinkActiveOptions]="{ exact: true }"
           >Settings</a
         >
-      </li>
-      <li (click)="logout()">
+      </li> -->
+      <li (click)="logout()" title="Logout">
         <a
           [routerLink]="['/admin']"
           routerLinkActive="router-link-active"
           [routerLinkActiveOptions]="{ exact: true }"
-          ><i class="fa-solid fa-right-from-bracket"></i></a
-        >
+          ><i class="fa-solid fa-right-from-bracket"></i
+        ></a>
       </li>
     </ul>
   </nav>
@@ -59,7 +58,7 @@
 
 <header class="mobile">
   <div class="logo">
-    <img src="../../../../../assets/mednexuslogo.png" alt="">
+    <img src="../../../../../assets/mednexuslogo.png" alt="" />
     <!-- Logo content -->
   </div>
   <button class="hamburger" (click)="toggleMobileMenu()">
@@ -67,7 +66,8 @@
   </button>
   <nav class="navbar navbar-expand" [class.show]="isMobileMenuOpen">
     <button class="closeBtn" (click)="toggleMobileMenu()">
-      <i class="fa-solid fa-xmark"></i></button>
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <ul>
       <li>
         <a
@@ -120,8 +120,8 @@
           routerLinkActive="router-link-active"
           [routerLinkActiveOptions]="{ exact: true }"
           (click)="toggleMobileMenu()"
-          ><i class="fa-solid fa-right-from-bracket"></i></a
-        >
+          ><i class="fa-solid fa-right-from-bracket"></i
+        ></a>
       </li>
     </ul>
   </nav>

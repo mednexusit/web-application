@@ -16,7 +16,7 @@
 .modal{
   display: flex; /* Hidden by default */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -29,10 +29,9 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .modalWrapper{
-  min-height: 400px;
+  min-height: 500px;
   position: relative;
   background: #fff;
-  min-width: 300px;
   .closeModal{
     position: absolute;
     right: 15px;
@@ -133,7 +132,7 @@
 .btnsArea{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 10px;
 }
 .image{
@@ -183,5 +182,14 @@
       cursor: pointer;
       border-radius: 10px;
     }
+  }
+}
+.search-bar{
+  margin: 1rem;
+  .mat-mdc-form-field{
+    width: 100%;
+  }
+  .searchInp{
+    width: 100%;
   }
 }

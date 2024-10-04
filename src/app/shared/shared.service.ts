@@ -10,6 +10,15 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  hideFlag = new BehaviorSubject<boolean>(false);
+  sendHideFlag(data: any) {
+    this.hideFlag.next(data);
+  }
+
+  getHideFlag() {
+    return this.hideFlag.asObservable();
+  }
+
   userLogin(data: any) {
     return this.http.post(this.baseURL + 'auth/checklogin', data);
   }
@@ -63,12 +72,11 @@ export class SharedService {
     return userType;
   }
 
-  getUserData(){
+  getUserData() {
     let userData: any = localStorage.getItem('userData');
     if (userData) {
       userData = JSON.parse(userData);
       return userData;
     }
   }
-
 }

@@ -19,25 +19,35 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { AddconferenceComponent } from './components/addconference/addconference.component';
 import { VendorproposalsComponent } from './components/vendorproposals/vendorproposals.component';
-
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SubadminsComponent } from './components/subadmins/subadmins.component';
+import { AddsubadminComponent } from './components/addsubadmin/addsubadmin.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AddnewsfeedComponent } from './components/addnewsfeed/addnewsfeed.component';
 
 @NgModule({
   declarations: [
-
-
     AdminloginComponent,
-          AdminHomeComponent,
-          AdminHeaderComponent,
-          AdminFooterComponent,
-          AdminDashboardComponent,
-          ConferenceRequestsComponent,
-          UserAnalyticsComponent,
-          FinancialReportsComponent,
-          SettingComponent,
-          FilterPipe,
-          NewsfeedComponent,
-          AddconferenceComponent,
-          VendorproposalsComponent
+    AdminHomeComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    AdminDashboardComponent,
+    ConferenceRequestsComponent,
+    UserAnalyticsComponent,
+    FinancialReportsComponent,
+    SettingComponent,
+    FilterPipe,
+    NewsfeedComponent,
+    AddconferenceComponent,
+    VendorproposalsComponent,
+    SidenavComponent,
+    SubadminsComponent,
+    AddsubadminComponent,
+    AddnewsfeedComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +55,11 @@ import { VendorproposalsComponent } from './components/vendorproposals/vendorpro
     ReactiveFormsModule,
     FormsModule,
     SharedModuleModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule,
     NgxEditorModule.forRoot({
       locals: {
@@ -81,8 +96,6 @@ import { VendorproposalsComponent } from './components/vendorproposals/vendorpro
         subscript: 'Subscript',
         undo: 'Undo',
         redo: 'Redo',
-
-        // pupups, forms, others...
         url: 'URL',
         text: 'Text',
         openInNewTab: 'Open in new tab',
@@ -92,7 +105,7 @@ import { VendorproposalsComponent } from './components/vendorproposals/vendorpro
         remove: 'Remove',
         enterValidUrl: 'Please enter a valid URL',
       },
-    })
-  ]
+    }),
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

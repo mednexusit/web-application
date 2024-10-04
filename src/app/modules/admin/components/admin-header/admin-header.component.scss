@@ -98,11 +98,10 @@ header{
 header {
   width: 100%;
   background: linear-gradient(45deg,rgb(251, 251, 251) 20%, $themePrimaryColor 50%);
-  height: 70px;
-  box-shadow: 0  0 5px 2px $themePrimaryColor;
+  height: 60px;
+  //border-bottom: 1px solid #6610f2;
+ box-shadow: 0px 5px 10px 0px #7c2ba1;
   .logo {
-    width: 200px;
-    height: 100%;
     padding: 10px;
     img{
       width: 100%;
@@ -131,4 +130,9 @@ header {
   border-bottom: 2px solid #fff;
   transition: all 0.3s linear;
 
+}
+.hamIcon{
+  color: #6610f2;
+  font-size: 1rem;
+  cursor: pointer;
 }

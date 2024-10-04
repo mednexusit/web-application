@@ -1,96 +1,162 @@
 <div class="container">
-  <button class=" btns theme myBtn" (click)="toggleTables()">
+  <button class="btns theme myBtn" (click)="toggleTables()">
     {{ toggleText }}
   </button>
-  <button
-    class=" btns theme myBtn"
-    *ngIf="userType === 0"
-    (click)="openAddSubAdmin()"
-  >
-    Add Sub-Admin <i class="fa-solid fa-user-plus"></i>
-  </button>
-  <button
-    class=" btns theme myBtn"
-    *ngIf="userType === 0"
-    (click)="showSubAdmin()"
-  >
-    {{ isShowSubAdmin ? "Hide" : "Show" }} Sub-Admin
-    <i class="fa-solid fa-user"></i>
-  </button>
-  <button
-    class=" btns theme myBtn"
-    *ngIf="userType === 2"
-    (click)="goToNewsFeed()"
-  >
-    News Feed <i class="fa-solid fa-newspaper"></i>
-  </button>
-  <button
-  class=" btns theme myBtn"
-  (click)="goToVendorsProposal()"
->
-  Show Vendors Proposal List <i class="fa-solid fa-eye"></i>
-</button>
 
   <div class="forAdmin" *ngIf="!isShowSubAdmin">
     <div class="current" *ngIf="!isShowDeleted">
-      <div class="row my-3">
-        <div class="col">
+      <div class="search-bar col col-lg-5 col-md-5 col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
           <input
-            type="text"
-            class="form-control"
-            placeholder="Search by ID or Name"
-            [(ngModel)]="searchTerm"
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Type to search"
+            class="searchInp"
           />
-        </div>
+        </mat-form-field>
       </div>
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Sr.No</th>
-              <th scope="col">Proposal ID</th>
-              <th scope="col">Status</th>
-              <th scope="col">Name</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              *ngFor="
-                let item of vendorRequestListData | filter : searchTerm;
-                let i = index
-              "
-            >
-              <td>{{ i + 1 }}</td>
-              <td class="proposalId" (click)="openModal(item, 'view')">
-                #{{ item.id }}
-              </td>
-              <td>
-                <span *ngIf="item.active === 1" class="pending">Pending</span
-                ><span *ngIf="item.active === 2" class="approved">Approved</span
-                ><span *ngIf="item.active === 3" class="rejected"
-                  >Rejected</span
-                >
-              </td>
-              <td>{{ item.name }}</td>
-              <td>
-                <i
-                  class="fa-solid fa-trash deleteIcon"
-                  (click)="deleteRequest(item)"
-                ></i>
-                <i
-                  class="fa-solid fa-pen editIcon"
-                  (click)="openModal(item, 'edit')"
-                ></i>
-                <i class="fa-solid fa-users editIcon conferenceIcon" *ngIf="userType  == 2" title="Add Conference Details"(click)="openAddConference(item)">+</i>
-              </td>
-            </tr>
-          </tbody>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container matColumnDef="Sr.No">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              {{ i + 1 }}
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Proposal ID">
+            <th mat-header-cell *matHeaderCellDef>Proposal ID</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="idColor" (click)="openModal(element, 'view')">
+                #{{ element.id }}</span
+              >
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="element.active === 1" class="pending">Pending</span
+              ><span *ngIf="element.active === 2" class="approved"
+                >Approved</span
+              ><span *ngIf="element.active === 3" class="rejected"
+                >Rejected</span
+              >
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <i
+                class="fa-solid fa-trash deleteIcon"
+                (click)="deleteRequest(element)"
+              ></i>
+              <i
+                class="fa-solid fa-pen editIcon"
+                (click)="openModal(element, 'edit')"
+              ></i>
+              <i
+                class="fa-solid fa-users editIcon conferenceIcon"
+                *ngIf="userType == 2"
+                title="Add Conference Details"
+                (click)="openAddConference(element)"
+                >+</i
+              >
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
       </div>
     </div>
     <div class="deleted" *ngIf="isShowDeleted">
-      <div class="row my-3">
+      <div class="search-bar col col-lg-5 col-md-5 col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Type to search"
+            class="searchInp"
+          />
+        </mat-form-field>
+      </div>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource1">
+          <ng-container matColumnDef="Sr.No">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              {{ i + 1 }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Proposal ID">
+            <th mat-header-cell *matHeaderCellDef>Proposal ID</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="idColor" (click)="openModal(element, 'view')">
+                #{{ element.id }}</span
+              >
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="element.active === 1" class="pending">Pending</span
+              ><span *ngIf="element.active === 2" class="approved"
+                >Approved</span
+              ><span *ngIf="element.active === 3" class="rejected"
+                >Rejected</span
+              >
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Comments</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.comments }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+      <!-- <p>DATA ENDS GHERE</p> -->
+      <!-- <div class="row my-3">
         <div class="col">
           <input
             type="text"
@@ -135,57 +201,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-  <div class="forSubAdmin" *ngIf="userType === 0 && isShowSubAdmin">
-    <div class="row my-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by ID or Name"
-          [(ngModel)]="searchSubAdmin"
-        />
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Sr.No</th>
-            <th scope="col">UUID</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="
-              let item of subAdminListData | filter : searchSubAdmin;
-              let i = index
-            "
-          >
-            <td>{{ i + 1 }}</td>
-            <td class="proposalId">{{ item.uuid }}</td>
-            <td>{{ item.mobile }}</td>
-            <td>
-              <span *ngIf="item.status === 1" class="green">Active</span
-              ><span *ngIf="item.status === 0" class="red">Inactive</span>
-            </td>
-
-            <td>
-              <div (click)="toggleStatus(item)" class="toggleStatus">
-                <i
-                  class="fa-solid fa-arrows-rotate"
-                  [ngClass]="{ rotate: item.isRotating }"
-                ></i>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      </div> -->
     </div>
   </div>
 </div>
@@ -263,13 +279,15 @@
       <div class="modalDetails">
         <h6>Subject Details</h6>
         <div class="chipsWrapper">
-          <span class="chips" *ngFor="let item of this.modalData.subjectDetailsData">
-            <span>{{item.subject.subject_name}} -</span>
+          <span
+            class="chips"
+            *ngFor="let item of this.modalData.subjectDetailsData"
+          >
+            <span>{{ item.subject.subject_name }} -</span>
 
-            <span>{{item.sub_subject.sub_subject_name}}</span>
+            <span>{{ item.sub_subject.sub_subject_name }}</span>
           </span>
         </div>
-
       </div>
       <div class="actionButtons">
         <button
@@ -490,12 +508,12 @@
                       *ngFor="let item of subjectsListData"
                       [disabled]="item.isSelected"
                     >
-                     {{ item.category_name }}
+                      {{ item.category_name }}
                     </option>
                   </select>
                   <button
                     *ngIf="i != 0"
-                    (click)="removeSubject(i,$event)"
+                    (click)="removeSubject(i, $event)"
                     class="remBtn"
                   >
                     <i class="fa-solid fa-trash"></i>
@@ -533,64 +551,6 @@
         </button>
         <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
       </div>
-    </div>
-  </div>
-</div>
-
-<div
-  class="openModal"
-  *ngIf="isOpenAddSubAdmin"
-  [formGroup]="subAdminFormGroup"
->
-  <div class="modalWrapper subAdmin col col-lg-5 col-md-5 col-sm-10">
-    <h3 class="heading-sub">Add Sub-Admin</h3>
-    <div class="fields col-lg-12 col-md-12 col-sm-10">
-      <input
-        type="text"
-        class="inp"
-        placeholder="Enter Sub Admin Phone Number"
-        required
-        formControlName="mobile"
-      />
-      <span
-        class="errors"
-        *ngIf="
-          subAdminFormGroup.get('mobile')?.hasError('required') &&
-          subAdminFormGroup.get('mobile')?.touched
-        "
-      >
-        Phone Number is Required
-      </span>
-      <span
-        class="errors"
-        *ngIf="
-          subAdminFormGroup.get('mobile')?.hasError('minlength') &&
-          subAdminFormGroup.get('mobile')?.touched
-        "
-      >
-        Phone Number must be 10 digits long
-      </span>
-      <span
-        class="errors"
-        *ngIf="
-          subAdminFormGroup.get('mobile')?.hasError('maxlength') &&
-          subAdminFormGroup.get('mobile')?.touched
-        "
-      >
-        Phone Number must be 10 digits long
-      </span>
-    </div>
-    <div class="actBtns">
-      <button
-        class=" adBtn btn btns"
-        (click)="registerSubAdmin(subAdminFormGroup.value)"
-        [disabled]="!subAdminFormGroup.valid"
-      >
-        Add
-      </button>
-      <button class=" adBtn btns canBtn" (click)="closeAddModal()">
-        Cancel
-      </button>
     </div>
   </div>
 </div>
