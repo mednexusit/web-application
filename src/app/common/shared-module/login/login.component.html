@@ -1,11 +1,14 @@
 <div class="wrapper">
   @if (route.url==='/admin') {
-    <div class="adminLoginWrapper">
-      <div
-      class="loginBlock col col-sm-8 col-md-5 col-lg-5"
+  <div class="adminLoginWrapper">
+    <div
+      class="loginBlock col col-sm-8 col-md-4 col-lg-4"
       [formGroup]="loginForm"
     >
       <h2>MedNexus Login</h2>
+      <div class="logo">
+        <img src="../../../../assets/mednexuslogo.png" alt="" />
+      </div>
       <div
         class="fields"
         [class.valid]="
@@ -68,7 +71,7 @@
         </button>
       </div>
     </div>
-    </div>
+  </div>
 
   } @if (route.url==='/vendor') {
   <div

@@ -1,6 +1,10 @@
 @import "../../../../../_variables.scss";
 .homeLogo{
   cursor: pointer;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items:baseline;
 }
 .sidenav-wrapper{
   background: #7c2ba1;
@@ -9,8 +13,16 @@
   box-sizing: border-box;
   transition: all 0.5s linear;
   .homeLogo{
-    background: #fff;
-    padding: 5px;
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+    i{
+      color: #fff;
+      font-size: 1.5rem;
+      margin-right: 5px;
+    }
+    span{
+      font-size: 1.2rem;
+    }
     img{
       height: 50px;
       width: 100%;
@@ -46,6 +58,7 @@
     border-radius: 10px;
     text-decoration: none;
     color: #fff;
+    white-space: nowrap;
     padding: 7px 12px;
     display: flex;
     justify-content: space-between;

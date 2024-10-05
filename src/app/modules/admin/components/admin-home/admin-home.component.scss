@@ -8,3 +8,13 @@
 .main{
   transition: all 0.5s linear;
 }
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('../../../../../assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'MyCustomFont', sans-serif !important;
+}

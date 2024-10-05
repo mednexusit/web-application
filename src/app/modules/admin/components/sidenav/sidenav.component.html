@@ -1,6 +1,7 @@
 <div class="sidenav-wrapper col col-lg-12 col-md-12 col-sm-12">
   <div class="homeLogo" (click)="goToHome()">
-    <img src="../../../../../assets/mednexuslogo.png" alt="" />
+    <i class="fa-solid fa-house"></i>
+    <span *ngIf="!isHideFlag">Home</span>
   </div>
   <div class="actionItems">
     <div class="item" *ngIf="userType === 0">
@@ -38,7 +39,7 @@
         routerLinkActive="router-link-active"
       >
         <i class="fa-solid fa-shop"></i>
-        <span *ngIf="!isHideFlag"> Vendor Proposals </span>
+        <span *ngIf="!isHideFlag"> Vendors </span>
         <i class="fa-solid fa-chevron-right rightIcon"></i>
       </a>
     </div>
@@ -64,7 +65,7 @@
         <span *ngIf="!isHideFlag">News Feed List</span>
         <i class="fa-solid fa-chevron-right rightIcon"></i>
       </a>
-      <a
+      <!-- <a
         *ngIf="isNewsFeedOpen"
         [routerLink]="['add-subadmin']"
         routerLinkActive="router-link-active"
@@ -72,7 +73,7 @@
         <i class="fa-solid fa-user-plus"></i>
         <span *ngIf="!isHideFlag">Add News Feed</span>
         <i class="fa-solid fa-chevron-right rightIcon"></i>
-      </a>
+      </a> -->
     </div>
   </div>
 </div>

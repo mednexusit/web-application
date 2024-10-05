@@ -1,49 +1,10 @@
 <header class="d-flex justify-content-between desktop">
   <div class="logo" (click)="hideSideNav()">
     <i class="fa-solid fa-bars hamIcon"></i>
+    <img src="../../../../../assets/mednexuslogo.png" alt="" />
   </div>
   <nav class="navbar navbar-expand">
     <ul>
-      <!-- <li>
-        <a
-          [routerLink]="['/admin/adminhome']"
-          routerLinkActive="router-link-active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Dashboard</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="['/admin/adminhome/conferencerequest']"
-          routerLinkActive="router-link-active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Conference Requests</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="['/admin/adminhome/useranalytics']"
-          routerLinkActive="router-link-active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >User Analytics</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="['/admin/adminhome/financialreports']"
-          routerLinkActive="router-link-active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Financial Reports</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="['/admin/adminhome/adminsettings']"
-          routerLinkActive="router-link-active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Settings</a
-        >
-      </li> -->
       <li (click)="logout()" title="Logout">
         <a
           [routerLink]="['/admin']"
