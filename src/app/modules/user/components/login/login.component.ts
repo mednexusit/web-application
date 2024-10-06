@@ -18,7 +18,7 @@ export class LoginComponent {
   maskedPhoneNumber: string = '';
   isEnabled: boolean = true;
   userResendOtpData: any;
-  tempOtp:any;
+  tempOtp: any;
   countdown: number = 30; // Start with 30 seconds
   timerSubscription: Subscription | null = null;
 
@@ -101,6 +101,7 @@ export class LoginComponent {
     };
     this.sharedServ.verifyOtp(dataToPass).subscribe({
       next: (data: any) => {
+        console.log('Data', data);
         let userData = {
           userid: data.userid,
           usertype: data.useridtype,
@@ -108,8 +109,12 @@ export class LoginComponent {
         localStorage.setItem('userData', JSON.stringify(userData));
         this.authServ.sendToken(data.access_token);
         localStorage.setItem('LoggedInUser', JSON.stringify(data.access_token));
-        this.toast.success('Verification Successful', '', { timeOut: 1000 });
-        this.router.navigate(['dashboard']);
+        if (data.registrationinfo == null) {
+          this.toast.success('Verification Successful', '', { timeOut: 1000 });
+          this.router.navigate(['signup']);
+        } else {
+          this.router.navigate(['dashboard']);
+        }
       },
       error: (err: any) => {
         this.toast.error('OTP verification failed', '', { timeOut: 1000 });
@@ -118,7 +123,8 @@ export class LoginComponent {
   }
 
   resendCode() {
-    if (this.countdown === 0) { // Allow resend only when countdown is 0
+    if (this.countdown === 0) {
+      // Allow resend only when countdown is 0
       this.sharedServ.userLogin(this.userResendOtpData).subscribe({
         next: (data: any) => {
           if (data.status) {
@@ -143,5 +149,4 @@ export class LoginComponent {
       nextElement.focus();
     }
   }
-  
 }

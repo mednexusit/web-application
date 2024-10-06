@@ -15,7 +15,7 @@ body {
     flex-direction: row;
     font-family: 'Roboto', sans-serif;
   }
-  
+
   .signup-left, .signup-right, .signup-info, .form-container {
     font-family: 'Roboto', sans-serif;
   }
@@ -32,7 +32,7 @@ body {
     justify-content: center;
     padding: 20px;
   }
-  
+
   .signup-right {
     flex: 1;
     display: flex;
@@ -40,30 +40,30 @@ body {
     justify-content: center;
     padding: 20px;
   }
-  
 
-  
+
+
   /* Media Queries for responsiveness */
   @media (max-width: 768px) {
     .signup-container {
       flex-direction: column;
     }
-  
+
     .signup-left, .signup-right {
       flex: 1;
       padding: 10px;
     }
-  
+
     .signup-image {
       width: 60%;
     }
   }
-  
 
 
 
-  
-  
+
+
+
   .signup-form {
     background-color: white;
     padding: 20px;
@@ -72,54 +72,54 @@ body {
     width: 100%;
     max-width: 500px;
   }
-  
+
   h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
   }
-  
+
   p {
     font-size: 16px;
     margin-bottom: 20px;
   }
-  
+
   .input-group {
     margin-bottom: 15px;
   }
-  
+
   .input-row {
     display: flex;
     align-items: center;
     background:#66666671;
   }
-  
+
   .input-row span {
     margin-right: 8px;
     font-weight: bold;
     color: #333;
   }
-  
-  
+
+
   .error {
     color: red;
     font-size: 14px;
     display: none; /* Initially hidden */
   }
-  
+
   .switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
-  
+
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   .slider {
     position: absolute;
     cursor: pointer;
@@ -131,7 +131,7 @@ body {
     transition: 0.4s;
     border-radius: 24px;
   }
-  
+
   .caption-sign{
 color: #666;
   }
@@ -146,15 +146,15 @@ color: #666;
     transition: 0.4s;
     border-radius: 50%;
   }
-  
+
   input:checked + .slider {
     background-color: #009688;
   }
-  
+
   input:checked + .slider:before {
     transform: translateX(26px);
   }
-  
+
   button {
     width: 100%;
     padding: 12px;
@@ -167,52 +167,52 @@ color: #666;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   button:hover {
     background-color: #00897b;
   }
-  
+
   @media (max-width: 480px) {
     .signup-form {
       padding: 15px;
     }
-  
+
     h2 {
       font-size: 20px;
     }
-  
+
     p {
       font-size: 14px;
     }
-  
+
     button {
       padding: 10px;
       font-size: 14px;
     }
   }
-  
 
 
 
 
 
 
-  
+
+
   .input-group {
     margin-top: 20px;
   }
-  
+
   .input-row {
     display: flex;
     align-items: center;
   }
 
-  
-  
+
+
   input:checked + .slider:before {
     transform: translateX(14px);
   }
-  
+
   button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -221,22 +221,22 @@ color: #666;
     border-radius: 4px;
     cursor: pointer;
   }
-  
-  
+
+
   .code-input {
     display: flex;
-   
+
     gap: 10px;
   }
-  
+
   .code-input input {
     width: 50px;
     padding: 10px;
- 
+
     font-size: 18px;
     border: 1px solid #ccc;
   }
-  
+
 
   form {
     background-color: white;
@@ -246,18 +246,18 @@ color: #666;
     width: 100%;
 
   }
-  
+
   h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
   }
-  
+
   .form-group, .form-row {
     margin-bottom: 15px;
   }
-  
+
   input[type="text"], input[type="email"], input[type="tel"], select {
     width: 100%;
     padding: 10px;
@@ -265,37 +265,37 @@ color: #666;
     font-size: 16px;
     background-color: #f3f3f3;
   }
-  
+
   input[type="checkbox"] {
     margin-left: 10px;
   }
-  
+
   input::placeholder {
     color: #666;
   }
-  
+
   label {
     font-size: 16px;
     color: #333;
   }
-  
+
   .email-label {
     font-size: 14px;
     color: #666;
     margin-right: auto;
   }
-  
+
   .email-checkbox {
     transform: scale(1.5);
     margin-left: 10px;
   }
-  
+
   .form-row {
     display: flex;
     justify-content: space-between;
     gap: 10px;
   }
-  
+
   select {
     padding: 10px;
     border: 1px solid #ddd;
@@ -304,7 +304,7 @@ color: #666;
     background-color: #f3f3f3;
     width:100%;
   }
-  
+
   button.btn-submit {
     width: 100%;
     padding: 12px;
@@ -317,35 +317,35 @@ color: #666;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   button.btn-submit:hover {
     background-color: #00897b;
   }
-  
+
   @media (max-width: 768px) {
     .form-row {
       flex-direction: column;
     }
-  
+
     select {
       width: 100%;
     }
   }
-  
+
   @media (max-width: 480px) {
     form {
       padding: 15px;
     }
-  
+
     h2 {
       font-size: 20px;
     }
-  
+
     input, select {
       font-size: 14px;
       padding: 8px;
     }
-  
+
     button.btn-submit {
       padding: 10px;
       font-size: 14px;
@@ -355,17 +355,21 @@ color: #666;
   .form-control {
     display: block;
     width: 100%;
-    padding: .375rem .75rem; 
-     font-size: 1rem; 
-     font-weight: 400; 
-     line-height: 1.5; 
-    color: var(--bs-body-color); 
+    padding: .375rem .75rem;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+    color: var(--bs-body-color);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--bs-body-bg); 
-     background-clip: padding-box; 
+    background-color: var(--bs-body-bg);
+     background-clip: padding-box;
     border: var(--bs-border-width) solid var(--bs-border-color);
     border-radius: var(--bs-border-radius);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.radioInp{
+  margin-right: 10px;
 }

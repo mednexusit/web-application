@@ -4,32 +4,72 @@ import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-baseURL=environment.baseURL;
-resourceApiURL=environment.resourceAPIURL;
-  constructor(private http:HttpClient, private router:Router) { }
+  baseURL = environment.baseURL;
+  resourceApiURL = environment.resourceAPIURL;
+  constructor(private http: HttpClient, private router: Router) {}
 
-  submitContactForm(data:any){
-   return this.http.post(this.baseURL+'contactus/submit',data)
+  submitContactForm(data: any) {
+    return this.http.post(this.baseURL + 'contactus/submit', data);
   }
-  getRecentNewsFeed(){
+  getRecentNewsFeed() {
     let authToken = localStorage.getItem('LoggedInUser');
     let token;
-    if(authToken){
-     token = JSON.parse(authToken)
+    if (authToken) {
+      token = JSON.parse(authToken);
     }
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
       }),
     };
-    return this.http.post(this.resourceApiURL+'Getallnewsfeed',{},httpOptions);
+    return this.http.post(
+      this.resourceApiURL + 'Getallnewsfeed',
+      {},
+      httpOptions
+    );
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['dashboard']);
   }
+  // http://3.109.153.67/api/usercourses/getcourslist
 
+  getCourses() {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/getcourslist',
+      {},
+      httpOptions
+    );
+  }
+
+  getSpeciality(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/getsubcourslist',
+      data,
+      httpOptions
+    );
+  }
 }
