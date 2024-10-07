@@ -1,0 +1,22 @@
+<div class="auto-complete" [formGroup]="formGroup">
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [value]="selectedName"
+    (input)="onInput($event)"
+    class="form-control inp"
+    (focus)="onFocus()"
+  />
+  <ul *ngIf="isSearchStart">
+    <li *ngFor="let item of filteredList" (click)="selectItem(item)">
+      {{ item[displayField] }}
+      <!-- Show the name -->
+    </li>
+    <li
+      *ngIf="!filteredList.length"
+      (click)="selectItem({ id: null, name: searchedText })"
+    >
+      No match found. Click to set "{{ searchedText }}"
+    </li>
+  </ul>
+</div>

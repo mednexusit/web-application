@@ -120,4 +120,22 @@ export class UserService {
       httpOptions
     );
   }
+
+  registerUser(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/userregistartion',
+      data,
+      httpOptions
+    );
+  }
 }

@@ -49,6 +49,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddet
     DashboardComponent,
     NewsfeedlistComponent,
     NewsfeeddetailComponent,
+    AutocompleteComponent,
   ],
   imports: [
     CommonModule,

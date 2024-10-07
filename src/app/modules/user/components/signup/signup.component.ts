@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +20,9 @@ export class SignupComponent implements OnInit {
   isPracticeSelected: boolean = false;
   specialities: any = [];
   stateList: any = [];
+  collegeList: any = [];
   subCoursesList: any = [];
+  isOtherSelected: boolean = false;
   selectedState: any;
   courses: any = [];
   mbbsSpecialities: any = [
@@ -27,24 +31,29 @@ export class SignupComponent implements OnInit {
   ];
   pgdnbSpecialities: any = [];
 
-  constructor(private fb: FormBuilder, private userServ: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userServ: UserService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.signupForm = this.fb.group({
       user_uuid: ['', Validators.required],
       fullname: ['', Validators.required],
-      alternativemobilenumber: ['', Validators.required],
-      email: ['', Validators.required],
+      alternativemobilenumber: [''],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       gender: ['', Validators.required],
-      doornumber: ['', Validators.required],
-      area: ['', Validators.required],
-      pincode: ['', Validators.required],
-      img: ['', Validators.required],
+      doornumber: [''],
+      area: [''],
+      pincode: [''],
+      img: [''],
       course: ['', Validators.required],
       sub_course: ['', Validators.required],
       sub_course_list: ['', Validators.required],
-      yearofstudying: ['', Validators.required],
+      yearofstudying: [''],
       isStudying: [''],
       studying: ['', Validators.required],
-      practice: ['', Validators.required],
+      practice: [''],
       state: ['', Validators.required],
       college_id: ['', Validators.required],
       city: ['', Validators.required],
@@ -53,12 +62,21 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let userData = JSON.parse(localStorage.getItem('userData') as string);
+    if (userData.userid) {
+      this.signupForm.get('user_uuid')?.setValue(userData.userid);
+    }
     this.fetchCourses();
     this.fetchStateList();
     this.signupForm.get('course')?.valueChanges.subscribe((data: any) => {
       this.subCoursesList = [];
+      this.subCourseLabel = '';
       this.selectedCourse = data;
       this.isCompletedSelected = false;
+      if (this.selectedCourse.name == 'Others') {
+        this.isOtherSelected = true;
+        this.signupForm.get('course')?.setValue(data.type);
+      }
       if (this.selectedCourse && this.selectedCourse.id) {
         this.fetchSpeciality(this.selectedCourse);
       } else {
@@ -68,14 +86,12 @@ export class SignupComponent implements OnInit {
 
     this.signupForm.get('sub_course')?.valueChanges.subscribe((data: any) => {
       if (data) {
-        console.log('ss', data);
         this.subCourseLabel = '';
         if (
           data.specialityname != 'Studying' &&
           data.specialityname != 'Completed'
         ) {
-          console.log('==================');
-          this.subCourseLabel = data.specialityname;
+          this.subCourseLabel = 'Select ' + data.specialityname;
           this.fetchSubCoursesList(data);
         }
 
@@ -85,7 +101,15 @@ export class SignupComponent implements OnInit {
         } else {
           this.isStudying = false;
         }
-        if (data.specialityname == 'Completed' || data.specialityname == 'MD') {
+        if (
+          data.specialityname == 'Completed' ||
+          data.specialityname == 'MD' ||
+          data.specialityname == 'MS' ||
+          data.specialityname == 'DNB' ||
+          data.specialityname == 'DM' ||
+          data.specialityname == 'MCH' ||
+          data.specialityname == 'DRNB'
+        ) {
           this.isCompletedSelected = true;
         } else {
           this.isCompletedSelected = false;
@@ -108,14 +132,46 @@ export class SignupComponent implements OnInit {
     });
 
     this.signupForm.get('state')?.valueChanges.subscribe((data: any) => {
-      console.log('SelectedCollege', data);
+      if (data.name) {
+        this.signupForm.get('state')?.setValue(data.name);
+        this.fetchCollegeList(data);
+      }
       this.selectedState = data;
     });
   }
 
   onSubmit() {
-    if (this.signupForm.valid) {
-      console.log(this.signupForm.value);
+    if (this.signupForm.value) {
+      let dataToPass = {
+        user_uuid: this.signupForm.value?.user_uuid,
+        fullname: this.signupForm.value?.fullname,
+        alternativemobilenumber: this.signupForm.value?.alternativemobilenumber,
+        email: this.signupForm.value?.email,
+        gender: parseInt(this.signupForm.value?.gender),
+        doornumber: '',
+        area: '',
+        pincode: '',
+        img: '',
+        course: this.signupForm.value?.course.id,
+        sub_course: this.signupForm.value?.sub_course.id,
+        sub_course_list: this.signupForm.value?.sub_course_list,
+        yearofstudying: this.signupForm.value?.yearofstudying,
+        studying: this.signupForm.value?.studying,
+        practice: 2,
+        state: this.signupForm.value?.state,
+        college_id: this.signupForm.value?.college_id,
+        city: this.signupForm.value?.city,
+        dob: this.signupForm.value?.dob,
+      };
+      this.userServ.registerUser(dataToPass).subscribe({
+        next: (data: any) => {
+          this.toastr.success(data.responseContents, '', { timeOut: 1000 });
+          this.router.navigate(['dashboard']);
+        },
+        error: (err: any) => {
+          this.toastr.error('Failed to register', '', { timeOut: 1000 });
+        },
+      });
     } else {
       console.log('Form is invalid');
     }
@@ -124,7 +180,6 @@ export class SignupComponent implements OnInit {
   fetchCourses() {
     this.userServ.getCourses().subscribe({
       next: (data: any) => {
-        console.log(data);
         this.courses = data.responseContents;
       },
       error: (err: any) => {},
@@ -138,10 +193,24 @@ export class SignupComponent implements OnInit {
       next: (data: any) => {
         this.specialities = data.responseContents;
       },
-      error: (err: any) => {
-        console.log(err);
-      },
+      error: (err: any) => {},
     });
+  }
+
+  onStateSelected(value: string) {
+    // this.signupForm.get('state')?.setValue(value);
+    // Handle the selected value as needed
+    this.fetchCollegeList(value);
+  }
+
+  onSubCourseSelected(value: string) {
+    console.log('value', value);
+  }
+  onCollegeSelected(value: string) {
+    console.log('Selected College:', value);
+    // this.signupForm.get('state')?.setValue(value);
+    // Handle the selected value as needed
+    // this.fetchCollegeList(value);
   }
 
   fetchSubCoursesList(data: any) {
@@ -151,7 +220,6 @@ export class SignupComponent implements OnInit {
     this.userServ.getSubCourseList(dataToPass).subscribe({
       next: (data: any) => {
         //this.specialities = data.responseContents;
-        console.log('SUBSPECIALITY', data);
         this.subCoursesList = data.responseContents;
       },
       error: (err: any) => {
@@ -163,8 +231,6 @@ export class SignupComponent implements OnInit {
   fetchStateList() {
     this.userServ.getStateList().subscribe({
       next: (data: any) => {
-        //this.specialities = data.responseContents;
-        console.log('stateList', data);
         this.stateList = data.responseContents;
       },
       error: (err: any) => {
@@ -173,12 +239,14 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  fetchCollegeList() {
-    this.userServ.getStateList().subscribe({
+  fetchCollegeList(data: any) {
+    let dataToPass = {
+      state_id: data.id,
+      clgtype: 2,
+    };
+    this.userServ.getCollegeList(dataToPass).subscribe({
       next: (data: any) => {
-        //this.specialities = data.responseContents;
-        console.log('stateList', data);
-        this.stateList = data.responseContents;
+        this.collegeList = data.responseContents;
       },
       error: (err: any) => {
         console.log(err);

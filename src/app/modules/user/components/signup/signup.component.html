@@ -71,23 +71,35 @@
           </select>
         </div>
         <div class="col-md-6 mb-2 p-2">
-          <select class="form-select" formControlName="sub_course">
+          <select
+            class="form-select"
+            formControlName="sub_course"
+            *ngIf="!isOtherSelected"
+          >
             <option value="" selected>Select Speciality</option>
             <option [ngValue]="item" *ngFor="let item of specialities">
               {{ item.specialityname }}
             </option>
           </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Other"
+            *ngIf="isOtherSelected"
+          />
         </div>
       </div>
 
       <div class="row" *ngIf="subCourseLabel">
         <div class="mb-2 p-2">
-          <select class="form-select" formControlName="sub_course_list">
-            <option value="" selected>Select {{ subCourseLabel }}</option>
-            <option [ngValue]="item" *ngFor="let item of subCoursesList">
-              {{ item.name }}
-            </option>
-          </select>
+          <app-autocomplete
+            [itemList]="subCoursesList"
+            [displayField]="'name'"
+            [formGroup]="signupForm"
+            [placeholder]="subCourseLabel"
+            [controlName]="'sub_course_list'"
+            (selectedValue)="onSubCourseSelected($event)"
+          ></app-autocomplete>
         </div>
       </div>
 
@@ -126,12 +138,15 @@
             formControlName="yearofstudying"
           />
         </div>
-        <div class="mb-2 p-2" *ngIf="!isPracticeSelected">
-          <input
-            class="form-control"
-            placeholder="Enter College Name"
-            formControlName="college_id"
-          />
+        <div class="mb-2 p-2">
+          <app-autocomplete
+            [itemList]="stateList"
+            [displayField]="'name'"
+            [formGroup]="signupForm"
+            [placeholder]="'Search State'"
+            [controlName]="'state'"
+            (selectedValue)="onStateSelected($event)"
+          ></app-autocomplete>
         </div>
       </div>
       <div class="row" *ngIf="isPracticeSelected">
@@ -148,15 +163,17 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6 mb-2 p-2">
-          <select class="form-select" formControlName="state">
-            <option value="" selected>Select State</option>
-            <option [ngValue]="item" *ngFor="let item of stateList">
-              {{ item.name }}
-            </option>
-          </select>
+        <div class="mb-2 p-2" *ngIf="!isPracticeSelected">
+          <app-autocomplete
+            [itemList]="collegeList"
+            [displayField]="'name'"
+            [formGroup]="signupForm"
+            [placeholder]="'Enter College'"
+            [controlName]="'college_id'"
+            (selectedValue)="onCollegeSelected($event)"
+          ></app-autocomplete>
         </div>
-        <div class="col-md-6 mb-2 p-2">
+        <div class="mb-2 p-2">
           <input
             class="form-control"
             placeholder="Enter City"
@@ -166,7 +183,13 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary w-100">Submit</button>
+          <button
+            type="submit"
+            [disabled]="!signupForm.valid"
+            class="btn btn-primary w-100"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </form>
