@@ -80,11 +80,11 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-6 mb-2 p-2">
+      <div class="row" *ngIf="subCourseLabel">
+        <div class="mb-2 p-2">
           <select class="form-select" formControlName="sub_course_list">
-            <option value="" selected>Select Course</option>
-            <option [ngValue]="item" *ngFor="let item of courses">
+            <option value="" selected>Select {{ subCourseLabel }}</option>
+            <option [ngValue]="item" *ngFor="let item of subCoursesList">
               {{ item.name }}
             </option>
           </select>
@@ -127,7 +127,11 @@
           />
         </div>
         <div class="mb-2 p-2" *ngIf="!isPracticeSelected">
-          <input class="form-control" placeholder="Enter College Name" />
+          <input
+            class="form-control"
+            placeholder="Enter College Name"
+            formControlName="college_id"
+          />
         </div>
       </div>
       <div class="row" *ngIf="isPracticeSelected">
@@ -145,37 +149,21 @@
 
       <div class="row">
         <div class="col-md-6 mb-2 p-2">
-          <input class="form-control" placeholder="Current position" />
+          <select class="form-select" formControlName="state">
+            <option value="" selected>Select State</option>
+            <option [ngValue]="item" *ngFor="let item of stateList">
+              {{ item.name }}
+            </option>
+          </select>
         </div>
-        <div class="col-md-6 mb-2 p-2">
-          <input class="form-control" placeholder="Exp In years" />
-        </div>
-      </div>
-
-      <div class="row">
         <div class="col-md-6 mb-2 p-2">
           <input
             class="form-control"
-            placeholder="Enter Current organization"
+            placeholder="Enter City"
+            formControlName="city"
           />
         </div>
-        <div class="col-md-6 mb-2 p-2">
-          <input class="form-control" placeholder="Council State" />
-        </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-6 p-2">
-          <input
-            class="form-control"
-            placeholder="Enter Medical Cou. Reg. Number"
-          />
-        </div>
-        <div class="col-md-6 p-2">
-          <input class="form-control" placeholder="Year of Registration" />
-        </div>
-      </div>
-
       <div class="row">
         <div class="col-12">
           <button type="submit" class="btn btn-primary w-100">Submit</button>

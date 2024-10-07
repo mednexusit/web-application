@@ -12,11 +12,14 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   selectedCourse: any;
   selectedSpecitality: any;
+  subCourseLabel: string = '';
   isStudying: boolean = false;
   isCompletedSelected: boolean = false;
   isPracticeSelected: boolean = false;
   specialities: any = [];
+  stateList: any = [];
   subCoursesList: any = [];
+  selectedState: any;
   courses: any = [];
   mbbsSpecialities: any = [
     { id: 1, name: 'Studying' },
@@ -51,7 +54,9 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCourses();
+    this.fetchStateList();
     this.signupForm.get('course')?.valueChanges.subscribe((data: any) => {
+      this.subCoursesList = [];
       this.selectedCourse = data;
       this.isCompletedSelected = false;
       if (this.selectedCourse && this.selectedCourse.id) {
@@ -63,7 +68,17 @@ export class SignupComponent implements OnInit {
 
     this.signupForm.get('sub_course')?.valueChanges.subscribe((data: any) => {
       if (data) {
-        console.log('s', data);
+        console.log('ss', data);
+        this.subCourseLabel = '';
+        if (
+          data.specialityname != 'Studying' &&
+          data.specialityname != 'Completed'
+        ) {
+          console.log('==================');
+          this.subCourseLabel = data.specialityname;
+          this.fetchSubCoursesList(data);
+        }
+
         if (data.specialityname == 'Studying') {
           this.isStudying = true;
           this.signupForm.get('studying')?.setValue(1);
@@ -90,6 +105,11 @@ export class SignupComponent implements OnInit {
           this.isPracticeSelected = true;
         }
       }
+    });
+
+    this.signupForm.get('state')?.valueChanges.subscribe((data: any) => {
+      console.log('SelectedCollege', data);
+      this.selectedState = data;
     });
   }
 
@@ -124,5 +144,45 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  fetchSubCoursesList() {}
+  fetchSubCoursesList(data: any) {
+    let dataToPass = {
+      courses_id: data.id,
+    };
+    this.userServ.getSubCourseList(dataToPass).subscribe({
+      next: (data: any) => {
+        //this.specialities = data.responseContents;
+        console.log('SUBSPECIALITY', data);
+        this.subCoursesList = data.responseContents;
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+
+  fetchStateList() {
+    this.userServ.getStateList().subscribe({
+      next: (data: any) => {
+        //this.specialities = data.responseContents;
+        console.log('stateList', data);
+        this.stateList = data.responseContents;
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
+
+  fetchCollegeList() {
+    this.userServ.getStateList().subscribe({
+      next: (data: any) => {
+        //this.specialities = data.responseContents;
+        console.log('stateList', data);
+        this.stateList = data.responseContents;
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
 }

@@ -72,4 +72,52 @@ export class UserService {
       httpOptions
     );
   }
+
+  getSubCourseList(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/getsubcourssublist',
+      data,
+      httpOptions
+    );
+  }
+  getStateList() {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get(this.resourceApiURL + 'getstatelist', httpOptions);
+  }
+  getCollegeList(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/getcollegeblistbystateidtypeid',
+      data,
+      httpOptions
+    );
+  }
 }
