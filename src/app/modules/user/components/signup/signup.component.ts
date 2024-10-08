@@ -78,6 +78,7 @@ export class SignupComponent implements OnInit {
       this.subCoursesList = [];
       this.subCourseLabel = '';
       this.selectedCourse = data;
+      this.signupForm.get('studying')?.reset();
       this.isCompletedSelected = false;
       if (this.selectedCourse.name == 'Others') {
         this.isOtherSelected = true;
@@ -106,6 +107,20 @@ export class SignupComponent implements OnInit {
           this.signupForm.get('studying')?.setValue(1);
         } else {
           this.isStudying = false;
+        }
+        if (
+          data.specialityname == 'Studying' ||
+          data.specialityname == 'Completed'
+        ) {
+          this.signupForm.get('sub_course_list')?.setValidators([]);
+          this.signupForm.get('sub_course_list')?.updateValueAndValidity();
+        } else {
+          this.signupForm
+            .get('sub_course_list')
+            ?.setValidators([Validators.required]);
+          this.signupForm.get('sub_course_list')?.updateValueAndValidity();
+          this.signupForm.get('studying')?.setValidators([Validators.required]);
+          this.signupForm.get('studying')?.updateValueAndValidity();
         }
         if (
           data.specialityname == 'Completed' ||
