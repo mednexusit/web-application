@@ -24,7 +24,12 @@ export class SignupComponent implements OnInit {
   subCoursesList: any = [];
   isOtherSelected: boolean = false;
   selectedState: any;
+  selectedSubCourseList: any;
+  selectedCollege: any;
   courses: any = [];
+  isOpenStateModal: boolean = false;
+  isOpenSubCourseModal: boolean = false;
+  isOpenCollegeModal: boolean = false;
   mbbsSpecialities: any = [
     { id: 1, name: 'Studying' },
     { id: 2, name: 'Completed' },
@@ -68,6 +73,8 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkLogin();
+
     let userData = JSON.parse(localStorage.getItem('userData') as string);
     if (userData.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
@@ -78,10 +85,13 @@ export class SignupComponent implements OnInit {
       this.subCoursesList = [];
       this.subCourseLabel = '';
       this.selectedCourse = data;
+      this.signupForm.get('studying')?.reset();
+      this.signupForm.get('sub_course_list')?.reset();
       this.isCompletedSelected = false;
-      if (this.selectedCourse.name == 'Others') {
+      if (this.selectedCourse.name.toLowerCase() === 'others') {
         this.isOtherSelected = true;
-        this.signupForm.get('course')?.setValue(data.type);
+      } else {
+        this.isOtherSelected = false;
       }
       if (this.selectedCourse && this.selectedCourse.id) {
         this.fetchSpeciality(this.selectedCourse);
@@ -108,6 +118,20 @@ export class SignupComponent implements OnInit {
           this.isStudying = false;
         }
         if (
+          data.specialityname == 'Studying' ||
+          data.specialityname == 'Completed'
+        ) {
+          this.signupForm.get('sub_course_list')?.setValidators([]);
+          this.signupForm.get('sub_course_list')?.updateValueAndValidity();
+        } else {
+          this.signupForm
+            .get('sub_course_list')
+            ?.setValidators([Validators.required]);
+          this.signupForm.get('sub_course_list')?.updateValueAndValidity();
+          this.signupForm.get('studying')?.setValidators([Validators.required]);
+          this.signupForm.get('studying')?.updateValueAndValidity();
+        }
+        if (
           data.specialityname == 'Completed' ||
           data.specialityname == 'MD' ||
           data.specialityname == 'MS' ||
@@ -126,11 +150,15 @@ export class SignupComponent implements OnInit {
       if (data) {
         if (data == 'studying') {
           this.signupForm.get('studying')?.setValue(1);
+          this.signupForm.get('studying')?.updateValueAndValidity();
           this.isStudying = true;
           this.isPracticeSelected = false;
+          this.signupForm.get('state')?.reset();
+          this.signupForm.get('college_id')?.reset();
         }
         if (data == 'completed') {
           this.signupForm.get('studying')?.setValue(0);
+          this.signupForm.get('studying')?.updateValueAndValidity();
           this.isStudying = false;
           this.isPracticeSelected = true;
         }
@@ -138,14 +166,55 @@ export class SignupComponent implements OnInit {
     });
 
     this.signupForm.get('state')?.valueChanges.subscribe((data: any) => {
-      if (data.name) {
-        this.signupForm.get('state')?.setValue(data.name);
+      if (data?.name) {
+        this.signupForm.get('state')?.setValue(data?.name);
         this.fetchCollegeList(data);
       }
       this.selectedState = data;
     });
   }
 
+  checkLogin() {
+    let isUserLoggedIn = localStorage.getItem('LoggedInUser');
+    if (!isUserLoggedIn?.length) {
+      this.router.navigate(['login']);
+      this.toastr.error('Please Login again', '', { timeOut: 2000 });
+    }
+  }
+  openStateModal() {
+    this.isOpenStateModal = true;
+  }
+  openSubCourseModal() {
+    this.isOpenSubCourseModal = true;
+  }
+  openModal() {
+    this.isOpenStateModal = true;
+  }
+  openCollegeModal() {
+    this.isOpenCollegeModal = true;
+  }
+  getSelectedState(data: any) {
+    this.signupForm.get('state')?.setValue(data.name);
+    this.selectedState = data;
+    this.fetchCollegeList(data);
+  }
+  closeStateModal() {
+    this.isOpenStateModal = false;
+  }
+  closeSubCourseModal() {
+    this.isOpenSubCourseModal = false;
+  }
+  closeCollegeModal() {
+    this.isOpenCollegeModal = false;
+  }
+  getSelectedSubCourse(data: any) {
+    this.signupForm.get('sub_course_list')?.setValue(data.name);
+    this.selectedSubCourseList = data;
+  }
+  getSelectedCollege(data: any) {
+    this.signupForm.get('college_id')?.setValue(data.name);
+    this.selectedCollege = data;
+  }
   onSubmit() {
     if (this.signupForm.value) {
       let dataToPass = {
@@ -160,12 +229,12 @@ export class SignupComponent implements OnInit {
         img: '',
         course: this.signupForm.value?.course.id,
         sub_course: this.signupForm.value?.sub_course.id,
-        sub_course_list: this.signupForm.value?.sub_course_list,
+        sub_course_list: this.selectedSubCourseList.id,
         yearofstudying: this.signupForm.value?.yearofstudying,
         studying: this.signupForm.value?.studying,
         practice: 2,
-        state: this.signupForm.value?.state,
-        college_id: this.signupForm.value?.college_id,
+        state: this.selectedState.id,
+        college_id: this.selectedCollege.id,
         city: this.signupForm.value?.city,
         dob: this.signupForm.value?.dob,
       };
@@ -180,6 +249,9 @@ export class SignupComponent implements OnInit {
       });
     } else {
       console.log('Form is invalid');
+      this.toastr.error('Internal Server Error', 'Register Again', {
+        timeOut: 1000,
+      });
     }
   }
 
@@ -209,11 +281,8 @@ export class SignupComponent implements OnInit {
     this.fetchCollegeList(value);
   }
 
-  onSubCourseSelected(value: string) {
-    console.log('value', value);
-  }
+  onSubCourseSelected(value: string) {}
   onCollegeSelected(value: string) {
-    console.log('Selected College:', value);
     // this.signupForm.get('state')?.setValue(value);
     // Handle the selected value as needed
     // this.fetchCollegeList(value);
@@ -230,6 +299,9 @@ export class SignupComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
+        this.toastr.error('Internal Server Error', 'Login Again', {
+          timeOut: 1000,
+        });
       },
     });
   }
@@ -241,6 +313,9 @@ export class SignupComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
+        this.toastr.error('Internal Server Error', 'Login Again', {
+          timeOut: 1000,
+        });
       },
     });
   }
@@ -256,6 +331,9 @@ export class SignupComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
+        this.toastr.error('Internal Server Error', 'Login Again', {
+          timeOut: 1000,
+        });
       },
     });
   }

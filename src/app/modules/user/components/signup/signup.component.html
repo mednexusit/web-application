@@ -11,7 +11,7 @@
   </div>
 
   <div class="signup-right">
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="signupForm">
       <h2 class="mb-4">Signup</h2>
       <p class="caption-sign">Bt Creating a free account</p>
 
@@ -91,15 +91,31 @@
       </div>
 
       <div class="row" *ngIf="subCourseLabel">
-        <div class="mb-2 p-2">
-          <app-autocomplete
+        <div class="mb-2 p-2 field">
+          <input
+            type="text"
+            [placeholder]="subCourseLabel"
+            (focus)="openSubCourseModal()"
+            formControlName="sub_course_list"
+          />
+          <i class="fa-solid fa-angle-down downIcon"></i>
+          <app-modalautocomplete
+            [items]="subCoursesList"
+            [searchItem]="subCourseLabel"
+            [isOpen]="isOpenSubCourseModal"
+            (itemSelected)="getSelectedSubCourse($event)"
+            (closeModal)="closeSubCourseModal()"
+            [fieldName]="'name'"
+            [placeholder]="subCourseLabel"
+          ></app-modalautocomplete>
+          <!-- <app-autocomplete
             [itemList]="subCoursesList"
             [displayField]="'name'"
             [formGroup]="signupForm"
             [placeholder]="subCourseLabel"
             [controlName]="'sub_course_list'"
             (selectedValue)="onSubCourseSelected($event)"
-          ></app-autocomplete>
+          ></app-autocomplete> -->
         </div>
       </div>
 
@@ -138,15 +154,23 @@
             formControlName="yearofstudying"
           />
         </div>
-        <div class="mb-2 p-2">
-          <app-autocomplete
-            [itemList]="stateList"
-            [displayField]="'name'"
-            [formGroup]="signupForm"
+        <div class="mb-2 p-2 field">
+          <input
+            type="text"
+            placeholder="Select State"
+            (focus)="openStateModal()"
+            formControlName="state"
+          />
+          <i class="fa-solid fa-angle-down downIcon"></i>
+          <app-modalautocomplete
+            [items]="stateList"
+            [searchItem]="'State'"
+            [isOpen]="isOpenStateModal"
+            (itemSelected)="getSelectedState($event)"
+            (closeModal)="closeStateModal()"
+            [fieldName]="'name'"
             [placeholder]="'Search State'"
-            [controlName]="'state'"
-            (selectedValue)="onStateSelected($event)"
-          ></app-autocomplete>
+          ></app-modalautocomplete>
         </div>
       </div>
       <div class="row" *ngIf="isPracticeSelected">
@@ -154,24 +178,44 @@
           <input
             class="form-control"
             placeholder="Enter Practising"
-            formControlName="yearofstudying"
+            formControlName="practice"
           />
         </div>
         <div class="mb-2 p-2">
-          <input class="form-control" placeholder="Enter Years Of Experience" />
+          <input
+            class="form-control"
+            placeholder="Enter Years Of Experience"
+            formControlName="yearofstudying"
+          />
         </div>
       </div>
 
       <div class="row">
-        <div class="mb-2 p-2" *ngIf="!isPracticeSelected">
-          <app-autocomplete
+        <div class="mb-2 p-2 field" *ngIf="!isPracticeSelected">
+          <!-- <app-autocomplete
             [itemList]="collegeList"
             [displayField]="'name'"
             [formGroup]="signupForm"
             [placeholder]="'Enter College'"
             [controlName]="'college_id'"
             (selectedValue)="onCollegeSelected($event)"
-          ></app-autocomplete>
+          ></app-autocomplete> -->
+          <input
+            type="text"
+            placeholder="Enter College"
+            (focus)="openCollegeModal()"
+            formControlName="college_id"
+          />
+          <i class="fa-solid fa-angle-down downIcon"></i>
+          <app-modalautocomplete
+            [items]="collegeList"
+            [searchItem]="'State'"
+            [isOpen]="isOpenCollegeModal"
+            (itemSelected)="getSelectedCollege($event)"
+            (closeModal)="closeCollegeModal()"
+            [fieldName]="'name'"
+            [placeholder]="'Search College'"
+          ></app-modalautocomplete>
         </div>
         <div class="mb-2 p-2">
           <input
@@ -187,6 +231,7 @@
             type="submit"
             [disabled]="!signupForm.valid"
             class="btn btn-primary w-100"
+            (click)="onSubmit()"
           >
             Submit
           </button>

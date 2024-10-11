@@ -373,3 +373,12 @@ color: #666;
 .radioInp{
   margin-right: 10px;
 }
+.field{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.downIcon{
+  position: absolute;
+  right: 20px;
+}
