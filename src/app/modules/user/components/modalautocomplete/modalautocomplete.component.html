@@ -5,13 +5,21 @@
       (click)="closeModalOpen()"
     ></i>
     <h1>Search {{ searchItem }}</h1>
-    <input
-      [placeholder]="placeholder"
-      class="inp form-control"
-      [value]="selectedItemText"
-      (input)="getSearchText($event)"
-      (focus)="openList()"
-    />
+    <div class="position-relative d-flex align-items-center">
+      <input
+        #inputElement
+        [placeholder]="placeholder"
+        class="inp form-control"
+        [value]="selectedItemText"
+        (input)="getSearchText($event)"
+        (focus)="openList()"
+      />
+      <i
+        class="fa-solid fa-xmark crossMark"
+        *ngIf="searchText?.length"
+        (click)="clearText()"
+      ></i>
+    </div>
     <ul>
       <li *ngFor="let item of filteredList" (click)="selectItem(item)">
         {{ item[fieldName] }}

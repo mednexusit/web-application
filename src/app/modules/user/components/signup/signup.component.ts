@@ -150,6 +150,7 @@ export class SignupComponent implements OnInit {
       if (data) {
         if (data == 'studying') {
           this.signupForm.get('studying')?.setValue(1);
+          this.signupForm.get('studying')?.updateValueAndValidity();
           this.isStudying = true;
           this.isPracticeSelected = false;
           this.signupForm.get('state')?.reset();
@@ -157,6 +158,7 @@ export class SignupComponent implements OnInit {
         }
         if (data == 'completed') {
           this.signupForm.get('studying')?.setValue(0);
+          this.signupForm.get('studying')?.updateValueAndValidity();
           this.isStudying = false;
           this.isPracticeSelected = true;
         }

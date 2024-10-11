@@ -8,6 +8,7 @@ import {
   SimpleChanges,
   HostListener,
   ElementRef,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -24,6 +25,7 @@ export class ModalautocompleteComponent implements OnInit, OnChanges {
   @Output() closeModal = new EventEmitter();
   @Input() fieldName: any;
   filteredList: any = [];
+  @ViewChild('inputElement') inputRef!: ElementRef;
   searchText: any;
   selectedItemText: any = '';
   constructor(private elRef: ElementRef) {}
@@ -60,5 +62,10 @@ export class ModalautocompleteComponent implements OnInit, OnChanges {
   closeModalOpen() {
     this.closeModal.emit();
     this.filteredList = [];
+  }
+  clearText() {
+    this.searchText = '';
+    this.selectedItemText = '';
+    this.inputRef.nativeElement.focus();
   }
 }
