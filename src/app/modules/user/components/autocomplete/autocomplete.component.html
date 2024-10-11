@@ -6,11 +6,16 @@
     (input)="onInput($event)"
     class="form-control inp"
     (focus)="onFocus()"
+    (click)="$event.stopPropagation()"
   />
-  <ul *ngIf="isSearchStart">
+  <!-- List should be shown when modal is open and search is started -->
+  <ul
+    *ngIf="isOpenModal"
+    class="dropdown-list"
+    (click)="$event.stopPropagation()"
+  >
     <li *ngFor="let item of filteredList" (click)="selectItem(item)">
       {{ item[displayField] }}
-      <!-- Show the name -->
     </li>
     <li
       *ngIf="!filteredList.length"

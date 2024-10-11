@@ -32,6 +32,24 @@ export class UserService {
     );
   }
 
+  getNewsFeedDetails(data: any) {
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.get(
+      `
+      ${this.resourceApiURL}GetallheadingNewsfeedbyid/${data}`,
+      httpOptions
+    );
+  }
+
   goBack() {
     this.router.navigate(['dashboard']);
   }

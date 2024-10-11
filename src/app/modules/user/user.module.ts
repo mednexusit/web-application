@@ -50,6 +50,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { ModalautocompleteComponent } from './components/modalautocomplete/modalautocomplete.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     NewsfeedlistComponent,
     NewsfeeddetailComponent,
     AutocompleteComponent,
+    ModalautocompleteComponent,
   ],
   imports: [
     CommonModule,

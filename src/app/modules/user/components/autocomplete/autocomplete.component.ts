@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { CommonModule } from '@angular/common';
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-autocomplete',
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./autocomplete.component.scss'],
 })
 export class AutocompleteComponent implements OnInit {
+  isOpenModal: boolean = false; // To control modal visibility
   @Input() itemList: any[] = []; // List of items to search from
   @Input() displayField: string = 'name'; // Field to display in the input
   @Input() formGroup!: FormGroup; // FormGroup passed from parent
@@ -22,27 +24,26 @@ export class AutocompleteComponent implements OnInit {
   @Output() selectedValue = new EventEmitter<any>(); // Emit selected value
 
   filteredList: any[] = [];
-  isSearchStart: boolean = false;
   searchedText: string = '';
   selectedName: string = ''; // This will be used to show the name in the input
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private elRef: ElementRef) {}
 
   ngOnInit(): void {
     this.filteredList = [...this.itemList]; // Initialize with full list
 
+    // Watch for form control value changes
     this.formGroup
       .get(this.controlName)
       ?.valueChanges.subscribe((data: any) => {
-        // Only set when user types, not when user selects
         if (typeof data === 'string') {
           this.searchedText = data;
           if (data.length) {
             this.filterItem(data);
-            this.isSearchStart = true;
+            this.isOpenModal = true; // Open the modal when typing starts
           } else {
-            this.isSearchStart = false;
-            this.filteredList = [...this.itemList]; // Reset list if input is cleared
+            this.isOpenModal = false; // Close modal when input is cleared
+            this.filteredList = [...this.itemList]; // Reset list
           }
         }
       });
@@ -55,9 +56,9 @@ export class AutocompleteComponent implements OnInit {
   }
 
   selectItem(selectedItem: any) {
-    this.selectedName = selectedItem[this.displayField]; // Display the name in the input field
+    this.isOpenModal = false; // Close modal when item is selected
+    this.selectedName = selectedItem[this.displayField]; // Display the name in the input
     this.formGroup.get(this.controlName)?.setValue(selectedItem.id); // Set the id as form control value
-    this.isSearchStart = false;
     this.selectedValue.emit(selectedItem); // Emit the entire selected object
   }
 
@@ -67,8 +68,15 @@ export class AutocompleteComponent implements OnInit {
   }
 
   onFocus() {
-    if (this.formGroup.get(this.controlName)?.value.length) {
-      this.isSearchStart = true;
+    this.isOpenModal = true; // Open modal when input is focused
+  }
+
+  // Close the modal when clicking outside the component
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const clickedInside = this.elRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.isOpenModal = false; // Close modal when clicked outside
     }
   }
 }
