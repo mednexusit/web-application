@@ -40,7 +40,7 @@ export class NewsfeeddetailComponent implements OnInit {
       next: (data: any) => {
         this.newsFeedDetails = data.responseContents;
         this.sanitizedHtml = this.sanitizer.bypassSecurityTrustHtml(
-          this.newsFeedDetails[0].details
+          this.newsFeedDetails[0]?.details
         );
       },
       error: (err: any) => {

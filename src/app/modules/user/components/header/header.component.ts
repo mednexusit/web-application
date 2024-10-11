@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   logoSrc: string;
   userLogoSrc: string;
   toggleLogoSrc: string;
+  isHideHeader: boolean = true;
   isLoggedInUser: boolean = false;
 
   constructor(
@@ -29,14 +30,19 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
-    console.log(this.router.url);
-    if (this.router.url.includes('/dashboard')) {
-      let whitelogo = document.querySelector('.logo') as HTMLImageElement;
-      if (whitelogo) {
-        whitelogo.style.opacity = '0';
-      }
+    console.log('sss', this.router.url, this.router.url.includes('dashboard'));
+    if (this.router.url.includes('dashboard')) {
+      this.isHideHeader = false;
+    } else {
+      this.isHideHeader = true;
     }
+    this.SharedService.getHideHeaderFlag().subscribe((data: any) => {
+      console.log(data);
+      this.isHideHeader = data;
+    });
+    console.log('isHide', this.isHideHeader);
   }
+
   logoutUser() {
     this.authServ.logoutUser();
     this.router.navigate(['']);

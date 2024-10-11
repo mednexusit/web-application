@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,6 +17,15 @@ export class SharedService {
 
   getHideFlag() {
     return this.hideFlag.asObservable();
+  }
+
+  hideHeaderFlag = new Subject();
+  sendHideHeaderFlag(data: any) {
+    this.hideHeaderFlag.next(data);
+  }
+
+  getHideHeaderFlag() {
+    return this.hideHeaderFlag.asObservable();
   }
 
   userLogin(data: any) {
