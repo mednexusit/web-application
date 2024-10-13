@@ -52,7 +52,6 @@ export class UserDashboardComponent {
     this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
   }
   logoutUser() {
-    console.log('loggedout');
     this.SharedService.sendHideHeaderFlag(true);
     this.authServ.logoutUser();
     this.router.navigate(['']);

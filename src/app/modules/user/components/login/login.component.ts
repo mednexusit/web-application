@@ -101,7 +101,6 @@ export class LoginComponent {
     };
     this.sharedServ.verifyOtp(dataToPass).subscribe({
       next: (data: any) => {
-        console.log('Data', data);
         let userData = {
           userid: data.userid,
           usertype: data.useridtype,

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { UserService } from '../../services/user.service';
@@ -10,7 +15,7 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, AfterViewInit {
   signupForm: FormGroup;
   selectedCourse: any;
   selectedSpecitality: any;
@@ -27,6 +32,7 @@ export class SignupComponent implements OnInit {
   selectedSubCourseList: any;
   selectedCollege: any;
   courses: any = [];
+  collegePlaceHolder: any = 'Select College';
   isOpenStateModal: boolean = false;
   isOpenSubCourseModal: boolean = false;
   isOpenCollegeModal: boolean = false;
@@ -71,10 +77,10 @@ export class SignupComponent implements OnInit {
       dob: ['', Validators.required],
     });
   }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.checkLogin();
-
+  }
+  ngOnInit(): void {
     let userData = JSON.parse(localStorage.getItem('userData') as string);
     if (userData.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
@@ -143,6 +149,11 @@ export class SignupComponent implements OnInit {
           this.isCompletedSelected = true;
         } else {
           this.isCompletedSelected = false;
+        }
+        if (data.specialityname == 'DNB' || data.specialityname == 'DRNB') {
+          this.collegePlaceHolder = 'Select Institute';
+        } else {
+          this.collegePlaceHolder = 'Select College';
         }
       }
     });

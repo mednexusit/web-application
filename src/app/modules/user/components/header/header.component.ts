@@ -30,23 +30,23 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
-    console.log('sss', this.router.url, this.router.url.includes('dashboard'));
     if (this.router.url.includes('dashboard')) {
       this.isHideHeader = false;
     } else {
       this.isHideHeader = true;
     }
     this.SharedService.getHideHeaderFlag().subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.isLoggedInUser = false;
+      }
       this.isHideHeader = data;
     });
-    console.log('isHide', this.isHideHeader);
   }
 
   logoutUser() {
     this.authServ.logoutUser();
     this.router.navigate(['']);
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
+    this.isLoggedInUser = false;
   }
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;

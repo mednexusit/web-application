@@ -35,14 +35,22 @@
         </div>
         <div class="col-md-6">
           <div class="d-flex justify-content-end">
-            <a
+            <div
               class="btn btn-lg btn-floating mx-2"
               style="background-color: #0077b5; color: white; border: none"
-              href="https://www.facebook.com"
               role="button"
+              (click)="actionLike(item)"
             >
               <i class="fas fa-thumbs-up"></i> (20)
-            </a>
+            </div>
+            <div
+              class="btn btn-lg btn-floating mx-2"
+              style="background-color: #0077b5; color: white; border: none"
+              role="button"
+              (click)="actionDislike(item)"
+            >
+              <i class="fas fa-thumbs-down"></i> (20)
+            </div>
 
             <!-- <a
               class="btn btn-lg btn-floating mx-2"

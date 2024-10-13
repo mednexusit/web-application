@@ -51,12 +51,9 @@ export class NewsfeeddetailComponent implements OnInit {
     });
   }
   shareContent(item: any) {
-    // Check if a sharing action is already in progress
     if (this.isSharing) {
-      return; // Prevent additional share attempts
+      return;
     }
-
-    // Set the flag to true when the sharing action starts
     this.isSharing = true;
 
     if (navigator.share) {
@@ -79,4 +76,6 @@ export class NewsfeeddetailComponent implements OnInit {
       this.isSharing = false; // Reset the flag if the API is not supported
     }
   }
+  actionLike(data: any) {}
+  actionDislike(data: any) {}
 }

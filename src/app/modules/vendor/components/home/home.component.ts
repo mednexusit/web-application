@@ -107,7 +107,13 @@ export class HomeComponent implements OnInit {
           Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
         ]),
       ],
-      panno: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')])],
+      panno: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
+        ]),
+      ],
       branchaddress: ['', Validators.required],
     });
   }
@@ -162,20 +168,20 @@ export class HomeComponent implements OnInit {
       branchaddress: this.paymentInfo.get('branchaddress').value,
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({
-      next:(data:any)=>{
-        if(data.message){
-          this.toast.success(data.message,'',{timeOut:2000})
+      next: (data: any) => {
+        if (data.message) {
+          this.toast.success(data.message, '', { timeOut: 2000 });
           this.paymentInfo.reset();
           this.personalInfo.reset();
           this.conferenceInfo.reset();
           this.speakerInfo.reset();
-          this.currentStep=1;
+          this.currentStep = 1;
         }
       },
-      error:(err:any)=>{
-        this.toast.error('Failed to request','try again',{timeOut:1000})
-      }
-    })
+      error: (err: any) => {
+        this.toast.error('Failed to request', 'try again', { timeOut: 1000 });
+      },
+    });
   }
   handleSessionNameFile(file: any) {
     let fileData: File = file.target.files[0];
@@ -210,8 +216,6 @@ export class HomeComponent implements OnInit {
       formData.append('file', fileData, fileData.name);
       this.sharedServ.uploadFileCommon(formData).subscribe({
         next: (data: any) => {
-          console.log("test data",data);
-          
           if (data.img) {
             this.showCMEPoints = true;
             this.toast.success(
@@ -232,6 +236,4 @@ export class HomeComponent implements OnInit {
       });
     }
   }
-
 }
-

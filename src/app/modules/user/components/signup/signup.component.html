@@ -192,17 +192,9 @@
 
       <div class="row">
         <div class="mb-2 p-2 field" *ngIf="!isPracticeSelected">
-          <!-- <app-autocomplete
-            [itemList]="collegeList"
-            [displayField]="'name'"
-            [formGroup]="signupForm"
-            [placeholder]="'Enter College'"
-            [controlName]="'college_id'"
-            (selectedValue)="onCollegeSelected($event)"
-          ></app-autocomplete> -->
           <input
             type="text"
-            placeholder="Enter College"
+            [placeholder]="collegePlaceHolder"
             (focus)="openCollegeModal()"
             formControlName="college_id"
           />

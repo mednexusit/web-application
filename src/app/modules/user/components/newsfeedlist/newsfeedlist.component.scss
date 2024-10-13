@@ -1323,3 +1323,39 @@ font-weight: 600;
 font-size: 16px;
 }
 }
+.slider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.slide {
+  min-width: 100%;
+  transition: transform 10s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slide-animation 10s infinite;
+  img{
+    width: 100%;
+  }
+}
+
+@keyframes slide-animation {
+  0% {
+    transform: translateX(0);
+  }
+  33.33% {
+    transform: translateX(-100%);
+  }
+  66.66% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
