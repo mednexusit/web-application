@@ -51,6 +51,7 @@ import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.co
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { ModalautocompleteComponent } from './components/modalautocomplete/modalautocomplete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -100,10 +101,10 @@ import { ModalautocompleteComponent } from './components/modalautocomplete/modal
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    MatNativeDateModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule, // Add this
+    MatInputModule,
   ],
   providers: [provideNativeDateAdapter()],
 })

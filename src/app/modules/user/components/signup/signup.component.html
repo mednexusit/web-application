@@ -147,13 +147,6 @@
       </div>
 
       <div class="row">
-        <div class="mb-2 p-2" *ngIf="isStudying">
-          <input
-            class="form-control"
-            placeholder="Year of studying"
-            formControlName="yearofstudying"
-          />
-        </div>
         <div class="mb-2 p-2 field">
           <input
             type="text"
@@ -208,6 +201,13 @@
             [fieldName]="'name'"
             [placeholder]="'Search College'"
           ></app-modalautocomplete>
+        </div>
+        <div class="mb-2 p-2" *ngIf="isStudying">
+          <input
+            class="form-control"
+            placeholder="Enter Year of studying"
+            formControlName="yearofstudying"
+          />
         </div>
         <div class="mb-2 p-2">
           <input

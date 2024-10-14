@@ -14,6 +14,8 @@ export class NewsfeeddetailComponent implements OnInit {
   sanitizedHtml: SafeHtml;
   newsFeedDetails: any;
   isSharing: boolean = false;
+  isUserLoggedIn: boolean = false;
+  userData: any;
   constructor(
     private router: Router,
     private userServ: UserService,
@@ -29,6 +31,20 @@ export class NewsfeeddetailComponent implements OnInit {
     this.newsFeedId = this.route.snapshot.params['id'];
     if (this.newsFeedId != undefined) {
       this.getNewsFeedData();
+    }
+    this.checkIsUserLoggedIn();
+    this.getUserData();
+  }
+  getUserData() {
+    this.userData = localStorage.getItem('userData');
+    this.userData = JSON.parse(this.userData);
+  }
+
+  checkIsUserLoggedIn() {
+    if (localStorage.getItem('LoggedInUser')?.length) {
+      this.isUserLoggedIn = true;
+    } else {
+      this.isUserLoggedIn = false;
     }
   }
 
@@ -76,6 +92,36 @@ export class NewsfeeddetailComponent implements OnInit {
       this.isSharing = false; // Reset the flag if the API is not supported
     }
   }
-  actionLike(data: any) {}
-  actionDislike(data: any) {}
+  actionLike(data: any) {
+    let dataToPass = {
+      newsFeedId: data?.id,
+      userid: this.userData.userid,
+    };
+    this.userServ.likeNewsFeed(dataToPass).subscribe({
+      next: (data: any) => {
+        if (data.responseContents) {
+          this.getNewsFeedData();
+        }
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
+  actionDislike(data: any) {
+    let dataToPass = {
+      newsFeedId: data?.id,
+      userid: this.userData.userid,
+    };
+    this.userServ.dislikeNewsFeed(dataToPass).subscribe({
+      next: (data: any) => {
+        if (data.responseContents) {
+          this.getNewsFeedData();
+        }
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
 }

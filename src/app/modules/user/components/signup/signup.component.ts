@@ -3,12 +3,14 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-signup',
@@ -41,6 +43,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
     { id: 2, name: 'Completed' },
   ];
   pgdnbSpecialities: any = [];
+  @ViewChild('dateInput') dateInput: any;
 
   constructor(
     private fb: FormBuilder,
@@ -77,13 +80,12 @@ export class SignupComponent implements OnInit, AfterViewInit {
       dob: ['', Validators.required],
     });
   }
-  ngAfterViewInit(): void {
-    this.checkLogin();
-  }
+  ngAfterViewInit(): void {}
   ngOnInit(): void {
     let userData = JSON.parse(localStorage.getItem('userData') as string);
     if (userData.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
+      this.checkLogin();
     }
     this.fetchCourses();
     this.fetchStateList();
@@ -183,6 +185,10 @@ export class SignupComponent implements OnInit, AfterViewInit {
       }
       this.selectedState = data;
     });
+  }
+  openDatePicker() {
+    this.dateInput.nativeElement.click();
+    this.dateInput.nativeElement.focus();
   }
 
   checkLogin() {
