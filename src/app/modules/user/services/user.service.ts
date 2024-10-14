@@ -187,4 +187,39 @@ export class UserService {
       httpOptions
     );
   }
+  getUserDetails(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL + 'usercourses/getuserlist',
+      data,
+      httpOptions
+    );
+  }
+
+  getSpecialitiesAvailable(data:any){
+    let authToken = localStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.resourceApiURL + 'getallmbbs_specialty',
+      data,
+      httpOptions
+    );
+  }
 }
