@@ -44,12 +44,12 @@
 
       <div class="row">
         <div class="col-md-6 mb-2 p-2">
-          <input
-            type="date"
-            class="form-control"
-            formControlName="dob"
-            placeholder="DOB (DD/MM/YYYY)"
-          />
+          <mat-form-field appearance="outline">
+            <mat-label>Select DOB</mat-label>
+            <input matInput [matDatepicker]="picker"placeholder="Select DOB" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
         <div class="col-md-6 mb-2 p-2">
           <select class="form-select" formControlName="gender">
@@ -120,7 +120,7 @@
       </div>
 
       <div class="row" *ngIf="isCompletedSelected">
-        <div class="col-md-6 mb-2 p-2">
+        <div class="col-md-6 mb-2 p-2 d-flex align-items-center">
           <input
             type="radio"
             name="isStudying"
@@ -132,7 +132,7 @@
           />
           <label for="studying">Studying</label>
         </div>
-        <div class="col-md-6 mb-2 p-2">
+        <div class="col-md-6 mb-2 p-2 d-flex align-items-center">
           <input
             type="radio"
             name="isStudying"
@@ -205,7 +205,7 @@
         <div class="mb-2 p-2" *ngIf="isStudying">
           <input
             class="form-control"
-            placeholder="Enter Year of studying"
+            placeholder="Enter Year of Studying"
             formControlName="yearofstudying"
           />
         </div>

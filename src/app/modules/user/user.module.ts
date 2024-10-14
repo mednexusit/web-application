@@ -10,13 +10,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import {
-  MatOptionModule,
-  provideNativeDateAdapter,
-} from '@angular/material/core';
+import { MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // Import this
+import { MatNativeDateModule } from '@angular/material/core'; // Ensure this is imported
 
 import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -102,10 +99,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatOptionModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule, // Make sure this is in the imports array
     MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [provideNativeDateAdapter()],
 })
 export class UserModule {}
