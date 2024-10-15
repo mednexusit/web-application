@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     this.toggleLogoSrc = this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
+    this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
     if (this.router.url.includes('dashboard')) {
       this.isHideHeader = false;
     } else {

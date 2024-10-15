@@ -15,7 +15,7 @@ export class UserService {
     return this.http.post(this.baseURL + 'contactus/submit', data);
   }
   getRecentNewsFeed() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getNewsFeedDetails(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -56,7 +56,7 @@ export class UserService {
   // http://3.109.153.67/api/usercourses/getcourslist
 
   getCourses() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -74,7 +74,7 @@ export class UserService {
   }
 
   getSpeciality(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -92,7 +92,7 @@ export class UserService {
   }
 
   getSubCourseList(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -109,7 +109,7 @@ export class UserService {
     );
   }
   getStateList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -122,7 +122,7 @@ export class UserService {
     return this.http.get(this.resourceApiURL + 'getstatelist', httpOptions);
   }
   getCollegeList(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -140,7 +140,7 @@ export class UserService {
   }
 
   registerUser(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -158,7 +158,7 @@ export class UserService {
   }
 
   likeNewsFeed(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -171,7 +171,7 @@ export class UserService {
     return this.http.post(this.resourceApiURL + 'feedlike', data, httpOptions);
   }
   dislikeNewsFeed(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -188,7 +188,7 @@ export class UserService {
     );
   }
   getUserDetails(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);
@@ -206,7 +206,7 @@ export class UserService {
   }
 
   getSpecialitiesAvailable(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let token;
     if (authToken) {
       token = JSON.parse(authToken);

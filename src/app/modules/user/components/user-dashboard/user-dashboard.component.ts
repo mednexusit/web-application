@@ -49,14 +49,14 @@ export class UserDashboardComponent {
     this.toggleLogoSrc = this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
+    this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
   }
   logoutUser() {
     this.SharedService.sendHideHeaderFlag(true);
     this.authServ.logoutUser();
     this.router.navigate(['']);
-    localStorage.clear();
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
+    sessionStorage.clear();
+    this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
   }
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;

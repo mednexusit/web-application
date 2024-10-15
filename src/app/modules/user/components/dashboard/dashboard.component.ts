@@ -55,8 +55,8 @@ export class DashboardComponent {
     this.toggleLogoSrc = this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
-    this.userData = localStorage.getItem('userData');
+    this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
+    this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     console.log('sss', this.userData);
     this.getUserDetails(this.userData);
@@ -64,7 +64,7 @@ export class DashboardComponent {
   logoutUser() {
     this.authServ.logoutUser();
     this.router.navigate(['']);
-    this.isLoggedInUser = localStorage.getItem('LoggedInUser') !== null;
+    this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
   }
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;

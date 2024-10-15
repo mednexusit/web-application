@@ -8,7 +8,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router= inject(Router);
   const sharedServ=inject(SharedService);
   if(!auth.isLoggedIn()){
-    let fromRoute = localStorage.getItem('loginroute');
+    let fromRoute = sessionStorage.getItem('loginroute');
     router.navigate([fromRoute])
     return false
   }

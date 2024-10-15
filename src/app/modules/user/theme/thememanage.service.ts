@@ -11,7 +11,7 @@ export class ThememanageService {
 
   constructor(rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    const savedTheme = localStorage.getItem('theme') as 'light-theme' | 'dark-theme';
+    const savedTheme = sessionStorage.getItem('theme') as 'light-theme' | 'dark-theme';
     this.currentTheme = savedTheme ? savedTheme : 'light-theme';
     this.renderer.addClass(document.body, this.currentTheme);
   }
@@ -19,7 +19,7 @@ export class ThememanageService {
   toggleTheme(isDarkTheme: boolean) {
     const theme: 'light-theme' | 'dark-theme' = isDarkTheme ? 'dark-theme' : 'light-theme';
     this.setTheme(theme);
-    localStorage.setItem('theme', theme);
+    sessionStorage.setItem('theme', theme);
   }
 
   private setTheme(theme: 'light-theme' | 'dark-theme') {

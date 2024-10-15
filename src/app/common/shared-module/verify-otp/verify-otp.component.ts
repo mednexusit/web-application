@@ -54,7 +54,7 @@ export class VerifyOtpComponent implements OnInit {
           userid: data.userid,
           usertype: data.useridtype,
         };
-        localStorage.setItem('userData', JSON.stringify(userData));
+        sessionStorage.setItem('userData', JSON.stringify(userData));
         this.authServ.sendToken(data.access_token);
         if (data.registrationinfo === null && !data.access_token) {
           this.router.navigate(['signup']);

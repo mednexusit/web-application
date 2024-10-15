@@ -11,7 +11,7 @@ export class ResourceService {
 
   constructor(private http: HttpClient) {}
   getStates() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -22,7 +22,7 @@ export class ResourceService {
       .pipe(map((data: any) => data.responseContents.map((item: any) => item)));
   }
   getColleges(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -35,7 +35,7 @@ export class ResourceService {
     );
   }
   getMSList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -44,7 +44,7 @@ export class ResourceService {
     return this.http.get(this.resourceAPI + 'getmslist', httpOptions);
   }
   getMDList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -53,7 +53,7 @@ export class ResourceService {
     return this.http.get(this.resourceAPI + 'getmdlist', httpOptions);
   }
   getMCHList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -62,7 +62,7 @@ export class ResourceService {
     return this.http.get(this.resourceAPI + 'getmchlist', httpOptions);
   }
   getDNBList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,

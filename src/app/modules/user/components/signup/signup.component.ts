@@ -82,7 +82,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {}
   ngOnInit(): void {
-    let userData = JSON.parse(localStorage.getItem('userData') as string);
+    let userData = JSON.parse(sessionStorage.getItem('userData') as string);
     if (userData.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
       this.checkLogin();
@@ -192,7 +192,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   }
 
   checkLogin() {
-    let isUserLoggedIn = localStorage.getItem('LoggedInUser');
+    let isUserLoggedIn = sessionStorage.getItem('LoggedInUser');
     if (!isUserLoggedIn?.length) {
       this.router.navigate(['login']);
       this.toastr.error('Please Login again', '', { timeOut: 2000 });

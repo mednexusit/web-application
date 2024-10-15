@@ -36,12 +36,12 @@ export class NewsfeeddetailComponent implements OnInit {
     this.getUserData();
   }
   getUserData() {
-    this.userData = localStorage.getItem('userData');
+    this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
   }
 
   checkIsUserLoggedIn() {
-    if (localStorage.getItem('LoggedInUser')?.length) {
+    if (sessionStorage.getItem('LoggedInUser')?.length) {
       this.isUserLoggedIn = true;
     } else {
       this.isUserLoggedIn = false;

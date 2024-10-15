@@ -45,15 +45,14 @@ export class LoginComponent {
       this.userResendOtpData = dataToPass;
       this.sharedServ.userLogin(dataToPass).subscribe({
         next: (data: any) => {
-          if (data.status) {
+          console.log(data)
+          if (data) {
             this.isVerificationStage = true;
             this.tempOtp = data.otp;
             this.startTimer(); // Start countdown when OTP is sent
             this.toast.success('OTP send for verification', '', {
               timeOut: 1000,
             });
-          } else {
-            this.router.navigate(['signup']);
           }
         },
         error: (err: any) => {
@@ -105,9 +104,9 @@ export class LoginComponent {
           userid: data.userid,
           usertype: data.useridtype,
         };
-        localStorage.setItem('userData', JSON.stringify(userData));
+        sessionStorage.setItem('userData', JSON.stringify(userData));
         this.authServ.sendToken(data.access_token);
-        localStorage.setItem('LoggedInUser', JSON.stringify(data.access_token));
+        sessionStorage.setItem('LoggedInUser', JSON.stringify(data.access_token));
         if (data.registrationinfo == null) {
           this.toast.success('Verification Successful', '', { timeOut: 1000 });
           this.router.navigate(['signup']);

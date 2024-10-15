@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.sharedServ.sendRoute(this.route.url);
-    localStorage.setItem('loginroute', this.route.url);
+    sessionStorage.setItem('loginroute', this.route.url);
     this.loginForm = this.fb.group({
       mobile: ['',Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d{10}$/)])],
       whatsapp_status: [true],
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     })
   }
   loginAdmin(data: any) {
-    localStorage.setItem("loginData",JSON.stringify(data))
+    sessionStorage.setItem("loginData",JSON.stringify(data))
     this.mobNumberVal=data.mobile;
     let dataToPass={
       mobile:"+91"+data.mobile,
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     })
   }
   userLogin(data:any){
-    localStorage.setItem("loginData",JSON.stringify(data));
+    sessionStorage.setItem("loginData",JSON.stringify(data));
     this.mobNumberVal = data.mobile;
     let dataToPass={
       mobile:'+91'+data.mobile,
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     })
   }
   resendOtp(){
-    this.userLoginData = localStorage.getItem("loginData");
+    this.userLoginData = sessionStorage.getItem("loginData");
     this.userLoginData= JSON.parse(this.userLoginData);
     this.userLogin(this.userLoginData)
   }
