@@ -9,16 +9,26 @@ import { SharedService } from '../../../../shared/shared.service';
 })
 export class MainComponent implements OnInit {
   icons = [
-    'fa-solid fa-home',
-    'fa-solid fa-star',
-    'fa-solid fa-heart',
-    'fa-solid fa-user',
-    'fa-solid fa-search',
-    ' fa-solid fa-gear',
-    'fa-solid fa-info',
-    'fa-solid fa-circle-h',
-    'fa-solid fa-lock',
-    'fa-solid fa-circle-check',
+    // 'fa-solid fa-home',
+    // 'fa-solid fa-star',
+    // 'fa-solid fa-heart',
+    // 'fa-solid fa-user',
+    // 'fa-solid fa-search',
+    // ' fa-solid fa-gear',
+    // 'fa-solid fa-info',
+    // 'fa-solid fa-circle-h',
+    // 'fa-solid fa-lock',
+    // 'fa-solid fa-circle-check',
+    'mbbs-home-icon',
+    'anatomy-home-icon',
+    'physiology-home-icon',
+    'biochemistry-home-icon',
+    'pathology-home-icon',
+    'pharmacology-home-icon',
+    'microbiology-home-icon',
+    'forensic-medicine-home-icon',
+    'community-medicine-home-icon',
+    'ophthalmology-home-icon'
   ];
   displayedIcons: any = [];
   startIndex = 0;

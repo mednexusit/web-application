@@ -10,6 +10,7 @@
       // min-width: 300px;
       justify-content: center;
       align-items: flex-end;
+      
       .categories{
         .category{
           background-color: #ffffff;
@@ -198,6 +199,95 @@
     width: 100%;
     height: 25%;
   }
+}
+.mbbs-home-icon,.anatomy-home-icon,.physiology-home-icon,.biochemistry-home-icon,
+.pathology-home-icon,
+.pharmacology-home-icon,
+.microbiology-home-icon,.forensic-medicine-home-icon,
+.community-medicine-home-icon,
+.ophthalmology-home-icon
+{
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 5px;
+  position: relative;
+  &::after{
+    font-size: 9px;
+    position: absolute;
+    bottom: -10px;
+    font-family: Roboto;
+    color: #000000;
+    font-weight: 500;
+    font-style: normal;
+    left: 0;
+  }
+}
+.mbbs-home-icon{
+  background-image: url(../../../../../assets/mbbs-home-icon.png);
+  &::after{
+    content: "MBBS";
+  }
+}
+.anatomy-home-icon{
+  background-image: url(../../../../../assets/anatomy-home-icon.png);
+  &::after{
+    content: 'Anatomy';
+  }
+}
+.physiology-home-icon{
+  background-image: url(../../../../../assets/Physiology-home-icon.png);
+  &::after{
+    content: 'Physiology';
+  }
+}
+.biochemistry-home-icon{
+  background-image: url(../../../../../assets/biochemistry-home-icon.png);
+   &::after{
+    content: 'Biochemistry';
+  }
+}
+.pathology-home-icon{
+  background-image: url(../../../../../assets/Pathology.svg);
+   &::after{
+    content: 'Pathology';
+  }
+}
+.pharmacology-home-icon{
+  background-image: url(../../../../../assets/Pharmology.svg);
+   &::after{
+    content: 'Pharmacology';
+  }
+
+}
+.microbiology-home-icon{
+  background-image: url(../../../../../assets/Micro.svg);
+   &::after{
+    content: 'Microbiology';
+  }
+
+}
+.forensic-medicine-home-icon{
+  background-image: url(../../../../../assets/forensic-home-icon.png);
+   &::after{
+    content: 'Forensic';
+  }
+
+}
+.community-medicine-home-icon{
+  background-image: url(../../../../../assets/community-medicine-home-icon.png);
+   &::after{
+    content: 'Community';
+  }
+
+}
+.ophthalmology-home-icon{
+  background-image: url(../../../../../assets/Ophthal.svg);
+   &::after{
+    content: 'Ophth';
+  }
+
 }
 @media only screen and (max-width: 600px) {
   .main-wrapper{
