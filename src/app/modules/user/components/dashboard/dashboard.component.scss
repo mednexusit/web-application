@@ -176,6 +176,7 @@ font-size: 16px;
   bottom: 20px;
   right: 10px;
   text-align: center;
+  display: none;
 }
 
 .guest1 img {
@@ -190,6 +191,7 @@ font-size: 16px;
   top: 20px;
   right: 0;
   text-align: center;
+  display: none;
 }
 
 .guest img {
@@ -919,7 +921,12 @@ color: #fff;
   margin-right: 10px;
 }
 
-
+.icon img{
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+}
 
 .image-section {
   flex: 2;

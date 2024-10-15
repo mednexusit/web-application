@@ -42,7 +42,7 @@ export class MyInterestComponent {
 
   constructor(   public dialog: MatDialog) {}
   ngOnInit(): void {
-   this.isLoggedInUser =  localStorage.getItem('LoggedInUser') !== null;
+   this.isLoggedInUser =  sessionStorage.getItem('LoggedInUser') !== null;
   }
 
 

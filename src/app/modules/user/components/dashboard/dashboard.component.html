@@ -10,7 +10,7 @@
               <div class="carousel-item active">
                 <div class="cards-wrapper d-flex">
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -24,13 +24,13 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
                   </div>
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -44,13 +44,13 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
                   </div>
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -64,7 +64,7 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
@@ -76,7 +76,7 @@
               <div class="carousel-item ">
                 <div class="cards-wrapper d-flex">
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -90,13 +90,13 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
                   </div>
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -110,13 +110,13 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
                   </div>
                   <div class="card">
-                    <div class="title">S.V. MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
+                    <div class="title">MEDICAL COLLEGE <br> ALUMNI ASSOCIATION</div>
                     <div class="conference">48th Conference (Webinar)</div>
                     <div class="details">
                       On <strong>28.07.2024</strong><br>
@@ -130,7 +130,7 @@
                       <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
                       <div class="guest-name">
                         Chief Guest<br>
-                        Dr. Hara Prasad Pati<br>
+                        Dr. yaswanth<br>
                         M.D, FICP, FIMSA, FISHIM
                       </div>
                     </div>
@@ -255,14 +255,14 @@
   <section>
     <div class="container">
       <div class="d-flex">
-        <h1 class="head mt-5">Add Category</h1>
+        <h1 class="head mt-5">Your Specialities</h1>
         <h5 class="cat-tittle mt-5" style="margin-left: auto;"><span><i
               class="fa-regular fa-less-than"></i></span>&nbsp; Back to Home</h5>
       </div>
       <hr class="hr">
       <div class="row">
         <!-- Coupon 1 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
+        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2" *ngFor="let item of userAvailableSpecialities">
           <div class="wrapper">
             <div class="iconbox-top md-align-center">
               <div class="iconbox-top-content">
@@ -272,451 +272,9 @@
                       <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
                         stroke-width="2" fill="none"> </circle>
                     </svg>
-                    <div class="icon"><img src="../../../../../assets/anatomy.svg"></div>
+                    <div class="icon"><img src="{{item.img}}"></div>
                   </div>
-                  <h1 class="catt-tittle">Anatomy</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Physiology.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Physiology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Biochemistry.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Biochemistry</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Pathology.png"></div>
-                  </div>
-                  <h1 class="catt-tittle">Pathology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Pharmology.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Pharmology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Micro.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Micro Biology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Forensic.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Forensic Medicine</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/PSM.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">PSM</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 5 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/ENT.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">ENT</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 6 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Ophthal.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Ophthal</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 7 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/g.png"></div>
-                  </div>
-                  <h1 class="catt-tittle">General Medicine</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 8 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Obstetric.png"></div>
-                  </div>
-                  <h1 class="catt-tittle">Obstetric & Gyneac</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 9 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Paediatrics.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Paediatrics</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 10 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Orthopaedic.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Orthopaedic</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 11 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Anaesthiology.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Anaesthiology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 12 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Dermatology.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Dermatology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 13 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Psychiatry.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Psychiatry</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 14 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Radiology.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Radiology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Emergency.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Emergency Medicine</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Special.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Special Category</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/MBBS.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">MBBS</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)"
-                        stroke-width="2" fill="none"> </circle>
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Surgery.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Surgery</h1>
+                  <h1 class="catt-tittle">{{item.specialty_name}}</h1>
                 </div>
 
 
@@ -729,178 +287,7 @@
   </section>
 
   <!---Anatomy-->
-  <section>
-    <div class="container">
-      <div class="d-flex">
-        <h1 class="head mt-5">Anatomy</h1>
-        <h5 class="cat-tittle mt-5" style="margin-left: auto;">Reset</h5>
-      </div>
-      <hr class="hr">
-      <div class="row">
-        <!-- Coupon 1 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Clinica.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Clinical Anatomy</h1>
-                </div>
 
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Neuro.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Neuro Anatomy</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Histo.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Histo Pathology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Embryology.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Embryology & Developmental Biology</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Medical.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Medical Education</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Radiological.svg">
-                    </div>
-                  </div>
-                  <h1 class="catt-tittle">Radiological Anatomy</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Clinical.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Clinical Research</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2">
-          <div class="wrapper">
-            <div class="iconbox-top md-align-center">
-              <div class="iconbox-top-content">
-                <div class="hover-holder">
-                  <div class="icon-holder">
-                    <svg class="svg-circle">
-                      <!-- <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none">                     </circle> -->
-                    </svg>
-                    <div class="icon"><img src="../../../../../assets/Forensic.svg"></div>
-                  </div>
-                  <h1 class="catt-tittle">Forensic Anatomy</h1>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
 
 

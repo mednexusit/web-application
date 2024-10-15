@@ -1,16 +1,23 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, AfterViewInit {
   signupForm: FormGroup;
   selectedCourse: any;
   selectedSpecitality: any;
@@ -27,6 +34,7 @@ export class SignupComponent implements OnInit {
   selectedSubCourseList: any;
   selectedCollege: any;
   courses: any = [];
+  collegePlaceHolder: any = 'Select College';
   isOpenStateModal: boolean = false;
   isOpenSubCourseModal: boolean = false;
   isOpenCollegeModal: boolean = false;
@@ -35,6 +43,7 @@ export class SignupComponent implements OnInit {
     { id: 2, name: 'Completed' },
   ];
   pgdnbSpecialities: any = [];
+  @ViewChild('dateInput') dateInput: any;
 
   constructor(
     private fb: FormBuilder,
@@ -45,13 +54,6 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       user_uuid: ['', Validators.required],
       fullname: ['', Validators.required],
-      alternativemobilenumber: [
-        '',
-        Validators.compose([
-          Validators.minLength(10),
-          Validators.maxLength(10),
-        ]),
-      ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       gender: ['', Validators.required],
       doornumber: [''],
@@ -60,24 +62,24 @@ export class SignupComponent implements OnInit {
       img: [''],
       course: ['', Validators.required],
       sub_course: ['', Validators.required],
-      sub_course_list: ['', Validators.required],
+      sub_course_list: [''],
       yearofstudying: [''],
+      alternativemobilenumber:[''],
       isStudying: [''],
       studying: ['', Validators.required],
       practice: [''],
       state: ['', Validators.required],
-      college_id: ['', Validators.required],
+      college_id: [''],
       city: ['', Validators.required],
       dob: ['', Validators.required],
     });
   }
-
+  ngAfterViewInit(): void {}
   ngOnInit(): void {
-    this.checkLogin();
-
-    let userData = JSON.parse(localStorage.getItem('userData') as string);
+    let userData = JSON.parse(sessionStorage.getItem('userData') as string);
     if (userData.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
+      this.checkLogin();
     }
     this.fetchCourses();
     this.fetchStateList();
@@ -144,6 +146,11 @@ export class SignupComponent implements OnInit {
         } else {
           this.isCompletedSelected = false;
         }
+        if (data.specialityname == 'DNB' || data.specialityname == 'DRNB') {
+          this.collegePlaceHolder = 'Select Institute';
+        } else {
+          this.collegePlaceHolder = 'Select College';
+        }
       }
     });
     this.signupForm.get('isStudying')?.valueChanges.subscribe((data: any) => {
@@ -173,9 +180,13 @@ export class SignupComponent implements OnInit {
       this.selectedState = data;
     });
   }
+  openDatePicker() {
+    this.dateInput.nativeElement.click();
+    this.dateInput.nativeElement.focus();
+  }
 
   checkLogin() {
-    let isUserLoggedIn = localStorage.getItem('LoggedInUser');
+    let isUserLoggedIn = sessionStorage.getItem('LoggedInUser');
     if (!isUserLoggedIn?.length) {
       this.router.navigate(['login']);
       this.toastr.error('Please Login again', '', { timeOut: 2000 });
@@ -217,26 +228,28 @@ export class SignupComponent implements OnInit {
   }
   onSubmit() {
     if (this.signupForm.value) {
+      let formattedDOB:any = new Date(this.signupForm.value?.dob);
+      formattedDOB = formattedDOB.toLocaleDateString('en-GB');
       let dataToPass = {
-        user_uuid: this.signupForm.value?.user_uuid,
-        fullname: this.signupForm.value?.fullname,
-        alternativemobilenumber: this.signupForm.value?.alternativemobilenumber,
-        email: this.signupForm.value?.email,
-        gender: parseInt(this.signupForm.value?.gender),
-        doornumber: '',
-        area: '',
-        pincode: '',
-        img: '',
-        course: this.signupForm.value?.course.id,
-        sub_course: this.signupForm.value?.sub_course.id,
-        sub_course_list: this.selectedSubCourseList.id,
-        yearofstudying: this.signupForm.value?.yearofstudying,
-        studying: this.signupForm.value?.studying,
-        practice: 2,
-        state: this.selectedState.id,
-        college_id: this.selectedCollege.id,
-        city: this.signupForm.value?.city,
-        dob: this.signupForm.value?.dob,
+        user_uuid: this.signupForm.value?.user_uuid || 'NULL',        // Pass 'NULL' if undefined
+        fullname: this.signupForm.value?.fullname || 'NULL',          // Pass 'NULL' if undefined
+        email: this.signupForm.value?.email || 'NULL',                // Pass 'NULL' if undefined
+        alternativemobilenumber: '',                                 // Static or default value
+        gender: this.signupForm.value?.gender ? parseInt(this.signupForm.value?.gender) : 'NULL', // 'NULL' if undefined
+        doornumber: '',                                              // Static or default value
+        area: '',                                                    // Static or default value
+        pincode: '',                                                 // Static or default value
+        img: '',                                                     // Static empty value
+        course: this.signupForm.value?.course?.id || 'NULL',          // Pass 'NULL' if undefined
+        sub_course: this.signupForm.value?.sub_course?.id || 'NULL',  // Pass 'NULL' if undefined
+        sub_course_list: this.selectedSubCourseList ? this.selectedSubCourseList.id : 'NULL', // 'NULL' if undefined
+        yearofstudying: this.signupForm.value?.yearofstudying || 'NULL', // Pass 'NULL' if undefined
+        studying: this.signupForm.value?.studying || 'NULL',          // Pass 'NULL' if undefined
+        practice: this.selectedSubCourseList ? this.selectedSubCourseList.id : 'NULL', // 'NULL' if undefined
+        state: this.selectedState ? this.selectedState.id : 'NULL',  // 'NULL' if undefined
+        college_id: this.selectedCollege ? this.selectedCollege.id : 'NULL', // 'NULL' if undefined
+        city: this.signupForm.value?.city || 'NULL',                 // 'NULL' if undefined
+        dob: formattedDOB || 'NULL',                                 // 'NULL' if DOB is not provided
       };
       this.userServ.registerUser(dataToPass).subscribe({
         next: (data: any) => {

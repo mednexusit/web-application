@@ -10,13 +10,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import {
-  MatOptionModule,
-  provideNativeDateAdapter,
-} from '@angular/material/core';
+import { MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // Import this
+import { MatNativeDateModule } from '@angular/material/core'; // Ensure this is imported
 
 import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -51,6 +48,7 @@ import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.co
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { ModalautocompleteComponent } from './components/modalautocomplete/modalautocomplete.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -100,11 +98,10 @@ import { ModalautocompleteComponent } from './components/modalautocomplete/modal
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    MatNativeDateModule,
     MatDatepickerModule,
+    MatNativeDateModule, // Make sure this is in the imports array
     MatFormFieldModule,
-    MatInputModule, // Add this
+    MatInputModule,
   ],
-  providers: [provideNativeDateAdapter()],
 })
 export class UserModule {}

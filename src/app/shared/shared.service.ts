@@ -72,7 +72,7 @@ export class SharedService {
   }
 
   getUserType() {
-    let userData: any = localStorage.getItem('userData');
+    let userData: any = sessionStorage.getItem('userData');
     let userType;
     if (userData) {
       userData = JSON.parse(userData);
@@ -82,7 +82,7 @@ export class SharedService {
   }
 
   getUserData() {
-    let userData: any = localStorage.getItem('userData');
+    let userData: any = sessionStorage.getItem('userData');
     if (userData) {
       userData = JSON.parse(userData);
       return userData;

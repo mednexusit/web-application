@@ -35,41 +35,52 @@
         </div>
         <div class="col-md-6">
           <div class="d-flex justify-content-end">
-            <a
+            <span
               class="btn btn-lg btn-floating mx-2"
               style="background-color: #0077b5; color: white; border: none"
-              href="#!"
               role="button"
+              *ngIf="isUserLoggedIn"
+              (click)="actionLike(item)"
             >
               <i class="fas fa-thumbs-up"></i> (20)
-            </a>
+            </span>
+            <span
+              class="btn btn-lg btn-floating mx-2"
+              style="background-color: #0077b5; color: white; border: none"
+              role="button"
+              *ngIf="isUserLoggedIn"
+              (click)="actionDislike(item)"
+            >
+              <i class="fas fa-thumbs-down"></i> (20)
+            </span>
 
-            <a
+            <!-- <a
               class="btn btn-lg btn-floating mx-2"
               style="background-color: #25d366; color: white; border: none"
               href="#!"
               role="button"
             >
               <i class="fas fa-comment"></i>(32)
-            </a>
+            </a> -->
 
             <span
               class="btn btn-lg btn-floating mx-2"
               style="background-color: #1da1f2; color: white; border: none"
               role="button"
+              *ngIf="isUserLoggedIn"
               (click)="shareContent(item)"
             >
               <i class="fas fa-share"></i>
             </span>
 
-            <a
+            <!-- <a
               class="btn btn-lg btn-floating mx-2"
               style="background-color: #e1306c; color: white; border: none"
               href="#!"
               role="button"
             >
               <i class="fas fa-save"></i>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -79,26 +90,6 @@
       <div class="col-md-12 col-lg-12 mt-3" [innerHTML]="sanitizedHtml"></div>
 
       <hr />
-      <div class="col-md-6 col-lg-6 mt-3">
-        <h2 class="head">Comments(32)</h2>
-        <div class="speaker-card">
-          <img
-            src="../.../../../../../../assets/comment1.png"
-            alt="Kamal Kishore Soan"
-          />
-          <div class="card-text">
-            <h3>Courtney Henry</h3>
-            <p>2 mins ago</p>
-            <p>
-              <em
-                >Consequat velit qui adipisicing sunt do rependerit ad laborum
-                tempor ullamco exercitation. Ullamco tempor adipisicing et
-                voluptate duis sit esse aliqua</em
-              >
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

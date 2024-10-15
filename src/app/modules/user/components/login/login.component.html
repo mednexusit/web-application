@@ -1,65 +1,133 @@
 <div class="login-container">
   <div class="login-left">
     <div class="brand-logo mt-5">
-      <img src="../../../../../assets/logo-white.png" alt="" class="img-fluid">
+      <img
+        src="../../../../../assets/logo-white.png"
+        alt=""
+        class="img-fluid"
+      />
     </div>
     <p class="text-center mt-5">
-      Readily source and screen candidates using intelligent candidate <br>matching and AI-Enabled Talent Acquisition
-      solution.
+      Readily source and screen candidates using intelligent candidate
+      <br />matching and AI-Enabled Talent Acquisition solution.
     </p>
-    <img src="../../../../../assets/bgimg.png" alt="" class="img-fluid">
+    <img src="../../../../../assets/signupD.png" alt="" class="img-fluid">
   </div>
 
   <div class="login-right">
     <div class="login-form" *ngIf="!isVerificationStage">
       <h2>Welcome!</h2>
       <p class="caption-sign">Sign in to access your account</p>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm">
         <div class="input-group mt-4">
           <div class="input-row">
             <span class="country-code">+91</span>
-            <input type="text" id="phone" placeholder="Enter phone number" formControlName="mobile" />
+            <input
+              type="text"
+              id="phone"
+              placeholder="Enter phone number"
+              formControlName="mobile"
+            />
           </div>
-          <div class="error" *ngIf="loginForm.controls['mobile'].invalid && loginForm.controls['mobile'].touched">
+          <div
+            class="error"
+            *ngIf="
+              loginForm.controls['mobile'].invalid &&
+              loginForm.controls['mobile'].touched
+            "
+          >
             Phone number is required and must be 10 digits.
           </div>
         </div>
 
         <div class="input-group d-flex gap-3 mt-4">
-          <label class="d-none d-md-block d-xl-block d-xxl-block d-lg-block">Get Notifications and updates on WhatsApp</label>
-          <label class="d-sm-block d-lg-none d-md-none d-xl-none d-xxl-none">Get Notifications on WhatsApp</label>
+          <label class="d-none d-md-block d-xl-block d-xxl-block d-lg-block"
+            >Get Notifications and updates on WhatsApp</label
+          >
+          <label class="d-sm-block d-lg-none d-md-none d-xl-none d-xxl-none"
+            >Get Notifications on WhatsApp</label
+          >
           <label class="switch">
             <input type="checkbox" formControlName="whatsapp_status" />
             <span class="slider round"></span>
           </label>
         </div>
 
-        <button type="submit">Continue</button>
+        <button type="submit" (click)="onSubmit()">Continue</button>
       </form>
     </div>
 
     <div class="verification-form p-5" *ngIf="isVerificationStage">
       <h2>Almost there</h2>
-      <p class="caption-sign">Please enter the 5-digit code sent to your mobile number {{ maskedPhoneNumber }} for verification</p>
-      <span class="caption-sign red" >{{tempOtp}}</span>
+      <p class="caption-sign">
+        Please enter the 5-digit code sent to your mobile number
+        {{ maskedPhoneNumber }} for verification
+      </p>
+      <span class="caption-sign red">{{ tempOtp }}</span>
       <div class="code-input">
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[0]" #otp1 (input)="moveToNext($event, otp2)" autofocus  (input)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[1]" #otp2 (input)="moveToNext($event, otp3)" (change)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[2]" #otp3 (input)="moveToNext($event, otp4)" (change)="getOtpChecked()"/>
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[3]" #otp4 (input)="moveToNext($event, otp5)" (change)="getOtpChecked()" />
-        <input type="text" maxlength="1" [(ngModel)]="verificationCode[4]" #otp5 (input)="moveToNext($event, null)" (change)="getOtpChecked()" />
+        <input
+          type="text"
+          maxlength="1"
+          [(ngModel)]="verificationCode[0]"
+          #otp1
+          (input)="moveToNext($event, otp2)"
+          autofocus
+          (input)="getOtpChecked()"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          [(ngModel)]="verificationCode[1]"
+          #otp2
+          (input)="moveToNext($event, otp3)"
+          (change)="getOtpChecked()"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          [(ngModel)]="verificationCode[2]"
+          #otp3
+          (input)="moveToNext($event, otp4)"
+          (change)="getOtpChecked()"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          [(ngModel)]="verificationCode[3]"
+          #otp4
+          (input)="moveToNext($event, otp5)"
+          (change)="getOtpChecked()"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          [(ngModel)]="verificationCode[4]"
+          #otp5
+          (input)="moveToNext($event, null)"
+          (change)="getOtpChecked()"
+        />
       </div>
-      <button class="w-auto verifyBtn" [disabled]='isEnabled' (click)="verifyCodeS()">VERIFY</button>
+      <button
+        class="w-auto verifyBtn"
+        [disabled]="isEnabled"
+        (click)="verifyCodeS()"
+      >
+        VERIFY
+      </button>
       <!-- <p class="caption-sign mt-2">Request new code in 00:30s</p> -->
       <p class="caption-sign mt-2">
         Request new code in
-        <span *ngIf="countdown > 0">00:{{ countdown | number: '2.0' }}s</span>
-        <span *ngIf="countdown === 0" (click)="resendCode()" class="resentCodeLink">Request new code</span>
+        <span *ngIf="countdown > 0">00:{{ countdown | number : "2.0" }}s</span>
+        <span
+          *ngIf="countdown === 0"
+          (click)="resendCode()"
+          class="resentCodeLink"
+          >Request new code</span
+        >
       </p>
       <!-- <div class="rec-do mt-3">
         <button (click)="resendCode()" class="resentCodeLink">Didn’t receive any code?</button>
       </div> -->
     </div>
   </div>
-
 </div>

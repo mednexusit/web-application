@@ -14,11 +14,7 @@
         (input)="getSearchText($event)"
         (focus)="openList()"
       />
-      <i
-        class="fa-solid fa-xmark crossMark"
-        *ngIf="searchText?.length"
-        (click)="clearText()"
-      ></i>
+      <i class="fa-solid fa-xmark crossMark" (click)="clearText()"></i>
     </div>
     <ul>
       <li *ngFor="let item of filteredList" (click)="selectItem(item)">

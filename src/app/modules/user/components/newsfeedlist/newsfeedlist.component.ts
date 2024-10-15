@@ -8,11 +8,16 @@ import { Router } from '@angular/router';
   selector: 'app-newsfeedlist',
   templateUrl: './newsfeedlist.component.html',
   styleUrl: './newsfeedlist.component.scss',
-  providers:[DatePipe]
+  providers: [DatePipe],
 })
 export class NewsfeedlistComponent implements OnInit {
-  newsFeedData:any=[];
-  constructor(private userServ: UserService, private toast:ToastrService, private datePipe:DatePipe, private router:Router) {}
+  newsFeedData: any = [];
+  constructor(
+    private userServ: UserService,
+    private toast: ToastrService,
+    private datePipe: DatePipe,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.getNewsFeedList();
   }
@@ -33,23 +38,22 @@ export class NewsfeedlistComponent implements OnInit {
   getNewsFeedList() {
     this.userServ.getRecentNewsFeed().subscribe({
       next: (data: any) => {
-        if(data.responseContents){
+        if (data.responseContents) {
           this.newsFeedData = data.responseContents;
-          console.log(this.newsFeedData)
         }
       },
       error: (err: any) => {
         console.log(err);
-        this.toast.error("Failed to fetch news feed","",{timeOut:1000});
+        this.toast.error('Failed to fetch news feed', '', { timeOut: 1000 });
       },
     });
   }
-  goToNewsDetails(data:any){
+  goToNewsDetails(data: any) {
     this.router.navigate(['dashboard/news-feed-detail', data.id], {
-      state: { extraData: data }
-    })
+      state: { extraData: data },
+    });
   }
-  goBack(){
+  goBack() {
     this.userServ.goBack();
   }
 }

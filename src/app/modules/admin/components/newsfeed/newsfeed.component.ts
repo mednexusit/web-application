@@ -57,7 +57,7 @@ export class NewsfeedComponent implements OnInit, AfterViewInit {
     this.editor = new Editor({});
     this.getNewsFeedData();
     this.userType = this.sharedServ.getUserType();
-    this.userData = localStorage.getItem('userData');
+    this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.newsFeedForm = this.fb.group({
       heading: ['', Validators.required],

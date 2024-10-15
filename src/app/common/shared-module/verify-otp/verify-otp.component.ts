@@ -33,7 +33,6 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
     this.sharedServ.getRoute().subscribe((data: any) => {
       this.routeFrom = data;
-      console.log('ROUTE FROM', data);
     });
     this.sharedServ.getOTP().subscribe((data: any) => {
       this.otpGenerated = data;
@@ -55,7 +54,7 @@ export class VerifyOtpComponent implements OnInit {
           userid: data.userid,
           usertype: data.useridtype,
         };
-        localStorage.setItem('userData', JSON.stringify(userData));
+        sessionStorage.setItem('userData', JSON.stringify(userData));
         this.authServ.sendToken(data.access_token);
         if (data.registrationinfo === null && !data.access_token) {
           this.router.navigate(['signup']);

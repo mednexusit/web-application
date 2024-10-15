@@ -382,3 +382,11 @@ color: #666;
   position: absolute;
   right: 20px;
 }
+.mat-mdc-form-field{
+  width: 100%;
+  height: 45px !important;
+}
+
+input,select{
+  height: 56px;
+}

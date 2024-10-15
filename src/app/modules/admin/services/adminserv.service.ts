@@ -10,7 +10,7 @@ export class AdminservService {
 
   constructor(private http: HttpClient) {}
   getVendorRequestLists() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -24,7 +24,7 @@ export class AdminservService {
   }
 
   approveRejectVendorRequest(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -37,7 +37,7 @@ export class AdminservService {
     );
   }
   deleteVendorRequests(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -51,7 +51,7 @@ export class AdminservService {
   }
 
   createSubAdmin(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -65,7 +65,7 @@ export class AdminservService {
   }
 
   getSubAdminList() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -79,7 +79,7 @@ export class AdminservService {
   }
 
   toggleSubAdminStatus(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -93,7 +93,7 @@ export class AdminservService {
   }
 
   createNewsFeed(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -107,7 +107,7 @@ export class AdminservService {
   }
 
   getNewsFeed() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -121,7 +121,7 @@ export class AdminservService {
   }
 
   updateNewsFeed(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -135,7 +135,7 @@ export class AdminservService {
   }
 
   deleteNewsFeed(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -149,7 +149,7 @@ export class AdminservService {
   }
 
   getSubjects() {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -163,7 +163,7 @@ export class AdminservService {
   }
 
   getSubSubjects(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -173,7 +173,7 @@ export class AdminservService {
   }
 
   updateVendorDetails(data: any) {
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -187,7 +187,7 @@ export class AdminservService {
   }
 
   submitConferenceDetails(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -197,7 +197,7 @@ export class AdminservService {
   }
 
   getVendorProposalDetailsList(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -207,7 +207,7 @@ export class AdminservService {
   }
 
   deleteVendorProposalDetails(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -217,7 +217,7 @@ export class AdminservService {
   }
 
   getVendorProposalDetail(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -227,7 +227,7 @@ export class AdminservService {
   }
 
   acceptRejectVendorProposalDetail(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
@@ -238,7 +238,7 @@ export class AdminservService {
 
 
   updateNewsBody(data:any){
-    let authToken = localStorage.getItem('LoggedInUser');
+    let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${authToken}`,
