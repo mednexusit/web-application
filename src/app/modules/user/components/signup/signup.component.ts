@@ -54,7 +54,6 @@ export class SignupComponent implements OnInit, AfterViewInit {
     this.signupForm = this.fb.group({
       user_uuid: ['', Validators.required],
       fullname: ['', Validators.required],
-      alternativemobilenumber: [''],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       gender: ['', Validators.required],
       doornumber: [''],
@@ -63,13 +62,14 @@ export class SignupComponent implements OnInit, AfterViewInit {
       img: [''],
       course: ['', Validators.required],
       sub_course: ['', Validators.required],
-      sub_course_list: ['', Validators.required],
+      sub_course_list: [''],
       yearofstudying: [''],
+      alternativemobilenumber:[''],
       isStudying: [''],
       studying: ['', Validators.required],
       practice: [''],
       state: ['', Validators.required],
-      college_id: ['', Validators.required],
+      college_id: [''],
       city: ['', Validators.required],
       dob: ['', Validators.required],
     });
@@ -228,26 +228,28 @@ export class SignupComponent implements OnInit, AfterViewInit {
   }
   onSubmit() {
     if (this.signupForm.value) {
+      let formattedDOB:any = new Date(this.signupForm.value?.dob);
+      formattedDOB = formattedDOB.toLocaleDateString('en-GB');
       let dataToPass = {
-        user_uuid: this.signupForm.value?.user_uuid,
-        fullname: this.signupForm.value?.fullname,
-        alternativemobilenumber: this.signupForm.value?.alternativemobilenumber,
-        email: this.signupForm.value?.email,
-        gender: parseInt(this.signupForm.value?.gender),
-        doornumber: '',
-        area: '',
-        pincode: '',
-        img: '',
-        course: this.signupForm.value?.course?.id,
-        sub_course: this.signupForm.value?.sub_course?.id,
-        sub_course_list: this.selectedSubCourseList?.id,
-        yearofstudying: this.signupForm.value?.yearofstudying,
-        studying: this.signupForm.value?.studying,
-        practice: 2,
-        state: this.selectedState?.id,
-        college_id: this.selectedCollege?.id,
-        city: this.signupForm.value?.city,
-        dob: this.signupForm.value?.dob,
+        user_uuid: this.signupForm.value?.user_uuid || 'NULL',        // Pass 'NULL' if undefined
+        fullname: this.signupForm.value?.fullname || 'NULL',          // Pass 'NULL' if undefined
+        email: this.signupForm.value?.email || 'NULL',                // Pass 'NULL' if undefined
+        alternativemobilenumber: '',                                 // Static or default value
+        gender: this.signupForm.value?.gender ? parseInt(this.signupForm.value?.gender) : 'NULL', // 'NULL' if undefined
+        doornumber: '',                                              // Static or default value
+        area: '',                                                    // Static or default value
+        pincode: '',                                                 // Static or default value
+        img: '',                                                     // Static empty value
+        course: this.signupForm.value?.course?.id || 'NULL',          // Pass 'NULL' if undefined
+        sub_course: this.signupForm.value?.sub_course?.id || 'NULL',  // Pass 'NULL' if undefined
+        sub_course_list: this.selectedSubCourseList ? this.selectedSubCourseList.id : 'NULL', // 'NULL' if undefined
+        yearofstudying: this.signupForm.value?.yearofstudying || 'NULL', // Pass 'NULL' if undefined
+        studying: this.signupForm.value?.studying || 'NULL',          // Pass 'NULL' if undefined
+        practice: this.selectedSubCourseList ? this.selectedSubCourseList.id : 'NULL', // 'NULL' if undefined
+        state: this.selectedState ? this.selectedState.id : 'NULL',  // 'NULL' if undefined
+        college_id: this.selectedCollege ? this.selectedCollege.id : 'NULL', // 'NULL' if undefined
+        city: this.signupForm.value?.city || 'NULL',                 // 'NULL' if undefined
+        dob: formattedDOB || 'NULL',                                 // 'NULL' if DOB is not provided
       };
       this.userServ.registerUser(dataToPass).subscribe({
         next: (data: any) => {

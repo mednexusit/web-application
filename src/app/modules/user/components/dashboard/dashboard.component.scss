@@ -924,6 +924,8 @@ color: #fff;
 .icon img{
   height: 80px;
   width: 80px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .image-section {
