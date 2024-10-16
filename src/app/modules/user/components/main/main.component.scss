@@ -205,7 +205,19 @@
 .pharmacology-home-icon,
 .microbiology-home-icon,.forensic-medicine-home-icon,
 .community-medicine-home-icon,
-.ophthalmology-home-icon
+.ophthalmology-home-icon,
+.ent-home-icon,
+.medicine-home-icon,
+.surgery-home-icon,
+.ob-gy-home-icon,
+.pediatrics-home-icon,
+.orthopedics-home-icon,
+.psychiatry-home-icon,
+.de-ve-home-icon,
+.anesthesia-home-icon,
+.radiology-home-icon,
+.emergency-medicine-home-icon,
+.special-category-home-icon
 {
   width: calc(100% - 10px);
   height: calc(100% - 10px);
@@ -222,7 +234,7 @@
     font-weight: 500;
     font-style: normal;
     left: 0;
-    display: none;
+    // display: none;
   }
 }
 .mbbs-home-icon{
@@ -290,6 +302,80 @@
   }
 
 }
+.ent-home-icon{
+  background-image: url(../../../../../assets/ENT.svg);
+   &::after{
+    content: 'ENT';
+  }
+}
+.medicine-home-icon{
+  background-image: url(../../../../../assets/medicine-home-icon.png);
+   &::after{
+    content: 'Medicine';
+  }
+}
+.surgery-home-icon{
+  background-image: url(../../../../../assets/Surgery.svg);
+   &::after{
+    content: 'Surgery';
+  }
+}
+.ob-gy-home-icon{
+  background-image: url(../../../../../assets/ob-gy-home-icon.png);
+   &::after{
+    content: 'Ob & Gy';
+  }
+}
+.pediatrics-home-icon{
+  background-image: url(../../../../../assets/Paediatrics.svg);
+   &::after{
+    content: 'Pediatrics';
+  }
+}
+.orthopedics-home-icon{
+  background-image: url(../../../../../assets/Orthopaedic.svg);
+   &::after{
+    content: 'Orthopedics';
+  }
+}
+.psychiatry-home-icon{
+  background-image: url(../../../../../assets/Psychiatry.svg);
+   &::after{
+    content: 'Psychiatry';
+  }
+}
+.de-ve-home-icon{
+  background-image: url(../../../../../assets/Dermatology.svg);
+   &::after{
+    content: 'Der & Ven';
+  }
+}
+.anesthesia-home-icon{
+  background-image: url(../../../../../assets/Anaesthiology.svg);
+  &::after{
+   content: 'Anesthesia';
+ }
+}
+.radiology-home-icon{
+  background-image: url(../../../../../assets/Radiology.svg);
+  &::after{
+   content: 'Radiology';
+ }
+}
+.emergency-medicine-home-icon{
+  background-image: url(../../../../../assets/Emergency.svg);
+  &::after{
+   content: 'Emergency';
+ }
+}
+.special-category-home-icon{
+  background-image: url(../../../../../assets/Special.svg);
+  &::after{
+   content: 'Spe Category';
+ }
+}
+
+
 @media only screen and (max-width: 600px) {
   .main-wrapper{
     overflow-y: auto !important;

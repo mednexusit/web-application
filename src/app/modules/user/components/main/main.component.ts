@@ -28,7 +28,19 @@ export class MainComponent implements OnInit {
     'microbiology-home-icon',
     'forensic-medicine-home-icon',
     'community-medicine-home-icon',
-    'ophthalmology-home-icon'
+    'ophthalmology-home-icon',
+    'ent-home-icon',
+    'medicine-home-icon',
+    'surgery-home-icon',
+    'ob-gy-home-icon',
+    'pediatrics-home-icon',
+    'orthopedics-home-icon',
+    'psychiatry-home-icon',
+    'de-ve-home-icon',
+    'anesthesia-home-icon',
+    'radiology-home-icon',
+    'emergency-medicine-home-icon',
+    'special-category-home-icon'
   ];
   displayedIcons: any = [];
   startIndex = 0;
