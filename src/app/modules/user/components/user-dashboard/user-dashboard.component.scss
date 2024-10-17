@@ -1281,3 +1281,15 @@ border: none;
 line-height: 2.5;
 padding: 20px;
 }
+
+
+.scroll-container {
+  overflow: auto; /* Allow scrolling */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
