@@ -22,6 +22,7 @@ import { Education1Component } from './components/education1/education1.componen
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
+import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
           { path: 'nexus', component: NexusComponent },
           { path: 'education1', component: Education1Component },
           {path:'news-feed',component:NewsfeedlistComponent},
-          {path:'news-feed-detail/:id', component:NewsfeeddetailComponent}
+          {path:'news-feed-detail/:id', component:NewsfeeddetailComponent},
+          {path:'conferences-list/:id',component:ConferenceslistComponent}
         ],
       },
       { path: 'sidebar', component: SidebarComponent },

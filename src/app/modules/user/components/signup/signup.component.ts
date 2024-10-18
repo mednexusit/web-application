@@ -267,7 +267,9 @@ export class SignupComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
+  skip(){
+    this.router.navigate(['dashboard']);
+  }
   fetchCourses() {
     this.userServ.getCourses().subscribe({
       next: (data: any) => {

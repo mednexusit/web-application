@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="btns">
+    <button class="btn" [ngClass]="{'btn-success': isActive('ALL')}" (click)="setActive('ALL')">ALL </button>
+    <button class="btn" [ngClass]="{'btn-success': isActive('ONLINE')}" (click)="setActive('ONLINE')">ONLINE</button>
+    <button class="btn" [ngClass]="{'btn-success': isActive('OFFLINE')}" (click)="setActive('OFFLINE')">OFFLINE</button>
+    <button class="btn" [ngClass]="{'btn-success': isActive('WORKSHOP')}" (click)="setActive('WORKSHOP')">WORKSHOP</button>
+    <button class="btn" [ngClass]="{'btn-success': isActive('EXPOS')}" (click)="setActive('EXPOS')">EXPOS</button>
+  </div>
+
+  <div class="conferences">
+    <div class="container" *ngIf="conferenceListData.length">
+      <div class="row">
+        <div class="cards-wrapper d-flex flex-column" >
+        <div class="card col col-lg-6 col-md-6 col-sm-12" *ngFor="let item of conferenceListData">
+          <div class="statusLabel off" *ngIf="item.category==2">OFFLINE</div>
+          <div class="statusLabel on" *ngIf="item.category==1">ONLINE</div>
+          <div class="statusLabel exp" *ngIf="item.category==4">EXPOS</div>
+          <div class="statusLabel web" *ngIf="item.category==3">WEBINAR</div>
+
+          <div class="title">
+           {{item.organizedby}}
+          </div>
+          <div class="conference">{{item.eventname}}</div>
+          <div class="details">
+            On <strong>{{item.created_at | date:'mediumDate'}}</strong><br />
+          Venu:   {{item.venu}}
+          </div>
+          <div class="location">Location: {{item.place}}</div>
+          <!-- <div class="guest1">
+            <img
+              src="../../../../../assets/Ellipse-logo.png"
+              alt="Chief Guest"
+            />
+          </div>
+          <div class="guest">
+            <img
+              src="../../../../../assets/card-logo.png"
+              alt="Chief Guest"
+            />
+            <div class="guest-name">
+              Chief Guest<br />
+              Dr. yaswanth<br />
+              M.D, FICP, FIMSA, FISHIM
+            </div>
+          </div> -->
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="noConferences col col-lg-6 col-md-6 col-sm-12" *ngIf="conferenceListData.length <= 0">
+      <h1 >No Conferences</h1>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
