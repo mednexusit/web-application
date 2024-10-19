@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   baseURL = environment.baseURL;
+  baseURL2= environment.baseURL2;
   resourceApiURL = environment.resourceAPIURL;
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -235,7 +236,7 @@ export class UserService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/getPersonalVendor1',
+      this.baseURL2 + 'reguser/getPersonalVendor1',
       data,
       httpOptions
     );

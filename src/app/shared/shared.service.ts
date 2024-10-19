@@ -7,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class SharedService {
   baseURL = environment.baseURL;
-
+  baseURL2 = environment.baseURL2;
   constructor(private http: HttpClient) {}
 
   hideFlag = new BehaviorSubject<boolean>(false);
@@ -68,7 +68,7 @@ export class SharedService {
   }
 
   submitVendorProposalForm(data: any) {
-    return this.http.post('http://3.109.153.67/reguser/PersonalVendor', data);
+    return this.http.post(this.baseURL2+'reguser/PersonalVendor', data);
   }
 
   getUserType() {
