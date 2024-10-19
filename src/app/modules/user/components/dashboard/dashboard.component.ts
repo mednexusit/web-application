@@ -151,7 +151,7 @@ export class DashboardComponent {
         next:(data:any)=>{
           this.userDetailsData= data.responseContents;
           console.log(this.userDetailsData)
-          if(this.userDetailsData){
+          if(this.userDetailsData[0]?.course){
             this.getUserSpecialities();
           }
         },
@@ -163,8 +163,8 @@ export class DashboardComponent {
   }
   getUserSpecialities(){
     let dataToPass={
-    "course_id":this.userDetailsData[0].course,
-    "sub_courses_sub_list":this.userDetailsData[0].sub_course_list
+    "course_id":this.userDetailsData[0]?.course,
+    "sub_courses_sub_list":this.userDetailsData[0]?.sub_course_list
     }
     this.userServ.getSpecialitiesAvailable(dataToPass).subscribe(
       {
@@ -178,4 +178,10 @@ export class DashboardComponent {
       }
     )
   }
+  goToConferences(data:any){
+    this.router.navigate(['dashboard/conferences-list/',data.subject_uuid])
+  }
+
+
+
 }

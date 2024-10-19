@@ -222,4 +222,22 @@ export class UserService {
       httpOptions
     );
   }
+
+  getUserConferenceLists(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      'http://3.109.153.67/reguser/getPersonalVendor1',
+      data,
+      httpOptions
+    );
+  }
 }
