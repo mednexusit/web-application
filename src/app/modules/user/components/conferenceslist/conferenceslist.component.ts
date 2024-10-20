@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ConferencedetailsComponent } from '../conferencedetails/conferencedetails.component';
 @Component({
   selector: 'app-conferenceslist',
   templateUrl: './conferenceslist.component.html',
@@ -56,7 +57,8 @@ export class ConferenceslistComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userServ: UserService
+    private userServ: UserService,
+    private dialog:MatDialog
   ) {}
   ngOnInit(): void {
     this.subjectID = this.route.snapshot.paramMap.get('id');
@@ -84,6 +86,9 @@ export class ConferenceslistComponent implements OnInit {
     this.userServ.goBack();
   }
   openModal(data:any){
-    console.log(data)
+    this.dialog.open(ConferencedetailsComponent,{
+      data:data,
+      height:'500px'
+    })
   }
 }

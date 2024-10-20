@@ -51,6 +51,7 @@ import { ModalautocompleteComponent } from './components/modalautocomplete/modal
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ConferencedetailsComponent } from './components/conferencedetails/conferencedetails.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     ModalautocompleteComponent,
     ConferenceslistComponent,
     FilterPipe,
+    ConferencedetailsComponent,
   ],
   imports: [
     CommonModule,
