@@ -83,4 +83,7 @@ export class ConferenceslistComponent implements OnInit {
   goBack() {
     this.userServ.goBack();
   }
+  openModal(data:any){
+    console.log(data)
+  }
 }
