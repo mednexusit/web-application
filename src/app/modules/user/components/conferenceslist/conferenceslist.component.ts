@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-conferenceslist',
@@ -13,13 +14,9 @@ export class ConferenceslistComponent implements OnInit {
   categoryIDS: any = [];
   activeButton: string = 'ALL';
   conferenceListData: any = [];
-
-
-  // Method to set the active button
-  setActive(buttonLabel: string) {
-    console.log(buttonLabel);
-    this.activeButton = buttonLabel;
-    switch (buttonLabel) {
+  searchText:string='';
+  onTabChange(data:MatTabChangeEvent){
+    switch (data.tab.textLabel) {
       case 'ALL':
         this.fetchConferences([1, 2, 3, 4]);
         break;
@@ -39,6 +36,8 @@ export class ConferenceslistComponent implements OnInit {
         break;
     }
   }
+
+  // Method to set the active button
   currentIndex = 0;  // Index of the current slide
 
   // Go to the next slide
@@ -63,7 +62,6 @@ export class ConferenceslistComponent implements OnInit {
     this.subjectID = this.route.snapshot.paramMap.get('id');
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
-    console.log(this.subjectID, this.userData);
     this.categoryIDS = [1, 2, 3, 4];
     this.fetchConferences(this.categoryIDS);
   }
@@ -75,7 +73,6 @@ export class ConferenceslistComponent implements OnInit {
     };
     this.userServ.getUserConferenceLists(dataToPass).subscribe({
       next: (data: any) => {
-        console.log(data.responseContents);
         this.conferenceListData = data.responseContents;
       },
       error: (err: any) => {

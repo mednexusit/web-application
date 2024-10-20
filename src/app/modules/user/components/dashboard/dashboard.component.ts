@@ -58,7 +58,6 @@ export class DashboardComponent {
     this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
-    console.log('sss', this.userData);
     this.getUserDetails(this.userData);
   }
   logoutUser() {
@@ -150,7 +149,6 @@ export class DashboardComponent {
       this.userServ.getUserDetails(dataToPass).subscribe({
         next:(data:any)=>{
           this.userDetailsData= data.responseContents;
-          console.log(this.userDetailsData)
           if(this.userDetailsData[0]?.course){
             this.getUserSpecialities();
           }
@@ -170,7 +168,6 @@ export class DashboardComponent {
       {
         next:(data:any)=>{
           this.userAvailableSpecialities= data.responseContents;
-          console.log(this.userAvailableSpecialities)
         },
         error:(err:any)=>{
           console.error(err)

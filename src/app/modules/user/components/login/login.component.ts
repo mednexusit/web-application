@@ -45,7 +45,6 @@ export class LoginComponent {
       this.userResendOtpData = dataToPass;
       this.sharedServ.userLogin(dataToPass).subscribe({
         next: (data: any) => {
-          console.log(data)
           if (data) {
             this.isVerificationStage = true;
             this.tempOtp = data.otp;
