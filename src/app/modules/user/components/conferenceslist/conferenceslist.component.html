@@ -1,0 +1,300 @@
+<div class="content">
+  <section>
+    <div class="container">
+      <div class="d-flex">
+        <h1 class="head mt-5">Events</h1>
+        <h5
+          class="cat-tittle mt-5"
+          style="margin-left: auto"
+          (click)="goBack()"
+        >
+          <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
+          Home
+        </h5>
+      </div>
+      <hr class="hr" />
+      <br />
+      <div class="searchArea mb-4">
+        <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+        <input
+          type="text"
+          placeholder="Search"
+          class="search"
+          [(ngModel)]="searchText"
+        />
+      </div>
+
+      <div class="row">
+        <mat-tab-group (selectedTabChange)="onTabChange($event)">
+          <mat-tab label="ALL">
+            <ng-template mat-tab-label> ALL </ng-template>
+            <!-- Content for Hot Jobs tab -->
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  *ngFor="let item of conferenceListData | filter : searchText"
+                >
+                  <div class="d-flex justify-content-end">
+                    <div
+                      class="top-trending-label1 bg-warning"
+                      *ngIf="item.category == 1"
+                    >
+                      ONLINE
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-danger"
+                      *ngIf="item.category == 3"
+                    >
+                      WORKSHOP
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-info"
+                      *ngIf="item.category == 4"
+                    >
+                      EXPOS
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-success"
+                      *ngIf="item.category == 2"
+                    >
+                      OFFLINE
+                    </div>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.organizedby }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.venu | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="conferenceListData.length <= 0">
+              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+                <h1>No Conferences</h1>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="ONLINE">
+            <ng-template mat-tab-label for="ONLINE"> ONLINE </ng-template>
+
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  *ngFor="let item of conferenceListData | filter : searchText"
+                >
+                  <div class="d-flex justify-content-end">
+                    <div
+                      class="top-trending-label1 bg-warning"
+                      *ngIf="item.category == 1"
+                    >
+                      ONLINE
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-danger"
+                      *ngIf="item.category == 3"
+                    >
+                      WORKSHOP
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-info"
+                      *ngIf="item.category == 4"
+                    >
+                      EXPOS
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-success"
+                      *ngIf="item.category == 2"
+                    >
+                      OFFLINE
+                    </div>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.organizedby }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.venu | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="conferenceListData.length <= 0">
+              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+                <h1>No Conferences</h1>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="OFFLINE">
+            <ng-template mat-tab-label> OFFLINE </ng-template>
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  *ngFor="let item of conferenceListData | filter : searchText"
+                >
+                  <div class="d-flex justify-content-end">
+                    <div
+                      class="top-trending-label1 bg-warning"
+                      *ngIf="item.category == 1"
+                    >
+                      ONLINE
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-danger"
+                      *ngIf="item.category == 3"
+                    >
+                      WORKSHOP
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-info"
+                      *ngIf="item.category == 4"
+                    >
+                      EXPOS
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-success"
+                      *ngIf="item.category == 2"
+                    >
+                      OFFLINE
+                    </div>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.organizedby }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.venu | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="conferenceListData.length <= 0">
+              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+                <h1>No Conferences</h1>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="WORKSHOP">
+            <ng-template mat-tab-label> WORKSHOP </ng-template>
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  *ngFor="let item of conferenceListData | filter : searchText"
+                >
+                  <div class="d-flex justify-content-end">
+                    <div
+                      class="top-trending-label1 bg-warning"
+                      *ngIf="item.category == 1"
+                    >
+                      ONLINE
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-danger"
+                      *ngIf="item.category == 3"
+                    >
+                      WORKSHOP
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-info"
+                      *ngIf="item.category == 4"
+                    >
+                      EXPOS
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-success"
+                      *ngIf="item.category == 2"
+                    >
+                      OFFLINE
+                    </div>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.organizedby }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.venu | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="conferenceListData.length <= 0">
+              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+                <h1>No Conferences</h1>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="EXPOS">
+            <ng-template mat-tab-label> EXPOS </ng-template>
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  *ngFor="let item of conferenceListData | filter : searchText"
+                >
+                  <div class="d-flex justify-content-end">
+                    <div
+                      class="top-trending-label1 bg-warning"
+                      *ngIf="item.category == 1"
+                    >
+                      ONLINE
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-danger"
+                      *ngIf="item.category == 3"
+                    >
+                      WORKSHOP
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-info"
+                      *ngIf="item.category == 4"
+                    >
+                      EXPOS
+                    </div>
+                    <div
+                      class="top-trending-label1 bg-success"
+                      *ngIf="item.category == 2"
+                    >
+                      OFFLINE
+                    </div>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.organizedby }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.venu | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="conferenceListData.length <= 0">
+              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+                <h1>No Conferences</h1>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </section>
+</div>

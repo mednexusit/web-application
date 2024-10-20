@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   baseURL = environment.baseURL;
+  baseURL2= environment.baseURL2;
   resourceApiURL = environment.resourceAPIURL;
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -218,6 +219,24 @@ export class UserService {
     };
     return this.http.post(
       this.resourceApiURL + 'getallmbbs_specialty',
+      data,
+      httpOptions
+    );
+  }
+
+  getUserConferenceLists(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'reguser/getPersonalVendor1',
       data,
       httpOptions
     );

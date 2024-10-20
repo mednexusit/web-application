@@ -49,6 +49,9 @@ import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddet
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { ModalautocompleteComponent } from './components/modalautocomplete/modalautocomplete.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ConferencedetailsComponent } from './components/conferencedetails/conferencedetails.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NewsfeeddetailComponent,
     AutocompleteComponent,
     ModalautocompleteComponent,
+    ConferenceslistComponent,
+    FilterPipe,
+    ConferencedetailsComponent,
   ],
   imports: [
     CommonModule,
