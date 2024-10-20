@@ -80,4 +80,7 @@ export class ConferenceslistComponent implements OnInit {
       },
     });
   }
+  goBack() {
+    this.userServ.goBack();
+  }
 }
