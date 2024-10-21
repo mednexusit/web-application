@@ -5,27 +5,27 @@
   <img [src]="logoSrc" alt="" class="logo" />
   <img src="../../../../../assets/logo-white.png" class="logo-white" alt="" />
   <div class="action-area d-flex">
-    <div class="searchArea">
+    <div class="searchArea shadow rounded">
       <i class="fa-solid fa-magnifying-glass searchIcon"></i>
       <input type="text" placeholder="Search" class="search" />
     </div>
     <div class="actions">
       <ul class="m-0 p-0">
         <li class="pt-1">
-          <img [src]="userLogoSrc" class="user-logo" alt="" />
+          <img [src]="userLogoSrc" class="user-logo shadow rounded" alt="" />
           <img
             src="../../../../../assets/userlogo-white.png"
-            class="user-logo-white"
+            class="user-logo-white shadow"
             alt=""
           />
         </li>
-        <li class="mt-2">
+        <li class="mt-3">
           <a
             [routerLink]="['/login']"
             title="Login"
             class="text-dark"
             *ngIf="!isLoggedInUser"
-            ><i class="fa-solid fa-right-to-bracket logIcon"></i
+            ><i class="fa-solid fa-right-to-bracket logIcon shadow rounded"></i
           ></a>
         </li>
         <!-- <li class="mt-2">

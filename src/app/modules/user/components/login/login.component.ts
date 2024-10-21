@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../../shared/shared.service';
 import { Router } from '@angular/router';
@@ -16,11 +16,13 @@ export class LoginComponent {
   isVerificationStage: boolean = false;
   verificationCode: string[] = ['', '', '', '', ''];
   maskedPhoneNumber: string = '';
-  isEnabled: boolean = true;
+  isEnabled: boolean = false; // Initially set to false
   userResendOtpData: any;
   tempOtp: any;
   countdown: number = 30; // Start with 30 seconds
   timerSubscription: Subscription | null = null;
+
+  @ViewChild('verifyButton') verifyButton!: ElementRef; // Reference to the verify button
 
   constructor(
     private fb: FormBuilder,
@@ -45,14 +47,11 @@ export class LoginComponent {
       this.userResendOtpData = dataToPass;
       this.sharedServ.userLogin(dataToPass).subscribe({
         next: (data: any) => {
-          console.log(data)
           if (data) {
             this.isVerificationStage = true;
             this.tempOtp = data.otp;
             this.startTimer(); // Start countdown when OTP is sent
-            this.toast.success('OTP send for verification', '', {
-              timeOut: 1000,
-            });
+            this.toast.success('OTP sent for verification', '', { timeOut: 1000 });
           }
         },
         error: (err: any) => {
@@ -61,6 +60,7 @@ export class LoginComponent {
       });
     }
   }
+
   startTimer() {
     this.countdown = 30; // Reset countdown
     if (this.timerSubscription) {
@@ -80,16 +80,10 @@ export class LoginComponent {
   maskPhoneNumber(phone: string): string {
     return phone.replace(/(\d{4})(\d{2})(\d{4})/, '$1****$3');
   }
+
   getOtpChecked() {
-    if (this.verificationCode.length) {
-      this.verificationCode.forEach((item: any) => {
-        if (item !== '') {
-          this.isEnabled = false;
-        } else {
-          this.isEnabled = true;
-        }
-      });
-    }
+    // Enable the button only if all 5 OTP digits are entered
+    this.isEnabled = this.verificationCode.every(item => item !== '');
   }
 
   verifyCodeS() {
@@ -128,9 +122,7 @@ export class LoginComponent {
           if (data.status) {
             this.isVerificationStage = true;
             this.startTimer(); // Restart countdown on resend
-            this.toast.success('OTP send for verification', '', {
-              timeOut: 1000,
-            });
+            this.toast.success('OTP sent for verification', '', { timeOut: 1000 });
           } else {
             this.router.navigate(['signup']);
           }
@@ -143,8 +135,30 @@ export class LoginComponent {
   }
 
   moveToNext(event: any, nextElement: any) {
-    if (event.target.value.length === 1 && nextElement) {
-      nextElement.focus();
+    if (event.target.value.length === 1) {
+      if (nextElement) {
+        nextElement.focus();
+      } else {
+        // If the last digit is entered, focus the verify button
+        this.verifyButton.nativeElement.focus();
+      }
+    }
+    this.getOtpChecked(); // Check if the OTP is complete
+  }
+
+  handlePaste(event: ClipboardEvent) {
+    const pasteData = event.clipboardData?.getData('text') || '';
+    const otpArray = pasteData.split('').slice(0, 5); // Only take the first 5 characters
+    this.verificationCode = otpArray.concat(Array(5 - otpArray.length).fill('')); // Fill the remaining inputs
+    this.getOtpChecked();
+    if (this.verificationCode.length === 5) {
+      this.verifyButton.nativeElement.focus(); // Focus on verify button
+    }
+  }
+
+  handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.isEnabled) {
+      this.verifyCodeS(); // Trigger verification if enabled
     }
   }
 }

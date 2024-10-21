@@ -1,11 +1,7 @@
 <div class="login-container">
   <div class="login-left">
     <div class="brand-logo mt-5">
-      <img
-        src="../../../../../assets/logo-white.png"
-        alt=""
-        class="img-fluid"
-      />
+      <img src="../../../../../assets/logo-white.png" alt="" class="img-fluid" />
     </div>
     <p class="text-center mt-5">
       Readily source and screen candidates using intelligent candidate
@@ -41,12 +37,12 @@
         </div>
 
         <div class="input-group d-flex gap-3 mt-4">
-          <label class="d-none d-md-block d-xl-block d-xxl-block d-lg-block"
-            >Get Notifications and updates on WhatsApp</label
-          >
-          <label class="d-sm-block d-lg-none d-md-none d-xl-none d-xxl-none"
-            >Get Notifications on WhatsApp</label
-          >
+          <label class="d-none d-md-block d-xl-block d-xxl-block d-lg-block">
+            Get Notifications and updates on WhatsApp
+          </label>
+          <label class="d-sm-block d-lg-none d-md-none d-xl-none d-xxl-none">
+            Get Notifications on WhatsApp
+          </label>
           <label class="switch">
             <input type="checkbox" formControlName="whatsapp_status" />
             <span class="slider round"></span>
@@ -64,7 +60,7 @@
         {{ maskedPhoneNumber }} for verification
       </p>
       <span class="caption-sign red">{{ tempOtp }}</span>
-      <div class="code-input">
+      <div class="code-input" (paste)="handlePaste($event)" (keypress)="handleKeyPress($event)">
         <input
           type="text"
           maxlength="1"
@@ -72,7 +68,6 @@
           #otp1
           (input)="moveToNext($event, otp2)"
           autofocus
-          (input)="getOtpChecked()"
         />
         <input
           type="text"
@@ -80,7 +75,6 @@
           [(ngModel)]="verificationCode[1]"
           #otp2
           (input)="moveToNext($event, otp3)"
-          (change)="getOtpChecked()"
         />
         <input
           type="text"
@@ -88,7 +82,6 @@
           [(ngModel)]="verificationCode[2]"
           #otp3
           (input)="moveToNext($event, otp4)"
-          (change)="getOtpChecked()"
         />
         <input
           type="text"
@@ -96,7 +89,6 @@
           [(ngModel)]="verificationCode[3]"
           #otp4
           (input)="moveToNext($event, otp5)"
-          (change)="getOtpChecked()"
         />
         <input
           type="text"
@@ -104,17 +96,16 @@
           [(ngModel)]="verificationCode[4]"
           #otp5
           (input)="moveToNext($event, null)"
-          (change)="getOtpChecked()"
         />
       </div>
       <button
         class="w-auto verifyBtn"
-        [disabled]="isEnabled"
+        [disabled]="!isEnabled"
         (click)="verifyCodeS()"
+        #verifyButton
       >
         VERIFY
       </button>
-      <!-- <p class="caption-sign mt-2">Request new code in 00:30s</p> -->
       <p class="caption-sign mt-2">
         Request new code in
         <span *ngIf="countdown > 0">00:{{ countdown | number : "2.0" }}s</span>
@@ -122,12 +113,8 @@
           *ngIf="countdown === 0"
           (click)="resendCode()"
           class="resentCodeLink"
-          >Request new code</span
-        >
+        >Request new code</span>
       </p>
-      <!-- <div class="rec-do mt-3">
-        <button (click)="resendCode()" class="resentCodeLink">Didn’t receive any code?</button>
-      </div> -->
     </div>
   </div>
 </div>
