@@ -66,4 +66,7 @@ export class UserDashboardComponent {
     this.toggleLogoSrc = this.themeService.getToggleLogo();
     this.userLogoSrc = this.themeService.getUserLogo();
   }
+  goToMyProfile(){
+    this.router.navigate(['dashboard/myprofile']);
+  }
 }
