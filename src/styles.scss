@@ -239,6 +239,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-list-item {
   color: white;
 }
+.mat-drawer.mat-drawer-side{
+  z-index: 1 !important;
+}
 
 .mat-list-item:hover {
   background-color: #1C2638;

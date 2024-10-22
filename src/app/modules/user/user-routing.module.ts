@@ -23,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.component';
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
+import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
 
 const routes: Routes = [
   {
@@ -43,21 +44,19 @@ const routes: Routes = [
         component: UserDashboardComponent,
         children: [
           { path: 'my-interest', component: MyInterestComponent },
-          {path:'',component:DashboardComponent},
+          { path: '', component: DashboardComponent },
           { path: 'search', component: SearchComponent },
           { path: 'nexus', component: NexusComponent },
           { path: 'education1', component: Education1Component },
-          {path:'news-feed',component:NewsfeedlistComponent},
-          {path:'news-feed-detail/:id', component:NewsfeeddetailComponent},
-          {path:'conferences-list/:id',component:ConferenceslistComponent}
+          { path: 'news-feed', component: NewsfeedlistComponent },
+          { path: 'news-feed-detail/:id', component: NewsfeeddetailComponent },
+          { path: 'conferences-list/:id', component: ConferenceslistComponent },
+          { path: 'myprofile', component: MyprofilepageComponent },
         ],
       },
       { path: 'sidebar', component: SidebarComponent },
-
       { path: 'home1', component: Home1Component },
       { path: 'search', component: SearchComponent },
-
-
       { path: '', component: MainComponent },
     ],
   },
@@ -67,4 +66,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class UserRoutingModule { }

@@ -52,6 +52,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ConferencedetailsComponent } from './components/conferencedetails/conferencedetails.component';
+import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { ConferencedetailsComponent } from './components/conferencedetails/confe
     ConferenceslistComponent,
     FilterPipe,
     ConferencedetailsComponent,
+    MyprofilepageComponent,
   ],
   imports: [
     CommonModule,
