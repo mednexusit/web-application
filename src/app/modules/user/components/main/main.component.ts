@@ -66,7 +66,7 @@ export class MainComponent implements OnInit {
 
   constructor() {}
   categories: any = [
-    { name: 'My Profile', value: 'profile', icon: 'fa-solid fa-user catIcon' },
+    { name: 'Login', value: 'profile', icon: 'fa-solid fa-user catIcon' },
     {
       name: 'Conferences',
       value: 'conferences',
@@ -78,13 +78,18 @@ export class MainComponent implements OnInit {
       icon: 'fa-solid fa-lock catIcon',
     },
     {
-      name: 'CME Tracker',
+      name: 'Webnairs',
       value: 'cmetracker',
       icon: 'fa-solid fa-map-pin catIcon',
     },
     {
       name: 'Certificates',
       value: 'certificates',
+      icon: 'fa-solid fa-certificate catIcon',
+    },
+    {
+      name: 'Add Conferences',
+      value: 'Add Conferences',
       icon: 'fa-solid fa-certificate catIcon',
     },
     {
