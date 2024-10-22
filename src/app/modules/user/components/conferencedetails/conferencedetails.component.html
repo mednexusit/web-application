@@ -1,0 +1,550 @@
+<div class="content">
+  <section>
+    <div class="container mb-5">
+      <div class="d-flex">
+        <h1 class="head mt-5">{{conferenceData.organizedby | uppercase}}</h1>
+        <h5 class="cat-tittle mt-5" style="margin-left: auto" (click)="goBack()">
+          <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
+          Events
+        </h5>
+      </div>
+      <hr class="hr" />
+      <div class="row">
+        <mat-tab-group (selectedTabChange)="getSelectedTab($event)">
+          <mat-tab label="aboutconference">
+            <ng-template mat-tab-label >
+             About conference
+            </ng-template>
+            <div class="row" [innerHTML]="sanitizedHtmlAboutConference"></div>
+          </mat-tab>
+
+          <mat-tab label="schedule">
+            <ng-template mat-tab-label>
+             Schedule
+            </ng-template>
+            <div class="row" [innerHTML]="sanitizedHTMLAboutSchedule"></div>
+          </mat-tab>
+
+          <mat-tab label="speakers">
+            <ng-template mat-tab-label>
+              Speakers
+            </ng-template>
+
+            <div class="row" [innerHTML]="sanitizedHTMLAboutSpeaker"></div>
+          </mat-tab>
+
+          <mat-tab label="locations">
+            <ng-template mat-tab-label>
+             Locations
+            </ng-template>
+            <div class="row" [innerHTML]="sanitizedHTMLAboutLocation"></div>
+          </mat-tab>
+
+          <!-- <mat-tab label="personaldetails">
+            <ng-template mat-tab-label>
+             Personal Details
+            </ng-template>
+
+            <div
+              class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block"
+            >
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center align-items-center"
+              >
+                <span>
+                  <h4 class="head">Share :</h4>
+                </span>
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #0077b5; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #25d366; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #1da1f2; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #e1306c; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #ff0000; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <div
+              class="row d-xs-none d-sm-block d-md-none d-lg-none d-xl-none d-xxl-none"
+            >
+              <span>
+                <h4 class="head mt-5">Share :</h4>
+              </span>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              ></div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #0077b5; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #25d366; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+              </div>
+
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #1da1f2; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #e1306c; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #ff0000; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="personal-details-modal">
+              <span class="close-modal" (click)="closeModal()">X</span>
+              <h2 class="modal-title">Confirm Details</h2>
+
+              <div class="form-container">
+                <form>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      placeholder="Enter Name"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      placeholder="Enter Email"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="notify">Set Notification for E-Mails</label>
+                    <input
+                      type="checkbox"
+                      id="notify"
+                      class="form-check-input ms-2"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      placeholder="Enter Phone/WhatsApp"
+                      class="form-control"
+                    />
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="DOB (D/M/Y)"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <select class="form-select" aria-label="Select Gender">
+                        <option selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <select class="form-select" aria-label="Select Course">
+                        <option selected>Select Course</option>
+                        <option value="course1">Course 1</option>
+                        <option value="course2">Course 2</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Enter Year"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <select class="form-select" aria-label="Select Type">
+                        <option selected>Select Type</option>
+                        <option value="full-time">Full Time</option>
+                        <option value="part-time">Part Time</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <select class="form-select" aria-label="Current Position">
+                        <option selected>Select Current Position</option>
+                        <option value="manager">Manager</option>
+                        <option value="executive">Executive</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Enter College Name"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Exp In Years"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Enter Current Organization"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Council State"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Enter Medical Cou.Reg.Number"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input
+                        type="text"
+                        placeholder="Year of Registration"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="buttons text-center">
+                    <button type="submit" class="btn btn-primary confirm-btn">
+                      CONFIRM
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary add-member-btn"
+                    >
+                      ADD NEW MEMBER
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </mat-tab> -->
+
+          <mat-tab label="payments">
+            <ng-template mat-tab-label>
+             Payments
+            </ng-template>
+
+            <div
+              class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block"
+            >
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center align-items-center"
+              >
+                <span>
+                  <h4 class="head">Share :</h4>
+                </span>
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #0077b5; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #25d366; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #1da1f2; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #e1306c; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+
+                <a
+                  class="btn btn-lg btn-floating mx-2"
+                  style="background-color: #ff0000; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <div
+              class="row d-xs-none d-sm-block d-md-none d-lg-none d-xl-none d-xxl-none"
+            >
+              <span>
+                <h4 class="head mt-5">Share :</h4>
+              </span>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              ></div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #0077b5; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #25d366; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+              </div>
+
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #1da1f2; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #e1306c; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+
+              <div
+                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
+              >
+                <a
+                  class="btn"
+                  style="background-color: #ff0000; color: white; border: none"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-12 col-xl-7 col-md-7 col-lg-7">
+                <h4 class="head">Pay directly with your favourite UPI apps</h4>
+                <div class="d-flex justify-space-between gap-10">
+                  <div class="net-img">
+                    <img src="../../../../../assets/google pay.svg" alt="" />
+                    <br />
+                    <label>GPay</label>
+                  </div>
+                  <div class="net-img">
+                    <img src="../../../../../assets/Vector.svg" alt="" />
+                    <br />
+                    <label>PhonePe</label>
+                  </div>
+                  <div class="net-img">
+                    <img src="../../../../../assets/Bhmi.svg" alt="" />
+                    <br />
+                    <label>BHIM</label>
+                  </div>
+                  <div class="net-img">
+                    <img src="../../../../../assets/Paytm.svg" alt="" />
+                    <br />
+                    <label>Paytm</label>
+                  </div>
+                </div>
+                <div class="net-img-swip mt-3">
+                  <img src="../../../../../assets/pay.svg" alt="" />
+                </div>
+              </div>
+
+              <div class="col-12 col-xl-5 col-md-5 col-lg-5">
+                <table class="table table-bordered table-responsive-sm">
+                  <thead class="table-head">
+                    <tr class="table-head">
+                      <th colspan="2" class="table-head text-center">
+                        Confirm Details
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Date</td>
+                      <td class="table-p">03 AUG 2024</td>
+                    </tr>
+                    <tr>
+                      <td>Location</td>
+                      <td class="table-p">Tirupati</td>
+                    </tr>
+                    <tr>
+                      <td>College</td>
+                      <td class="table-p">MEDICAL COLLEGE</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td class="table-p">Lokesh</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td class="table-p">9703440987</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td class="table-p">lokeshmPuttagmail.com</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-12 col-xl-6 col-md-6 col-lg-6">
+                <h4 class="head">Other Payments Methods</h4>
+                <div>
+                  <div class="swipe-container">
+                    <h4 class="head text-light">
+                      Secured by Trusted Indian Banks
+                    </h4>
+                    <button class="swipe-button">
+                      <span class="swipe-text">Swipe to Pay</span>
+                    </button>
+                  </div>
+
+                  <div class="payment-options">
+                    <div class="payment-option">
+                      <img
+                        src="../../../../../assets/net.svg"
+                        alt="Net Banking Icon"
+                        class="icon"
+                      />
+                      <span class="list-p">Net Banking</span>
+                    </div>
+                    <div class="payment-option">
+                      <img
+                        src="../../../../../assets/net.svg"
+                        alt="CRED Pay Icon"
+                        class="icon"
+                      />
+                      <span class="list-p">CRED Pay</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </section>
+</div>

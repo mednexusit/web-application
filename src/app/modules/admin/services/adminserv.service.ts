@@ -17,7 +17,7 @@ export class AdminservService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/getPersonalVendor',
+      this.baseURL2+'reguser/getPersonalVendor',
       {},
       httpOptions
     );
@@ -44,7 +44,7 @@ export class AdminservService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/deletePersonalVendor',
+      this.baseURL2+'reguser/deletePersonalVendor',
       data,
       httpOptions
     );
@@ -58,7 +58,7 @@ export class AdminservService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/createsubadmin',
+      this.baseURL2+'reguser/createsubadmin',
       data,
       httpOptions
     );
@@ -72,7 +72,7 @@ export class AdminservService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/getsubadmin',
+      this.baseURL2 + 'reguser/getsubadmin',
       {},
       httpOptions
     );
@@ -86,7 +86,7 @@ export class AdminservService {
       }),
     };
     return this.http.post(
-      'http://3.109.153.67/reguser/subadminactive',
+      this.baseURL2+'reguser/subadminactive',
       data,
       httpOptions
     );
