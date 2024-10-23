@@ -51,6 +51,7 @@
 </div>
 
 <div class="modal-wrapper" *ngIf="isModalOpen">
+
   <div
     class="card col col-lg-6 col-md-6 col-sm-12"
     [formGroup]="updateUserProfile"
@@ -144,7 +145,10 @@
           </div>
         </div>
       </div>
-      <button [disabled]="!updateUserProfile.valid" (click)="updateUserPrefrences(updateUserProfile.value)">Update </button>
+      <div class="btns">
+        <button class="btn btn-success" [disabled]="!updateUserProfile.valid" (click)="updateUserPrefrences(updateUserProfile.value)">Update </button>
+        <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
+      </div>
     </div>
   </div>
 </div>
