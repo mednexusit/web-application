@@ -161,6 +161,9 @@ export class MyprofilepageComponent implements OnInit {
       });
     }
   }
+  closeModal(){
+    this.isModalOpen=false;
+  }
   fetchSubCoursesList(data: any) {
     let dataToPass = {
       courses_id: data?.id,
