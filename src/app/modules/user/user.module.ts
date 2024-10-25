@@ -53,6 +53,8 @@ import { ConferenceslistComponent } from './components/conferenceslist/conferenc
 import { FilterPipe } from './pipes/filter.pipe';
 import { ConferencedetailsComponent } from './components/conferencedetails/conferencedetails.component';
 import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
+import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
+import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage
     FilterPipe,
     ConferencedetailsComponent,
     MyprofilepageComponent,
+    AreaofinterestComponent,
+    AreaofinterestsubsubjectComponent,
   ],
   imports: [
     CommonModule,
