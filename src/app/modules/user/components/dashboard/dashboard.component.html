@@ -227,13 +227,18 @@
   <!-- Recommended For You Section -->
   <section>
     <div class="container">
-      <h1 class="head mt-3">Recommended For You</h1>
+      <div class="d-flex">
+        <h1 class="head mt-5">Area Of Interest</h1>
+        <h5 class="cat-tittle mt-5" style="margin-left: auto">
+          <b>View All</b>
+        </h5>
+      </div>
       <div class="row">
         <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
-          <div class="recommendation-icon">MN</div>
+          <div class="recommendation-icon" (click)="goToAreaOfInterest()">MN</div>
         </div>
         <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
-          <div class="recommendation-icon">+</div>
+          <div class="recommendation-icon" (click)="goToAreaOfInterest()">+</div>
         </div>
       </div>
     </div>

@@ -24,6 +24,8 @@ import { NewsfeedlistComponent } from './components/newsfeedlist/newsfeedlist.co
 import { NewsfeeddetailComponent } from './components/newsfeeddetail/newsfeeddetail.component';
 import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
 import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
+import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
+import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
 
 const routes: Routes = [
   {
@@ -52,6 +54,8 @@ const routes: Routes = [
           { path: 'news-feed-detail/:id', component: NewsfeeddetailComponent },
           { path: 'conferences-list/:id', component: ConferenceslistComponent },
           { path: 'myprofile', component: MyprofilepageComponent },
+          {path:'areaofinterest',component:AreaofinterestComponent},
+          {path:'aoisubjects/:id',component:AreaofinterestsubsubjectComponent}
         ],
       },
       { path: 'sidebar', component: SidebarComponent },
