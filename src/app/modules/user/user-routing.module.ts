@@ -26,6 +26,7 @@ import { ConferenceslistComponent } from './components/conferenceslist/conferenc
 import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
 import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
 import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
+import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
 
 const routes: Routes = [
   {
@@ -55,7 +56,8 @@ const routes: Routes = [
           { path: 'conferences-list/:id', component: ConferenceslistComponent },
           { path: 'myprofile', component: MyprofilepageComponent },
           {path:'areaofinterest',component:AreaofinterestComponent},
-          {path:'aoisubjects/:id',component:AreaofinterestsubsubjectComponent}
+          {path:'aoisubjects/:id',component:AreaofinterestsubsubjectComponent},
+          {path:'viewareaofinterest',component:AreaofinterestlistComponent}
         ],
       },
       { path: 'sidebar', component: SidebarComponent },

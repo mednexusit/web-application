@@ -22,6 +22,7 @@ export class DashboardComponent {
   userDetailsData:any=[];
   userAvailableSpecialities:any=[];
   private dialogRef: MatDialogRef<any> | null = null;
+  displayedItems:number=5;
 
   onTabChange(event: any) {
     if (event.index === 0) {
@@ -186,6 +187,9 @@ export class DashboardComponent {
     this.router.navigate(['dashboard/areaofinterest'])
   }
 
+  get limitedAreaOfInterestData() {
+    return this.areaOfInterestData.slice(0, this.displayedItems);
+  }
   fetchAreaOfInterest(data:any){
     if (data?.userid) {
       let dataToPass={
@@ -201,6 +205,9 @@ export class DashboardComponent {
         }
       })
     }
+  }
+  viewAllAreaOfInterest(){
+    this.router.navigate(['dashboard/viewareaofinterest']);
   }
 
 }

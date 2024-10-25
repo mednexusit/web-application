@@ -289,6 +289,9 @@ font-size: 16px;
   width: 40px;
   height: 40px;
 }
+.cat-tittle{
+  cursor: pointer;
+}
 .recommendation-icon {
   width: 50px;
   height: 50px;
@@ -300,6 +303,7 @@ font-size: 16px;
   font-size: 24px;
   font-weight: bold;
   color: #009A88;
+  cursor: pointer;
 }
 
 
@@ -930,6 +934,17 @@ color: #fff;
 
 .image-section {
   flex: 2;
+}
+.aoi{
+  overflow-x:auto ;
+  width: 100% !important;
+  height: auto !important;
+  display: flex;
+  align-items: center;
+}
+.areaofinterest{
+  display: flex;
+  align-items: center;
 }
 
 .webinar-image {

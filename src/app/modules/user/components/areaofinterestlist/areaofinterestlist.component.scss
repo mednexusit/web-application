@@ -1,0 +1,58 @@
+@import url('../areaofinterest/areaofinterest.component.scss');
+$primary-color : #1c8185;
+.aoilist{
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  flex-wrap: nowrap;
+  height: 450px;
+  scroll-behavior: smooth;
+}
+.aoilist::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aoilist::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.aoilist::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+.wrapper{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.hover-holder{
+  display: flex;
+  align-items: center;
+}
+.catt-tittle{
+  white-space: nowrap;
+}
+.iconbox-top.iconbox-top-content{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.iconbox-top-content{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.iconbox-top{
+  width: 100%;
+
+}
+.wrapper:hover{
+  background: #DDF1F9;
+}
+.delete{
+  color: red;
+  cursor: pointer;
+}
