@@ -11,6 +11,11 @@ $primary-color : #1c8185;
 .aoilist::-webkit-scrollbar {
   width: 8px;
 }
+.subject{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .aoilist::-webkit-scrollbar-thumb {
   background-color: $primary-color;
@@ -25,6 +30,7 @@ $primary-color : #1c8185;
   display: flex;
   width: 100%;
   align-items: center;
+  margin-top: 10px;
 }
 .hover-holder{
   display: flex;
@@ -49,10 +55,13 @@ $primary-color : #1c8185;
   width: 100%;
 
 }
-.wrapper:hover{
+.subject:hover{
   background: #DDF1F9;
 }
 .delete{
   color: red;
   cursor: pointer;
+}
+.icon-holder{
+  margin-bottom: 0px !important;
 }

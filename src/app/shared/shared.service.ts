@@ -19,6 +19,18 @@ export class SharedService {
     return this.hideFlag.asObservable();
   }
 
+
+
+  subjectData = new BehaviorSubject<any>(null);
+  sendSubjectData(data: any) {
+    this.subjectData.next(data);
+  }
+
+  getSubjectData() {
+    return this.subjectData.asObservable();
+  }
+
+
   hideHeaderFlag = new Subject();
   sendHideHeaderFlag(data: any) {
     this.hideHeaderFlag.next(data);
