@@ -75,10 +75,10 @@ export class ConferenceslistComponent implements OnInit {
     this.sharedServ.getSubjectData().subscribe((data:any)=>{
       if(data){
         this.subjectIDTEMP=data.sub_subject_ids;
-          localStorage.setItem("aoi",JSON.stringify(data));
-          this.subjectIDTEMP= localStorage.getItem("aoi");
-          this.subjectIDTEMP= JSON.parse(this.subjectIDTEMP);
-          this.subjectIDTEMP= this.subjectIDTEMP.sub_subject_ids;
+          // localStorage.setItem("aoi",JSON.stringify(data));
+          // this.subjectIDTEMP= localStorage.getItem("aoi");
+          // this.subjectIDTEMP= JSON.parse(this.subjectIDTEMP);
+          // this.subjectIDTEMP= this.subjectIDTEMP.sub_subject_ids;
 
       }
     })
@@ -90,7 +90,6 @@ export class ConferenceslistComponent implements OnInit {
       category_id: data,
       user_id: this.userData.userid,
     };
-    console.log("dataToPass",dataToPass)
     this.userServ.getUserConferenceLists(dataToPass).subscribe({
       next: (data: any) => {
         this.conferenceListData = data.responseContents;

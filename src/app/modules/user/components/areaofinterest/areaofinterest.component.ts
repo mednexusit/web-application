@@ -19,7 +19,6 @@ export class AreaofinterestComponent implements OnInit {
     this.userServ.getAreaOfInterestSubjects().subscribe({
       next:(data:any)=>{
         this.subjectsListData = data.responseContents;
-        console.log(this.subjectsListData)
       },
       error:(err)=>{
         console.error("Error is",err)

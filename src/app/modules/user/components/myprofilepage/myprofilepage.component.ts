@@ -99,7 +99,6 @@ export class MyprofilepageComponent implements OnInit {
     this.updateUserProfile
       .get('studying')
       .valueChanges.subscribe((data: any) => {
-        console.log(data);
         this.updateUserProfile.updateValueAndValidity();
       });
   }
@@ -149,7 +148,6 @@ export class MyprofilepageComponent implements OnInit {
       this.userServ.getUserDetails(dataToPass).subscribe({
         next: (data: any) => {
           this.userDetailsData = data.responseContents;
-          console.log("User Details", this.userDetailsData)
           this.userDetailsData = this.userDetailsData[0];
           if (this.userDetailsData[0]?.course) {
             // this.getUserSpecialities();
@@ -182,7 +180,6 @@ export class MyprofilepageComponent implements OnInit {
     this.userServ.goBack();
   }
   updateUserPrefrences(data: any) {
-    console.log('Data', data);
     let dataToPass={
       "course":data.course?.id || 'NULL',
       "sub_course":data.sub_course?.id  || 'NULL',
@@ -194,7 +191,6 @@ export class MyprofilepageComponent implements OnInit {
     }
     this.userServ.updateUserProfileData(dataToPass).subscribe({
       next:(data:any)=>{
-          console.log(data);
           if(data.responseContents){
             this.toastr.success(data.responseContents,'',{timeOut:1500})
             this.isModalOpen=false;

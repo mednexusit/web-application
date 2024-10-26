@@ -29,7 +29,6 @@ export class AreaofinterestsubsubjectComponent implements OnInit{
     } else {
       this.selectedIds = this.selectedIds.filter(selectedId => selectedId !== id);
     }
-    console.log("SelectedIDS", this.selectedIds)
   }
   fetchSubSubjects(){
     let dataToPass={
@@ -38,7 +37,6 @@ export class AreaofinterestsubsubjectComponent implements OnInit{
     this.userServ.getAreaOfInterestSubSubjects(dataToPass).subscribe({
       next:(data:any)=>{
         this.subSubjectListData = data.responseContents;
-        console.log(this.subSubjectListData)
       },
       error:(err)=>{
         console.error("Error is",err)
@@ -53,7 +51,6 @@ export class AreaofinterestsubsubjectComponent implements OnInit{
     }
     this.userServ.createAreaOfInterest(dataToPass).subscribe({
       next:(data:any)=>{
-      console.log(data)
       if(data.responseContents){
         this.toastr.success(data.responseContents,'',{timeOut:1000})
         this.router.navigate(['dashboard'])

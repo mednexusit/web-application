@@ -8,7 +8,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class SharedService {
   baseURL = environment.baseURL;
   baseURL2 = environment.baseURL2;
-  constructor(private http: HttpClient) {}
+  private subjectData: BehaviorSubject<any>;
+  constructor(private http: HttpClient) {
+    const storedData = sessionStorage.getItem('data');
+    this.subjectData = new BehaviorSubject<any>(
+      storedData ? JSON.parse(storedData) : null
+    );
+  }
 
   hideFlag = new BehaviorSubject<boolean>(false);
   sendHideFlag(data: any) {
@@ -19,17 +25,14 @@ export class SharedService {
     return this.hideFlag.asObservable();
   }
 
-
-
-  subjectData = new BehaviorSubject<any>(null);
   sendSubjectData(data: any) {
+    sessionStorage.setItem('data', JSON.stringify(data));
     this.subjectData.next(data);
   }
 
   getSubjectData() {
     return this.subjectData.asObservable();
   }
-
 
   hideHeaderFlag = new Subject();
   sendHideHeaderFlag(data: any) {
@@ -80,7 +83,7 @@ export class SharedService {
   }
 
   submitVendorProposalForm(data: any) {
-    return this.http.post(this.baseURL2+'reguser/PersonalVendor', data);
+    return this.http.post(this.baseURL2 + 'reguser/PersonalVendor', data);
   }
 
   getUserType() {

@@ -71,7 +71,6 @@ export class NewsfeeddetailComponent implements OnInit {
       return;
     }
     this.isSharing = true;
-
     if (navigator.share) {
       navigator
         .share({

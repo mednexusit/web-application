@@ -198,7 +198,6 @@ export class DashboardComponent {
       this.userServ.getAreaOfInterest(dataToPass).subscribe({
         next:(data:any)=>{
           this.areaOfInterestData= data.responseContents;
-          console.log("AreaOFI",this.areaOfInterestData)
         },
         error:(err:any)=>{
           console.error(err)

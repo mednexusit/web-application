@@ -331,4 +331,23 @@ export class UserService {
       httpOptions
     );
   }
+
+  deleteAreaOfInterest(data:any){
+    //http://3.109.153.67/resorceapi/delete_areaintrest_contentbyid
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/delete_areaintrest_contentbyid',
+      data,
+      httpOptions
+    );
+  }
 }
