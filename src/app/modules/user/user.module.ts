@@ -55,6 +55,7 @@ import { ConferencedetailsComponent } from './components/conferencedetails/confe
 import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
 import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
 import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
+import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsu
     MyprofilepageComponent,
     AreaofinterestComponent,
     AreaofinterestsubsubjectComponent,
+    AreaofinterestlistComponent,
   ],
   imports: [
     CommonModule,
