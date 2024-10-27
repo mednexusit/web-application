@@ -6,12 +6,14 @@ import { VendorloginComponent } from './components/vendorlogin/vendorlogin.compo
 import { SharedModuleModule } from '../../common/shared-module/shared-module.module';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     VendorloginComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
