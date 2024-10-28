@@ -30,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [AppComponent, PagenotfoundComponent],
@@ -54,6 +55,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatOptionModule,
     MatSlideToggleModule,
     NgxEditorModule,
+    NgOtpInputModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },

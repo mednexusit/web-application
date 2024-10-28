@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   conferenceInfo: any = FormGroup;
   speakerInfo: any = FormGroup;
   paymentInfo: any = FormGroup;
+  createdDate:Date;
+  formattedDate: string;
   categories: any = [
     { name: 'Conference(Online)', id: 1 },
     { name: 'Conference(Offline)', id: 2 },
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
     //   step3: ['', Validators.required],
     //   step4: ['', Validators.required],
     // });
+    this.formattedDate = this.formatDate(this.createdDate);
     this.personalInfo = this.formBuilder.group({
       name: ['', Validators.required],
       age: [
@@ -120,7 +123,15 @@ export class HomeComponent implements OnInit {
   changeCurrentStep(data: number) {
     this.currentStep = data;
   }
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
 
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
   nextStep() {
     if (this.currentStep < 4) {
       this.currentStep++;
@@ -166,6 +177,7 @@ export class HomeComponent implements OnInit {
       ifsccode: this.paymentInfo.get('ifsccode').value,
       panno: this.paymentInfo.get('panno').value,
       branchaddress: this.paymentInfo.get('branchaddress').value,
+      proposal_date_time:this.formattedDate
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({
       next: (data: any) => {

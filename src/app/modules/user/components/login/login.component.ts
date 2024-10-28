@@ -21,6 +21,15 @@ export class LoginComponent {
   tempOtp: any;
   countdown: number = 30; // Start with 30 seconds
   timerSubscription: Subscription | null = null;
+  otpGenerated: any;
+  config = {
+    length: 5,
+    allowNumbersOnly: true,
+    inputClass: 'inp-otp',
+  };
+
+  isOtpValid: boolean = false;
+  otpVal: any;
 
   constructor(
     private fb: FormBuilder,
@@ -76,23 +85,31 @@ export class LoginComponent {
     });
   }
 
+  onOtpChange(otp: any) {
+    this.otpVal = otp;
+    if (this.otpVal.length === 5) {
+      this.isOtpValid = true;
+    } else {
+      this.isOtpValid = false;
+    }
+  }
   maskPhoneNumber(phone: string): string {
     return phone.replace(/(\d{4})(\d{2})(\d{4})/, '$1****$3');
   }
-  getOtpChecked() {
-    if (this.verificationCode.length) {
-      this.verificationCode.forEach((item: any) => {
-        if (item !== '') {
-          this.isEnabled = false;
-        } else {
-          this.isEnabled = true;
-        }
-      });
-    }
-  }
+  // getOtpChecked() {
+  //   if (this.verificationCode.length) {
+  //     this.verificationCode.forEach((item: any) => {
+  //       if (item !== '') {
+  //         this.isEnabled = false;
+  //       } else {
+  //         this.isEnabled = true;
+  //       }
+  //     });
+  //   }
+  // }
 
   verifyCodeS() {
-    const code = this.verificationCode.join('');
+    const code = this.otpVal;
     let dataToPass = {
       mobile: '+91' + this.loginForm.get('mobile')?.value,
       otp: code,
