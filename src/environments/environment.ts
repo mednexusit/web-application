@@ -1,5 +1,5 @@
 export const environment = {
-  baseURL:'http://3.109.153.67/api/',
-  resourceAPIURL:'http://3.109.153.67/resorceapi/',
-  baseURL2:'http://3.109.153.67/'
+  baseURL:'https://uatapi.mednexusns.com/api/',
+  resourceAPIURL:'https://uatapi.mednexusns.com/resorceapi/',
+  baseURL2:'https://uatapi.mednexusns.com/'
 };

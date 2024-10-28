@@ -56,6 +56,7 @@ import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage
 import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
 import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
 import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { AreaofinterestlistComponent } from './components/areaofinterestlist/are
     MatNativeDateModule, // Make sure this is in the imports array
     MatFormFieldModule,
     MatInputModule,
+    NgOtpInputModule,
   ],
 })
 export class UserModule {}
