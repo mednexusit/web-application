@@ -19,6 +19,7 @@ export class DashboardComponent {
   selectedValueTab1: string = 'all';
   selectedValueTab2: string = 'aboutConference';
   userData: any;
+  remaindersData:any=[];
   userDetailsData:any=[];
   userAvailableSpecialities:any=[];
   private dialogRef: MatDialogRef<any> | null = null;
@@ -62,7 +63,8 @@ export class DashboardComponent {
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.getUserDetails(this.userData);
-    this.fetchAreaOfInterest(this.userData)
+    this.fetchAreaOfInterest(this.userData);
+    this.fetchAllRemainders();
   }
   logoutUser() {
     this.authServ.logoutUser();
@@ -209,4 +211,18 @@ export class DashboardComponent {
     this.router.navigate(['dashboard/viewareaofinterest']);
   }
 
+  fetchAllRemainders(){
+    let dataToPass={
+      user_id:this.userData.userid
+    }
+    this.userServ.getAllRemainders(dataToPass).subscribe({
+      next:(data:any)=>{
+        this.remaindersData= data.responseContents;
+        console.log(this.remaindersData)
+      },
+      error:(err:any)=>{
+        console.error(err)
+      }
+    })
+  }
 }
