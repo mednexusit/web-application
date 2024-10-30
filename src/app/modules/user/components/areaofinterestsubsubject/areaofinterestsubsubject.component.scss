@@ -1,0 +1,17 @@
+@import url('../areaofinterest/areaofinterest.component.scss');
+$primary-color : #0F7C7F;
+.wrapper{
+  display: flex;
+}
+.checbox:checked{
+  background: $primary-color;
+}
+
+input[type="checkbox"] {
+  accent-color: $primary-color; // This changes the color in modern browsers
+}
+
+input[type="checkbox"]:checked {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}

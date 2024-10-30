@@ -227,13 +227,46 @@
   <!-- Recommended For You Section -->
   <section>
     <div class="container">
-      <h1 class="head mt-3">Recommended For You</h1>
-      <div class="row">
-        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
-          <div class="recommendation-icon">MN</div>
+      <div class="d-flex">
+        <h1 class="head mt-5">Area Of Interest</h1>
+        <h5 class="cat-tittle mt-5" style="margin-left: auto" (click)="viewAllAreaOfInterest()">
+          <b>View All</b>
+        </h5>
+      </div>
+      <div class="row areaofinterest">
+        <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex">
+          <div class=" w-50 aoi" (click)="goToAreaOfInterest()">
+            <div
+            class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2"
+            *ngFor="let item of limitedAreaOfInterestData "
+          >
+            <div class="wrapper"(click)="goToConferences(item)">
+              <div class="iconbox-top md-align-center">
+                <div class="iconbox-top-content">
+                  <div class="hover-holder">
+                    <div class="icon-holder">
+                      <svg class="svg-circle">
+                        <circle
+                          cx="49"
+                          cy="49"
+                          r="47"
+                          stroke="rgb(15,124,127)"
+                          stroke-width="2"
+                          fill="none"
+                        ></circle>
+                      </svg>
+                      <div class="icon"><img src="{{ item.img }}" /></div>
+                    </div>
+                    <!-- <h1 class="catt-tittle">{{ item.subcategory_name }}</h1> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
         <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
-          <div class="recommendation-icon">+</div>
+          <div class="recommendation-icon" (click)="goToAreaOfInterest()" title="Add Area Of Interest">+</div>
         </div>
       </div>
     </div>

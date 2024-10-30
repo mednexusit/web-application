@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Please Select Sub Subjects</h1>
+
+  <div class="row" *ngIf="subSubjectListData.length > 0">
+    <div class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2 subject" *ngFor="let item of subSubjectListData">
+      <div class="wrapper">
+        <!-- Checkbox for selection -->
+        <input
+        class="checkbox"
+          type="checkbox"
+          [checked]="selectedIds.includes(item.id)"
+          (change)="onCheckboxChange($event, item.id)"
+          [id]="item.id"
+        />
+        <label class="iconbox-top md-align-center" [for]="item.id">
+          <div class="iconbox-top-content">
+            <div class="hover-holder">
+              <div class="icon-holder">
+                <svg class="svg-circle">
+                  <circle cx="49" cy="49" r="47" stroke="rgb(15,124,127)" stroke-width="2" fill="none"></circle>
+                </svg>
+                <div class="icon" *ngIf="item.img !==null"><img src="{{ item.img }}" /></div>
+                <div class="icon" *ngIf="item.img ===null"><img src="../../../../../assets/g.png " /></div>
+              </div>
+              <h1 class="catt-tittle">{{ item.subcategory_name }}</h1>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" (click)="createAreaOfInterest()">Save</button>
+</div>

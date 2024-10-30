@@ -46,6 +46,8 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   editvendorFormGroup: any = FormGroup;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatPaginator) paginator1!: MatPaginator;
+  createdData: Date = new Date();
+formattedDate: string;
   categories: any = [
     { name: 'Conference(Online)', id: '1' },
     { name: 'Conference(Offline)', id: '2' },
@@ -568,13 +570,25 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       },
     });
   }
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
   updateVendorData(data: any) {
+    this.createdData= new Date();
+    this.formattedDate = this.formatDate(this.createdData);
     if (data.gender === 'Male') {
       data.gender = '1';
     }
     if (data.gender === 'Female') {
       data.gender = '2';
     }
+    data.proposal_date_time= this.formattedDate;
     data.subject = data.subjects.map((item: any) => parseInt(item.subject));
     data.sub_subject = data.subjects.map((item: any) =>
       parseInt(item.sub_subject)

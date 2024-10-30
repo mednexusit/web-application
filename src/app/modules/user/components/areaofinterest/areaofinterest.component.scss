@@ -1,0 +1,10 @@
+@import url('../dashboard/dashboard.component.scss');
+$primary-color : #0F7C7F;
+h1{
+  font-weight: 700;
+  color: $primary-color;
+  margin-top: 10px;
+}
+.subject{
+  cursor: pointer;
+}

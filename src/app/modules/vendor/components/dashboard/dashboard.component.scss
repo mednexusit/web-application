@@ -1,0 +1,17 @@
+.wrapper{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+}
+.section{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.main{
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
