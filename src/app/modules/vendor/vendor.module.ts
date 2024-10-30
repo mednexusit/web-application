@@ -20,6 +20,12 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { MessagenotificationComponent } from './components/messagenotification/messagenotification.component';
 import { SupportComponent } from './components/support/support.component';
 import { VendorhomeComponent } from './components/vendorhome/vendorhome.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -46,7 +52,14 @@ import { VendorhomeComponent } from './components/vendorhome/vendorhome.componen
     VendorRoutingModule,
     SharedModuleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatMenuModule
+    
     ]
 })
 export class VendorModule { }

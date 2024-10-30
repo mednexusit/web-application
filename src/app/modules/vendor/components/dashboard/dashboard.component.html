@@ -1,9 +1,139 @@
-<div class="wrapper">
-  <app-vendorheader></app-vendorheader>
-<div class="section">
-  <app-vendorsidenav class="col col-lg-3 col-md-3 col-sm-11"></app-vendorsidenav>
-  <div class="main">
-    <router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light desktop">
+  <div class="row col-12">
+    <div class="col-10 row">
+      <div class="col-1">
+        <button mat-icon-button (click)="toggleSidebar()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="col-11">
+        <span class="logo">
+          <img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+        </span>
+      </div>
+    </div>
+    <div class="col-2">
+      <button mat-icon-button>
+        <i class="fa-solid fa-user-plus"></i>
+      </button>
+
+      <button mat-icon-button>
+        <i class="fa-regular fa-bell"></i>
+      </button>
+    </div>
   </div>
-</div>
-</div>
+</nav>
+
+<header class="mobile">
+	<div class="logo row">
+		<div class="col-9">
+			<img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+		</div>
+		<div class="col-3">
+			<button class="hamburger" (click)="toggleMobileMenu()">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+		</div>
+	</div>
+	
+	<nav class="navbar navbar-expand" [class.show]="isMobileMenuOpen">
+		<div class="row show-img">
+			<div class="col-9">
+				<img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+			</div>
+			<div class="col-3">
+				<button class="closeBtn" (click)="toggleMobileMenu()">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+		</div>
+		<div class="row show-mobile-list">
+			<ul>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Dashboard
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Conference
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Financial Overview
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Registrant Management
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Analytics
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Financial Overview
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<i class="fa-solid fa-magnifying-glass"></i>Support
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						Logout
+					</a>
+				</li>
+			  </ul>
+		</div>
+	</nav>
+  </header>
+
+<mat-sidenav-container class="sidenav-container">
+	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
+		<mat-nav-list>
+			<a class="active" mat-list-item [routerLink]="['/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Dashboard</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Conference</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Financial Overview</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Registrant Management</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Analytics</span>
+			</a>
+      		<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Financial Overview</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Support</span>
+			</a>
+			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/search.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Logout</span>
+			</a>
+		</mat-nav-list>
+	</mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
