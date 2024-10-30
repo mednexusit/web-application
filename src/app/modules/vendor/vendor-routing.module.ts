@@ -15,6 +15,7 @@ import { SupportComponent } from '../user/components/support/support.component';
 import { VendorhomeComponent } from './components/vendorhome/vendorhome.component';
 
 const routes: Routes = [
+  { path: 'vendorsignup', component: HomeComponent },
   { path: '', component: VendorloginComponent },
   { path: 'forgot-password', component: VendorforgotpasswordComponent },
   { path: 'verify-otp', component: VendorverifyotpComponent },
