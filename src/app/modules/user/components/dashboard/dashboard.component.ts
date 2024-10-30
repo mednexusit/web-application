@@ -22,6 +22,7 @@ export class DashboardComponent {
   userDetailsData:any=[];
   userAvailableSpecialities:any=[];
   private dialogRef: MatDialogRef<any> | null = null;
+  displayedItems:number=5;
 
   onTabChange(event: any) {
     if (event.index === 0) {
@@ -42,6 +43,8 @@ export class DashboardComponent {
   toggleLogoSrc: string;
   isLoggedInUser: boolean = false;
 
+  areaOfInterestData:any=[];
+
   constructor(
     private themeService: ThememanageService,
     private SharedService: SharedService,
@@ -59,6 +62,7 @@ export class DashboardComponent {
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.getUserDetails(this.userData);
+    this.fetchAreaOfInterest(this.userData)
   }
   logoutUser() {
     this.authServ.logoutUser();
@@ -179,6 +183,30 @@ export class DashboardComponent {
     this.router.navigate(['dashboard/conferences-list/',data.subject_uuid])
   }
 
+  goToAreaOfInterest(){
+    this.router.navigate(['dashboard/areaofinterest'])
+  }
 
+  get limitedAreaOfInterestData() {
+    return this.areaOfInterestData.slice(0, this.displayedItems);
+  }
+  fetchAreaOfInterest(data:any){
+    if (data?.userid) {
+      let dataToPass={
+        user_id:data.userid
+      }
+      this.userServ.getAreaOfInterest(dataToPass).subscribe({
+        next:(data:any)=>{
+          this.areaOfInterestData= data.responseContents;
+        },
+        error:(err:any)=>{
+          console.error(err)
+        }
+      })
+    }
+  }
+  viewAllAreaOfInterest(){
+    this.router.navigate(['dashboard/viewareaofinterest']);
+  }
 
 }

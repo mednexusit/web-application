@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Area Of Interest</h1>
+  <div class="row aoilist">
+    <div
+    class="col-12 col-sm-12 col-lg-12 col-xl-12 col-md-12 subject"
+    *ngFor="let item of areaOfInterestData"
+  >
+    <div class="wrapper" (click)="goToConference(item)">
+      <div class="iconbox-top">
+        <div class="iconbox-top-content">
+          <div class="hover-holder">
+            <div class="icon-holder">
+              <svg class="svg-circle">
+                <circle
+                  cx="49"
+                  cy="49"
+                  r="47"
+                  stroke="rgb(15,124,127)"
+                  stroke-width="2"
+                  fill="none"
+                ></circle>
+              </svg>
+              <div class="icon"><img src="{{ item.img }}" /></div>
+            </div>
+            <h1 class="catt-tittle">{{ item.subcategory_name }}</h1>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="delete"(click)="deleteAOI(item)">
+      <i class="fa-solid fa-trash"></i>
+    </div>
+  </div>
+  </div>
+</div>
+
+

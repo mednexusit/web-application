@@ -1,0 +1,154 @@
+<div class="card col col-lg-11 col-md-11 col-sm-12">
+  <h5 class="cat-tittle mt-5" style="margin-left: auto" (click)="goBack()">
+          <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
+          Home
+        </h5>
+  <img class="card-img-top" src="../../../../../assets/profile.svg" alt="" />
+  <div class="card-body">
+    <h1 class="card-title">My Profile</h1>
+    <div class="fields col-sm-12 col-md-12">
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.fullname">
+        <label for="">Name:</label>
+        <div class="val">{{userDetailsData?.fullname}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.email">
+        <label for="">Email:</label>
+        <div class="val">nadim.shah.officialgmail.com</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12"*ngIf="userDetailsData?.dob">
+        <label for="">DOB:</label>
+        <div class="val">{{userDetailsData?.dob}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.course_name">
+        <label for="">Course:</label>
+        <div class="val">{{userDetailsData?.course_name}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.subcourse_name">
+        <label for="">Speciality:</label>
+        <div class="val">{{userDetailsData?.subcourse_name}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.subcourse_list_name">
+        <label for="">Sub Course:</label>
+        <div class="val">{{userDetailsData?.subcourse_list_name}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.yearofstudying !== 'NULL'">
+        <label for="">Year Of Studying:</label>
+        <div class="val">{{userDetailsData?.yearofstudying}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12">
+        <label for="">College:</label>
+        <div class="val">{{userDetailsData?.college_name}}</div>
+      </div>
+      <div class="item col col-sm-12 col-md-12" *ngIf="userDetailsData?.city">
+        <label for="">City:</label>
+        <div class="val">{{userDetailsData?.city}}</div>
+      </div>
+      <button class="btn btn-success" (click)="openModal()">
+        Edit Details
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-wrapper" *ngIf="isModalOpen">
+
+  <div
+    class="card col col-lg-6 col-md-6 col-sm-12"
+    [formGroup]="updateUserProfile"
+  >
+    <h1 class="">Profile Edit</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-2 p-2">
+          <select class="form-select" formControlName="course">
+            <option value="" selected>Select Course</option>
+            <option [ngValue]="item" *ngFor="let item of courses">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-2 p-2">
+          <select
+            class="form-select"
+            formControlName="sub_course"
+            *ngIf="!isOtherSelected"
+          >
+            <option value="" selected>Select Speciality</option>
+            <option [ngValue]="item" *ngFor="let item of specialities">
+              {{ item.specialityname }}
+            </option>
+          </select>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Other"
+            *ngIf="isOtherSelected"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-2 p-2">
+          <input
+          type="number"
+          class="form-control"
+          placeholder="Year of Studying"
+          *ngIf="isShowYearOfStudying"
+          formControlName="yearofstudying"
+        />
+        </div>
+        <div class="row" *ngIf="isCompleted">
+          <div class="col-md-6 mb-2 p-2 d-flex align-items-center">
+            <input
+              type="radio"
+              name="studying"
+              class="radioInp"
+              id="studying"
+              value="1"
+              placeholder="Year of studying"
+              formControlName="studying"
+            />
+            <label for="studying">Studying</label>
+          </div>
+          <div class="col-md-6 mb-2 p-2 d-flex align-items-center">
+            <input
+              type="radio"
+              name="studying"
+              class="radioInp"
+              id="Practice"
+              value="0"
+              placeholder="Year of completion"
+              formControlName="studying"
+            />
+            <label for="Practice">Practice</label>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="subCourseLabel">
+          <div class="mb-2 p-2 field">
+            <input
+              type="text"
+              [placeholder]="subCourseLabel"
+              (focus)="openSubCourseModal()"
+              formControlName="sub_course_list"
+            />
+            <i class="fa-solid fa-angle-down downIcon"></i>
+            <app-modalautocomplete
+              [items]="subCoursesList"
+              [searchItem]="subCourseLabel"
+              [isOpen]="isOpenSubCourseModal"
+              (itemSelected)="getSelectedSubCourse($event)"
+              (closeModal)="closeSubCourseModal()"
+              [fieldName]="'name'"
+              [placeholder]="subCourseLabel"
+            ></app-modalautocomplete>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="btn btn-success" [disabled]="!updateUserProfile.valid" (click)="updateUserPrefrences(updateUserProfile.value)">Update </button>
+        <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

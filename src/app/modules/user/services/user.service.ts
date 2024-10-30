@@ -241,4 +241,113 @@ export class UserService {
       httpOptions
     );
   }
+
+  updateUserProfileData(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/userdataupdatebyid',
+      data,
+      httpOptions
+    );
+  }
+
+  getAreaOfInterestSubjects(){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'reguser/getSubject',
+      {},
+      httpOptions
+    );
+  }
+  getAreaOfInterestSubSubjects(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'reguser/getsubSubject',
+      data,
+      httpOptions
+    );
+  }
+
+  createAreaOfInterest(data:any){
+    //resorceapi/create_areaintrest
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/create_areaintrest',
+      data,
+      httpOptions
+    );
+  }
+  //
+  getAreaOfInterest(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/getallmbbs_specialty_subject_areaintrest',
+      data,
+      httpOptions
+    );
+  }
+
+  deleteAreaOfInterest(data:any){
+    //http://3.109.153.67/resorceapi/delete_areaintrest_contentbyid
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/delete_areaintrest_contentbyid',
+      data,
+      httpOptions
+    );
+  }
 }

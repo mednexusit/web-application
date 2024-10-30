@@ -52,6 +52,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConferenceslistComponent } from './components/conferenceslist/conferenceslist.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ConferencedetailsComponent } from './components/conferencedetails/conferencedetails.component';
+import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage.component';
+import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
+import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
+import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -86,6 +91,10 @@ import { ConferencedetailsComponent } from './components/conferencedetails/confe
     ConferenceslistComponent,
     FilterPipe,
     ConferencedetailsComponent,
+    MyprofilepageComponent,
+    AreaofinterestComponent,
+    AreaofinterestsubsubjectComponent,
+    AreaofinterestlistComponent,
   ],
   imports: [
     CommonModule,
@@ -108,6 +117,7 @@ import { ConferencedetailsComponent } from './components/conferencedetails/confe
     MatNativeDateModule, // Make sure this is in the imports array
     MatFormFieldModule,
     MatInputModule,
+    NgOtpInputModule,
   ],
 })
 export class UserModule {}
