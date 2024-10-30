@@ -125,6 +125,7 @@ formattedDate: string;
       panno: ['', Validators.required],
       branchaddress: ['', Validators.required],
       subjects: this.fb.array([this.getSubjects()]),
+      proposal_date_time:['',Validators.required]
     });
 
     // this.editvendorFormGroup
@@ -164,7 +165,7 @@ formattedDate: string;
     });
   }
   addSubjects() {
-    if (this.subjectsListArray.length <= 8) {
+    if (this.subjectsListArray?.length <= 8) {
       this.subjectsListArray.push(this.getSubjects());
       let selectedSubjectItems = this.editvendorFormGroup.get('subjects').value;
       selectedSubjectItems = selectedSubjectItems.map(
@@ -239,7 +240,7 @@ formattedDate: string;
       // this.modalData.subject_details.forEach((item:any) => {
 
       // });
-      for (let i = 0; i < this.modalData.subject_details.length; i++) {
+      for (let i = 0; i < this.modalData.subject_details?.length; i++) {
         subjectDetailsData.push({
           subject: this.modalData.subject_details[i],
           sub_subject: this.modalData.sub_subject_details[i],
@@ -253,14 +254,10 @@ formattedDate: string;
       this.isShowVendorModal = true;
       this.editData = data;
       if (this.editData.subject) {
-        //this.editvendorFormGroup.get('subject').setValue(this.editData.subject);
         let items = this.editvendorFormGroup.get('subjects');
         items.controls.forEach((ele: any) => {});
 
         items.value.forEach((sub: any, index: any) => {});
-        // items.forEach((el:any) => {
-
-        // });
         if (this.editData.sub_subject) {
           //  this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
         }
@@ -272,6 +269,18 @@ formattedDate: string;
       this.editvendorFormGroup.get('email').setValue(this.editData.email);
       this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
       this.editvendorFormGroup.get('address').setValue(this.editData.address);
+      let dateValue = new Date(this.editData.proposal_date_time);
+      if (!isNaN(dateValue.getTime())) { // Check if it's a valid date
+        const year = dateValue.getFullYear();
+        const month = String(dateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(dateValue.getDate()).padStart(2, '0');
+        const hours = String(dateValue.getHours()).padStart(2, '0');
+        const minutes = String(dateValue.getMinutes()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+        this.editvendorFormGroup.get('proposal_date_time').setValue(formattedDate);
+    } else {
+        console.error("Invalid date format:", this.editData.proposal_date_time);
+    }
       this.editvendorFormGroup
         .get('eventname')
         .setValue(this.editData.eventname);
