@@ -228,7 +228,7 @@
         <div class="details">
           <label for="">Event Name: {{ this.modalData.eventname }}</label>
           <label for="">Organized By: {{ this.modalData.organisedby }}</label>
-          <label for="">Conference Host Date: {{ this.modalData.proposal_date_time | date:'m/d/yyy hh:mm a ' }}</label>
+          <label for="">Conference Host Date: {{ this.modalData.proposal_date_time | date: 'MM/dd/yyyy hh:mm a':'UTC' }}</label>
           <label for="">Category: {{ this.modalData.category }}</label>
           <label for="">State: {{ this.modalData.state }}</label>
           <label for="">Place: {{ this.modalData.place }}</label>

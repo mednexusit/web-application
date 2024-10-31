@@ -165,58 +165,16 @@
       <hr />
       <div class="row">
         <!-- Coupon 1 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
+        <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
             <span>
               <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
             </span>
             <span>
               <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
+                {{item?.eventname}}
               </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
+              <p class="cod">{{item.proposal_date_time | date:'dd-mm-yyyy'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>
@@ -235,7 +193,7 @@
       </div>
       <div class="row areaofinterest">
         <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex">
-          <div class=" w-50 aoi" (click)="goToAreaOfInterest()">
+          <div class=" w-50 aoi">
             <div
             class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2"
             *ngFor="let item of limitedAreaOfInterestData "

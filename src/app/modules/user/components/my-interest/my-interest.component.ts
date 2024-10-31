@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatDrawerMode } from '@angular/material/sidenav';
 
@@ -7,13 +7,14 @@ import { MatDrawerMode } from '@angular/material/sidenav';
   templateUrl: './my-interest.component.html',
   styleUrl: './my-interest.component.scss'
 })
-export class MyInterestComponent {
+export class MyInterestComponent implements OnInit {
 
 
   isSidebarOpen = true; // Sidebar initially open
   sidenavMode: MatDrawerMode = 'side'; // Correctly typing the sidenavMode as MatDrawerMode
   selectedValueTab1: string = 'all' ;
   selectedValueTab2: string = 'aboutConference';
+  selectedTab:any;
 
 
   private dialogRef: MatDialogRef<any> | null = null;
@@ -43,37 +44,15 @@ export class MyInterestComponent {
   constructor(   public dialog: MatDialog) {}
   ngOnInit(): void {
    this.isLoggedInUser =  sessionStorage.getItem('LoggedInUser') !== null;
+    this.selectedTab="enrollment"
+  }
+
+  getSelectedTab(event:any){
+    this.selectedTab= event.tab.textLabel;
   }
 
 
 
-  openPersonalDetails() {
-    if (this.dialogRef) {
-      this.dialogRef.close(); // Close any previously opened modal
-    }
-
-    this.dialogRef = this.dialog.open(MyInterestComponent, {
-      width: '400px',
-      height: '100%',
-      position: { top: '0', right: '0' },
-      panelClass: 'custom-modalbox',
-      disableClose: false, // Allow outside click to close
-      backdropClass: 'modal-backdrop',
-    });
-
-    document.body.style.overflow = 'hidden'; // Disable body scroll when modal is open
-
-    this.dialogRef.afterClosed().subscribe(() => {
-      document.body.style.overflow = ''; // Restore scroll after closing modal
-      this.dialogRef = null; // Clear the reference when closed
-    });
-  }
-
-  closeModal() {
-    if (this.dialogRef) {
-      this.dialogRef.close(); // Close the dialog when close button is clicked
-    }
-  }
 
 
 
