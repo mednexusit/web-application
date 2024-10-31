@@ -45,12 +45,12 @@ export class ConferenceslistComponent implements OnInit {
 
   // Go to the next slide
   nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.conferenceListData.length;
+    this.currentIndex = (this.currentIndex + 1) % this.conferenceListData?.length;
   }
 
   // Go to the previous slide
   prevSlide() {
-    this.currentIndex = (this.currentIndex - 1 + this.conferenceListData.length) % this.conferenceListData.length;
+    this.currentIndex = (this.currentIndex - 1 + this.conferenceListData?.length) % this.conferenceListData?.length;
   }
   // Method to check if a button is active
   isActive(buttonLabel: string) {

@@ -186,7 +186,6 @@ export class DashboardComponent {
   goToConferences(data:any){
     this.SharedService.sendSubjectData(data);
     this.router.navigate(['dashboard/conferences-list',0])
-
   }
   openModal(data:any){
     this.dialog.open(ConferencedetailsComponent,{
@@ -196,6 +195,7 @@ export class DashboardComponent {
   }
   goToConference(data:any){
     console.log("DATA IS",data)
+    this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
   }
 
   goToAreaOfInterest() {
