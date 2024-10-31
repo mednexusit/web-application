@@ -17,6 +17,7 @@ export class ConferencedetailsComponent implements OnInit {
   sanitizedHTMLAboutSpeaker: SafeHtml;
   sanitizedHTMLAboutSchedule: SafeHtml;
   sanitizedHTMLAboutLocation: SafeHtml;
+  sanitizedHTMLAboutPersonal:SafeHtml;
 
   constructor(
     private ref: MatDialogRef<ConferencedetailsComponent>,
@@ -25,6 +26,7 @@ export class ConferencedetailsComponent implements OnInit {
     private userServ:UserService
   ) {
     this.conferenceData = data;
+    console.log(this.conferenceData);
   }
 
   ngOnInit(): void {
@@ -43,6 +45,9 @@ export class ConferencedetailsComponent implements OnInit {
     this.sanitizedHTMLAboutLocation = this.sanitizer.bypassSecurityTrustHtml(
       this.conferenceData.about_location
     );
+    this.sanitizedHTMLAboutPersonal = this.sanitizer.bypassSecurityTrustHtml(
+      this.conferenceData.about_personal
+    )
   }
   goBack(){
    // this.userServ.goBack();

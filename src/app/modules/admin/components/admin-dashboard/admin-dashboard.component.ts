@@ -47,7 +47,7 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatPaginator) paginator1!: MatPaginator;
   createdData: Date = new Date();
-formattedDate: string;
+  formattedDate: string;
   categories: any = [
     { name: 'Conference(Online)', id: '1' },
     { name: 'Conference(Offline)', id: '2' },
@@ -125,7 +125,7 @@ formattedDate: string;
       panno: ['', Validators.required],
       branchaddress: ['', Validators.required],
       subjects: this.fb.array([this.getSubjects()]),
-      proposal_date_time:['',Validators.required]
+      proposal_date_time: ['', Validators.required],
     });
 
     // this.editvendorFormGroup
@@ -270,17 +270,20 @@ formattedDate: string;
       this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
       this.editvendorFormGroup.get('address').setValue(this.editData.address);
       let dateValue = new Date(this.editData.proposal_date_time);
-      if (!isNaN(dateValue.getTime())) { // Check if it's a valid date
-        const year = dateValue.getFullYear();
-        const month = String(dateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(dateValue.getDate()).padStart(2, '0');
-        const hours = String(dateValue.getHours()).padStart(2, '0');
-        const minutes = String(dateValue.getMinutes()).padStart(2, '0');
+      if (!isNaN(dateValue.getTime())) {
+        // Check if it's a valid date
+        const year = dateValue.getUTCFullYear();
+        const month = String(dateValue.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(dateValue.getUTCDate()).padStart(2, '0');
+        const hours = String(dateValue.getUTCHours()).padStart(2, '0');
+        const minutes = String(dateValue.getUTCMinutes()).padStart(2, '0');
         const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
-        this.editvendorFormGroup.get('proposal_date_time').setValue(formattedDate);
-    } else {
-        console.error("Invalid date format:", this.editData.proposal_date_time);
-    }
+        this.editvendorFormGroup
+          .get('proposal_date_time')
+          .setValue(formattedDate);
+      } else {
+        console.error('Invalid date format:', this.editData.proposal_date_time);
+      }
       this.editvendorFormGroup
         .get('eventname')
         .setValue(this.editData.eventname);
@@ -589,15 +592,13 @@ formattedDate: string;
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
   updateVendorData(data: any) {
-    this.createdData= new Date();
-    this.formattedDate = this.formatDate(this.createdData);
     if (data.gender === 'Male') {
       data.gender = '1';
     }
     if (data.gender === 'Female') {
       data.gender = '2';
     }
-    data.proposal_date_time= this.formattedDate;
+
     data.subject = data.subjects.map((item: any) => parseInt(item.subject));
     data.sub_subject = data.subjects.map((item: any) =>
       parseInt(item.sub_subject)
