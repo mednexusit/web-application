@@ -447,6 +447,10 @@ color: #2E2E2E;
 }
 .cod{
   color: #009A88;
+  strong{
+    margin-left: 10px;
+  }
+
 }
 
 
@@ -947,6 +951,7 @@ color: #fff;
 .areaofinterest{
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .webinar-image {

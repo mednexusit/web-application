@@ -255,3 +255,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mainSection{
   flex-grow: 1;
 }
+
+$primary-color : #0F7C7F;
+app-search::-webkit-scrollbar {
+  width: 8px;
+}
+app-search::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+app-search::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}

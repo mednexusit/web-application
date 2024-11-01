@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   conferenceInfo: any = FormGroup;
   speakerInfo: any = FormGroup;
   paymentInfo: any = FormGroup;
-  createdDate:Date;
+  createdDate:Date= new Date();
   formattedDate: string;
   categories: any = [
     { name: 'Conference(Online)', id: 1 },
@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
     //   step3: ['', Validators.required],
     //   step4: ['', Validators.required],
     // });
-    this.formattedDate = this.formatDate(this.createdDate);
+
+
     this.personalInfo = this.formBuilder.group({
       name: ['', Validators.required],
       age: [
@@ -71,6 +72,7 @@ export class HomeComponent implements OnInit {
       state: ['', Validators.required],
       pin: ['', Validators.required],
       venu: ['', Validators.required],
+      proposal_date_time:['',Validators.required]
     });
     this.speakerInfo = this.formBuilder.group({
       speakerinfo: ['', Validators.required],
@@ -119,6 +121,11 @@ export class HomeComponent implements OnInit {
       ],
       branchaddress: ['', Validators.required],
     });
+    this.conferenceInfo.get('proposal_date_time').valueChanges.subscribe((data:any)=>{
+      this.createdDate = new Date(data);
+      this.formattedDate = this.formatDate(this.createdDate);
+      console.log(this.formattedDate)
+    })
   }
   changeCurrentStep(data: number) {
     this.currentStep = data;
@@ -177,7 +184,7 @@ export class HomeComponent implements OnInit {
       ifsccode: this.paymentInfo.get('ifsccode').value,
       panno: this.paymentInfo.get('panno').value,
       branchaddress: this.paymentInfo.get('branchaddress').value,
-      proposal_date_time:this.formattedDate
+      proposal_date_time:this.formattedDate.toString()
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({
       next: (data: any) => {

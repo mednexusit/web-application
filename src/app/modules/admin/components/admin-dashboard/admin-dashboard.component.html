@@ -228,6 +228,7 @@
         <div class="details">
           <label for="">Event Name: {{ this.modalData.eventname }}</label>
           <label for="">Organized By: {{ this.modalData.organisedby }}</label>
+          <label for="">Conference Host Date: {{ this.modalData.proposal_date_time | date: 'MM/dd/yyyy hh:mm a':'UTC' }}</label>
           <label for="">Category: {{ this.modalData.category }}</label>
           <label for="">State: {{ this.modalData.state }}</label>
           <label for="">Place: {{ this.modalData.place }}</label>
@@ -355,6 +356,10 @@
           <div class="edit-fields">
             <label for="">Organized By:</label>
             <input type="text" formControlName="organizedby" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Host Conference Date:</label>
+            <input type="datetime-local" formControlName="proposal_date_time" />
           </div>
           <div class="edit-fields">
             <label for="">Category:</label>
