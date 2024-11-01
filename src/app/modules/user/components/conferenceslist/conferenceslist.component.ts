@@ -102,10 +102,35 @@ export class ConferenceslistComponent implements OnInit {
   goBack() {
     this.userServ.goBack();
   }
-  openModal(data:any){
-    this.dialog.open(ConferencedetailsComponent,{
-      data:data,
-      height:'500px'
-    })
+  openModal(data:any, event:any){
+    event.stopPropagation();
+    if((event.target as HTMLElement).classList.contains('fa-bookmark')){
+      this.bookmarkConference(data,event)
+    }
+    else{
+      this.dialog.open(ConferencedetailsComponent,{
+        data:data,
+        height:'500px'
+      })
+    }
+
+  }
+  bookmarkConference(data:any,event:any,array:any){
+    this.categoryIDS=array;
+    event.stopPropagation();
+    let dataToPass={
+      "user_id":this.userData.userid,
+      "conference_id":data.id
+    }
+    this.userServ.bookMarkSave(dataToPass).subscribe({
+      next: (data: any) => {
+        if(data.responseContents){
+          this.fetchConferences(this.categoryIDS);
+        }
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
   }
 }
