@@ -102,10 +102,10 @@ export class ConferenceslistComponent implements OnInit {
   goBack() {
     this.userServ.goBack();
   }
-  openModal(data:any, event:any){
+  openModal(data:any, event:any,array:any){
     event.stopPropagation();
     if((event.target as HTMLElement).classList.contains('fa-bookmark')){
-      this.bookmarkConference(data,event)
+      this.bookmarkConference(data,event,array)
     }
     else{
       this.dialog.open(ConferencedetailsComponent,{

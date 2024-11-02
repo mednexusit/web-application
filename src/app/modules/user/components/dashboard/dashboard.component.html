@@ -174,7 +174,7 @@
               <p class="coupon-caption">
                 {{item?.eventname}}
               </p>
-              <p class="cod">{{item.proposal_date_time | date:'dd-mm-yyyy'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
+              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>

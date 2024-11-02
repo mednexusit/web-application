@@ -1488,6 +1488,16 @@ button{
 
   padding: 10px 15px;
 }
+.bookmarkIcon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  top: 2.5rem;
+  right: 1.5rem;
+  z-index: 10000000;
+  position: absolute;
+  font-size: 1.5rem;
+}
 .cardsItem{
   max-height: 500px;
   overflow-y: auto;

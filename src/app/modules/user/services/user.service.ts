@@ -434,7 +434,75 @@ export class UserService {
       }),
     };
     return this.http.post(
-      this.baseURL2 + 'resorceapi/bookmarklist',
+      this.baseURL2 + 'resorceapi/bookmarkdelet',
+      data,
+      httpOptions
+    );
+  }
+  addParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/regparticipation',
+      data,
+      httpOptions
+    );
+  }
+  fetchParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/getuserparticipationbyidlist',
+      data,
+      httpOptions
+    );
+  }
+  editParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/updateparticipationbyid',
+      data,
+      httpOptions
+    );
+  }
+  deleteParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/deleteparticipationbyid',
       data,
       httpOptions
     );
