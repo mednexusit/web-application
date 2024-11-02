@@ -20,6 +20,7 @@
 .tab-card1{
   margin: 1rem;
   cursor: pointer;
+  z-index: 0;
 }
 .btn:hover{
   color: #fff !important;
@@ -88,4 +89,26 @@ background: rgb(13, 16, 201);
 }
 .location{
   margin-top: 10px !important;
+}
+.bookmarkIcon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  top: 2.5rem;
+  right: 1.5rem;
+  z-index: 10000000;
+  position: absolute;
+  font-size: 1.5rem;
+}
+.no-pointer-event {
+  pointer-events: auto; /* Ensures the bookmark icon itself can be clicked */
+}
+
+.tab-card1 {
+ position: relative;
+ z-index: 10;
+}
+
+.tab-card1 .no-pointer-event {
+  pointer-events: auto; /* Ensure clicks on this element do not bubble up */
 }

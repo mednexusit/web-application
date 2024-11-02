@@ -6,7 +6,7 @@
   <div class="col col-lg-12 col-md-12 col-sm-12 cardsItem">
     <div
     class="tab-card1 col-md-6 col-lg-4"
-    *ngFor="let item of conferenceListData | filter : searchText"
+    *ngFor="let item of conferenceListData | filter : searchText" (click)="openModal(item,$event)"
   >
     <div class="d-flex justify-content-end">
       <div
@@ -34,8 +34,12 @@
         OFFLINE
       </div>
     </div>
+    <div class="bookmarkIcon">
+      <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event)"></i>
+      <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+    </div>
     <div class="tab-title">
-      {{ item.organizedby }}
+      {{ item.eventname }}
     </div>
     <div class="tab-details">
       On
