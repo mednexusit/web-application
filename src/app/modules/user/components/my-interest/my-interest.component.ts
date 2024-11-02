@@ -44,6 +44,7 @@ export class MyInterestComponent implements OnInit {
   toggleLogoSrc:string;
   isLoggedInUser:boolean=false;
   userData:any;
+  bookingConfirmationList:any=[];
   myInterest:any=[];
 
   constructor(   public dialog: MatDialog, private userServ:UserService, private toastr:ToastrService) {}
@@ -53,11 +54,34 @@ export class MyInterestComponent implements OnInit {
    this.isLoggedInUser =  sessionStorage.getItem('LoggedInUser') !== null;
     this.selectedTab="enrollment";
     this.fetchMyInterest();
+    this.fetchBookingConfirmationList();
 
   }
 
   getSelectedTab(event:any){
     this.selectedTab= event.tab.textLabel;
+    if(this.selectedTab==='enrollment'){
+      this.fetchBookingConfirmationList();
+    }
+    if(this.selectedTab==="bookmarks"){
+      this.fetchMyInterest();
+    }
+  }
+
+  fetchBookingConfirmationList(){
+    let dataToPass={
+      user_id:this.userData.userid
+    }
+    this.userServ.fetchBookingConfirmation(dataToPass).subscribe({
+      next:(data:any)=>{
+        if(data.responseContents){
+          this.bookingConfirmationList = data.responseContents;
+        }
+      }
+      ,error:(err:any)=>{
+        console.error(err)
+      }
+    })
   }
 
   fetchMyInterest(){
@@ -66,7 +90,6 @@ export class MyInterestComponent implements OnInit {
     }
     this.userServ.fetchBookMarkList(dataToPass).subscribe({
       next:(data:any)=>{
-        console.log(data.responseContents)
         this.myInterest = data.responseContents;
       }
       ,error:(err:any)=>{
@@ -76,7 +99,6 @@ export class MyInterestComponent implements OnInit {
   }
 
   deleteBookMark(data:any){
-    console.log("DTAA IS",data);
     let dataToPass={
       bookmark_id:data.bookmark_id
     }

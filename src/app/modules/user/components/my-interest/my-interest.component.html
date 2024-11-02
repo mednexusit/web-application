@@ -17,6 +17,29 @@
               My Enrollment
             </ng-template>
             <!-- Content for Hot Jobs tab -->
+            <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
+              <div class="row">
+                <div
+                  class="tab-card1 col-md-6 col-lg-4"
+                  *ngFor="let item of bookingConfirmationList " (click)="openModal(item,$event)"
+                >
+
+                  <!-- <div class="deleteIcon">
+                    <i class="fa-solid fa-trash" (click)="deleteBookMark(item)"></i>
+                  </div> -->
+                  <div class="tab-title">
+                    {{ item.eventname }}
+                  </div>
+                  <div class="tab-details">
+                    On
+                    <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY":'UTC' }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.address | titlecase }}
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
           </mat-tab>
@@ -57,6 +80,9 @@
             <ng-template mat-tab-label>
               My Certificates
             </ng-template>
+            <div class="row certificates">
+              <h1>COMING SOON...</h1>
+            </div>
 
           </mat-tab>
 
