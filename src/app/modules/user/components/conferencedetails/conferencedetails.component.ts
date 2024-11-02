@@ -25,6 +25,7 @@ export class ConferencedetailsComponent implements OnInit {
   userData:any;
   isOpenAddMemeber:boolean=false;
   editData:any;
+
   addMemberForm:any=FormGroup;
   addEditLabel:string='Add';
   gender:any=[{label:'Male',value:1},{label:"Female",value:2}];
@@ -44,6 +45,7 @@ export class ConferencedetailsComponent implements OnInit {
   ngOnInit(): void {
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
+    //this.fetchBookingConfirmationList();
     // this.sanitizedHtml = this.sanitizer.bypassSecurityTrustHtml(
     //   this.newsFeedDetails[0]?.details
     // );
@@ -89,10 +91,15 @@ export class ConferencedetailsComponent implements OnInit {
     this.ref.close();
   }
   openPersonalDetails() {}
-  closeModal() {}
+  closeModal() {
+    this.ref.close();
+  }
   getSelectedTab(data: MatTabChangeEvent) {
     this.selectedLabel = data.tab.textLabel;
   }
+
+
+
 
   deleteParticipant(data:any){
     console.log("Delete",data);
@@ -198,6 +205,24 @@ export class ConferencedetailsComponent implements OnInit {
           this.getParticipants();
           this.closeModals();
 
+        }
+      },
+      error:(err:any)=>{
+        this.toastr.error('Failed','',{timeOut:1000});
+      }
+    })
+  }
+  confirmBooking(){
+    let dataToPass={
+      "user_id":this.userData.userid,
+      "conference_id":this.conferenceData.conference_id
+    }
+    this.userServ.bookingConfirmation(dataToPass).subscribe({
+      next:(data:any)=>{
+        if(data.responseContents){
+          this.toastr.success('Booking Confirmed','',{timeOut:1000});
+          this.closeModal();
+          this.closeModals();
         }
       },
       error:(err:any)=>{
