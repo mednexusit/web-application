@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   toggleLogoSrc: string;
   isHideHeader: boolean = true;
   isLoggedInUser: boolean = false;
-
+  showDropdown = false; // controls dropdown visibility
   constructor(
     private rt: ActivatedRoute,
     private themeService: ThememanageService,
@@ -41,6 +41,10 @@ export class HeaderComponent implements OnInit {
       }
       this.isHideHeader = data;
     });
+  }
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
   }
 
   logoutUser() {
