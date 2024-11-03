@@ -100,11 +100,13 @@ export class MyInterestComponent implements OnInit {
 
   deleteBookMark(data:any){
     let dataToPass={
-      bookmark_id:data.bookmark_id
+      user_id:this.userData.userid,
+      "conference_id":data.conference_id
     }
     this.userServ.deleteBookMark(dataToPass).subscribe({
       next:(data:any)=>{
-        this.toastr.success('Deleted Bookmark','',{timeOut:1000})
+        this.toastr.success('Deleted Bookmark','',{timeOut:1000});
+        this.fetchMyInterest();
       }
       ,error:(err:any)=>{
         console.error(err)
