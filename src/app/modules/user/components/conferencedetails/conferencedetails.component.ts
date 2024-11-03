@@ -38,7 +38,6 @@ export class ConferencedetailsComponent implements OnInit {
     private fb:FormBuilder
   ) {
     this.conferenceData = data;
-    console.log("conference Data",this.conferenceData);
   }
 
 
@@ -102,7 +101,6 @@ export class ConferencedetailsComponent implements OnInit {
 
 
   deleteParticipant(data:any){
-    console.log("Delete",data);
     let dataToPass={
       "id": data.id,
       "user_uuid": data.user_uuid
@@ -129,7 +127,6 @@ export class ConferencedetailsComponent implements OnInit {
       next:(data:any)=>{
         if(data.responseContents){
           this.participantsData = data.responseContents;
-          console.log("patr",this.participantsData)
         }
       }
       ,error:(err:any)=>{
@@ -138,7 +135,6 @@ export class ConferencedetailsComponent implements OnInit {
     })
   }
   openAddMember(type:any,data:any){
-    console.log("Event",data);
     this.editData = data;
     this.isOpenAddMemeber =true;
     if(type==='Add'){
@@ -146,7 +142,6 @@ export class ConferencedetailsComponent implements OnInit {
       this.addMemberForm.reset();
     }
     if(type==='Edit'){
-      console.log(data)
       this.addEditLabel= 'Update';
       this.addMemberForm.patchValue({
         user_uuid:data.user_uuid,

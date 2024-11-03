@@ -56,7 +56,6 @@ export class NewsfeeddetailComponent implements OnInit {
       next: (data: any) => {
         this.newsFeedDetails = data.responseContents;
         this.newsFeedDetails = [this.newsFeedDetails[1]]
-        console.log(this.newsFeedDetails)
         this.sanitizedHtml = this.sanitizer.bypassSecurityTrustHtml(
           this.newsFeedDetails[0]?.details
         );

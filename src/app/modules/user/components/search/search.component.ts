@@ -56,7 +56,6 @@ export class SearchComponent  implements OnInit{
       next:(data:any)=>{
         if(data){
           this.conferenceListData = data.responseContents;
-          console.log(this.conferenceListData)
         }
       },
       error:(err:any)=>{
