@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ThememanageService } from '../../theme/thememanage.service';
 import { SharedService } from '../../../../shared/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -52,7 +53,7 @@ export class MainComponent implements OnInit {
     this.iconsToShow = this.screenWidth <= 768 ? 4 : 10; // Adjust the screen width threshold as needed
   }
 
-  constructor() {}
+  constructor(private router:Router) {}
   categories: any = [
     { name: 'My Profile', value: 'profile', icon: 'fa-solid fa-user catIcon' },
     {
@@ -99,5 +100,8 @@ export class MainComponent implements OnInit {
   next() {
     this.startIndex = (this.startIndex + 1) % this.icons.length;
     this.updateDisplayedIcons();
+  }
+  goToLogin(){
+    this.router.navigate(['login'])
   }
 }

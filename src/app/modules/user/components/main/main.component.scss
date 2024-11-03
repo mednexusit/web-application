@@ -10,7 +10,7 @@
       // min-width: 300px;
       justify-content: center;
       align-items: flex-end;
-      
+
       .categories{
         .category{
           background-color: #ffffff;
@@ -44,7 +44,14 @@
               text-transform: uppercase;
               text-decoration: none;
               color: #3D3D3D;
+              display: flex;
+              align-items: center;
               margin-left: 1vw;
+              cursor: pointer;
+              margin-bottom: 0;
+              span{
+
+              }
             }
           &:nth-child(3){
             display: none;
@@ -315,7 +322,7 @@
           width: 33vw !important;
           font-size: 3.2vw !important;
           margin: 2vw !important;
-        }  
+        }
       }
     }
     .right-section{

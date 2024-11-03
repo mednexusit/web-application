@@ -194,7 +194,6 @@ export class DashboardComponent {
     })
   }
   goToConference(data:any){
-    console.log("DATA IS",data)
     this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
   }
 
