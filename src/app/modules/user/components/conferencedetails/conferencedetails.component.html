@@ -2,8 +2,12 @@
   <section>
     <div class="container mb-5">
       <div class="d-flex">
-        <h1 class="head mt-5">{{conferenceData.organizedby | uppercase}}</h1>
-        <h5 class="cat-tittle mt-5" style="margin-left: auto" (click)="goBack()">
+        <h1 class="head mt-5">{{ conferenceData.organizedby | uppercase }}</h1>
+        <h5
+          class="cat-tittle mt-5"
+          style="margin-left: auto"
+          (click)="goBack()"
+        >
           <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
           Events
         </h5>
@@ -12,159 +16,61 @@
       <div class="row">
         <mat-tab-group (selectedTabChange)="getSelectedTab($event)">
           <mat-tab label="aboutconference">
-            <ng-template mat-tab-label >
-             About conference
-            </ng-template>
+            <ng-template mat-tab-label> About conference </ng-template>
             <div class="row" [innerHTML]="sanitizedHtmlAboutConference"></div>
           </mat-tab>
 
           <mat-tab label="schedule">
-            <ng-template mat-tab-label>
-             Schedule
-            </ng-template>
+            <ng-template mat-tab-label> Schedule </ng-template>
             <div class="row" [innerHTML]="sanitizedHTMLAboutSchedule"></div>
           </mat-tab>
 
           <mat-tab label="speakers">
-            <ng-template mat-tab-label>
-              Speakers
-            </ng-template>
+            <ng-template mat-tab-label> Speakers </ng-template>
 
             <div class="row" [innerHTML]="sanitizedHTMLAboutSpeaker"></div>
           </mat-tab>
 
           <mat-tab label="locations">
-            <ng-template mat-tab-label>
-             Locations
-            </ng-template>
+            <ng-template mat-tab-label> Locations </ng-template>
             <div class="row" [innerHTML]="sanitizedHTMLAboutLocation"></div>
           </mat-tab>
 
-          <!-- <mat-tab label="personaldetails">
-            <ng-template mat-tab-label>
-             Personal Details
-            </ng-template>
+          <mat-tab label="personaldetails">
+            <ng-template mat-tab-label> Personal Details </ng-template>
 
-            <div
-              class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block"
-            >
-              <div
-                class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 text-center d-flex justify-content-center align-items-center"
-              >
-                <span>
-                  <h4 class="head">Share :</h4>
-                </span>
-                <a
-                  class="btn btn-lg btn-floating mx-2"
-                  style="background-color: #0077b5; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-linkedin"></i
-                ></a>
-
-                <a
-                  class="btn btn-lg btn-floating mx-2"
-                  style="background-color: #25d366; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-whatsapp"></i
-                ></a>
-
-                <a
-                  class="btn btn-lg btn-floating mx-2"
-                  style="background-color: #1da1f2; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-
-                <a
-                  class="btn btn-lg btn-floating mx-2"
-                  style="background-color: #e1306c; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-
-                <a
-                  class="btn btn-lg btn-floating mx-2"
-                  style="background-color: #ff0000; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-youtube"></i
-                ></a>
+            <div class="row">
+              <div class="members">
+                <div
+                  class="participant w-100 d-flex justify-content-between align-items-center"
+                  *ngFor="let item of participantsData"
+                >
+                  <input type="checkbox" />
+                  <div class="details">
+                    <h4>{{ item.name }}</h4>
+                    <span>{{ item.email }}</span>
+                    <span><label for="">Age:</label>{{ item.age }}</span>
+                  </div>
+                  <div class="actions">
+                    <button class="btn btn-success" (click)="openAddMember('Edit',item)">
+                      <i class="fa-solid fa-pencil"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger"
+                      (click)="deleteParticipant(item)"
+                    >
+                      <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="btns">
+                <button class="btn btn-success" (click)="confirmBooking()">Confirm</button>
+                <button class="btn btn-success" (click)="openAddMember('Add',null)">Add New Member</button>
               </div>
             </div>
 
-            <div
-              class="row d-xs-none d-sm-block d-md-none d-lg-none d-xl-none d-xxl-none"
-            >
-              <span>
-                <h4 class="head mt-5">Share :</h4>
-              </span>
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              ></div>
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              >
-                <a
-                  class="btn"
-                  style="background-color: #0077b5; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-linkedin"></i
-                ></a>
-              </div>
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              >
-                <a
-                  class="btn"
-                  style="background-color: #25d366; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-whatsapp"></i
-                ></a>
-              </div>
-
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              >
-                <a
-                  class="btn"
-                  style="background-color: #1da1f2; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-              </div>
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              >
-                <a
-                  class="btn"
-                  style="background-color: #e1306c; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-              </div>
-
-              <div
-                class="col-2 col-sm-2 col-md-2 col-lg-2 text-center d-flex justify-content-center align-items-center"
-              >
-                <a
-                  class="btn"
-                  style="background-color: #ff0000; color: white; border: none"
-                  href="#!"
-                  role="button"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-              </div>
-            </div>
-
-            <div class="personal-details-modal">
+            <!-- <div class="personal-details-modal">
               <span class="close-modal" (click)="closeModal()">X</span>
               <h2 class="modal-title">Confirm Details</h2>
 
@@ -315,13 +221,11 @@
                   </div>
                 </form>
               </div>
-            </div>
-          </mat-tab> -->
+            </div> -->
+          </mat-tab>
 
           <mat-tab label="payments">
-            <ng-template mat-tab-label>
-             Payments
-            </ng-template>
+            <ng-template mat-tab-label> Payments </ng-template>
 
             <div
               class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block"
@@ -547,4 +451,152 @@
       </div>
     </div>
   </section>
+</div>
+<div class="modalA" *ngIf="isOpenAddMemeber">
+  <div
+    class="modal-contents col col-lg-6 col-md-6 col-sm-10"
+    [formGroup]="addMemberForm"
+  >
+  <i class="fa-solid fa-circle-xmark closeIcon" title="Close" (click)="closeModals()"></i>
+    <h1>{{addEditLabel}} Participant</h1>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter Name"
+        formControlName="name"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter Email"
+        formControlName="email"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter Whatsapp Number"
+        formControlName="mobile_number"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter Age"
+        formControlName="age"
+        class="form-control w-50 m-10"
+      />
+      <select
+        name=""
+        id=""
+        formControlName="gender"
+        class="form-control select"
+      >
+        <option value="" selected>Select Gender</option>
+        <option [value]="item.value" *ngFor="let item of gender">
+          {{ item.label }}
+        </option>
+      </select>
+    </div>
+    <strong>MBBS</strong>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter College Name"
+        formControlName="mbbs"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Year of Passing or Year of Study"
+        formControlName="yearofstudying"
+        class="form-control"
+      />
+    </div>
+    <strong>PG</strong>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Post Graduation"
+        formControlName="postgraduation"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Year of Passing or Year of Study"
+        formControlName="exporstudiing_year"
+        class="form-control"
+      />
+    </div>
+    <strong>SS</strong>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Super Speciality"
+        formControlName="superspecialty"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Enter Current Position"
+        formControlName="current_position"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Experience in Year/Year of Study"
+        formControlName="yearofpracticing"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Current Working Organization/Studying Institute"
+        formControlName="current_working_or_studying"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Council State"
+        formControlName="council_state"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Year of Register"
+        formControlName="yearofpracticing"
+        class="form-control"
+      />
+    </div>
+    <div class="field w-100 d-flex">
+      <input
+        type="text"
+        placeholder="Med Counsil Register Number"
+        formControlName="medRegisterNum"
+        class="form-control"
+      />
+    </div>
+    <div class="btns">
+      <button class="btn btn-success" [disabled]="!addMemberForm.valid" *ngIf="addEditLabel==='Add'" (click)="addParticipant(addMemberForm.value)">{{addEditLabel}} Member</button>
+      <button class="btn btn-success" [disabled]="!addMemberForm.valid" *ngIf="addEditLabel==='Update'"(click)="updateParticipant(addMemberForm.value)">{{addEditLabel}} Member</button>
+      <button class="btn btn-success" (click)="closeModals()">Cancel</button>
+    </div>
+  </div>
 </div>

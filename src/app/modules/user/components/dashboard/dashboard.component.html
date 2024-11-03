@@ -140,12 +140,12 @@
             <!-- Carousel controls -->
             <button class="carousel-control-prev" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="carousel-control-prev-icon" ></span>
               <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="carousel-control-next-icon"></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
@@ -165,58 +165,16 @@
       <hr />
       <div class="row">
         <!-- Coupon 1 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
+        <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
             <span>
               <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
             </span>
             <span>
               <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
+                {{item?.eventname}}
               </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
+              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>
@@ -235,7 +193,7 @@
       </div>
       <div class="row areaofinterest">
         <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex">
-          <div class=" w-50 aoi" (click)="goToAreaOfInterest()">
+          <div class=" w-50 aoi">
             <div
             class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2"
             *ngFor="let item of limitedAreaOfInterestData "
@@ -265,7 +223,7 @@
           </div>
           </div>
         </div>
-        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
+        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2 d-flex justify-content-end">
           <div class="recommendation-icon" (click)="goToAreaOfInterest()" title="Add Area Of Interest">+</div>
         </div>
       </div>
@@ -289,7 +247,7 @@
           class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2"
           *ngFor="let item of userAvailableSpecialities"
         >
-          <div class="wrapper"(click)="goToConferences(item)">
+          <div class="wrapper"(click)="goToConference(item)">
             <div class="iconbox-top md-align-center">
               <div class="iconbox-top-content">
                 <div class="hover-holder">
@@ -299,7 +257,7 @@
                         cx="49"
                         cy="49"
                         r="47"
-                        stroke="rgb(15,124,127)"
+                         stroke="rgb(15,124,127)"
                         stroke-width="2"
                         fill="none"
                       ></circle>

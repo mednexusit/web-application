@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth.service';
 import { ThememanageService } from '../../theme/thememanage.service';
 import { SharedService } from '../../../../shared/shared.service';
 import { UserService } from '../../services/user.service';
+import { ConferencedetailsComponent } from '../conferencedetails/conferencedetails.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,10 +20,11 @@ export class DashboardComponent {
   selectedValueTab1: string = 'all';
   selectedValueTab2: string = 'aboutConference';
   userData: any;
-  userDetailsData:any=[];
-  userAvailableSpecialities:any=[];
+  remaindersData: any = [];
+  userDetailsData: any = [];
+  userAvailableSpecialities: any = [];
   private dialogRef: MatDialogRef<any> | null = null;
-  displayedItems:number=5;
+  displayedItems: number = 5;
 
   onTabChange(event: any) {
     if (event.index === 0) {
@@ -43,26 +45,30 @@ export class DashboardComponent {
   toggleLogoSrc: string;
   isLoggedInUser: boolean = false;
 
-  areaOfInterestData:any=[];
-
+  areaOfInterestData: any = [];
+  conferenceData:any;
   constructor(
     private themeService: ThememanageService,
     private SharedService: SharedService,
     private authServ: AuthService,
     private router: Router,
     public dialog: MatDialog,
-    private userServ:UserService
+    private userServ: UserService,
+
   ) {
+
     this.logoSrc = this.themeService.getLogo();
     this.userLogoSrc = this.themeService.getUserLogo();
     this.toggleLogoSrc = this.themeService.getToggleLogo();
+
   }
   ngOnInit(): void {
     this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.getUserDetails(this.userData);
-    this.fetchAreaOfInterest(this.userData)
+    this.fetchAreaOfInterest(this.userData);
+    this.fetchAllRemainders();
   }
   logoutUser() {
     this.authServ.logoutUser();
@@ -147,66 +153,107 @@ export class DashboardComponent {
 
   getUserDetails(data: any) {
     if (data?.userid) {
-      let dataToPass={
-        user_id:data.userid
-      }
+      let dataToPass = {
+        user_id: data.userid,
+      };
       this.userServ.getUserDetails(dataToPass).subscribe({
-        next:(data:any)=>{
-          this.userDetailsData= data.responseContents;
-          if(this.userDetailsData[0]?.course){
+        next: (data: any) => {
+          this.userDetailsData = data.responseContents;
+          if (this.userDetailsData[0]?.course) {
             this.getUserSpecialities();
           }
         },
-        error:(err:any)=>{
-          console.error(err)
-        }
-      })
+        error: (err: any) => {
+          console.error(err);
+        },
+      });
     }
   }
-  getUserSpecialities(){
-    let dataToPass={
-    "course_id":this.userDetailsData[0]?.course,
-    "sub_courses_sub_list":this.userDetailsData[0]?.sub_course_list
-    }
-    this.userServ.getSpecialitiesAvailable(dataToPass).subscribe(
-      {
-        next:(data:any)=>{
-          this.userAvailableSpecialities= data.responseContents;
-        },
-        error:(err:any)=>{
-          console.error(err)
-        }
-      }
-    )
+  getUserSpecialities() {
+    let dataToPass = {
+      course_id: this.userDetailsData[0]?.course,
+      sub_courses_sub_list: this.userDetailsData[0]?.sub_course_list,
+    };
+    this.userServ.getSpecialitiesAvailable(dataToPass).subscribe({
+      next: (data: any) => {
+        this.userAvailableSpecialities = data.responseContents;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
   }
   goToConferences(data:any){
-    this.router.navigate(['dashboard/conferences-list/',data.subject_uuid])
+    this.SharedService.sendSubjectData(data);
+    this.router.navigate(['dashboard/conferences-list',0])
+  }
+  openModal(data:any){
+    this.dialog.open(ConferencedetailsComponent,{
+      data:data,
+      height:'500px'
+    })
+  }
+  goToConference(data:any){
+    this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
   }
 
-  goToAreaOfInterest(){
-    this.router.navigate(['dashboard/areaofinterest'])
+  goToAreaOfInterest() {
+    this.router.navigate(['dashboard/areaofinterest']);
   }
 
   get limitedAreaOfInterestData() {
     return this.areaOfInterestData.slice(0, this.displayedItems);
   }
-  fetchAreaOfInterest(data:any){
+  fetchAreaOfInterest(data: any) {
     if (data?.userid) {
-      let dataToPass={
-        user_id:data.userid
-      }
+      let dataToPass = {
+        user_id: data.userid,
+      };
       this.userServ.getAreaOfInterest(dataToPass).subscribe({
-        next:(data:any)=>{
-          this.areaOfInterestData= data.responseContents;
+        next: (data: any) => {
+          this.areaOfInterestData = data.responseContents;
         },
-        error:(err:any)=>{
-          console.error(err)
-        }
-      })
+        error: (err: any) => {
+          console.error(err);
+        },
+      });
     }
   }
-  viewAllAreaOfInterest(){
+  viewAllAreaOfInterest() {
     this.router.navigate(['dashboard/viewareaofinterest']);
   }
 
+  getDateStatus(date: string): string {
+    const proposalDate = new Date(date);
+    const today = new Date();
+
+    // Convert both dates to UTC midnight to remove timezone discrepancies
+    const utcProposalDate = Date.UTC(proposalDate.getUTCFullYear(), proposalDate.getUTCMonth(), proposalDate.getUTCDate());
+    const utcToday = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+
+    const diffInMs = utcProposalDate - utcToday;
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+    if (diffInDays <= 0) {
+      return 'Date has passed';
+    } else if (diffInDays === 1) {
+      return 'Conference will be tomorrow';
+    } else {
+      return `${diffInDays} days to go`;
+    }
+  }
+
+  fetchAllRemainders() {
+    let dataToPass = {
+      user_id: this.userData.userid,
+    };
+    this.userServ.getAllRemainders(dataToPass).subscribe({
+      next: (data: any) => {
+        this.remaindersData = data.responseContents;
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
 }

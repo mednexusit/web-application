@@ -350,4 +350,195 @@ export class UserService {
       httpOptions
     );
   }
+
+  getAllSearchConferences(data={}){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/getallconference',
+      data,
+      httpOptions
+    );
+  }
+
+  getAllRemainders(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/getallconferenceremainders',
+      data,
+      httpOptions
+    );
+  }
+
+  fetchBookMarkList(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/bookmarklist',
+      data,
+      httpOptions
+    );
+  }
+  bookMarkSave(data:any){
+    //resorceapi/bookmarksave
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/bookmarksave',
+      data,
+      httpOptions
+    );
+  }
+  deleteBookMark(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/bookmarkdelet',
+      data,
+      httpOptions
+    );
+  }
+  addParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/regparticipation',
+      data,
+      httpOptions
+    );
+  }
+  fetchParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/getuserparticipationbyidlist',
+      data,
+      httpOptions
+    );
+  }
+  editParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/updateparticipationbyid',
+      data,
+      httpOptions
+    );
+  }
+  deleteParticipant(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'api/usercourses/deleteparticipationbyid',
+      data,
+      httpOptions
+    );
+  }
+  bookingConfirmation(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/bookingconfirmation',
+      data,
+      httpOptions
+    );
+  }
+  fetchBookingConfirmation(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'resorceapi/bookingconfirmationlist',
+      data,
+      httpOptions
+    );
+  }
 }

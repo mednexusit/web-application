@@ -26,7 +26,6 @@ export class AreaofinterestlistComponent implements OnInit{
 
   }
   deleteAOI(data:any){
-    console.log(data);
     let dataToPass={
       "user_id":this.userData.userid,
       "id":data.areaofintrest_id
