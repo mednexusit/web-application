@@ -140,12 +140,12 @@
             <!-- Carousel controls -->
             <button class="carousel-control-prev" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="carousel-control-prev-icon" ></span>
               <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="carousel-control-next-icon"></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
@@ -174,7 +174,7 @@
               <p class="coupon-caption">
                 {{item?.eventname}}
               </p>
-              <p class="cod">{{item.proposal_date_time | date:'dd-mm-yyyy'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
+              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>

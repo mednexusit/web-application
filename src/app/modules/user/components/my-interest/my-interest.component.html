@@ -3,47 +3,79 @@
     <div class="container mb-5">
       <div class="d-flex">
         <h1 class="head mt-5">My Interest</h1>
-        <h5 class="cat-tittle mt-5" style="margin-left: auto;"><span><i
-              class="fa-regular fa-less-than"></i></span>&nbsp; Back to Home</h5>
-
+        <h5 class="cat-tittle mt-5" style="margin-left: auto;">
+          <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to Home
+        </h5>
       </div>
       <hr class="hr">
 
       <div class="row">
         <mat-tab-group (selectedTabChange)="getSelectedTab($event)">
 
+          <!-- My Enrollment Tab -->
           <mat-tab label="enrollment">
             <ng-template mat-tab-label>
               My Enrollment
             </ng-template>
-            <!-- Content for Hot Jobs tab -->
 
-            <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
-              ?</div>
+              <div class="row d-block">
+                <div
+                  class="tab-card1 col-12 col-md-6 col-lg-4 col-sm-12"
+                  *ngFor="let item of bookingConfirmationList" (click)="openModal(item, $event)"
+                >
+                  <div class="tab-title">
+                    {{ item.eventname }}
+                  </div>
+                  <div class="tab-details">
+                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.address | titlecase }}
+                  </div>
+                </div>
+              </div>
           </mat-tab>
 
-
+          <!-- My Bookmarks Tab -->
           <mat-tab label="bookmarks">
             <ng-template mat-tab-label>
-                My Bookmarks
+              My Bookmarks
             </ng-template>
 
+              <div class="row  d-block">
+                <div
+                  class="tab-card1 col-12 col-md-6 col-lg-4 col-sm-12"
+                  *ngFor="let item of myInterest" (click)="openModal(item, $event)"
+                >
+                  <div class="deleteIcon">
+                    <i class="fa-solid fa-trash" (click)="deleteBookMark(item)"></i>
+                  </div>
+                  <div class="tab-title">
+                    {{ item.eventname }}
+                  </div>
+                  <div class="tab-details">
+                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                  </div>
+                  <div class="location">
+                    Location: {{ item.address | titlecase }}
+                  </div>
+                </div>
 
+            </div>
           </mat-tab>
 
-
+          <!-- My Certificates Tab -->
           <mat-tab label="certificates">
             <ng-template mat-tab-label>
               My Certificates
             </ng-template>
-
+            <div class="row certificates d-block">
+              <h1>COMING SOON...</h1>
+            </div>
           </mat-tab>
-
 
         </mat-tab-group>
       </div>
     </div>
-
-
   </section>
 </div>

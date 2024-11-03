@@ -194,7 +194,6 @@ export class DashboardComponent {
     })
   }
   goToConference(data:any){
-    console.log("DATA IS",data)
     this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
   }
 
@@ -228,11 +227,11 @@ export class DashboardComponent {
     const proposalDate = new Date(date);
     const today = new Date();
 
-    // Reset hours, minutes, seconds, and milliseconds for both dates
-    today.setHours(0, 0, 0, 0);
-    proposalDate.setHours(0, 0, 0, 0);
+    // Convert both dates to UTC midnight to remove timezone discrepancies
+    const utcProposalDate = Date.UTC(proposalDate.getUTCFullYear(), proposalDate.getUTCMonth(), proposalDate.getUTCDate());
+    const utcToday = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
 
-    const diffInMs = proposalDate.getTime() - today.getTime();
+    const diffInMs = utcProposalDate - utcToday;
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
     if (diffInDays <= 0) {
@@ -240,7 +239,7 @@ export class DashboardComponent {
     } else if (diffInDays === 1) {
       return 'Conference will be tomorrow';
     } else {
-      return `Conference will be after ${diffInDays} days`;
+      return `${diffInDays} days to go`;
     }
   }
 
