@@ -50,7 +50,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    this.iconsToShow = this.screenWidth <= 768 ? 4 : 10;
+    this.iconsToShow = this.screenWidth <= 768 ? 6 : 10;
     this.updateDisplayedIcons();
   }
 
@@ -67,7 +67,7 @@ export class MainComponent implements OnInit {
 
   constructor(private router:Router) {}
   categories: any = [
-    { name: 'Login', value: 'profile', icon: 'fa-solid fa-user catIcon' },
+    { name: 'My Profile', value: 'profile', icon: 'fa-solid fa-user catIcon' },
     {
       name: 'Conferences',
       value: 'conferences',
@@ -88,11 +88,11 @@ export class MainComponent implements OnInit {
       value: 'certificates',
       icon: 'fa-solid fa-certificate catIcon',
     },
-    {
-      name: 'Add Conferences',
-      value: 'Add Conferences',
-      icon: 'fa-solid fa-certificate catIcon',
-    },
+    // {
+    //   name: 'Add Conferences',
+    //   value: 'Add Conferences',
+    //   icon: 'fa-solid fa-certificate catIcon',
+    // },
     {
       name: 'News Feeds',
       value: 'newsfeeds',
