@@ -25,6 +25,7 @@ export class DashboardComponent {
   userAvailableSpecialities: any = [];
   private dialogRef: MatDialogRef<any> | null = null;
   displayedItems: number = 5;
+  carnivalData:any=[];
 
   onTabChange(event: any) {
     if (event.index === 0) {
@@ -69,6 +70,7 @@ export class DashboardComponent {
     this.getUserDetails(this.userData);
     this.fetchAreaOfInterest(this.userData);
     this.fetchAllRemainders();
+    this.fetchConferences();
   }
   logoutUser() {
     this.authServ.logoutUser();
@@ -201,6 +203,21 @@ export class DashboardComponent {
     this.router.navigate(['dashboard/areaofinterest']);
   }
 
+  fetchConferences(){
+    this.userServ.getAllSearchConferences().subscribe({
+      next:(data:any)=>{
+        if(data){
+          this.carnivalData = data.responseContents;
+          console.log("carnivaldata0",this.carnivalData);
+          this.carnivalData = this.carnivalData.slice(-6);
+          console.log("carnivaldata",this.carnivalData);
+        }
+      },
+      error:(err:any)=>{
+        console.error(err);
+      }
+    })
+  }
   get limitedAreaOfInterestData() {
     return this.areaOfInterestData.slice(0, this.displayedItems);
   }
