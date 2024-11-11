@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light desktop">
+<nav class="navbar navbar-expand-lg navbar-light w-100 desktop">
   <div class="row col-12">
-    <div class="col-10 row">
-      <div class="col-1">
+    <div class="col-md-9 row">
+      <div class="col-md-1">
         <button mat-icon-button (click)="toggleSidebar()">
           <mat-icon>menu</mat-icon>
         </button>
@@ -12,14 +12,30 @@
         </span>
       </div>
     </div>
-    <div class="col-2">
-      <button mat-icon-button>
-        <i class="fa-solid fa-user-plus"></i>
-      </button>
-
-      <button mat-icon-button>
-        <i class="fa-regular fa-bell"></i>
-      </button>
+    <div class="col-md-3 row">
+		<div class="col-md-5 padd0">
+			<button mat-icon-button>
+				<i class="fa-solid fa-user-plus"></i>
+			</button>
+			<button mat-icon-button>
+			<i class="fa-regular fa-bell"></i>
+			</button>
+		</div>
+		<div class="col-md-7 padd0 row user-info">
+			<div class="col-md-8">
+				<div class="user-name">{{titleName}}</div>
+				<div class="user-role">{{titleDesg}}</div>
+			</div>
+			<div class="col-md-4">
+				<div class="dropdown">
+					<div class="dropbtn"><i class="fa-solid fa-circle-user fa-xl"></i><i class="fa-solid fa-chevron-down ms-4"></i></div>
+					<div class="dropdown-content">
+						<a role="button"><i class="fa-solid fa-user-gear me-2"></i>Change Password</a>
+						<a role="button"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
   </div>
 </nav>
@@ -50,43 +66,43 @@
 		<div class="row show-mobile-list">
 			<ul>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Dashboard
+					<a [routerLink]="['/vendor/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
+						<img src="../../../../../assets/dsico.svg" class="menu-ic"><span>Dashboard</span>
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Conference
+					<a [routerLink]="['/vendor/dashboard/conference']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/conference-icon.svg" class="menu-ic"><span>Conference</span>
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Financial Overview
+					<a [routerLink]="['/vendor/dashboard/financial-overview']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/finance-icon.svg" class="menu-ic"><span>Financial Overview</span> 
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Registrant Management
+					<a [routerLink]="['/vendor/dashboard/registrant']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/registrant-icon.svg" class="menu-ic"><span>Registrant Management</span> 
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Analytics
+					<a [routerLink]="['/vendor/dashboard/analytics']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/analytics-icon.svg" class="menu-ic"><span>Analytics</span>
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Financial Overview
+					<a [routerLink]="['/vendor/dashboard/notification']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/conference-prom-icon.svg" class="menu-ic"><span>Message/Notification</span>
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						<i class="fa-solid fa-magnifying-glass"></i>Support
+					<a [routerLink]="['/vendor/dashboard/support']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/support-icon.svg" class="menu-ic"><span>Support</span>
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }"(click)="toggleMobileMenu()">
-						Logout
+					<a [routerLink]="['/vendor/dashboard/logout']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+						<img src="../../../../../assets/logout-icon.svg" class="menu-ic"><span>Logout</span>
 					</a>
 				</li>
 			  </ul>
@@ -97,36 +113,36 @@
 <mat-sidenav-container class="sidenav-container">
 	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
 		<mat-nav-list>
-			<a class="active" mat-list-item [routerLink]="['/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
-				<span *ngIf="isSidebarOpen">Dashboard</span>
+			<a class="active" mat-list-item [routerLink]="['/vendor/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
+				<img src="../../../../../assets/dsico.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Dashboards</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['conference']"   routerLinkActive="router-link-active">
+				<img src="../../../../../assets/conference-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Conference</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['financial-overview']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/finance-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Financial Overview</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['registrant']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/registrant-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Registrant Management</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['analytics']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/analytics-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Analytics</span>
 			</a>
-      		<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
-				<span *ngIf="isSidebarOpen">Financial Overview</span>
+			<a mat-list-item [routerLink]="['notification']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/conference-prom-icon.svg" class="menu-ic">
+				<span *ngIf="isSidebarOpen">Conference Promotion</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['support']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/support-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Support</span>
 			</a>
-			<a mat-list-item [routerLink]="['dashboard']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
-				<img src="../../../../../assets/search.svg" class="menu-ic">
+			<a mat-list-item [routerLink]="['logout']" routerLinkActive="router-link-active">
+				<img src="../../../../../assets/logout-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Logout</span>
 			</a>
 		</mat-nav-list>

@@ -1,1 +1,59 @@
-<p>vendorcreateconference works!</p>
+<div class="wrapper">
+    <!--Page Main header-->
+    <div class="pageHeader">
+        <div class="row">
+            <div class="col-8"><h2>Create Conference</h2></div>
+            <div class="col-4"><p><i class="fa-solid fa-chevron-left"></i>Back</p></div>
+        </div>
+        <!--Main section starts here-->
+        <div class="create-form">
+            <form [formGroup]="Confform">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div><label for="conf-name">Conference Name <span>*</span></label></div>
+                        <input id="conf-name" type="text" formControlName="conferenceName" placeholder="Enter Conference Name">
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div><label for="conf-name">speciality <span>*</span></label></div>
+                        <input id="conf-speciality" type="text" formControlName="speciality" placeholder="Enter Speciality">
+                    </div>
+                    <div class="col-md-4 col-xs-12 row paddRighht0">
+                        <div class="col-md-6 col-xs-12 paddRighht0">
+                            <div><label for="conf-name">Start Date <span>*</span></label></div>
+                            <input id="conf-name" type="date" formControlName="startDate" placeholder="Enter Conference Name">
+                        </div>
+                        <div class="col-md-6 col-xs-12 paddRighht0">
+                            <div><label for="conf-name">Time <span>*</span></label></div>
+                        <input id="conf-name" type="time" formControlName="time" placeholder="Enter Conference Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row paddingTop">
+                    <div class="col-md-4 col-xs-12">
+                        <div><label for="conf-name">Location <span>*</span></label></div>
+                        <select name="" id="" formControlName="location" aria-placeholder="Location">
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div><label for="conf-name">Payment Status <span>*</span></label></div>
+                        <select name="" id="" formControlName="paymentStatus" aria-placeholder="Location">
+                            <option value="Closed">Closed</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Upcoming">Upcoming</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div><label for="conf-name">Description <span>*</span></label></div>
+                        <input id="conf-name" type="text" formControlName="description" placeholder="Enter Speciality">
+                    </div>
+                </div>
+                <div class="actions">
+                    <button mat-raised-button class="cancelbtn" type="button" (click)="onCancel()">Cancel</button>
+                    <button mat-raised-button class="savebtn" color="primary" type="submit">Create</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>

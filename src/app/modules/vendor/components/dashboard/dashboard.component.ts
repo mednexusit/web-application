@@ -11,6 +11,8 @@ export class DashboardComponent {
   sidenavMode: MatDrawerMode = 'side';
   isMobileMenuOpen = false;
   isHide: boolean = false;
+  titleName = "Geethanjali";
+  titleDesg = "Admin";
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;

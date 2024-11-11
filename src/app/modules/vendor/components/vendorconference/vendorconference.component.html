@@ -1,1 +1,315 @@
-<p>vendorconference works!</p>
+<div class="wrapper" *ngIf="DefaultConferenceList">
+    <!--Page Main header-->
+    <div class="pageHeader">
+        <h2>Conference List</h2>
+    </div>
+    <!--Search bar section-->
+    <div class="pagesearch row col-12">
+        <div class="col-md-6 col-xs-12">
+            <div class="search-container">
+                <span class="search-icon">
+                  <img src="../../../../../assets/search-bar-icon.svg" alt="">
+                </span>
+                <input type="search" class="search-input" placeholder="Search" [(ngModel)]="searchText"/>
+                <button class="search-btn">
+                    Search
+                </button>
+                
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <button class="filter-button" (click)="showTable()">Filter <img src="../../../../../assets/filter-icon.svg" alt=""></button>
+            <!-- <mat-form-field class="filter-button">
+              <mat-label>Filter</mat-label>
+              <mat-select>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+            <img src="../../../../../assets/xl-icon.svg" alt="">
+        </div>
+    </div>
+    <!--table section-->
+    <div class="conference-list-container">
+        
+        <table mat-table [dataSource]="dataSource" class="responsive-table table-bordered fixed-table">
+          <!-- Serial Number Column -->
+          <ng-container matColumnDef="sno">
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;"><input type="checkbox" class="checkboxstyles" />S.No</th>
+            <td mat-cell *matCellDef="let element"><input type="checkbox" class="checkboxstyles"/>{{ element.sno }}</td>
+          </ng-container>
+      
+          <!-- Conference Name Column -->
+          <ng-container matColumnDef="conferenceName">
+            <th mat-header-cell *matHeaderCellDef style="width: 200px;">Conference Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.conferenceName }}</td>
+          </ng-container>
+      
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef style="width: 150px;">Date</th>
+            <td mat-cell *matCellDef="let element">{{ element.date | date:'dd MMM yyyy' }}</td>
+          </ng-container>
+      
+          <!-- Location Column -->
+          <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;">Location</th>
+            <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+          </ng-container>
+      
+          <!-- Register Column -->
+          <ng-container matColumnDef="register">
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;">Register</th>
+            <td mat-cell *matCellDef="let element" class="regNum">{{ element.register }}</td>
+          </ng-container>
+      
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef style="width: 130px;">Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span [ngClass]="element.status">{{ element.status }}</span>
+            </td>
+          </ng-container>
+      
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="width: 180px;">Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="viewDetails(element)">
+                <img src="../../../../../assets/Action-eye-icon.svg" alt="">
+              </button>
+              <button mat-icon-button color="accent" (click)="editConference(element)">
+                <img src="../../../../../assets/Action-edit-icon.svg" alt="">
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteConference(element)">
+                <img src="../../../../../assets/Action-delete-icon.svg" alt="">
+              </button>
+            </td>
+          </ng-container>
+      
+          <!-- Table Header and Rows -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!-- Pagination -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+      </div>
+</div>
+
+
+<div class="wrapper" *ngIf="IsAddedList">
+  <!--Page Main header-->
+  <div class="pageHeader">
+      <h2>Conference List</h2>
+  </div>
+  <!--Search bar section-->
+  <div class="pagesearch row col-12">
+      <div class="col-md-5 col-xs-12">
+          <div class="search-container">
+              <span class="search-icon">
+                <img src="../../../../../assets/search-bar-icon.svg" alt="">
+              </span>
+              <input type="search" class="search-input" placeholder="Search" [(ngModel)]="searchText"/>
+              <button class="search-btn">
+                  Search
+              </button>
+              
+          </div>
+      </div>
+      <div class="col-md-7 col-xs-12">
+          <button class="filter-button btn-blue-styles" (click)="openModal()">+Add Note</button>
+          <button class="filter-button btn-green-styles" (click)="sendModal()">Send Reminders</button>
+          <button class="filter-button" >Filter <img src="../../../../../assets/filter-icon.svg" alt=""></button>
+          <img src="../../../../../assets/xl-icon.svg" alt="">
+      </div>
+  </div>
+  <!--table section-->
+  <div class="conference-list-container">
+      
+      <table mat-table [dataSource]="dataSource1" class="responsive-table table-bordered fixed-table">
+        <!-- Serial Number Column -->
+        <ng-container matColumnDef="sno">
+          <th mat-header-cell *matHeaderCellDef style="width: 100px;"><input type="checkbox" class="checkboxstyles" />S.No</th>
+          <td mat-cell *matCellDef="let element"><input type="checkbox" class="checkboxstyles"/>{{ element.sno }}</td>
+        </ng-container>
+    
+        <!-- Conference Name Column -->
+        <ng-container matColumnDef="conferenceName">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Conference Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.conferenceName }}</td>
+        </ng-container>
+    
+        <!-- Date Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef style="width: 200px;">Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+    
+        <!-- Location Column -->
+        <ng-container matColumnDef="specialty">
+          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Specialty</th>
+          <td mat-cell *matCellDef="let element">{{ element.specialty }}</td>
+        </ng-container>
+    
+        <!-- Register Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Date of Register</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+    
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Status</th>
+          <td mat-cell *matCellDef="let element">
+            <span [ngClass]="element.status">{{ element.status }}</span>
+          </td>
+        </ng-container>
+    
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef style="width: 180px;">Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="viewDetails(element)">
+              <img src="../../../../../assets/conf-blue-icon.svg" alt="">
+            </button>
+            <button mat-icon-button (click)="editConference(element)">
+              <img src="../../../../../assets/conf-black-icon.svg" alt="">
+            </button>
+            <button mat-icon-button (click)="deleteConference(element)">
+              <img src="../../../../../assets/conf-del-icon.svg" alt="">
+            </button>
+          </td>
+        </ng-container>
+    
+        <!-- Table Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+      </table>
+    
+      <!-- Pagination -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>
+
+
+<!--code for send remainder popup modal-->
+<div class="modal fade" id="firstModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayfirst}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header col-12">
+              <div class="col-6">
+                  <p>Send Reminder</p>
+              </div>
+              <div class="col-6 text-right">
+                  <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+              </div>  
+          </div>
+         <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <input type="text" placeholder="Enter Title" [(ngModel)]="title" name="title" />
+                </div>
+                <div class="col-md-6 col-xs-12">
+                  <input type="text" placeholder="Enter Note" [(ngModel)]="note" name="note" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <input type="date" placeholder="Select Date" [(ngModel)]="date" name="date" />
+                </div>
+                <div class="col-md-6 col-xs-12">
+                  <input type="time" placeholder="Select Time" [(ngModel)]="time" name="time" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <input type="text" placeholder="Select Venue" [(ngModel)]="venue" name="venue" />
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn modal-btn-cancel" data-dismiss="modal" (click)="onCloseHandled()">CANCEL</button>
+          <button type="button" class="btn modal-btn-send" (click)="send()">SEND</button>
+        </div>
+     </div>
+      </div>
+</div>
+
+<!--code for send message popup modal-->
+<div class="modal fade sendMsg" id="secondModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displaySecond}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header col-12">
+              <div class="col-6">
+                  <p>Send Note</p>
+              </div>
+              <div class="col-6 text-right">
+                  <button type="button" class="close" aria-label="Close" (click)="sendCloseHandled()"><span aria-hidden="true">&times;</span></button>
+              </div>  
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <div class="row paddtop">
+                  <div class="col-12">
+                    <input type="text" placeholder="Enter Title" [(ngModel)]="title" name="title" />
+                  </div>
+                </div>
+                <div class="row paddtop">
+                  <div class="col-12">
+                    <input type="text" placeholder="Enter Note" [(ngModel)]="note" name="note" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn modal-btn-cancel" (click)="openAlert()">CANCEL</button>
+            <button type="button" class="btn modal-btn-send" (click)="openAlert()">SEND</button>
+          </div>
+     </div>
+      </div>
+</div>
+
+<!--code for alert popup modal-->
+<div class="modal fade alertpopup" id="secondModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayThird}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header col-12">
+              <div class="col-6">
+                  <p>Alert</p>
+              </div>
+              <div class="col-6 text-right">
+                  <button type="button" class="close" aria-label="Close" (click)="closeAlert()"><span aria-hidden="true">&times;</span></button>
+              </div>  
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <div class="row paddtop">
+                  <div class="col-12 alert">
+                    <img src="../../../../../assets/popup-alert-icon.svg" alt="">
+                    <p>Are you sure you want to delete the job?</p>
+                  </div>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn modal-btn-cancel" (click)="closeAlert()">NO</button>
+            <button type="button" class="btn modal-btn-send" (click)="send()">YES</button>
+          </div>
+     </div>
+      </div>
+</div>

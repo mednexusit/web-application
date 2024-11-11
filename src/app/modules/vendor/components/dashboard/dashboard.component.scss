@@ -13,8 +13,8 @@ $text-color: #ffffff;
     padding-top: 0.3rem;
   }
   
-  .col-10{
-    .col-1{
+  .col-md-9{
+    .col-md-1{
       text-align: right;
     }
     .mat-icon{
@@ -23,7 +23,7 @@ $text-color: #ffffff;
     }
   }
 
-  .col-2{
+  .col-md-3{
     color: white;
     text-align: right;
     padding-right: 0px;
@@ -80,10 +80,62 @@ header{
     font-size: 1.3rem;
   }
 }
+@media only screen and (min-width: 768px){
+  .router-link-active{
+    transition: all 0.3s linear;
+    span{
+      color: #0f7c7f !important;
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 996px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .mat-sidenav{
+    width: 6%;
+  }
+}
+@media screen and (min-width: 996px) and (max-width: 1100px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  img.menu-ic {
+    margin-right: 5px !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+  mat-nav-list a {
+    span{
+      font-size: 9px !important;
+    }
+  }
+}
+@media screen and (min-width: 1101px) and (max-width: 2000px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
+  ::ng-deep .router-link-active{
+    transition: all 0.3s linear;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    span{
+      color: #0f7c7f !important;
+      font-weight: 500;
+    }
+  }
   .desktop {
     display: none !important;
+  }
+  .navbar ul li a{
+    color: white !important;
   }
 
   .mobile {
@@ -95,6 +147,7 @@ header{
     background: $primary-color;
 
     .logo{
+      height: 60px;
       .col-3{
         text-align: right;
         i{
@@ -150,6 +203,13 @@ header{
     position: absolute;
     top: 80px;
     width: 100%;
+    img{
+      padding-top: 0px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        color: white;
+    }
 
     ul{
       padding-left: 5%;
@@ -165,6 +225,7 @@ header{
   .sidenav{
     display: none;
   }
+ 
 
 }
 
@@ -200,11 +261,7 @@ header {
     }
   }
 }
-.router-link-active{
-  border-bottom: 2px solid #fff;
-  transition: all 0.3s linear;
 
-}
 .hamIcon{
   color: #6610f2;
   font-size: 1.5rem;
@@ -223,7 +280,7 @@ header {
   border-right: 0px;
 
   // Full width when open, minimal width when closed
-  width: 18%;
+  width: 16%;
 
   &.mat-drawer {
     &.closed {
@@ -240,7 +297,6 @@ header {
     display: flex;
     align-items: center;
     padding: 8px 16px;
-    color: $text-color;
 
     img.menu-ic {
       margin-right: 10px;
@@ -251,8 +307,8 @@ header {
     span {
       display: inline-block;
       transition: opacity 0.3s ease;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 0.7rem;
+      font-weight: 600;
       color: #5a5757;
     }
   }
@@ -264,3 +320,88 @@ header {
 }
 
 
+/**navbar dropdown styles**/
+
+.menu-name {
+  color: var(--col-primary) !important;
+  border-bottom: 1px solid #E8ECF7;
+}
+
+.dropbtn {
+  font-size: .860rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--col-primary);
+  padding: 0.5rem 0rem;
+
+  .fa-solid{
+    margin-left: 0.1rem !important;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .fa-xl{
+    font-size: 2em;
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 11rem;
+  box-shadow: 0px 8px 16px 0px $primary-color;
+  z-index: 100;
+  text-align: left;
+  border: 1px solid #eaeaea;
+  border-radius: 5%;
+}
+
+.dropdown-content a {
+  color: var(--bs-gray-700);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: .760rem;
+  font-weight: 500;
+  
+  border: 1px solid #eaeaea;
+  border-radius: 5%;
+
+  i {
+    width: 1.5rem;
+  }
+}
+
+.dropdown-content a:hover {
+  background-color: #eaeaea;
+  transition: .5s all ease-in-out;
+
+  i {
+    transition: .5s all ease-in-out;
+    transform: translateX(.2rem);
+  }
+}
+.dropdown:hover .dropdown-content {display: block;}
+
+.user-info{
+  .col-md-8{
+    padding: 0.5rem 0px;
+    text-align: right;
+  }
+  .col-md-4{
+    padding:0.2rem 0rem;
+  }
+}
+
+.user-name{
+  font-weight: 500;
+}
+.user-role{
+  font-size: 0.6rem;
+  line-height: 0.6rem;
+}

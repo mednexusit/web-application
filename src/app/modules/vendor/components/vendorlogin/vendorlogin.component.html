@@ -1,1 +1,186 @@
-<h1>I am Login Component</h1>
+<!--code for login screen-->
+<div class="row login-page-scetion" *ngIf="IsLoginPage">
+    <div class="col-md-6 col-xs-12 login-banner-img">
+        <div class="content-section">
+            <img src="../../../../../assets/login-logo.svg" alt="">
+            <h2>Event Organizers and Course Providers</h2>
+            <p>Partner with us to improve visibility, achieve better reach, and boost registrations.</p>
+        </div>
+        <div class="image-section">
+            <img src="../../../../../assets/banner-animated.gif" alt="">
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form-section mobview">
+            <h3>Welcome to</h3>
+            <h2>Mednexus(connect to your passion)</h2>
+            <p>Please enter login with your username and password </p>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div><label for="username">Email/User name <span>*</span></label></div>
+                        <input id="username" type="text" formControlName="username" placeholder="Please Enter Your Email/User Name">
+                    </div>
+                </div>
+                <div class="form-group row padding-top">
+                    <div class="col-12 user-box">
+                        <div><label for="password">Passwords <span>*</span></label></div>
+                        <input id="password" type="password" formControlName="password" placeholder="Please Enter Password">
+                        <span class="password-toggle-icon">
+                            <img src="../../../../../assets/login-eye-icon.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-group check-remember row">
+                    <div class="col-6 checkbox-sec">
+                        <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
+                        <label for="rememberMe">Remember Me</label>
+                    </div>
+                    <div class="col-6 forgot-password" (click)="openModal()">
+                        <button (click)="forgotModal()">Forgot Password</button>
+                    </div>
+                </div>
+                <div class="login-btn">
+                    <button  type="button" class="btn" (click)="openModal()">LOGIN</button>
+                </div>
+                
+                <div class="text-center register-btn-section">
+                    <p>or continue with</p>
+                    <button  type="button" class="btn">
+                    <a href="">
+                        <img src="../../../../../assets/login-facebook-icon.svg" alt="">
+                    </a>
+                    </button>
+                    <button  type="button"  class="btn">
+                        <a href="">
+                            <img src="../../../../../assets/login-google-icon.svg" alt="">
+                        </a>
+                    </button>
+                    <button  type="button"  class="btn">
+                        <a href="">
+                            <img src="../../../../../assets/login-linkedin-icon.svg" alt="">
+                        </a>
+                    </button>
+                    <p >Don't have an account? <a href="">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="row footer">
+            <div class="col-7">
+                <p>Power by <span>Mednexus</span>.</p>
+            </div>
+            <div class="col-5 text-right">
+                <a href="">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--code for otp popup modal-->
+<div class="modal fade" id="firstModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayfirst}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header col-12">
+                <div class="col-6">
+                    <p>OTP Verification</p>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                </div>  
+            </div>
+           <div class="modal-body">
+                <p>Please enter your OTP to verify your account</p>
+                <p class="digit-info">A 6-digit code has been sent to your registered email/phone number</p>
+                <div class="otp-inputs">
+                    <input type="text" maxlength="1" *ngFor="let digit of otpArray; let i = index" [(ngModel)]="otp[i]" (keyup)="onKeyUp($event, i)">
+                </div>
+                <form>
+                    <button class="submit-btn" (click)="submitOtp()">SUBMIT</button>
+
+                    <div class="resend">
+                        Didn't get the code? <a (click)="resendOtp()">Resend Again</a>
+                      </div>
+                </form>
+            </div>
+       </div>
+        </div>
+</div>
+
+<!--code for forgot password popup modal-->
+<div class="modal fade" id="secondModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displaySecond}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header col-12">
+                <div class="col-6">
+                    <p>Forgot Password</p>
+                </div>
+                <div class="col-6 text-right">
+                    <button type="button" class="close" aria-label="Close" (click)="forgotCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                </div>  
+            </div>
+           <div class="modal-body">
+                <p class="forgot-heading">Please enter your Email/Phone Number</p>
+                <p class="digit-info">Confirm your register phone number or email to reset your password</p>
+                <div class="forgot-input">
+                    <input id="conf-speciality" type="text" formControlName="speciality" placeholder="Please enter your Email/Phone Number">
+                </div>
+                
+                <form class="forgot">
+                    <button class="submit-btn" (click)="submitForgotbtn()">SUBMIT</button>
+                </form>
+            </div>
+       </div>
+        </div>
+</div>
+
+<!--code for change password screen-->
+
+<div class="row login-page-scetion changePassword-section" *ngIf="isChangePassword">
+    <div class="col-md-6 col-xs-12 login-banner-img">
+        <div class="content-section">
+            <img src="../../../../../assets/login-logo.svg" alt="">
+            <h2>Event Organizers and Course Providers</h2>
+            <p>Partner with us to improve visibility, achieve better reach, and boost registrations.</p>
+        </div>
+        <div class="image-section">
+            <img src="../../../../../assets/banner-animated.gif" alt="">
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="form-section mobview">
+            <h3>Create New Password</h3>
+            <p>Your new password must be different from previous password</p>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <div class="col-12 user-box">
+                        <div><label for="username">New Password <span>*</span></label></div>
+                        <input id="username" type="text" formControlName="username" placeholder="Please Enter password">
+                        <span class="password-toggle-icon">
+                            <img src="../../../../../assets/login-eye-icon.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row padding-top">
+                    <div class="col-12">
+                        <div><label for="password">Confirm Password <span>*</span></label></div>
+                        <input id="password" type="password" formControlName="password" placeholder="Please Confirm Password">
+                    </div>
+                </div>
+                
+                <div class="login-btn">
+                    <button  type="button" class="btn" (click)="openModal()">LOGIN</button>
+                </div>
+                
+            </form>
+        </div>
+        <div class="row footer">
+            <div class="col-7">
+                <p>Power by <span>Mednexus</span>.</p>
+            </div>
+            <div class="col-5 text-right">
+                <a href="">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>
