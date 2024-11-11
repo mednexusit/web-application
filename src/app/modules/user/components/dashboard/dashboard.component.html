@@ -6,7 +6,7 @@
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000"> <!-- Auto-rotate every 3 seconds -->
             <div class="carousel-inner">
               <ng-container *ngFor="let item of carnivalData; let i = index">
-                <div class="carousel-item" [ngClass]="{'active': i === 0}">
+                <div class="carousel-item" [ngClass]="{'active': i === 0}" (click)="openModal(item)">
                   <div class="cards-wrapper d-flex">
                     <div class="card">
                       <div class="title">{{ item.organizedby }}</div>
