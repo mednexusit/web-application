@@ -1,1 +1,182 @@
-<p>vendorhome works!</p>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 border-line">
+            <div class="main-header row">
+                <div class="col-md-7">
+                    <h2>Overview</h2>
+                </div>
+                <div class="col-md-3 hideMobile">
+                    <a><span>Search By Name</span></a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="col-md-2 hideMobile">
+                    <a><span>Today</span></a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="inner-wrapper">
+                <div class="row card-section">
+                    <div class="col-lg-3 col-md-4 col-sm-2 col-xs-12 card-padd-right" *ngFor="let card of cards">
+                        <div class="div-card">
+                            <a><span>{{ card.title }}</span></a>
+                            <div class="row card-count">
+                                <div class="col-6">
+                                    <h2>{{card.value}}</h2>
+                                </div>
+                                <div class="col-6">
+                                    <h6><span>{{card.range}}<i class="fa-solid fa-arrow-trend-up"></i></span></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="main-header row">
+                <div class="col-10">
+                    <h2>Analytics Preview</h2>
+                </div>
+                <div class="col-2">
+                    <a>Today</a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="inner-wrapper">
+                <div class="row card-section">
+                    <div class="col-md-6 card-padd-right mobilepadd">
+                        <div class="div-card-graph">
+                            <h3><span>Registration Trends</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 card-padd-right mobilepadd">
+                        <div class="div-card-graph">
+                            <h3><span>Registrants by Specialty</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="table-section">
+                <h2>Recent Registrations</h2>
+            </div>
+            <div class="table-container">
+                <table mat-table [dataSource]="dataSource" class="responsive-table table-bordered fixed-table">
+              
+                  <!-- S.No Column -->
+                  <ng-container matColumnDef="sno">
+                    <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Sno </th>
+                    <td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox> </td>
+                  </ng-container>
+              
+                  <!-- Conference Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef style="width: 150px;"> Conference Name </th>
+                    <td mat-cell *matCellDef="let element" isEllipsisActive>{{element.name}}</td>
+                  </ng-container>
+              
+                  <!-- Date Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Date </th>
+                    <td mat-cell *matCellDef="let element" class="DateStyles"> {{element.date}} </td>
+                  </ng-container>
+              
+                  <!-- Location Column -->
+                  <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Location </th>
+                    <td mat-cell *matCellDef="let element" isEllipsisActive> {{element.location}} </td>
+                  </ng-container>
+              
+                  <!-- No. of Registrations Column -->
+                  <ng-container matColumnDef="registrations">
+                    <th mat-header-cell *matHeaderCellDef style="width: 150px;"> No. of Registrations </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.registrations}} </td>
+                  </ng-container>
+              
+                  <!-- Status Column -->
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef style="width: 180px;"> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                      <button mat-icon-button aria-label="View" matTooltip="View">
+                        <img src="../../../../../assets/Action-eye-icon.svg" alt="">
+                      </button>
+                      <button mat-icon-button aria-label="Edit" matTooltip="Edit">
+                        <img src="../../../../../assets/Action-edit-icon.svg" alt="">
+                      </button>
+                      <button mat-icon-button aria-label="Delete" matTooltip="Delete">
+                        <img src="../../../../../assets/Action-delete-icon.svg" alt="">
+                      </button>
+                    </td>
+                  </ng-container>
+              
+                  <!-- Header and Row Declarations -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              
+                </table>
+              </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mobileHide">
+            <!-- Quick Links Section -->
+            <div class="quick-links-section">
+                <h3><span>Quick Links</span></h3>
+                <div class="quick-links">
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-solid fa-laptop"></i>
+                        </div>
+                        <div class="col-10">
+                            <span>
+                                <h4>Facebook</h4>
+                                <p>Track your operations</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div class="col-10">
+                            <span>
+                                <h4>LinkedIn</h4>
+                                <p>On Going Batch Status</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-brands fa-twitter"></i>
+                        </div>
+                        <div class="col-10">
+                            <span>
+                                <h4>Twitter</h4>
+                                <p>User Access made simple</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="col-10">
+                            <span>
+                                <h4>Instagram</h4>
+                                <p>Ongoing Status of QA</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="notifications-section">
+                <h3>Message / Notification</h3>
+                <div class="notification" *ngFor="let notification of notifications">
+                    <img [src]="notification.image" alt="Profile Image" />
+                    <div class="notification-content">
+                        <h4>{{ notification.title }}</h4>
+                        <p>{{ notification.name }}</p>
+                        <span>{{ notification.time }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

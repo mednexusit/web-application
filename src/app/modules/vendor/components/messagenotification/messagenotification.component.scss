@@ -1,0 +1,315 @@
+.promotionList{
+    padding:1.5rem  1rem;
+    background-color: white;
+    .pageHeader{
+        background-color: #F1F1F1;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        button{
+          background-color: #249A9A;
+          color: white;
+          border: 1px solid #249A9A;
+        }
+        h2{
+            font-size: 1rem;
+            margin-bottom: 0px;
+            padding: 0.2rem 1rem;
+        }
+        .promotion-btn{
+          text-align: right;
+          padding-top: 0.5rem;
+          button{
+            margin-right: 1rem;
+          }
+        }
+    } 
+    .pagesearch{
+        padding-top: 1.5rem;
+    }
+
+    .col-md-7{
+        text-align: right;
+        
+        .filter-button {
+            background-color: #F8F8F8;
+            color: black;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 1px solid #dbd9d9;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+          }
+          .btn-blue-styles{
+            background-color: #059D9D;
+            color: white;
+          }
+          .btn-green-styles{
+            background-color: #2EB848;
+            color: white;
+          }
+
+          .filter-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+          }
+          img{
+            padding-left: 0.5rem;
+          }
+    }
+    .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #888;
+        }
+        .search-input {
+            width: 100%;
+            padding: 8px 8px 8px 36px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0px 0px 4px;
+            outline: none;
+            font-size: 0.8rem;
+        }
+        .search-btn{
+            padding: 0.5rem 2rem;
+            border: 1px solid #dbd9d9;
+            background-color: #F8F8F8;
+            color: #888;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+          
+          .search-input:focus {
+            border-color: #0A6565;
+        }
+        
+      }
+  
+  /**Table styles**/
+  table {
+    width: 100%;
+    table-layout: fixed;
+
+    th, td {
+        overflow: hidden;
+        width:auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+    .mat-mdc-header-cell{
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .DateStyles {
+        color: #00923F;
+        font-weight: 600;
+        font-size: 0.7rem !important;
+      }
+    .mat-mdc-icon-button.mat-mdc-button-base{
+        color: #79c5c7;
+    }
+    
+  }
+  .mat-column-status span.Inactive {
+    color: red;
+  }
+ 
+  .mat-column-status span.Active {
+    color: green;
+  }
+  .conference-list-container{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    .material-icons{
+        font-size: 18px;
+    }
+    .mat-icon{
+        height: 18px;
+        width: 18px;
+    }
+    .mdc-icon-button img{
+        width: 20px;
+        height: 20px;
+      }
+      .mat-mdc-icon-button .mat-mdc-button-touch-target{
+        height: 40px !important;
+        width: 40px !important;
+      }
+      .responsive-table {
+        width: 100%;
+        overflow-x: auto;
+        border-color: #dbd9d9;
+        
+        ::ng-deep thead{
+          background-color: #F2F2F2 !important;
+        }
+        .checkboxstyles{
+          margin-right: 1rem;
+        }
+        
+      }
+      .regNum{
+        text-decoration: underline;
+        color: #0014B0;
+      }
+}
+
+  .mat-mdc-paginator{
+    padding-top: 1rem;
+  }
+ 
+  .fixed-table {
+    table-layout: fixed;
+    width: 100%; 
+  }
+}
+
+  @media (max-width: 600px) {
+    .promotionList{
+      .pageHeader h2{
+        padding: .2rem 0rem .2rem 0.5rem;
+      }
+      .search-container {
+        width: 100%;
+        padding-left: 0px 10px 0px 0px;
+        
+      }
+      .col-md-7{
+        padding-top: 1rem;
+        text-align: left !important;
+      }
+      .modal{
+        .modal-dialog{
+          width: 95% !important;
+        }
+      }
+    }
+  }
+
+
+  /**Create Promotion**/
+  .createProm{
+    padding:1.5rem  1rem;
+    background-color: white;
+    height: 100%;
+    .pageHeader{
+        background-color: #F1F1F1;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        h2{
+            font-size: 1rem;
+            margin-bottom: 0px;
+            padding: 0.2rem 1.5rem;
+        }
+        
+        .col-4{
+            p{
+            font-size: 0.8rem;
+            text-align: right;
+            font-weight: 500;
+            margin-bottom: 0;
+            padding: 0.6rem 1.5rem;
+            color: #717171;
+            cursor: pointer;
+            i{
+                padding-right: 0.5rem;
+            }
+            }
+        }
+        .create-form{
+            label{
+                color: #A1A1A1;
+                font-size: 0.8rem;
+                span{
+                    color: red;
+                }
+            }
+        }
+        .create-form{
+            form{
+                padding: 1rem;
+                background-color: white;
+            }
+            input{
+                width: 100%;
+                padding: 8px 8px 8px 20px;
+                border: 1px solid #ccc;
+                border-radius: 4px 4px 4px 4px;
+                outline: none;
+                font-size: 0.8rem;
+            }
+            input:focus {
+                border-color: #0A6565;
+            }
+            select{
+                width: 100%;
+                padding: 0.6rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .paddingTop{
+                padding-top: 1.3rem;
+            }
+            .cancelbtn{
+                background-color:#FD7B7B;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                width: 100px;
+                margin-right: 1rem;
+            }
+            .savebtn{
+                background-color: #249A9A;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                width: 100px;
+            }
+            .actions{
+                text-align: center;
+                padding-top: 1.5rem;
+            }
+        }
+    } 
+}
+ 
+@media (max-width: 600px) {
+  .conference-list-container{
+    overflow-x: scroll;
+  }
+  .pageHeader h2{
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+  }
+  .createProm{
+    .paddRighht0 {
+      padding-right: 0px;
+     }
+     .pageHeader h2{
+      padding: .2rem 0rem .2rem 0.5rem;
+     }
+     label{
+         padding-top: 1rem;
+     }
+     .paddingTop{
+         padding-top: 0px !important;
+     }
+  }
+   
+}

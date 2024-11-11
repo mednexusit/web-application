@@ -1,0 +1,179 @@
+.wrapper{
+    padding:1.5rem  1rem;
+    background-color: white;
+    .pageHeader{
+        background-color: #F1F1F1;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        h2{
+            font-size: 1rem;
+            margin-bottom: 0px;
+            padding: 0.2rem 1rem;
+        }
+    } 
+    .paddTop{
+        padding-top: 1rem;
+        i{
+            padding-left: 0.5rem;
+            color: #a49e9e;
+        }
+        a{
+            font-size: 0.7rem;
+        }
+        .col-md-2{
+            padding-top: 0.3rem;
+            text-align: right;
+            span{
+                transition: transform 0.3s ease;
+                display: inline-block;
+            }
+        }
+        .col-md-2:hover span{
+            transform: translateX(-5px);
+        }
+    }
+    .card-section{
+        .div-card{
+            height: 5.5rem;
+            background-color: #0B6F6F2E;
+            border: 1px solid #0B6F6F2E;
+            border-radius: 0.6rem;
+            box-shadow: 1px 1px 1px #0B6F6F2E;
+            padding: 1rem 0.5rem 1rem 1rem;
+            .card-count{
+                padding-top: 0.5rem;
+    
+                h2{
+                    margin-bottom: 0px;
+                    font-weight: 600;
+                    letter-spacing: 0.1rem;
+                }
+                h6{
+                    margin-bottom: 0px;
+                    font-weight: 600;
+                }
+                .col-6:nth-child(2){
+                    padding-top: 0.3rem;
+                    color: #00CB14;
+                    padding-right:0px;
+                }
+                .fa-arrow-trend-up{
+                    padding-left: 0.4rem;
+                }
+            }
+    
+            a{
+                font-size: 0.7rem;
+                span{
+                    transition: transform 0.3s ease;
+                    display: inline-block;
+                }
+            }
+            a:hover span{
+                transform: translateX(5px);
+            }
+            .col-6{
+    
+                h6{
+                    span{
+                        transition: transform 0.3s ease;
+                        display: inline-block;
+                    }
+                }
+                h6:hover span{
+                    transform: translateX(-5px);
+                }
+            }
+        }
+    }
+    
+    .div-card-graph{
+        height: 9rem;
+        background-color: #0B6F6F2E;
+        border: 1px solid #0B6F6F2E;
+        border-radius: 0.6rem;
+        box-shadow: 1px 1px 1px #0B6F6F2E;
+        padding: 1rem 0.5rem 1rem 1rem;
+    
+        h3{
+            font-size: 0.8rem;
+            font-weight: 500;
+            span{
+                transition: transform 0.3s ease;
+                display: inline-block;
+            }
+        }
+        h3:hover span{
+            transform: translateX(-5px);
+        }
+    }
+    .second-sec{
+        .header h2 {
+            font-size: 1rem;
+            margin: 0;
+        }
+        .header .view-all {
+            color: #008080;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .col-md-5{
+            padding-top: 3rem;
+        }
+    }
+    .text-right{
+        text-align: right;
+    }
+    
+  /**Table styles**/
+  .conference-list-container {
+    padding-top: 1rem;
+
+    .responsive-table {
+        width: 100%;
+        overflow-x: auto;
+        border-color: #dbd9d9;
+        
+        ::ng-deep thead{
+          background-color: #F2F2F2 !important;
+        }
+        .checkboxstyles{
+            margin-right: 1rem;
+          }
+        
+      }
+      .mat-mdc-paginator{
+        padding-top: 1rem;
+      }
+  }
+  @media (max-width: 600px) {
+    .conference-list-container{
+      overflow-x: scroll;
+    }
+    .search-container {
+      width: 100%;
+      padding-left: 0px 10px 0px 0px;
+      
+    }
+    .col-md-7{
+      padding-top: 1rem;
+      text-align: left !important;
+    }
+    .modal{
+      .modal-dialog{
+        width: 95% !important;
+      }
+    }
+    .mobilepadd{
+        padding-bottom: 3% !important;
+    }
+  }
+
+  .fixed-table {
+    table-layout: fixed;
+    width: 100%; 
+  }
+.graph-height{
+    height: 23rem;
+}
+}

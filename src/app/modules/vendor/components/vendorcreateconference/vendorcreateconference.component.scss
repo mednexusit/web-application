@@ -1,0 +1,104 @@
+.wrapper{
+    padding:1.5rem  1rem;
+    background-color: white;
+    height: 100%;
+    .pageHeader{
+        background-color: #F1F1F1;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        h2{
+            font-size: 1rem;
+            margin-bottom: 0px;
+            padding: 0.2rem 1.5rem;
+        }
+        
+        .col-4{
+            text-align: right;
+            padding-top: 0.5rem;
+            a{
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-align: right;
+            font-weight: 500;
+            margin-bottom: 0;
+            padding: 0.6rem 1.5rem;
+            color: #717171;
+            cursor: pointer;
+            i{
+                padding-right: 0.5rem;
+            }
+            }
+        }
+        .create-form{
+            label{
+                color: #A1A1A1;
+                font-size: 0.8rem;
+                span{
+                    color: red;
+                }
+            }
+        }
+        .create-form{
+            form{
+                padding: 1rem;
+                background-color: white;
+            }
+            input{
+                width: 100%;
+                padding: 8px 8px 8px 20px;
+                border: 1px solid #ccc;
+                border-radius: 4px 4px 4px 4px;
+                outline: none;
+                font-size: 0.8rem;
+            }
+            input:focus {
+                border-color: #0A6565;
+            }
+            select{
+                width: 100%;
+                padding: 0.6rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .paddingTop{
+                padding-top: 1.3rem;
+            }
+            .cancelbtn{
+                background-color:#FD7B7B;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                width: 100px;
+                margin-right: 1rem;
+            }
+            .savebtn{
+                background-color: #249A9A;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.7rem;
+                width: 100px;
+            }
+            .actions{
+                text-align: center;
+                padding-top: 1.5rem;
+            }
+        }
+    } 
+}
+
+
+
+ 
+@media (max-width: 600px) {
+    .paddRighht0 {
+     padding-right: 0px;
+    }
+    label{
+        padding-top: 1rem;
+    }
+    .paddingTop{
+        padding-top: 0px !important;
+    }
+  }

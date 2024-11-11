@@ -1,1 +1,242 @@
-<p>vendorfinancialoverview works!</p>
+<div class="wrapper" *ngIf="DefaultScreen">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="main-header row">
+                <div class="col-md-7 col-xs-12">
+                    <h2>Financial Overview</h2>
+                </div>
+                <div class="col-md-3 hideMobile">
+                    <a><span>Search By Name</span></a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="col-md-2 hideMobile">
+                    <a><span>Today</span></a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="row card-section">
+                <div class="col-md-3 col-xs-12" *ngFor="let card of cards">
+                    <div class="card" (click)="showTable()">
+                        <div class="row">
+                            <div class="col-6">
+                                <img [src]="card.image" alt="Profile Image" />
+                            </div>
+                            <div class="col-6 text-right">
+                                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon><img [src]="card.image" alt="Profile Image" /></mat-icon>
+                                    <span>Option1</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon><img [src]="card.image" alt="Profile Image" /></mat-icon>
+                                    <span>Option2</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <mat-icon><img [src]="card.image" alt="Profile Image" /></mat-icon>
+                                    <span>Option3</span>
+                                </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <h3>{{ card.title }}</h3>
+                            <p>{{ card.amount | currency:'USD' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="graph-section">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <h2>All Expenses</h2>
+                        <div class="card"></div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <h2>Earning Flow</h2>
+                        <div class="card"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-transaction-section">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="header">
+                            <h2>Recent Transaction</h2>
+                            <a href="#" class="view-all">View all</a>
+                        </div>
+                        <div class="transaction-item" *ngFor="let transaction of transactions">
+                            <div class="transaction-info">
+                              <img [src]="transaction.image" alt="User Image" class="user-image">
+                              <div class="details">
+                                <p class="name">{{ transaction.name }}</p>
+                                <p class="date">{{ transaction.date | date:'ddMMM yyyy' }}</p>
+                              </div>
+                            </div>
+                            <div class="transaction-amount">
+                              <span>{{ transaction.amount | currency:'BDT':'symbol':'1.0-0' }}</span>
+                              <button class="more-options"><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                <button mat-menu-item>
+                                    <span>Option1</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <span>Option2</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <span>Option3</span>
+                                </button>
+                                </mat-menu></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 card-info-section">
+                        <div class="header">
+                            <h2>Card Information</h2>
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Status</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value" [ngClass]="{'active': cardInfo.status === 'Active'}">{{ cardInfo.status }}</span>
+                            </div>          
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Card</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value">{{ cardInfo.card }}</span>
+                            </div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Card Type</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value">{{ cardInfo.cardType }}</span>
+                            </div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Card Number</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value">{{ cardInfo.cardNumber }}</span>
+                            </div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Expire Date</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value">{{ cardInfo.expireDate }}</span>
+                            </div>
+                        </div>
+                        <div class="info-row row">
+                            <div class="col-6">
+                                <span class="label">Currency</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <span class="value currency">
+                                    <img *ngIf="cardInfo.currencyIcon" [src]="cardInfo.currencyIcon" alt="Currency Icon" class="currency-icon">
+                                    {{ cardInfo.currency }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="conferenceList" *ngIf="InvoiceTable">
+    <!--Page Main header-->
+        <div class="pageHeader">
+          <div class="row">
+            <div class="col-6">
+              <h2>Earnings by Conference</h2>
+            </div>
+            <div class="col-6 promotion-btn">
+              <button (click)="downloadFiles()">Download All</button>
+            </div>
+          </div>
+        </div>
+    <!--Search bar section-->
+        <div class="pagesearch row col-12">
+            <div class="col-md-5 col-xs-12">
+                <div class="search-container">
+                    <span class="search-icon">
+                    <img src="../../../../../assets/search-bar-icon.svg" alt="">
+                    </span>
+                    <input type="search" class="search-input" placeholder="Search" [(ngModel)]="searchText"/>
+                    <button class="search-btn">
+                        Search
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="col-md-7 col-xs-12">
+                <button class="filter-button">Filter <img src="../../../../../assets/filter-icon.svg" alt=""></button>
+                <img src="../../../../../assets/xl-icon.svg" alt="">
+            </div>
+        </div>
+        <!--table section-->
+        <div class="conference-list-container">
+            
+            <table mat-table [dataSource]="dataSource" class="responsive-table table-bordered fixed-table">
+              <!-- Serial Number Column -->
+              <ng-container matColumnDef="sno">
+                <th mat-header-cell *matHeaderCellDef style="width: 100px;"><input type="checkbox" class="checkboxstyles"/>S.No</th>
+                <td mat-cell *matCellDef="let element"><input type="checkbox" class="checkboxstyles"/>{{ element.sno }}</td>
+              </ng-container>
+          
+              <!-- Conference Name Column -->
+              <ng-container matColumnDef="conferenceName">
+                <th mat-header-cell *matHeaderCellDef style="width: 200px;">Conference Name</th>
+                <td mat-cell *matCellDef="let element" isEllipsisActive>{{ element.conferenceName }}</td>
+              </ng-container>
+          
+              <!-- Date Column -->
+              <ng-container matColumnDef="totalEarnings">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;">Total Earnings</th>
+                <td mat-cell *matCellDef="let element">{{ element.totalEarnings }}</td>
+              </ng-container>
+          
+              <!-- Location Column -->
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;">Payment Date</th>
+                <td mat-cell *matCellDef="let element">{{ element.date | date:'dd MMM yyyy' }}</td>
+              </ng-container>
+          
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef style="width: 130px;">Status</th>
+                <td mat-cell *matCellDef="let element">
+                  <span [ngClass]="element.status">{{ element.status }}</span>
+                </td>
+              </ng-container>
+          
+              <!-- Action Column -->
+              <ng-container matColumnDef="invoices">
+                <th mat-header-cell *matHeaderCellDef style="width: 230px;">Invoices</th>
+                <td mat-cell *matCellDef="let element">
+                  <a href="" class="regNum">Download Invoice</a>
+                </td>
+              </ng-container>
+          
+              <!-- Table Header and Rows -->
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          
+            <!-- Pagination -->
+            <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+        </div>
+</div>

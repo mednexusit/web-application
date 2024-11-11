@@ -1,0 +1,321 @@
+/**Wrapper styles**/
+.wrapper{
+    padding: 0rem 1rem;
+    .border-line{
+        border-right: 1px solid lightgrey;
+        padding-right: 2rem;
+    }
+    .col-lg-3{
+        padding-left: 1.2rem;
+        padding-top: 1rem;
+    }
+}
+.main-header{
+    padding-top: 1rem;
+    i{
+        padding-left: 1rem;
+        color: #a49e9e;
+    }
+    a{
+        font-size: 0.7rem;
+    }
+    .col-md-3,.col-md-2{
+        padding-top: 0.3rem;
+        text-align: right;
+        span{
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+    }
+    .col-md-3:hover span{
+        transform: translateX(-5px);
+    }
+    .col-md-2:hover span{
+        transform: translateX(-5px);
+    }
+    .col-md-7{
+        h2{
+            font-size: 1rem;
+            margin-bottom: 0px;
+        }
+    }
+    .col-10{
+        h2{
+            font-size: 1rem;
+        }
+    }
+}
+
+.card-section{
+
+    .card-padd-right{
+        padding-right: 0px;
+        padding-bottom: 0px;
+    }
+    .div-card{
+        height: 5.5rem;
+        background-color: #0B6F6F2E;
+        border: 1px solid #0B6F6F2E;
+        border-radius: 0.6rem;
+        box-shadow: 1px 1px 1px #0B6F6F2E;
+        padding: 1rem 0.5rem 1rem 1rem;
+        .card-count{
+            padding-top: 0.5rem;
+
+            h2{
+                margin-bottom: 0px;
+                font-weight: 600;
+                letter-spacing: 0.1rem;
+            }
+            h6{
+                margin-bottom: 0px;
+                font-weight: 600;
+            }
+            .col-6:nth-child(2){
+                padding-top: 0.3rem;
+                color: #00CB14;
+                padding-right:0px;
+            }
+            .fa-arrow-trend-up{
+                padding-left: 0.4rem;
+            }
+        }
+
+        a{
+            font-size: 0.7rem;
+            span{
+                transition: transform 0.3s ease;
+                display: inline-block;
+            }
+        }
+        a:hover span{
+            transform: translateX(5px);
+        }
+        .col-6{
+
+            h6{
+                span{
+                    transition: transform 0.3s ease;
+                    display: inline-block;
+                }
+            }
+            h6:hover span{
+                transform: translateX(-5px);
+            }
+        }
+    }
+}
+
+.div-card-graph{
+    height: 9rem;
+    background-color: #0B6F6F2E;
+    border: 1px solid #0B6F6F2E;
+    border-radius: 0.6rem;
+    box-shadow: 1px 1px 1px #0B6F6F2E;
+    padding: 1rem 0.5rem 1rem 1rem;
+
+    h3{
+        font-size: 0.8rem;
+        font-weight: 500;
+        span{
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+    }
+    h3:hover span{
+        transform: translateX(-5px);
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+    .col-lg-9, .col-md-9{
+        width: 100%;
+    }
+    .mobileHide{
+        display: none;
+    } 
+}
+
+
+@media only screen and (max-width: 768px) {
+    .col-lg-9, .col-md-9{
+        width: 100%;
+    }
+    .hideMobile{
+        display: none;
+    }   
+    .border-line{
+        border-right: 0px !important;
+        padding-right: 2rem !important;
+    }
+    .mobilepadd{
+        padding-bottom: 3% !important;
+    }
+    .table-container{
+        overflow-x: scroll;
+
+    }
+    .mobileHide{
+        display: none;
+    }
+}
+
+/**Quick link styles starts here**/
+.quick-links-section{
+    h3{
+        font-weight: 500;
+        font-size: 0.8rem;
+        margin-bottom: 1.1rem;
+        padding-top: 0.2rem;
+        span{
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+    }
+    h3:hover span{
+        transform: translateX(-5px);
+    }
+    .row{
+        padding-bottom: 0.3rem;
+        padding-top: 0.2rem;
+    }
+    h4{
+        font-size: 0.8rem;
+        margin-bottom: 0px;
+        line-height: 0.8rem;
+    }
+    p{
+        font-size: 0.7rem;
+        color: #999;
+    }
+    .col-2{
+        .fa-brands, .fa-solid {
+            background-color: #dce3ed;
+            padding: 0.2rem;
+            border: 1px solid #dce3ed;
+            border-radius: 30%;
+        }
+    }
+    .col-10{
+        padding-left: 0.3rem;
+        span{
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+    }
+    .col-10:hover span{
+        transform: translateX(5px);
+    }
+}
+.notifications-section h3 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.notifications-section .notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0rem;
+  padding-bottom: 0.5rem;
+  img{
+    width: 12%;
+  }
+  .notification-content {
+    margin-left: 0.5rem;
+    h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0px;
+        font-weight: 500;
+    }
+    p {
+        font-size: 0.7rem;
+        color: #182284;
+        margin-bottom: 0px;
+        line-height: 12px;
+    }
+    span {
+        font-size: 0.7rem;
+        color: #999;
+      }
+}
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+
+    th, td {
+        overflow: hidden;
+        width:auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+    .mat-mdc-header-cell{
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .DateStyles {
+        color: #00923F;
+        font-weight: 600;
+        font-size: 0.7rem !important;
+      }
+    .mat-mdc-icon-button.mat-mdc-button-base{
+        color: #79c5c7;
+    }
+    
+  }
+  button mat-icon {
+    vertical-align: middle;
+  }
+
+.table-container{
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    .material-icons{
+        font-size: 18px;
+    }
+    .mat-icon{
+        height: 18px;
+        width: 18px;
+    }
+    .mdc-icon-button img{
+        width: 20px;
+        height: 20px;
+      }
+      .mat-mdc-icon-button .mat-mdc-button-touch-target{
+        height: 40px !important;
+        width: 40px !important;
+      }
+      .responsive-table {
+        width: 100%;
+        overflow-x: auto;
+        border-color: #dbd9d9;
+        
+        ::ng-deep thead{
+          background-color: #F2F2F2 !important;
+        }
+        .checkboxstyles{
+          margin-right: 1rem;
+        }
+        
+      }
+}
+
+
+.table-section{
+    h2{
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        padding-top: 1.5rem;
+    }
+}
+
+
+.fixed-table {
+    table-layout: fixed;
+    width: 100%; 
+  }
