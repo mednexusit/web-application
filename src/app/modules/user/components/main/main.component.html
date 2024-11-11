@@ -57,12 +57,12 @@
   <div class="top-section">
     <div class="left-section">
       <div class="categories">
-        <div class="category" *ngFor="let item of categories">
+        <div class="category" *ngFor="let item of categories" (click)="goToLogin()">
           <div class="rect"></div>
           <i [class]="item.icon"></i>
-          <a href="" class="link" >
+          <p class="link" >
             <span>{{item.name}}</span>
-          </a>
+          </p>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
             <img src="../../../../../assets/prev.svg" alt="">
           </button>
           <div class="icons-wrapper">
-            <div class="icon-swiper" *ngFor="let icon of displayedIcons">
+            <div class="icon-swiper" *ngFor="let icon of displayedIcons" (click)="goToLogin()">
               <i [class]="icon"></i>
             </div>
           </div>

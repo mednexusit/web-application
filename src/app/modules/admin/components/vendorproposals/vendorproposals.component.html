@@ -143,6 +143,10 @@
         <div class="value">{{ vendorProposalDetailData[0]?.vendorname }}</div>
       </div>
       <div class="fields">
+        <label for="">Conference Host Date:</label>
+        <div class="value">{{ vendorProposalDetailData[0]?.proposal_date_time |  date: 'MM/dd/yyyy hh:mm a':'UTC' }}</div>
+      </div>
+      <div class="fields">
         <label for="">Venu:</label>
         <div class="value">{{ vendorProposalDetailData[0]?.venu }}</div>
       </div>

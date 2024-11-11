@@ -3,6 +3,52 @@
     <div class="container">
       <div class="row">
         <div class="col-12" style="padding: 0px;">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000"> <!-- Auto-rotate every 3 seconds -->
+            <div class="carousel-inner">
+              <ng-container *ngFor="let item of carnivalData; let i = index">
+                <div class="carousel-item" [ngClass]="{'active': i === 0}">
+                  <div class="cards-wrapper d-flex">
+                    <div class="card">
+                      <div class="title">{{ item.organizedby }}</div>
+                      <div class="conference">{{ item.eventname }}</div>
+                      <div class="details">
+                        On <strong>{{ item.proposal_date_time | date: 'dd.MM.yyyy' }}</strong><br>
+                        Morning Session from <strong>8:30 to 1:30PM</strong>
+                      </div>
+                      <div class="location">Location: {{ item.place }}</div>
+                      <div class="guest1">
+                        <img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
+                      </div>
+                      <div class="guest">
+                        <img src="../../../../../assets/card-logo.png" alt="Chief Guest">
+                        <div class="guest-name">
+                          Chief Guest<br>
+                          {{ item.speaker_name }}<br>
+                          {{ item.speakerinfo }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="row">
+        <div class="col-12" style="padding: 0px;">
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -70,7 +116,6 @@
                 </div>
               </div>
 
-              <!-- More carousel items -->
               <div class="carousel-item ">
                 <div class="cards-wrapper d-flex">
                   <div class="card">
@@ -137,20 +182,20 @@
               </div>
             </div>
 
-            <!-- Carousel controls -->
+
             <button class="carousel-control-prev" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="carousel-control-prev-icon" ></span>
               <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button"
               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="carousel-control-next-icon"></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -165,58 +210,16 @@
       <hr />
       <div class="row">
         <!-- Coupon 1 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
+        <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
             <span>
               <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
             </span>
             <span>
               <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
+                {{item?.eventname}}
               </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 2 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 3 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
-            </span>
-          </div>
-        </div>
-        <!-- Coupon 4 -->
-        <div class="col-12 col-lg-3 col-xl-3 col-md-3">
-          <div class="coupon d-flex border p-2 align-items-center">
-            <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
-            </span>
-            <span>
-              <p class="coupon-caption">
-                Get 10% Off a minimum Purchase of ₹699 on all..
-              </p>
-              <p class="cod"><strong>Code: NHPEE09</strong></p>
+              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>
@@ -235,7 +238,7 @@
       </div>
       <div class="row areaofinterest">
         <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex">
-          <div class=" w-50 aoi" (click)="goToAreaOfInterest()">
+          <div class=" w-50 aoi">
             <div
             class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2"
             *ngFor="let item of limitedAreaOfInterestData "
@@ -265,7 +268,7 @@
           </div>
           </div>
         </div>
-        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2">
+        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2 d-flex justify-content-end">
           <div class="recommendation-icon" (click)="goToAreaOfInterest()" title="Add Area Of Interest">+</div>
         </div>
       </div>
@@ -289,7 +292,7 @@
           class="col-6 col-sm-6 col-lg-2 col-xl-2 col-md-2"
           *ngFor="let item of userAvailableSpecialities"
         >
-          <div class="wrapper"(click)="goToConferences(item)">
+          <div class="wrapper"(click)="goToConference(item)">
             <div class="iconbox-top md-align-center">
               <div class="iconbox-top-content">
                 <div class="hover-holder">
@@ -299,7 +302,7 @@
                         cx="49"
                         cy="49"
                         r="47"
-                        stroke="rgb(15,124,127)"
+                         stroke="rgb(15,124,127)"
                         stroke-width="2"
                         fill="none"
                       ></circle>

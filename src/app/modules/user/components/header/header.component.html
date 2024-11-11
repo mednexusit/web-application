@@ -2,7 +2,7 @@
   *ngIf="isHideHeader"
   class="w-100 d-flex flex-row justify-content-between align-items-center"
 >
-  <img [src]="logoSrc" alt="" class="logo" />
+  <img [src]="logoSrc" alt="Main Logo" class="logo" />
   <img src="../../../../../assets/logo-white.png" class="logo-white" alt="" />
   <div class="action-area d-flex">
     <div class="searchArea">
@@ -11,28 +11,19 @@
     </div>
     <div class="actions">
       <ul class="m-0 p-0">
-        <li class="pt-1">
-          <img [src]="userLogoSrc" class="user-logo" alt="" />
-          <img
-            src="../../../../../assets/userlogo-white.png"
-            class="user-logo-white"
-            alt=""
-          />
-        </li>
-        <li class="mt-2">
-          <a
-            [routerLink]="['/login']"
-            title="Login"
-            class="text-dark"
-            *ngIf="!isLoggedInUser"
-            ><i class="fa-solid fa-right-to-bracket logIcon"></i
-          ></a>
+        <!-- User Logo with Dropdown Toggle -->
+        <li class="pt-1" (click)="toggleDropdown()">
+          <img [src]="userLogoSrc" class="user-logo" alt="User Logo" />
+          <img src="../../../../../assets/userlogo-white.png" class="user-logo-white" alt="User Logo" />
+          <!-- Dropdown Menu -->
+          <div *ngIf="showDropdown" class="dropdown-menu">
+            <a [routerLink]="['/login']" class="dropdown-item" *ngIf="!isLoggedInUser">Login   <i class="fa-solid fa-right-to-bracket logIcon"></i></a>
+          </div>
         </li>
         <!-- <li class="mt-2">
-          <a [routerLink]="['/signup']" class="text-dark" *ngIf="!isLoggedInUser"><i class="fa-solid fa-user-plus"></i></a>
-        </li> -->
-        <!-- <li (click)="toggleTheme()" class="switch pt-1">
-          <img [src]="toggleLogoSrc" alt="" />
+          <a [routerLink]="['/login']" title="Login" class="text-dark" *ngIf="!isLoggedInUser">
+            <i class="fa-solid fa-right-to-bracket logIcon"></i>
+          </a>
         </li> -->
       </ul>
     </div>

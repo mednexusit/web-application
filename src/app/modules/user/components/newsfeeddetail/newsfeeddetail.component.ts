@@ -16,6 +16,7 @@ export class NewsfeeddetailComponent implements OnInit {
   isSharing: boolean = false;
   isUserLoggedIn: boolean = false;
   userData: any;
+  isFeedLiked:boolean=false;
   constructor(
     private router: Router,
     private userServ: UserService,
@@ -55,6 +56,7 @@ export class NewsfeeddetailComponent implements OnInit {
     this.userServ.getNewsFeedDetails(this.newsFeedId).subscribe({
       next: (data: any) => {
         this.newsFeedDetails = data.responseContents;
+        this.newsFeedDetails = [this.newsFeedDetails[0]]
         this.sanitizedHtml = this.sanitizer.bypassSecurityTrustHtml(
           this.newsFeedDetails[0]?.details
         );
@@ -65,6 +67,9 @@ export class NewsfeeddetailComponent implements OnInit {
         });
       },
     });
+  }
+  toggleLikeDislike(){
+    this.isFeedLiked= !this.isFeedLiked;
   }
   shareContent(item: any) {
     if (this.isSharing) {

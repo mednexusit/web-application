@@ -32,7 +32,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1,2,3,4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -60,9 +60,14 @@
                     >
                       OFFLINE
                     </div>
+
+                  </div>
+                  <div class="bookmarkIcon">
+                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[1,2,3,4])"></i>
+                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
                   </div>
                   <div class="tab-title">
-                    {{ item.organizedby }}
+                    {{ item.eventname }}
                   </div>
                   <div class="tab-details">
                     On
@@ -86,7 +91,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -115,8 +120,12 @@
                       OFFLINE
                     </div>
                   </div>
+                  <div class="bookmarkIcon">
+                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[1])"></i>
+                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                  </div>
                   <div class="tab-title">
-                    {{ item.organizedby }}
+                    {{ item.eventname }}
                   </div>
                   <div class="tab-details">
                     On
@@ -139,7 +148,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[2])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -168,8 +177,12 @@
                       OFFLINE
                     </div>
                   </div>
+                  <div class="bookmarkIcon">
+                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[2])"></i>
+                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                  </div>
                   <div class="tab-title">
-                    {{ item.organizedby }}
+                    {{ item.eventname }}
                   </div>
                   <div class="tab-details">
                     On
@@ -192,7 +205,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[3])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -221,8 +234,12 @@
                       OFFLINE
                     </div>
                   </div>
+                  <div class="bookmarkIcon">
+                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[3])"></i>
+                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                  </div>
                   <div class="tab-title">
-                    {{ item.organizedby }}
+                    {{ item.eventname }}
                   </div>
                   <div class="tab-details">
                     On
@@ -245,7 +262,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item)"
+                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -274,8 +291,12 @@
                       OFFLINE
                     </div>
                   </div>
+                  <div class="bookmarkIcon">
+                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[4])"></i>
+                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                  </div>
                   <div class="tab-title">
-                    {{ item.organizedby }}
+                    {{ item.eventname }}
                   </div>
                   <div class="tab-details">
                     On

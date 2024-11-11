@@ -326,6 +326,36 @@
                 </div>
               </div>
               <div class="fields w-100 d-flex my-3 flex-column">
+                <div class="right-data d-flex flex-column w-100">
+                  <label for="">Conference Host Date<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="datetime-local"
+                    formControlName="proposal_date_time"
+                    placeholder="Conference Host Date"
+                    [class.valid]="
+                      conferenceInfo.get('proposal_date_time').valid &&
+                      (conferenceInfo.get('proposal_date_time').dirty ||
+                        conferenceInfo.get('proposal_date_time').touched)
+                    "
+                    [class.invalid]="
+                      conferenceInfo.get('proposal_date_time').invalid &&
+                      (conferenceInfo.get('proposal_date_time').dirty ||
+                        conferenceInfo.get('proposal_date_time').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      conferenceInfo.get('proposal_date_time').invalid &&
+                      (conferenceInfo.get('proposal_date_time').dirty ||
+                        conferenceInfo.get('proposal_date_time').touched)
+                    "
+                    class="error"
+                  >
+                    Date is required.
+                  </div>
+                </div>
+              </div>
+              <div class="fields w-100 d-flex my-3 flex-column">
                 <label for="">Category<span class="reruired-form-field">*</span></label>
                 <select
                   name="category"
