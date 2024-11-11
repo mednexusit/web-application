@@ -186,9 +186,11 @@ export class DashboardComponent {
     });
   }
   goToConferences(data:any){
+    console.log(data)
     this.SharedService.sendSubjectData(data);
     this.router.navigate(['dashboard/conferences-list',0])
   }
+
   openModal(data:any){
     this.dialog.open(ConferencedetailsComponent,{
       data:data,
