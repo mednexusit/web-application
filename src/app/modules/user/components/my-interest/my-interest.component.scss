@@ -406,6 +406,7 @@ color: #2E2E2E;
   font-size: 12px;
   line-height: 20.15px;
   color: #009A88;
+  white-space: nowrap;
 }
 .cod{
   color: #009A88;
@@ -783,6 +784,8 @@ color: #fff;
   .speaker-card {
       flex-direction: column;
       text-align: center;
+      height: auto !important;
+      max-height: unset !important;
   }
 
   .speaker-card img {

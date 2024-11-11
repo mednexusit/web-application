@@ -735,7 +735,25 @@ color: #fff;
   word-wrap: break-word;
 }
 
-
+.img-data-grid-container {
+  // width: auto;
+  max-height: 20vw;
+  height: auto;
+  img{
+    width: 50%;
+    height: 100%;
+    border-radius: 7px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .img-data-grid-container {
+    // width: auto;
+    max-height: 40vw;
+    img{
+      width: 100%;
+    }
+  }
+}
 
 .speaker-card {
   display: flex;
@@ -747,6 +765,14 @@ color: #fff;
   margin: 20px auto;
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 12vw;
+  max-height: 13vw;
+  
+  .card-text{
+    height: 100%;
+    overflow-y: auto;
+  }
 }
 
 .speaker-card img {
@@ -777,6 +803,8 @@ color: #fff;
   .speaker-card {
       flex-direction: column;
       text-align: center;
+      height: auto !important;
+      max-height: unset !important;
   }
 
   .speaker-card img {

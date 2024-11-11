@@ -187,7 +187,8 @@ body{
   &.light-theme{
     .userMain{
       width: 100%;
-      height: calc(100% - 5vw);
+      // height: calc(100% - 5vw);
+      height: 100%;
       background-image: url('./assets/bg2.png');
       background-size: cover;
       background-repeat: no-repeat;
@@ -196,6 +197,7 @@ body{
     }
   }
 }
+
 @media only screen and (max-width: 600px) {
   body{
     &.light-theme{

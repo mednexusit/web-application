@@ -29,7 +29,19 @@ export class MainComponent implements OnInit {
     'microbiology-home-icon',
     'forensic-medicine-home-icon',
     'community-medicine-home-icon',
-    'ophthalmology-home-icon'
+    'ophthalmology-home-icon',
+    'ent-home-icon',
+    'medicine-home-icon',
+    'surgery-home-icon',
+    'ob-gy-home-icon',
+    'pediatrics-home-icon',
+    'orthopedics-home-icon',
+    'psychiatry-home-icon',
+    'de-ve-home-icon',
+    'anesthesia-home-icon',
+    'radiology-home-icon',
+    'emergency-medicine-home-icon',
+    'special-category-home-icon'
   ];
   displayedIcons: any = [];
   startIndex = 0;
@@ -38,7 +50,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    this.iconsToShow = this.screenWidth <= 768 ? 4 : 10;
+    this.iconsToShow = this.screenWidth <= 768 ? 6 : 10;
     this.updateDisplayedIcons();
   }
 
@@ -67,7 +79,7 @@ export class MainComponent implements OnInit {
       icon: 'fa-solid fa-lock catIcon',
     },
     {
-      name: 'CME Tracker',
+      name: 'Webnairs',
       value: 'cmetracker',
       icon: 'fa-solid fa-map-pin catIcon',
     },
@@ -76,6 +88,11 @@ export class MainComponent implements OnInit {
       value: 'certificates',
       icon: 'fa-solid fa-certificate catIcon',
     },
+    // {
+    //   name: 'Add Conferences',
+    //   value: 'Add Conferences',
+    //   icon: 'fa-solid fa-certificate catIcon',
+    // },
     {
       name: 'News Feeds',
       value: 'newsfeeds',
