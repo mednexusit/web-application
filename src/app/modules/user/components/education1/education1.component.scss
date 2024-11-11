@@ -886,7 +886,13 @@ color: #fff;
 
 
 .image-section {
-  flex: 2;
+  // flex: 2;
+  width: 100%;
+  height: 20vw;
+  background-image: url(../../../../../assets/ed-ban.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 7px;
 }
 
 .webinar-image {

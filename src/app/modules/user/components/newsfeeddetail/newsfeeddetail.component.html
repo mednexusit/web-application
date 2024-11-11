@@ -8,7 +8,8 @@
           </h1>
           <h1
             class="cat-tittle mt-5"
-            style="margin-left: auto"
+            style="margin-left: auto;cursor: pointer;
+        white-space: nowrap;"
             (click)="goBack()"
           >
             <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
@@ -19,8 +20,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-lg-12 mt-3">
-        <img src="{{ item.img_url }}" class="img-fluid" alt="" />
+      <div class="col-md-12 col-lg-12 mt-3 img-data-grid-container">
+        <img src="{{ item.img_url }}" class="img-fluid" alt="test123" />
       </div>
     </div>
     <div class="container mt-4">
@@ -29,8 +30,8 @@
           <h2 class="head text-start">
             {{ item.subheading }}
           </h2>
-          <p>
-            <b>Ralph Ellis, {{ item.created_at | date : "mediumDate" }}</b>
+          <p >
+            <b>Ralph Ellis123, {{ item.created_at | date : "mediumDate" }}</b>
           </p>
         </div>
         <div class="col-md-6">
@@ -101,7 +102,7 @@
     </div>
     <div class="row">
       <!-- Coupon 1 -->
-      <div class="col-md-12 col-lg-12 mt-3" [innerHTML]="sanitizedHtml"></div>
+      <div class="col-md-12 col-lg-12 mt-3 image-data-upload-container" [innerHTML]="sanitizedHtml"></div>
 
       <hr />
     </div>
