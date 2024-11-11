@@ -1,7 +1,14 @@
 <div class="wrapper" *ngIf="DefaultConferenceList">
     <!--Page Main header-->
     <div class="pageHeader">
-        <h2>Conference List</h2>
+      <div class="row">
+        <div class="col-6">
+          <h2>Conference List</h2>
+        </div>
+        <div class="col-6 promotion-btn">
+          <button><a routerLink="/vendor/dashboard/create-conference">+Create Conference</a></button>
+        </div>
+      </div>
     </div>
     <!--Search bar section-->
     <div class="pagesearch row col-12">
@@ -19,12 +26,12 @@
         </div>
         <div class="col-md-6 col-xs-12">
             <button class="filter-button" (click)="showTable()">Filter <img src="../../../../../assets/filter-icon.svg" alt=""></button>
-            <!-- <mat-form-field class="filter-button">
+            <!-- <mat-form-field>
               <mat-label>Filter</mat-label>
-              <mat-select>
-                <mat-option value="option1">Option 1</mat-option>
-                <mat-option value="option2">Option 2</mat-option>
-                <mat-option value="option3">Option 3</mat-option>
+              <mat-select [(ngModel)]="selectedValue" name="filter">
+                @for (filter of filters; track filter) {
+                  <mat-option [value]="filter.value">{{filter.viewValue}}</mat-option>
+                }
               </mat-select>
             </mat-form-field> -->
             <img src="../../../../../assets/xl-icon.svg" alt="">
@@ -42,8 +49,8 @@
       
           <!-- Conference Name Column -->
           <ng-container matColumnDef="conferenceName">
-            <th mat-header-cell *matHeaderCellDef style="width: 200px;">Conference Name</th>
-            <td mat-cell *matCellDef="let element">{{ element.conferenceName }}</td>
+            <th mat-header-cell *matHeaderCellDef style="width: 150px;">Conference Name</th>
+            <td mat-cell *matCellDef="let element" isEllipsisActive>{{ element.conferenceName }}</td>
           </ng-container>
       
           <!-- Date Column -->
@@ -76,13 +83,13 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="width: 180px;">Action</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="primary" (click)="viewDetails(element)">
+              <button mat-icon-button color="primary" (click)="viewDetails(element)" matTooltip="View">
                 <img src="../../../../../assets/Action-eye-icon.svg" alt="">
               </button>
-              <button mat-icon-button color="accent" (click)="editConference(element)">
+              <button mat-icon-button color="accent" (click)="editConference(element)" matTooltip="Edit">
                 <img src="../../../../../assets/Action-edit-icon.svg" alt="">
               </button>
-              <button mat-icon-button color="warn" (click)="deleteConference(element)">
+              <button mat-icon-button color="warn" (click)="deleteConference(element)" matTooltip="Delete">
                 <img src="../../../../../assets/Action-delete-icon.svg" alt="">
               </button>
             </td>
@@ -138,24 +145,24 @@
         <!-- Conference Name Column -->
         <ng-container matColumnDef="conferenceName">
           <th mat-header-cell *matHeaderCellDef style="width: 150px;">Conference Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.conferenceName }}</td>
+          <td mat-cell *matCellDef="let element" isEllipsisActive>{{ element.conferenceName }}</td>
         </ng-container>
     
         <!-- Date Column -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef style="width: 200px;">Email</th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          <th mat-header-cell *matHeaderCellDef style="width: 190px;">Email</th>
+          <td mat-cell *matCellDef="let element" isEllipsisActive>{{ element.email }}</td>
         </ng-container>
     
         <!-- Location Column -->
         <ng-container matColumnDef="specialty">
-          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Specialty</th>
+          <th mat-header-cell *matHeaderCellDef style="width: 130px;">Specialty</th>
           <td mat-cell *matCellDef="let element">{{ element.specialty }}</td>
         </ng-container>
     
         <!-- Register Column -->
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef style="width: 100px;">Date of Register</th>
+          <th mat-header-cell *matHeaderCellDef style="width: 120px;">Date of Register</th>
           <td mat-cell *matCellDef="let element">{{ element.date }}</td>
         </ng-container>
     
@@ -171,13 +178,13 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef style="width: 180px;">Action</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button (click)="viewDetails(element)">
+            <button mat-icon-button (click)="viewDetails(element)" matTooltip="Notification">
               <img src="../../../../../assets/conf-blue-icon.svg" alt="">
             </button>
-            <button mat-icon-button (click)="editConference(element)">
+            <button mat-icon-button (click)="editConference(element)" matTooltip="List">
               <img src="../../../../../assets/conf-black-icon.svg" alt="">
             </button>
-            <button mat-icon-button (click)="deleteConference(element)">
+            <button mat-icon-button (click)="deleteConference(element)" matTooltip="Delete">
               <img src="../../../../../assets/conf-del-icon.svg" alt="">
             </button>
           </td>

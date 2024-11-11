@@ -61,46 +61,46 @@
                 <table mat-table [dataSource]="dataSource" class="responsive-table table-bordered fixed-table">
               
                   <!-- S.No Column -->
-                  <ng-container matColumnDef="sno" class="confSno">
+                  <ng-container matColumnDef="sno">
                     <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Sno </th>
                     <td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox> </td>
                   </ng-container>
               
                   <!-- Conference Name Column -->
-                  <ng-container matColumnDef="name" class="confName">
+                  <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef style="width: 150px;"> Conference Name </th>
                     <td mat-cell *matCellDef="let element" isEllipsisActive>{{element.name}}</td>
                   </ng-container>
               
                   <!-- Date Column -->
-                  <ng-container matColumnDef="date" class="confDate">
+                  <ng-container matColumnDef="date">
                     <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Date </th>
                     <td mat-cell *matCellDef="let element" class="DateStyles"> {{element.date}} </td>
                   </ng-container>
               
                   <!-- Location Column -->
-                  <ng-container matColumnDef="location" class="confLocation">
-                    <th mat-header-cell *matHeaderCellDef style="width: 100px;"> Location </th>
-                    <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                  <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Location </th>
+                    <td mat-cell *matCellDef="let element" isEllipsisActive> {{element.location}} </td>
                   </ng-container>
               
                   <!-- No. of Registrations Column -->
-                  <ng-container matColumnDef="registrations" class="confReg">
+                  <ng-container matColumnDef="registrations">
                     <th mat-header-cell *matHeaderCellDef style="width: 150px;"> No. of Registrations </th>
                     <td mat-cell *matCellDef="let element" class="text-center"> {{element.registrations}} </td>
                   </ng-container>
               
                   <!-- Status Column -->
-                  <ng-container matColumnDef="status" class="confStatus">
+                  <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef style="width: 180px;"> Status </th>
                     <td mat-cell *matCellDef="let element">
-                      <button mat-icon-button aria-label="View" #tooltip="matTooltip" matTooltip="View">
+                      <button mat-icon-button aria-label="View" matTooltip="View">
                         <img src="../../../../../assets/Action-eye-icon.svg" alt="">
                       </button>
-                      <button mat-icon-button aria-label="Edit" #tooltip="matTooltip" matTooltip="Edit">
+                      <button mat-icon-button aria-label="Edit" matTooltip="Edit">
                         <img src="../../../../../assets/Action-edit-icon.svg" alt="">
                       </button>
-                      <button mat-icon-button aria-label="Delete" #tooltip="matTooltip" matTooltip="Delete">
+                      <button mat-icon-button aria-label="Delete" matTooltip="Delete">
                         <img src="../../../../../assets/Action-delete-icon.svg" alt="">
                       </button>
                     </td>

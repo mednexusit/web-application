@@ -86,50 +86,83 @@
 
 
   /**Table styles**/
-  .conference-list-container {
-    padding-top: 2rem;
+  table {
+    width: 100%;
+    table-layout: fixed;
 
-    .mat-column-status span.Closed {
-      color: red;
+    th, td {
+        overflow: hidden;
+        width:auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+    .mat-mdc-header-cell{
+        font-size: 0.7rem;
+        font-weight: 600;
     }
-    .mat-column-status span.Ongoing {
-      color: orange;
+    .text-center{
+        text-align: center;
+    }
+    .DateStyles {
+        color: #00923F;
+        font-weight: 600;
+        font-size: 0.7rem !important;
+      }
+    .mat-mdc-icon-button.mat-mdc-button-base{
+        color: #79c5c7;
     }
     
-    .mat-column-status span.Upcoming {
-      color: green;
+  }
+  .mat-column-status span.Closed {
+    color: red;
+  }
+  .mat-column-status span.Ongoing {
+    color: orange;
+  }
+  
+  .mat-column-status span.Upcoming {
+    color: green;
+  }
+  .conference-list-container{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    .material-icons{
+        font-size: 18px;
     }
-
-    .mat-icon-button {
-      width: 32px;
-      height: 32px;
-    }
-    .responsive-table {
-      width: 100%;
-      overflow-x: auto;
-      border-color: #dbd9d9;
-      
-      ::ng-deep thead{
-        background-color: #F2F2F2 !important;
-      }
-      .checkboxstyles{
-        margin-right: 1rem;
-      }
-      
+    .mat-icon{
+        height: 18px;
+        width: 18px;
     }
     .mdc-icon-button img{
-      width: 20px;
-      height: 20px;
-    }
-    .mat-mdc-icon-button .mat-mdc-button-touch-target{
-      height: 40px !important;
-      width: 40px !important;
-    }
-    .regNum{
-      text-decoration: underline;
-      color: #0014B0;
-    }
-    
+        width: 20px;
+        height: 20px;
+      }
+      .mat-mdc-icon-button .mat-mdc-button-touch-target{
+        height: 40px !important;
+        width: 40px !important;
+      }
+      .responsive-table {
+        width: 100%;
+        overflow-x: auto;
+        border-color: #dbd9d9;
+        
+        ::ng-deep thead{
+          background-color: #F2F2F2 !important;
+        }
+        .checkboxstyles{
+          margin-right: 1rem;
+        }
+        
+      }
+      .regNum{
+        text-decoration: underline;
+        color: #0014B0;
+      }
+}
+
+  .mat-mdc-paginator{
+    padding-top: 1rem;
   }
 
   .mat-mdc-paginator{

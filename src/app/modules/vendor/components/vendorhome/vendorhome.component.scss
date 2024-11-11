@@ -145,7 +145,7 @@
     }   
     .border-line{
         border-right: 0px !important;
-        padding-right: 1.5rem !important;
+        padding-right: 2rem !important;
     }
     .mobilepadd{
         padding-bottom: 3% !important;
@@ -263,32 +263,6 @@ table {
         font-weight: 600;
         font-size: 0.7rem !important;
       }
-    .mat-column-sno, .mdc-checkbox__native-control{
-        width: 5%;
-    }
-    .mat-column-name{
-        width: 20%;
-        font-size: 0.8rem;
-    }
-    .ellipsesStyles{
-        width: 45%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .mat-column-date{
-        width: 13%;
-        font-size: 0.8rem;
-        padding-right: 0px;
-    }
-    .mat-column-location{
-        font-size: 0.8rem;
-        width: 12%;
-    }
-    .mat-column-registrations{
-        width: 20%;
-        font-size: 0.8rem;
-    }
     .mat-mdc-icon-button.mat-mdc-button-base{
         color: #79c5c7;
     }

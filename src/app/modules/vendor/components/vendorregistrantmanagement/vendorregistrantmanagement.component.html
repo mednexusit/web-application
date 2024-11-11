@@ -35,7 +35,7 @@
           <!-- Conference Name Column -->
           <ng-container matColumnDef="conferenceName">
             <th mat-header-cell *matHeaderCellDef style="width: 200px;">Conference Name</th>
-            <td mat-cell *matCellDef="let element">{{ element.conferenceName }}</td>
+            <td mat-cell *matCellDef="let element" isEllipsisActive>{{ element.conferenceName }}</td>
           </ng-container>
       
           <!-- Date Column -->
@@ -68,13 +68,13 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="width: 180px;">Action</th>
             <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="primary" (click)="viewDetails(element)">
+              <button mat-icon-button color="primary" (click)="viewDetails(element)" matTooltip="View">
                 <img src="../../../../../assets/Action-eye-icon.svg" alt="">
               </button>
-              <button mat-icon-button color="accent" (click)="editConference(element)">
+              <button mat-icon-button color="accent" (click)="editConference(element)" matTooltip="Edit">
                 <img src="../../../../../assets/Action-edit-icon.svg" alt="">
               </button>
-              <button mat-icon-button color="warn" (click)="deleteConference(element)">
+              <button mat-icon-button color="warn" (click)="deleteConference(element)" matTooltip="Delete">
                 <img src="../../../../../assets/Action-delete-icon.svg" alt="">
               </button>
             </td>

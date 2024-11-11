@@ -96,63 +96,93 @@
       }
   
   /**Table styles**/
-  .conference-list-container {
-    padding-top: 2rem;
+  table {
+    width: 100%;
+    table-layout: fixed;
 
-    .mat-column-status span.Inactive {
-      color: red;
-    }
-    
-    .mat-column-status span.Active {
-      color: green;
-    }
+    th, td {
+        overflow: hidden;
+        width:auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-    .mat-icon-button {
-      width: 32px;
-      height: 32px;
+    .mat-mdc-header-cell{
+        font-size: 0.7rem;
+        font-weight: 600;
     }
-    .responsive-table {
-      width: 100%;
-      overflow-x: auto;
-      border-color: #dbd9d9;
-      
-      ::ng-deep thead{
-        background-color: #F2F2F2 !important;
+    .text-center{
+        text-align: center;
+    }
+    .DateStyles {
+        color: #00923F;
+        font-weight: 600;
+        font-size: 0.7rem !important;
       }
-      .checkboxstyles{
-        margin-right: 1rem;
-      }
-      
-    }
-    .mdc-icon-button img{
-      width: 20px;
-      height: 20px;
-    }
-    .mat-mdc-icon-button .mat-mdc-button-touch-target{
-      height: 40px !important;
-      width: 40px !important;
-    }
-    .regNum{
-      text-decoration: underline;
-      color: #0014B0;
+    .mat-mdc-icon-button.mat-mdc-button-base{
+        color: #79c5c7;
     }
     
   }
+  .mat-column-status span.Inactive {
+    color: red;
+  }
+ 
+  .mat-column-status span.Active {
+    color: green;
+  }
+  .conference-list-container{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    .material-icons{
+        font-size: 18px;
+    }
+    .mat-icon{
+        height: 18px;
+        width: 18px;
+    }
+    .mdc-icon-button img{
+        width: 20px;
+        height: 20px;
+      }
+      .mat-mdc-icon-button .mat-mdc-button-touch-target{
+        height: 40px !important;
+        width: 40px !important;
+      }
+      .responsive-table {
+        width: 100%;
+        overflow-x: auto;
+        border-color: #dbd9d9;
+        
+        ::ng-deep thead{
+          background-color: #F2F2F2 !important;
+        }
+        .checkboxstyles{
+          margin-right: 1rem;
+        }
+        
+      }
+      .regNum{
+        text-decoration: underline;
+        color: #0014B0;
+      }
+}
 
   .mat-mdc-paginator{
     padding-top: 1rem;
   }
-
-  
+ 
   .fixed-table {
     table-layout: fixed;
     width: 100%; 
   }
-
 }
 
   @media (max-width: 600px) {
     .promotionList{
+      .pageHeader h2{
+        padding: .2rem 0rem .2rem 0.5rem;
+      }
       .search-container {
         width: 100%;
         padding-left: 0px 10px 0px 0px;
@@ -270,6 +300,9 @@
   .createProm{
     .paddRighht0 {
       padding-right: 0px;
+     }
+     .pageHeader h2{
+      padding: .2rem 0rem .2rem 0.5rem;
      }
      label{
          padding-top: 1rem;
