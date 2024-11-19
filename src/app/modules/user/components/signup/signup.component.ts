@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
   ngOnInit(): void {
     let userData = JSON.parse(sessionStorage.getItem('userData') as string);
-    if (userData.userid) {
+    if (userData?.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
       this.checkLogin();
     }
@@ -271,6 +271,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
     this.router.navigate(['dashboard']);
   }
   fetchCourses() {
+    console.log("called")
     this.userServ.getCourses().subscribe({
       next: (data: any) => {
         this.courses = data.responseContents;
