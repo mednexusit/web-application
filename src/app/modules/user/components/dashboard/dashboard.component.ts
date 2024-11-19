@@ -131,12 +131,16 @@ export class DashboardComponent {
     }
 
     this.dialogRef = this.dialog.open(UserDashboardComponent, {
-      width: '400px',
-      height: '100%',
-      position: { top: '0', right: '0' },
-      panelClass: 'custom-modalbox',
+      // width: '400px',
+      // height: '100%',
+      // position: { top: '0', right: '0' },
+      height: "calc(100%)",
+      width: "calc(100%)",
+      maxWidth: "100%",
+      maxHeight: "100%",
+      // panelClass: 'custom-modalbox',
       disableClose: false, // Allow outside click to close
-      backdropClass: 'modal-backdrop',
+      // backdropClass: 'modal-backdrop',
     });
 
     document.body.style.overflow = 'hidden'; // Disable body scroll when modal is open
@@ -194,7 +198,11 @@ export class DashboardComponent {
   openModal(data:any){
     this.dialog.open(ConferencedetailsComponent,{
       data:data,
-      height:'500px'
+      // height:'500px'
+      height: "calc(100%)",
+      width: "calc(100%)",
+      maxWidth: "100%",
+      maxHeight: "100%"
     })
   }
   goToConference(data:any){
