@@ -2,9 +2,9 @@
   <section>
     <div class="container">
       <div class="d-flex">
-        <h1 class="head mt-5">Events</h1>
+        <h1 class="head">Events</h1>
         <h5
-          class="cat-tittle mt-5"
+          class="cat-tittle"
           style="margin-left: auto"
           (click)="goBack()"
         >
@@ -80,7 +80,7 @@
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -91,7 +91,7 @@
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row  d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1])"
+                  class="tab-card1 col-md-4 col-lg-4" (click)="openModal(item,$event,[1])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -138,7 +138,7 @@
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -195,7 +195,7 @@
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -252,7 +252,7 @@
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -309,7 +309,7 @@
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>

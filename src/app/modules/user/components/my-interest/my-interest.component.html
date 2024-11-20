@@ -1,6 +1,6 @@
 <div class="content">
   <section>
-    <div class="container mb-5">
+    <div class="container-fluid">
       <div class="d-flex justify-content-between align-items-center">
         <h1 class="head m-0">My Interest</h1>
         <h5 class="cat-tittle m-0" style="margin-left: auto;
@@ -24,14 +24,14 @@
                   class="tab-card1 col-12 col-md-6 col-lg-4 col-sm-12"
                   *ngFor="let item of bookingConfirmationList" (click)="openModal(item, $event)"
                 >
-                  <div class="tab-title">
+                  <div class="tab-title my-2">
                     {{ item.eventname }}
                   </div>
-                  <div class="tab-details">
+                  <div class="tab-details my-2">
                     On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
                   </div>
-                  <div class="location">
-                    Location: {{ item.address | titlecase }}
+                  <div class="location my-2">
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
@@ -51,14 +51,14 @@
                   <div class="deleteIcon">
                     <i class="fa-solid fa-trash" (click)="deleteBookMark(item)"></i>
                   </div>
-                  <div class="tab-title">
+                  <div class="tab-title my-2">
                     {{ item.eventname }}
                   </div>
-                  <div class="tab-details">
+                  <div class="tab-details my-2">
                     On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
                   </div>
-                  <div class="location">
-                    Location: {{ item.address | titlecase }}
+                  <div class="location my-2">
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
 

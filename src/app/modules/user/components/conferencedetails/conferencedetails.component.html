@@ -1,11 +1,11 @@
 <div class="content">
   <section>
-    <div class="container mb-5">
-      <div class="d-flex">
-        <h1 class="head mt-5">{{ conferenceData.organizedby | uppercase }}</h1>
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="head m-0">{{ conferenceData.organizedby | uppercase }}</h1>
         <h5
-          class="cat-tittle mt-5"
-          style="margin-left: auto"
+          class="cat-tittle m-0"
+          style="margin-left: auto;cursor: pointer;"
           (click)="goBack()"
         >
           <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
@@ -13,7 +13,7 @@
         </h5>
       </div>
       <hr class="hr" />
-      <div class="row">
+      <div class="row ">
         <mat-tab-group (selectedTabChange)="getSelectedTab($event)">
           <mat-tab label="aboutconference">
             <ng-template mat-tab-label> About conference </ng-template>
