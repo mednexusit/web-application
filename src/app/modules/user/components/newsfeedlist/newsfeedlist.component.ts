@@ -49,7 +49,7 @@ export class NewsfeedlistComponent implements OnInit {
     });
   }
   goToNewsDetails(data: any) {
-    this.router.navigate(['dashboard/news-feed-detail', data.id], {
+    this.router.navigate(['dashboard/education1/news-feed/news-feed-detail/', data.id], {
       state: { extraData: data },
     });
   }

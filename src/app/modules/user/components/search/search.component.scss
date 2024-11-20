@@ -1483,7 +1483,7 @@ padding: 20px;
     }
   }
 .tab-card1 {
-  margin: 10px;
+  margin: 5px;
 }
 .field{
   padding: 10px;
@@ -1510,6 +1510,8 @@ button{
   max-height: 500px;
   overflow-y: auto;
   scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cardsItem::-webkit-scrollbar {

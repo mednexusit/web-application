@@ -271,7 +271,6 @@ export class SignupComponent implements OnInit, AfterViewInit {
     this.router.navigate(['dashboard']);
   }
   fetchCourses() {
-    console.log("called")
     this.userServ.getCourses().subscribe({
       next: (data: any) => {
         this.courses = data.responseContents;

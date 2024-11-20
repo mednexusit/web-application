@@ -47,17 +47,18 @@ const routes: Routes = [
         component: UserDashboardComponent,
         children: [
           { path: 'my-interest', component: MyInterestComponent },
-          { path: '', component: DashboardComponent },
+          { path: 'home', component: DashboardComponent },
           { path: 'search', component: SearchComponent },
           { path: 'nexus', component: NexusComponent },
           { path: 'education1', component: Education1Component },
-          { path: 'news-feed', component: NewsfeedlistComponent },
-          { path: 'news-feed-detail/:id', component: NewsfeeddetailComponent },
-          { path: 'conferences-list/:id', component: ConferenceslistComponent },
+          { path: 'education1/news-feed', component: NewsfeedlistComponent },
+          { path: 'education1/news-feed/news-feed-detail/:id', component: NewsfeeddetailComponent },
+          { path: 'home/conferences-list/:id', component: ConferenceslistComponent },
           { path: 'myprofile', component: MyprofilepageComponent },
           {path:'areaofinterest',component:AreaofinterestComponent},
           {path:'aoisubjects/:id',component:AreaofinterestsubsubjectComponent},
-          {path:'viewareaofinterest',component:AreaofinterestlistComponent}
+          {path:'home/viewareaofinterest',component:AreaofinterestlistComponent},
+          {path:'', redirectTo:'home',pathMatch:'full'}
         ],
       },
       { path: 'sidebar', component: SidebarComponent },

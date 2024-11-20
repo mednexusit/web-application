@@ -190,9 +190,8 @@ export class DashboardComponent {
     });
   }
   goToConferences(data:any){
-    console.log(data)
     this.SharedService.sendSubjectData(data);
-    this.router.navigate(['dashboard/conferences-list',0])
+    this.router.navigate(['dashboard/home/conferences-list',0])
   }
 
   openModal(data:any){
@@ -206,7 +205,7 @@ export class DashboardComponent {
     })
   }
   goToConference(data:any){
-    this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
+    this.router.navigate(['dashboard/home/conferences-list',data.subject_uuid])
   }
 
   goToAreaOfInterest() {
@@ -218,9 +217,7 @@ export class DashboardComponent {
       next:(data:any)=>{
         if(data){
           this.carnivalData = data.responseContents;
-          console.log("carnivaldata0",this.carnivalData);
-          this.carnivalData = this.carnivalData.slice(-6);
-          console.log("carnivaldata",this.carnivalData);
+          this.carnivalData = this.carnivalData.slice(-5);
         }
       },
       error:(err:any)=>{
@@ -247,7 +244,7 @@ export class DashboardComponent {
     }
   }
   viewAllAreaOfInterest() {
-    this.router.navigate(['dashboard/viewareaofinterest']);
+    this.router.navigate(['dashboard/home/viewareaofinterest']);
   }
 
   getDateStatus(date: string): string {

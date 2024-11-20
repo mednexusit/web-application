@@ -124,7 +124,6 @@ export class HomeComponent implements OnInit {
     this.conferenceInfo.get('proposal_date_time').valueChanges.subscribe((data:any)=>{
       this.createdDate = new Date(data);
       this.formattedDate = this.formatDate(this.createdDate);
-      console.log(this.formattedDate)
     })
   }
   changeCurrentStep(data: number) {
