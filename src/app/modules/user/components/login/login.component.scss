@@ -21,6 +21,17 @@ body {
   overflow-x: hidden !important;
   font-family: 'Roboto', sans-serif;
 }
+.title-container{
+  font-family: Roboto;
+  font-size: 20px;
+  // font-weight: 600;
+  line-height: 23.44px;
+  text-align: center;
+  span{
+  font-size: 36px;
+  line-height: 42.19px;
+  }
+}
 
 .login-left,
 .login-right,
