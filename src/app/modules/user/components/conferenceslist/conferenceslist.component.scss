@@ -18,7 +18,8 @@
   border: 1px solid #999;
 }
 .tab-card1{
-  margin: 1rem;
+  margin: 5px;
+  margin-left: 1rem;
   cursor: pointer;
   z-index: 0;
 }
@@ -120,4 +121,7 @@ background: rgb(13, 16, 201);
 mat-dialog-content{
   max-height: unset !important;
   flex: 1 0 0;
+}
+.tab-card1{
+  margin-left: 1rem;
 }

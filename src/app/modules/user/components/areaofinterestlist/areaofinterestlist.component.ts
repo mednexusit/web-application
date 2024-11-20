@@ -22,7 +22,7 @@ export class AreaofinterestlistComponent implements OnInit{
   }
   goToConference(data:any){
     this.sharedServ.sendSubjectData(data);
-    this.router.navigate(['dashboard/conferences-list',0])
+    this.router.navigate(['dashboard/home/conferences-list',0])
 
   }
   deleteAOI(data:any){

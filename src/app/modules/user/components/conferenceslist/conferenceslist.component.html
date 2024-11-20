@@ -29,8 +29,8 @@
           <mat-tab label="ALL">
             <ng-template mat-tab-label> ALL </ng-template>
             <!-- Content for Hot Jobs tab -->
-            <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+            <div class="row " *ngIf="conferenceListData.length > 0">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1,2,3,4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -89,7 +89,7 @@
             <ng-template mat-tab-label for="ONLINE"> ONLINE </ng-template>
 
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -146,7 +146,7 @@
           <mat-tab label="OFFLINE">
             <ng-template mat-tab-label> OFFLINE </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[2])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -203,7 +203,7 @@
           <mat-tab label="WORKSHOP">
             <ng-template mat-tab-label> WORKSHOP </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[3])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -260,7 +260,7 @@
           <mat-tab label="EXPOS">
             <ng-template mat-tab-label> EXPOS </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[4])"
                   *ngFor="let item of conferenceListData | filter : searchText"

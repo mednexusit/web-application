@@ -11,7 +11,7 @@ constructor(private router:Router){
 
 }
 goToNewsFeed(){
-  this.router.navigate(['dashboard/news-feed']);
+  this.router.navigate(['dashboard/education1/news-feed']);
 }
 goBack(){
   this.router.navigate(['dashboard']);

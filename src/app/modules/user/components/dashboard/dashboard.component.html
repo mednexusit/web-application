@@ -9,11 +9,12 @@
                 <div class="carousel-item" [ngClass]="{'active': i === 0}" (click)="openModal(item) ">
                   <div class="cards-wrapper d-flex">
                     <div class="card">
-                      <div class="title">{{ item.organizedby }}</div>
-                      <div class="conference">{{ item.eventname }}</div>
+                      <div class="title">{{ item.eventname }}</div>
+                      <!-- <div class="conference">{{ item.eventname }}</div> -->
                       <div class="details">
-                        On <strong>{{ item.proposal_date_time | date: 'dd.MM.yyyy' }}</strong><br>
-                        Morning Session from <strong>8:30 to 1:30PM</strong>
+                        On <strong>{{ item.proposal_date_time | date: 'dd.MM.yyyy' }}</strong>
+                        <br>
+                        <!-- Morning Session from <strong>8:30 to 1:30PM</strong> -->
                       </div>
                       <div class="location">Location: {{ item.place }}</div>
                       <div class="guest1">
@@ -208,7 +209,7 @@
         </h5>
       </div>
       <hr />
-      <div class="row">
+      <div class="row" *ngIf="remaindersData.length">
         <!-- Coupon 1 -->
         <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
@@ -221,6 +222,16 @@
               </p>
               <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="!remaindersData.length">
+        <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer">
+          <div class="coupon d-flex border p-2 align-items-center flex-column">
+            <span>
+              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
+            </span>
+            <h1>No Remainders</h1>
           </div>
         </div>
       </div>

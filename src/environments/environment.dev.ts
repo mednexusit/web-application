@@ -1,3 +1,4 @@
+//https://devapi.mednexusns.com/
 export const environment = {
   baseURL:'https://devapi.mednexusns.com/api/',
   resourceAPIURL:'https://devapi.mednexusns.com/resorceapi/',
