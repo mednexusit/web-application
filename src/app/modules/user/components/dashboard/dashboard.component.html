@@ -12,7 +12,7 @@
                       <div class="title">{{ item.eventname }}</div>
                       <!-- <div class="conference">{{ item.eventname }}</div> -->
                       <div class="details">
-                        On <strong>{{ item.proposal_date_time | date: 'dd.MM.yyyy' }}</strong>
+                        On <strong>{{ item.proposal_date_time | date: 'yyyy-MM-dd' }}</strong>
                         <br>
                         <!-- Morning Session from <strong>8:30 to 1:30PM</strong> -->
                       </div>
@@ -220,7 +220,7 @@
               <p class="coupon-caption">
                 {{item?.eventname}}
               </p>
-              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
+              <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
           </div>
         </div>

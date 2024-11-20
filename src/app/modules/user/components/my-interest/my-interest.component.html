@@ -28,7 +28,7 @@
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details my-2">
-                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                    On <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd": 'UTC' }}</strong>
                   </div>
                   <div class="location my-2">
                     Location: {{ item.place | titlecase }}
@@ -55,7 +55,7 @@
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details my-2">
-                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                    On <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd": 'UTC' }}</strong>
                   </div>
                   <div class="location my-2">
                     Location: {{ item.place | titlecase }}
