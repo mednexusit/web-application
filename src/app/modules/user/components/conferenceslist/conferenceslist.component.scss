@@ -18,7 +18,9 @@
   border: 1px solid #999;
 }
 .tab-card1{
-  margin: 1rem;
+  margin: 5px;
+  margin-top: 10px;
+  margin-left: 1rem;
   cursor: pointer;
   z-index: 0;
 }
@@ -59,7 +61,7 @@ background: rgb(13, 16, 201);
   margin: 20px;
 
   border-radius: 10px;
-  background:url('../../../../../assets/ed-ban.jpg') ;
+  background:url('../../../../../assets/card-bg.svg') ;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -111,4 +113,16 @@ background: rgb(13, 16, 201);
 
 .tab-card1 .no-pointer-event {
   pointer-events: auto; /* Ensure clicks on this element do not bubble up */
+}
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-dialog-content{
+  max-height: unset !important;
+  flex: 1 0 0;
+}
+.tab-card1{
+  margin-left: 1rem;
 }

@@ -132,7 +132,7 @@ font-size: 16px;
 
 .card {
   width: 100%;
-  background: url("../../../../../assets/card-bg.png") no-repeat center center / cover;
+  background: url("../../../../../assets/card-bg.svg") no-repeat center center / cover;
   border-radius: 10px;
   padding: 20px;
   color: #fff;
@@ -339,11 +339,14 @@ color: #2E2E2E;
     display: inline-block;
     max-width: 700px;
 }
+.mn-icon-container{
+  margin-right: 15px;
+}
 .iconbox-top .icon-holder {
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
     height: 100px;
     width: 100px;
 }
@@ -1168,3 +1171,12 @@ padding: 20px;
 
 
 
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-dialog-content{
+  max-height: unset !important;
+  flex: 1 0 0;
+}

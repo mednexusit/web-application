@@ -125,7 +125,10 @@ export class MyInterestComponent implements OnInit {
     else{
       this.dialog.open(ConferencedetailsComponent,{
         data:data,
-        height:'500px'
+        height: "calc(100%)",
+        width: "calc(100%)",
+        maxWidth: "100%",
+        maxHeight: "100%"
       })
     }
 

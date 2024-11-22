@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
   ngOnInit(): void {
     let userData = JSON.parse(sessionStorage.getItem('userData') as string);
-    if (userData.userid) {
+    if (userData?.userid) {
       this.signupForm.get('user_uuid')?.setValue(userData.userid);
       this.checkLogin();
     }

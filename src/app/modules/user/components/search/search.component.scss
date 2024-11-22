@@ -164,7 +164,7 @@ img.menu-ic {
 
 .card {
   width: 100%;
-  background: url("../../../../../assets/card-bg.png") no-repeat center center / cover;
+  background: url("../../../../../assets/card-bg.svg") no-repeat center center / cover;
   border-radius: 10px;
   padding: 20px;
   color: #fff;
@@ -805,7 +805,15 @@ color: #fff;
   word-wrap: break-word;
 }
 
-
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-dialog-content{
+  max-height: unset !important;
+  flex: 1 0 0;
+}
 
 .speaker-card {
   display: flex;
@@ -1395,7 +1403,7 @@ padding: 20px;
 
 .tab-card1 {
     width: 330px;
-    background: url('../../../../../assets/card-bg.png') no-repeat center center/cover;
+    background: url('../../../../../assets/card-bg.svg') no-repeat center center/cover;
     border-radius: 10px;
     padding: 20px;
     color: #fff;
@@ -1475,7 +1483,7 @@ padding: 20px;
     }
   }
 .tab-card1 {
-  margin: 10px;
+  margin: 5px;
 }
 .field{
   padding: 10px;
@@ -1502,6 +1510,8 @@ button{
   max-height: 500px;
   overflow-y: auto;
   scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cardsItem::-webkit-scrollbar {

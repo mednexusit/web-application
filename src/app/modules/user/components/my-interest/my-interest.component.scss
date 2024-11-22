@@ -100,7 +100,7 @@ img.menu-ic {
 
 .card {
   width: 100%;
-  background: url("../../../../../assets/card-bg.png") no-repeat center center / cover;
+  background: url("../../../../../assets/card-bg.svg") no-repeat center center / cover;
   border-radius: 10px;
   padding: 20px;
   color: #fff;
@@ -796,7 +796,15 @@ color: #fff;
 
 
 
-
+:host{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-dialog-content{
+  max-height: unset !important;
+  flex: 1 0 0;
+}
 
 .label {
   width: 230px;
@@ -1334,9 +1342,9 @@ padding: 20px;
 
 .tab-card1 {
     width: 330px;
-    background: url('../../../../../assets/card-bg.png') no-repeat center center/cover;
+    background: url('../../../../../assets/card-bg.svg') no-repeat center center/cover;
     border-radius: 10px;
-    padding: 20px;
+    // padding: 20px;
     color: #fff;
     box-shadow: 0 4px 10px #0003;
     position: relative;
@@ -1365,7 +1373,7 @@ padding: 20px;
   @media (max-width: 768px) {
     .tab-card1 {
         width: 100%;
-        padding: 15px;
+        // padding: 15px;
         margin-top: 15px;
     }
   }
@@ -1381,7 +1389,7 @@ padding: 20px;
   @media (max-width: 400px) {
     .tab-card1 {
         width: 100%;
-        padding: 8px;
+        // padding: 8px;
         margin-top: 8px;
     }
   }

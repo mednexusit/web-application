@@ -1,10 +1,10 @@
 <div class="content">
   <section>
-    <div class="container mb-5">
-      <div class="d-flex">
-        <h1 class="head mt-5">My Interest</h1>
-        <h5 class="cat-tittle mt-5" style="margin-left: auto;
-        white-space: nowrap;">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="head m-0">My Interest</h1>
+        <h5 class="cat-tittle m-0" style="margin-left: auto;
+        white-space: nowrap;cursor: pointer;">
           <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to Home
         </h5>
       </div>
@@ -19,19 +19,19 @@
               My Enrollment
             </ng-template>
 
-              <div class="row d-block">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-12 col-md-6 col-lg-4 col-sm-12"
                   *ngFor="let item of bookingConfirmationList" (click)="openModal(item, $event)"
                 >
-                  <div class="tab-title">
+                  <div class="tab-title my-2">
                     {{ item.eventname }}
                   </div>
-                  <div class="tab-details">
-                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                  <div class="tab-details my-2">
+                    On <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd": 'UTC' }}</strong>
                   </div>
-                  <div class="location">
-                    Location: {{ item.address | titlecase }}
+                  <div class="location my-2">
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
               My Bookmarks
             </ng-template>
 
-              <div class="row  d-block">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-12 col-md-6 col-lg-4 col-sm-12"
                   *ngFor="let item of myInterest" (click)="openModal(item, $event)"
@@ -51,14 +51,14 @@
                   <div class="deleteIcon">
                     <i class="fa-solid fa-trash" (click)="deleteBookMark(item)"></i>
                   </div>
-                  <div class="tab-title">
+                  <div class="tab-title my-2">
                     {{ item.eventname }}
                   </div>
-                  <div class="tab-details">
-                    On <strong>{{ item.proposal_date_time | date : "MM/dd/YYYY": 'UTC' }}</strong>
+                  <div class="tab-details my-2">
+                    On <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd": 'UTC' }}</strong>
                   </div>
-                  <div class="location">
-                    Location: {{ item.address | titlecase }}
+                  <div class="location my-2">
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
 

@@ -131,12 +131,16 @@ export class DashboardComponent {
     }
 
     this.dialogRef = this.dialog.open(UserDashboardComponent, {
-      width: '400px',
-      height: '100%',
-      position: { top: '0', right: '0' },
-      panelClass: 'custom-modalbox',
+      // width: '400px',
+      // height: '100%',
+      // position: { top: '0', right: '0' },
+      height: "calc(100%)",
+      width: "calc(100%)",
+      maxWidth: "100%",
+      maxHeight: "100%",
+      // panelClass: 'custom-modalbox',
       disableClose: false, // Allow outside click to close
-      backdropClass: 'modal-backdrop',
+      // backdropClass: 'modal-backdrop',
     });
 
     document.body.style.overflow = 'hidden'; // Disable body scroll when modal is open
@@ -187,16 +191,21 @@ export class DashboardComponent {
   }
   goToConferences(data:any){
     this.SharedService.sendSubjectData(data);
-    this.router.navigate(['dashboard/conferences-list',0])
+    this.router.navigate(['dashboard/home/conferences-list',0])
   }
+
   openModal(data:any){
     this.dialog.open(ConferencedetailsComponent,{
       data:data,
-      height:'500px'
+      // height:'500px'
+      height: "calc(100%)",
+      width: "calc(100%)",
+      maxWidth: "100%",
+      maxHeight: "100%"
     })
   }
   goToConference(data:any){
-    this.router.navigate(['dashboard/conferences-list',data.subject_uuid])
+    this.router.navigate(['dashboard/home/conferences-list',data.subject_uuid])
   }
 
   goToAreaOfInterest() {
@@ -208,9 +217,7 @@ export class DashboardComponent {
       next:(data:any)=>{
         if(data){
           this.carnivalData = data.responseContents;
-          console.log("carnivaldata0",this.carnivalData);
-          this.carnivalData = this.carnivalData.slice(-6);
-          console.log("carnivaldata",this.carnivalData);
+          this.carnivalData = this.carnivalData.slice(-5);
         }
       },
       error:(err:any)=>{
@@ -237,7 +244,7 @@ export class DashboardComponent {
     }
   }
   viewAllAreaOfInterest() {
-    this.router.navigate(['dashboard/viewareaofinterest']);
+    this.router.navigate(['dashboard/home/viewareaofinterest']);
   }
 
   getDateStatus(date: string): string {

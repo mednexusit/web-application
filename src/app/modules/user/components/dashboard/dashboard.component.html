@@ -6,14 +6,15 @@
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000"> <!-- Auto-rotate every 3 seconds -->
             <div class="carousel-inner">
               <ng-container *ngFor="let item of carnivalData; let i = index">
-                <div class="carousel-item" [ngClass]="{'active': i === 0}">
+                <div class="carousel-item" [ngClass]="{'active': i === 0}" (click)="openModal(item) ">
                   <div class="cards-wrapper d-flex">
                     <div class="card">
-                      <div class="title">{{ item.organizedby }}</div>
-                      <div class="conference">{{ item.eventname }}</div>
+                      <div class="title">{{ item.eventname }}</div>
+                      <!-- <div class="conference">{{ item.eventname }}</div> -->
                       <div class="details">
-                        On <strong>{{ item.proposal_date_time | date: 'dd.MM.yyyy' }}</strong><br>
-                        Morning Session from <strong>8:30 to 1:30PM</strong>
+                        On <strong>{{ item.proposal_date_time | date: 'yyyy-MM-dd' }}</strong>
+                        <br>
+                        <!-- Morning Session from <strong>8:30 to 1:30PM</strong> -->
                       </div>
                       <div class="location">Location: {{ item.place }}</div>
                       <div class="guest1">
@@ -208,19 +209,29 @@
         </h5>
       </div>
       <hr />
-      <div class="row">
+      <div class="row" *ngIf="remaindersData.length">
         <!-- Coupon 1 -->
         <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
             <span>
-              <img src="../../../../../assets/remid.png" alt="Coupon Icon" />
+              <img src="../../../../../assets/area-of-intrest-mn-icon.png" style="margin-right: 15px;" alt="Coupon Icon" />
             </span>
-            <span>
+            <span class="mr-3">
               <p class="coupon-caption">
                 {{item?.eventname}}
               </p>
-              <p class="cod">{{item.proposal_date_time | date: 'MM/dd/yyyy':'UTC'}}<strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
+              <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
             </span>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="!remaindersData.length">
+        <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer">
+          <div class="coupon d-flex border p-2 align-items-center flex-column">
+            <span>
+              <img src="../../../../../assets/area-of-intrest-mn-icon.png" style="margin-right: 15px;" alt="Coupon Icon" />
+            </span>
+            <h1 class="mr-3">No Remainders</h1>
           </div>
         </div>
       </div>
@@ -237,7 +248,10 @@
         </h5>
       </div>
       <div class="row areaofinterest">
-        <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex">
+        <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex align-items-center">
+          <div class="mn-icon-container mr-3">
+            <img src="../../../../../assets/area-of-intrest-mn-icon.png"  style="width: 100px;height: 100px;" alt="Mn area of intrest">
+          </div>
           <div class=" w-50 aoi">
             <div
             class=""
@@ -268,7 +282,7 @@
           </div>
           </div>
         </div>
-        <div class="col-3 col-sm-2 col-lg-2 col-xl-2 col-md-2 d-flex justify-content-end">
+        <div class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2 d-flex justify-content-end">
           <div class="recommendation-icon" (click)="goToAreaOfInterest()" title="Add Area Of Interest">+</div>
         </div>
       </div>

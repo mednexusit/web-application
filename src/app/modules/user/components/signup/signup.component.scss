@@ -80,7 +80,18 @@ body {
     width: 100%;
     max-width: 500px;
   }
+  .title-container{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 23.44px;
+    text-align: center;
+    span{
+    font-size: 36px;
+    line-height: 42.19px;
+    }
 
+  }
   h2 {
     font-size: 24px;
     font-weight: bold;

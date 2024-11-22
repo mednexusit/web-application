@@ -1,11 +1,11 @@
 <div class="content">
   <section>
     <div class="container">
-      <div class="d-flex">
-        <h1 class="head mt-5">Events</h1>
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="head m-0">Events</h1>
         <h5
-          class="cat-tittle mt-5"
-          style="margin-left: auto"
+          class="cat-tittle m-0"
+          style="margin-left: auto;cursor: pointer;"
           (click)="goBack()"
         >
           <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
@@ -29,8 +29,8 @@
           <mat-tab label="ALL">
             <ng-template mat-tab-label> ALL </ng-template>
             <!-- Content for Hot Jobs tab -->
-            <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+            <div class="row " *ngIf="conferenceListData.length > 0">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1,2,3,4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -46,7 +46,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                      WORKSHOP
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -71,16 +71,16 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
-                    Location: {{ item.venu | titlecase }}
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -89,9 +89,9 @@
             <ng-template mat-tab-label for="ONLINE"> ONLINE </ng-template>
 
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1])"
+                  class="tab-card1 col-md-4 col-lg-4" (click)="openModal(item,$event,[1])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -105,7 +105,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                      WORKSHOP
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -129,16 +129,16 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
-                    Location: {{ item.venu | titlecase }}
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -146,7 +146,7 @@
           <mat-tab label="OFFLINE">
             <ng-template mat-tab-label> OFFLINE </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[2])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -162,7 +162,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                      WORKSHOP
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -186,24 +186,24 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
-                    Location: {{ item.venu | titlecase }}
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
           </mat-tab>
           <mat-tab label="WORKSHOP">
-            <ng-template mat-tab-label> WORKSHOP </ng-template>
+            <ng-template mat-tab-label>WORKSHOP </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[3])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -219,7 +219,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                      WORKSHOP
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -243,16 +243,16 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
-                    Location: {{ item.venu | titlecase }}
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
@@ -260,7 +260,7 @@
           <mat-tab label="EXPOS">
             <ng-template mat-tab-label> EXPOS </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row">
+              <div class="row  d-flex flex-wrap justify-content-start">
                 <div
                   class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
@@ -276,7 +276,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                      WORKSHOP
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -300,16 +300,16 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.created_at | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
-                    Location: {{ item.venu | titlecase }}
+                    Location: {{ item.place | titlecase }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row" *ngIf="conferenceListData.length <= 0">
-              <div class="noConferences col col-lg-6 col-md-6 col-sm-12">
+              <div class="noConferences col col-lg-4 col-md-4 col-sm-12">
                 <h1>No Conferences</h1>
               </div>
             </div>
