@@ -196,7 +196,11 @@
           
     }
 }
-
+@media screen and (min-width: 768px) and (max-width: 1100px) { 
+  .wrapper{
+    padding: 0rem 1rem 0rem 1rem;
+  }
+}
 @media only screen and (max-width: 767px) {
   .wrapper{
     padding: 0rem 1rem 0rem 1rem;
@@ -368,6 +372,9 @@ table {
 .conference-list-container{
   padding-top: 1.5rem;
   padding-bottom: 1rem;
+  width: 100%;
+    overflow-x: scroll;
+    
   .material-icons{
       font-size: 18px;
   }

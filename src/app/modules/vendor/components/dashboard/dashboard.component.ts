@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,8 @@ export class DashboardComponent {
   isHide: boolean = false;
   titleName = "Geethanjali";
   titleDesg = "Admin";
+  authServ = inject(AuthService);
+  router = inject(Router);
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -21,6 +25,11 @@ export class DashboardComponent {
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  logout() {
+    this.authServ.logout();
+    this.router.navigate(['/vendor']);
   }
   
 }

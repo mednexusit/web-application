@@ -123,11 +123,14 @@
     }
     .text-right{
         text-align: right;
+        padding-top: 0.5rem;
     }
     
   /**Table styles**/
   .conference-list-container {
     padding-top: 1rem;
+    width: 100%;
+    overflow-x: scroll;
 
     .responsive-table {
         width: 100%;
@@ -142,9 +145,10 @@
           }
         
       }
-      .mat-mdc-paginator{
-        padding-top: 1rem;
-      }
+      
+  }
+  .mat-mdc-paginator{
+    padding-top: 1rem;
   }
   @media (max-width: 600px) {
     .conference-list-container{
@@ -177,3 +181,14 @@
     height: 23rem;
 }
 }
+
+@media (max-width: 768px) {
+    .wrapper{
+        .second-sec{
+            .col-md-5{
+                padding-top: 5rem;
+            }
+        }
+       }
+}
+
