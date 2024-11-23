@@ -801,14 +801,15 @@ color: #fff;
 /* Responsive Design */
 @media (max-width: 768px) {
   .speaker-card {
-      flex-direction: column;
+      // flex-direction: column;
       text-align: center;
       height: auto !important;
       max-height: unset !important;
+      margin: 0 !important;
   }
 
   .speaker-card img {
-      margin-right: 0;
+      margin-right: 15px;
       margin-bottom: 10px;
   }
 }
@@ -1010,7 +1011,7 @@ color: #fff;
   text-align: left;
 }
 .subheading-left-text{
-  width: 10vw;
+  width: 50vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1123,6 +1124,7 @@ border: none;
 .side-text{
   font-size: 12px;
   font-weight: 600;
+  text-align: left;
 }
 
 

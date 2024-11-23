@@ -152,6 +152,9 @@ img.menu-ic {
   span{
     color: #fff;
   }
+  img{
+    filter: contrast(0%) brightness(2);
+  }
 }
 .carousel-inner {
   padding: 1em;

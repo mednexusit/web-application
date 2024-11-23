@@ -75,7 +75,7 @@
 	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
 		<mat-nav-list>
 			<a class="active" mat-list-item [routerLink]="['home']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
-				<img src="../../../../../assets/home-light.svg" class="menu-ic">
+				<img src="../../../../../assets/home-light-inactive.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Home</span>
 			</a>
 			<a mat-list-item [routerLink]="['my-interest']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
