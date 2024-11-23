@@ -5,6 +5,8 @@ import { ThememanageService } from '../../theme/thememanage.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { environment } from '../../../../../environments/environment';
+
 
 @Component({
   selector: 'app-user-dashboard',
@@ -12,6 +14,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./user-dashboard.component.scss'],
 })
 export class UserDashboardComponent {
+  base2URL:any;
   isSidebarOpen = true; // Sidebar initially open
   sidenavMode: MatDrawerMode = 'side'; // Correctly typing the sidenavMode as MatDrawerMode
   selectedValueTab1: string = 'all';
@@ -50,6 +53,7 @@ export class UserDashboardComponent {
   }
   ngOnInit(): void {
     this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
+    this.base2URL = environment.baseURL2;
   }
   logoutUser() {
     this.SharedService.sendHideHeaderFlag(true);
@@ -68,5 +72,18 @@ export class UserDashboardComponent {
   }
   goToMyProfile(){
     this.router.navigate(['dashboard/myprofile']);
+  }
+  goToAddConference(){
+
+    this.router.navigate(['vendor/signup'])
+  }
+  goToAbout(){
+    this.router.navigate(['/aboutus'])
+  }
+  goToContact(){
+    this.router.navigate(['/contactus'])
+  }
+  goToFollow(){
+    this.router.navigate(['followus'])
   }
 }

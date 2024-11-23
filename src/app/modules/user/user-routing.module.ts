@@ -27,6 +27,7 @@ import { MyprofilepageComponent } from './components/myprofilepage/myprofilepage
 import { AreaofinterestComponent } from './components/areaofinterest/areaofinterest.component';
 import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsubsubject/areaofinterestsubsubject.component';
 import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
+import { FollowusComponent } from './components/followus/followus.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'aboutus', component: AboutUsComponent },
+      {path:'followus',component:FollowusComponent},
       { path: 'conferences', component: ConferenceComponent },
       { path: 'addevent', component: AddEventComponent },
       { path: 'features', component: FeaturesComponent },

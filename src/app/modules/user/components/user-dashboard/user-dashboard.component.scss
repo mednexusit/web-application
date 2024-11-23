@@ -243,7 +243,12 @@ img.menu-ic {
   width: 60px;
   height: 60px;
 }
+.iconsI{
 
+}
+.titleText{
+  margin-left: 10px;
+}
 .guest1 {
   position: absolute;
   bottom: 20px;
@@ -1340,3 +1345,14 @@ padding: 20px;
     display: none !important;
   }
 }
+
+  .iconsI{
+    height: 34px !important;
+    width: 34px !important;
+    color: #0f7c7f;
+    i{
+      font-size: 25px;
+      color: #0f7c7f;
+    }
+  }
+

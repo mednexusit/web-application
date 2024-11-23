@@ -1,0 +1,89 @@
+/* General Styles */
+.container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #e8f6f5;
+  text-align: center;
+  margin-top: 7rem;
+}
+
+.header h2 {
+  color: #00695c;
+}
+
+/* Social Media Section */
+.social-media p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.linkedin { background-color: #0077b5; color: #ffffff; }
+.facebook { background-color: #1877f2; color: #ffffff; }
+.whatsapp { background-color: #25d366; color: #ffffff; }
+.twitter { background-color: #1da1f2; color: #ffffff; }
+.instagram { background: linear-gradient(45deg, #fd1d1d, #833ab4); color: #ffffff; }
+.youtube { background-color: #ff0000; color: #ffffff; }
+
+/* Email Updates Section */
+.email-updates h3 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.email-updates p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+input {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #00695c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
+}
+button:hover {
+  background-color: #004d40;
+}
