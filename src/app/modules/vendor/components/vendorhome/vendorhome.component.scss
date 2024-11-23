@@ -152,6 +152,9 @@
     }
     .table-container{
         overflow-x: scroll;
+        width: 100%;
+        scrollbar-color: #0f7c7f #c1c1c1;
+        scrollbar-width: thin;
 
     }
     .mobileHide{
@@ -275,6 +278,11 @@ table {
 .table-container{
     padding-top: 0.5rem;
     padding-bottom: 1rem;
+    max-width: 100%;
+    overflow-x: scroll;
+    scrollbar-color: #0f7c7f #c1c1c1;
+    scrollbar-width: thin;
+    
     .material-icons{
         font-size: 18px;
     }

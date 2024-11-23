@@ -46,7 +46,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     Webinar
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -71,7 +71,7 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.proposal_date_time | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
@@ -105,7 +105,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     Webinar
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -129,7 +129,7 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.proposal_date_time | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
@@ -162,7 +162,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     Webinar
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -186,7 +186,7 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.proposal_date_time | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
@@ -201,7 +201,7 @@
             </div>
           </mat-tab>
           <mat-tab label="WORKSHOP">
-            <ng-template mat-tab-label>Webinar </ng-template>
+            <ng-template mat-tab-label>WORKSHOP </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
               <div class="row  d-flex flex-wrap justify-content-start">
                 <div
@@ -219,7 +219,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     Webinar
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -243,7 +243,7 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.proposal_date_time | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
@@ -276,7 +276,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     Webinar
+                     WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -300,7 +300,7 @@
                   </div>
                   <div class="tab-details">
                     On
-                    <strong>{{ item.proposal_date_time | date : "mediumDate" }}</strong>
+                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
