@@ -84,6 +84,6 @@ export class UserDashboardComponent {
     this.router.navigate(['/contactus'])
   }
   goToFollow(){
-    this.router.navigate(['followus'])
+    this.router.navigate(['/followus'])
   }
 }

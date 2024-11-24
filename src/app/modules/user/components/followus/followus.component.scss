@@ -1,4 +1,5 @@
 /* General Styles */
+
 .container {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -87,3 +88,4 @@ a{
 button:hover {
   background-color: #004d40;
 }
+@import url('../about-us/about-us.component.scss');
