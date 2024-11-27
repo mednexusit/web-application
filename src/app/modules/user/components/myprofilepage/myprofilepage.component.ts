@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,16 +22,41 @@ export class MyprofilepageComponent implements OnInit {
   isCompleted: boolean = false;
   subCoursesList: any = [];
   isShowSubCourseList: boolean = false;
+  isAddMember:boolean=false;
   isOpenSubCourseModal: boolean = false;
   subCourseLabel: string = '';
   selectedSubCourseList: any;
   selectedSubCourse: any;
-  constructor(private userServ: UserService, private fb: FormBuilder, private toastr:ToastrService) {}
+  addMemberForm:any=FormGroup;
+  addEditLabel:string='Add';
+  gender:any=[{label:'Male',value:1},{label:"Female",value:2}];
+  constructor(private userServ: UserService, private fb: FormBuilder, private toastr:ToastrService,
+    private router:Router
+  ) {}
   ngOnInit(): void {
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.getUserDetails(this.userData);
     this.fetchCourses();
+    this.addMemberForm = this.fb.group({
+      "user_uuid":[''],
+      "name":['',Validators.required],
+      "email":['',Validators.compose([Validators.required,Validators.email])],
+      "mobile_number":['',Validators.required],
+      "age":['',Validators.required],
+      "gender":['',Validators.required],
+      "mbbs":[''],
+      "postgraduation":[''],
+      "superspecialty":[''],
+      "current_position":[''],
+      "exporstudiing_year":[''],
+      "current_working_or_studying":[''],
+      "council_state":[''],
+      "council_reg":[''],
+      "yearofstudying":[''],
+      "yearofpracticing":[''],
+      "medRegisterNum":['']
+    })
     this.updateUserProfile = this.fb.group({
       course: ['', Validators.required],
       sub_course: ['', Validators.required],
@@ -205,4 +231,52 @@ export class MyprofilepageComponent implements OnInit {
       }
     })
   }
+  myProfileToggle(){
+    this.isAddMember = false;
+  }
+  confPartToggle(){
+    this.isAddMember=true;
+  }
+  addParticipant(data:any){
+    data.user_uuid = this.userData.userid;
+    data.age= parseInt(data.age);
+    data.gender= parseInt(data.gender);
+    this.userServ.addParticipant(data).subscribe({
+      next:(data:any)=>{
+        if(data.responseContents){
+          this.toastr.success('Added','',{timeOut:1000});
+          this.addMemberForm.reset();
+         // this.getParticipants();
+          this.closeModals();
+
+        }
+      },
+      error:(err:any)=>{
+        this.toastr.error('Failed','',{timeOut:1000});
+      }
+    })
+  }
+  closeModals(){
+
+  }
+  // updateParticipant(data:any){
+  //   data.id=parseInt(this.editData.id)
+  //   data.user_uuid = this.userData.userid;
+  //   data.age= parseInt(data.age);
+  //   data.gender= parseInt(data.gender);
+  //   this.userServ.editParticipant(data).subscribe({
+  //     next:(data:any)=>{
+  //       if(data.responseContents){
+  //         this.toastr.success('Updated','',{timeOut:1000});
+  //         this.addMemberForm.reset();
+  //         this.getParticipants();
+  //         this.closeModals();
+
+  //       }
+  //     },
+  //     error:(err:any)=>{
+  //       this.toastr.error('Failed','',{timeOut:1000});
+  //     }
+  //   })
+  // }
 }

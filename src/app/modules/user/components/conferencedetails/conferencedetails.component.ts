@@ -6,6 +6,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ConferencedetailsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private sanitizer: DomSanitizer,
     private userServ:UserService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private router:Router
   ) {
     this.conferenceData = data;
   }
@@ -224,5 +226,10 @@ export class ConferencedetailsComponent implements OnInit {
         this.toastr.error('Failed','',{timeOut:1000});
       }
     })
+  }
+  goToAddMember(){
+    this.ref.close();
+    this.router.navigate(['/dashboard/myprofile']);
+
   }
 }

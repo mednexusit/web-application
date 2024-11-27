@@ -18,7 +18,14 @@ $primary-color: #0F7C7F;
     object-fit: contain;
   }
 }
+.w-350{
 
+  width: 350px !important;
+}
+.disab{
+  background: #032c2d;
+  color: #fff;
+}
 h5{
   margin: 0 !important;
   float: right;
