@@ -260,7 +260,7 @@ export class ConferencedetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       console.log('Dialog result:', result);
-
+      this.ref.close();
       // Trigger your function here
       this.confirmBookingAfterPayment();
 
@@ -277,6 +277,7 @@ export class ConferencedetailsComponent implements OnInit {
       next: (data: any) => {
         if (data.responseContents) {
           this.toastr.success('Booking Confirmed', '', { timeOut: 2000 });
+          this.ref.close();
           this.closeModal();
           this.closeModals();
         }
