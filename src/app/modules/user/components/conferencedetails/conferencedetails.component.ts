@@ -7,7 +7,8 @@ import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-declare var Razorpay: any;
+import { RazorpayserviceService } from '../../services/razorpayservice.service';
+
 
 @Component({
   selector: 'app-conferencedetails',
@@ -41,7 +42,8 @@ export class ConferencedetailsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private userServ: UserService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private razorpayserv:RazorpayserviceService
   ) {
     this.conferenceData = data;
   }
@@ -113,7 +115,6 @@ export class ConferencedetailsComponent implements OnInit {
         next: (data: any) => {
           this.userDetailsData = data.responseContents;
           this.userDetailsData = this.userDetailsData[0];
-          console.log(this.userDetailsData)
           if (this.userDetailsData[0]?.course) {
             // this.getUserSpecialities();
           }
@@ -253,29 +254,21 @@ export class ConferencedetailsComponent implements OnInit {
     this.ref.close();
     this.router.navigate(['/dashboard/myprofile']);
   }
-  initiatePayment() {
-    const options: any = {
-      key: 'rzp_live_62VbjqoDdEAoMw', // Replace with your Razorpay key ID
-      amount: 1,
-      currency: 'INR',
-      name: 'Your Company Name',
-      description: 'Test Transaction',
-      order_id: 'zybsbsjbsjbb',
-      handler: (response: any) => {
-        console.log('Payment Successful', response);
-        // Handle payment success logic here
-      },
-      prefill: {
-        name: this.userDetailsData.fullname,
-        email: this.userDetailsData.email,
-        contact: this.userDetailsData.user_reg_mobile,
-      },
-      theme: {
-        color: '#3399cc',
-      },
-    };
-
-    const razorpay = new Razorpay(options);
-    razorpay.open();
+  generateRandomOrderId(): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let orderId = '';
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      orderId += characters[randomIndex];
+    }
+    return orderId;
   }
+   initiatePayment() {
+    const amount = 500; // Amount in INR
+    const currency = 'INR';
+    this.razorpayserv.openCheckout(amount,currency, this.userDetailsData,(response:any)=>{
+      console.log("Payment Success",response);
+    })
+}
+
 }
