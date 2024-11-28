@@ -9,7 +9,7 @@ export class RazorpayserviceService {
 
   openCheckout(amount: number, currency: string, userData:any, callback: (response: any) => void) {
     const options: any = {
-      key: 'rzp_test_8FKNARV0isOT61', // Replace with your Razorpay Key ID
+      key: 'rzp_live_62VbjqoDdEAoMw', // Replace with your Razorpay Key ID
       amount: amount * 100, // Convert amount to paisa
       currency: currency,
       name: 'Mednexus',

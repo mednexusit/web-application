@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RazorpayserviceService } from '../../services/razorpayservice.service';
+import { PaymentComponent } from '../payment/payment.component';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ConferencedetailsComponent implements OnInit {
   userDetailsData:any;
   isOpenAddMemeber: boolean = false;
   editData: any;
+  selectedParticipants:any=[];
 
   addMemberForm: any = FormGroup;
   addEditLabel: string = 'Add';
@@ -43,7 +45,8 @@ export class ConferencedetailsComponent implements OnInit {
     private userServ: UserService,
     private fb: FormBuilder,
     private router: Router,
-    private razorpayserv:RazorpayserviceService
+    private razorpayserv:RazorpayserviceService,
+    public dialog: MatDialog
   ) {
     this.conferenceData = data;
   }
@@ -232,7 +235,40 @@ export class ConferencedetailsComponent implements OnInit {
       },
     });
   }
+  getSelectedParticipants(event:any,data:any){
+    if(event.target.checked){
+      this.selectedParticipants.push(data);
+    }
+    else{
+      this.selectedParticipants.pop(data);
+    }
+
+  }
   confirmBooking() {
+    let data={
+      amount:1,
+      currency:'INR',
+      userData:this.userDetailsData
+    }
+    const dialogRef = this.dialog.open(PaymentComponent,{
+      data:data,
+      height: "calc(100%)",
+      width: "calc(100%)",
+      maxWidth: "100%",
+      maxHeight: "100%"
+    })
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log('Dialog result:', result);
+
+      // Trigger your function here
+      this.confirmBookingAfterPayment();
+
+    });
+
+
+  }
+  confirmBookingAfterPayment(){
     let dataToPass = {
       user_id: this.userData.userid,
       conference_id: this.conferenceData.conference_id,
@@ -240,7 +276,7 @@ export class ConferencedetailsComponent implements OnInit {
     this.userServ.bookingConfirmation(dataToPass).subscribe({
       next: (data: any) => {
         if (data.responseContents) {
-          this.toastr.success('Booking Confirmed', '', { timeOut: 1000 });
+          this.toastr.success('Booking Confirmed', '', { timeOut: 2000 });
           this.closeModal();
           this.closeModals();
         }
@@ -263,12 +299,12 @@ export class ConferencedetailsComponent implements OnInit {
     }
     return orderId;
   }
-   initiatePayment() {
-    const amount = 500; // Amount in INR
-    const currency = 'INR';
-    this.razorpayserv.openCheckout(amount,currency, this.userDetailsData,(response:any)=>{
-      console.log("Payment Success",response);
-    })
-}
+//    initiatePayment() {
+//     const amount = 500; // Amount in INR
+//     const currency = 'INR';
+//     this.razorpayserv.openCheckout(amount,currency, this.userDetailsData,(response:any)=>{
+//       console.log("Payment Success",response);
+//     })
+// }
 
 }
