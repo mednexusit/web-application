@@ -235,14 +235,18 @@ export class ConferencedetailsComponent implements OnInit {
       },
     });
   }
-  getSelectedParticipants(event:any,data:any){
-    if(event.target.checked){
-      this.selectedParticipants.push(data);
+  getSelectedParticipants(event: any, data: any) {
+    if (event.target.checked) {
+      this.selectedParticipants.push(data.id); // Pushing only the ID
+      console.log(this.selectedParticipants);
+    } else {
+      // Find the index of the data.id to remove
+      const index = this.selectedParticipants.indexOf(data.id);
+      if (index > -1) {
+        this.selectedParticipants.splice(index, 1); // Remove the item at the found index
+      }
+      console.log(this.selectedParticipants);
     }
-    else{
-      this.selectedParticipants.pop(data);
-    }
-
   }
   confirmBooking() {
     let data={
@@ -272,6 +276,7 @@ export class ConferencedetailsComponent implements OnInit {
     let dataToPass = {
       user_id: this.userData.userid,
       conference_id: this.conferenceData.conference_id,
+      participates: this.selectedParticipants
     };
     this.userServ.bookingConfirmation(dataToPass).subscribe({
       next: (data: any) => {
