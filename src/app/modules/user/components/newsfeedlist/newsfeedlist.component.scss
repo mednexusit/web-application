@@ -736,8 +736,8 @@ color: #fff;
 }
 
 .img-data-grid-container {
-  // width: auto;
-  max-height: 20vw;
+  width: auto;
+  // max-height: 20vw;
   height: auto;
   img{
     width: 50%;
@@ -747,8 +747,8 @@ color: #fff;
 }
 @media only screen and (max-width: 600px) {
   .img-data-grid-container {
-    // width: auto;
-    max-height: 40vw;
+    width: auto;
+    // max-height: 40vw;
     img{
       width: 100%;
     }

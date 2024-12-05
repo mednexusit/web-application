@@ -93,8 +93,9 @@ $text-color: #ffffff;
 
 // Other global styles
 .sidenav-container {
-  height: calc(100% - 64px);
+  height: calc(100% - 19%);
   background-color: $background-color;
+  padding-bottom: 3vw;
 }
 
 .content {
