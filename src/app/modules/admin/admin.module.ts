@@ -28,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AddnewsfeedComponent } from './components/addnewsfeed/addnewsfeed.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AddnewsfeedComponent } from './components/addnewsfeed/addnewsfeed.compo
     SubadminsComponent,
     AddsubadminComponent,
     AddnewsfeedComponent,
+    BookingsComponent,
   ],
   imports: [
     CommonModule,

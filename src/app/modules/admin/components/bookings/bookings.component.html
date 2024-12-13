@@ -1,0 +1,58 @@
+<div class="search-bar col col-lg-5 col-md-5 col-sm-12">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Type to search"
+      class="searchInp"
+    />
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Sr.No">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Conference Name">
+      <th mat-header-cell *matHeaderCellDef>Conference Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.conference_name }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Participants">
+      <th mat-header-cell *matHeaderCellDef>Participants</th>
+      <td mat-cell *matCellDef="let element">
+        <ol>
+          <li *ngFor="let par of element.participation">
+            <p>Name:{{par.name}}</p>
+            <p>Email:{{par.email}}</p>
+            <p>Age:{{par.age}}</p>
+            <p>Gender: <span *ngIf="par.age==1">Male</span> <span *ngIf="par.age==2">Female</span></p>
+          </li>
+        </ol>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <i class="fa-solid fa-download" (click)="downloadCSV(element)"></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>
