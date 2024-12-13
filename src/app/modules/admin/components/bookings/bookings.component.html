@@ -29,17 +29,17 @@
       <td mat-cell *matCellDef="let element">
         <ol>
           <li *ngFor="let par of element.participation">
-            <p>Name:{{par.name}}</p>
-            <p>Email:{{par.email}}</p>
-            <p>Age:{{par.age}}</p>
-            <p>Gender: <span *ngIf="par.age==1">Male</span> <span *ngIf="par.age==2">Female</span></p>
+            <label>Name:</label><span>{{par.name}}</span>
+            <label>Email:</label><span>{{par.email}}</span>
+            <label>Age:</label><span>{{par.age}}</span>
+            <label>Gender:</label><span *ngIf="par.gender===1">Male</span> <span *ngIf="par.gender===2">Female</span>
           </li>
         </ol>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="Action">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <th mat-header-cell *matHeaderCellDef>Download</th>
       <td mat-cell *matCellDef="let element">
         <i class="fa-solid fa-download" (click)="downloadCSV(element)"></i>
       </td>

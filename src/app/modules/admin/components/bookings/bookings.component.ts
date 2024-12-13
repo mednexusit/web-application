@@ -56,14 +56,22 @@ export class BookingsComponent implements OnInit {
     }
 
     generateCSV(conference: any): string {
-      const headers = ['Conference Name','Name', 'Email', 'Age', 'Gender'];
+      const headers = ['Conference Name','Name', 'Email', 'Age', 'Gender','Date'];
       const rows = conference.participation.map((par: any) => [
         conference.conference_name,
         par.name,
         par.email,
         par.age,
-        par.gender === 1 ? 'Male' : 'Female'
+        par.gender === 1 ? 'Male' : 'Female',
+        this.formatDate(conference.conference_proposal_date_time)
       ]);
       return [headers.join(','), ...rows.map((row:any) => row.join(','))].join('\n');
+    }
+    formatDate(dateString: string): string {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      return `${year} ${day} ${month}`;
     }
 }

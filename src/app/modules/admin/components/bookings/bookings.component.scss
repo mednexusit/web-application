@@ -1,0 +1,25 @@
+.search-bar{
+  margin: 1rem;
+  .mat-mdc-form-field{
+    width: 100%;
+  }
+  .searchInp{
+    width: 100%;
+  }
+}
+
+ol{
+  li{
+   margin:5px 0px;
+   label{
+    font-weight: 500;
+    color: #111;
+    margin-right: 2px;
+    margin-left: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+   }
+   span{
+    margin-left: 5px;
+   }
+  }
+}
