@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { SharedService } from './../../../../shared/shared.service';
 import { ThememanageService } from '../../theme/thememanage.service';
@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { environment } from '../../../../../environments/environment';
+import { AdminservService } from '../../../admin/services/adminserv.service';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -13,12 +16,14 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.scss'],
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnInit {
   base2URL:any;
+  notifications:any;
   isSidebarOpen = true; // Sidebar initially open
   sidenavMode: MatDrawerMode = 'side'; // Correctly typing the sidenavMode as MatDrawerMode
   selectedValueTab1: string = 'all';
   selectedValueTab2: string = 'aboutConference';
+
 
   private dialogRef: MatDialogRef<any> | null = null;
 
@@ -39,21 +44,26 @@ export class UserDashboardComponent {
   userLogoSrc: string;
   toggleLogoSrc: string;
   isLoggedInUser: boolean = false;
-
+  userData:any;
   constructor(
     private themeService: ThememanageService,
     private SharedService: SharedService,
     private authServ: AuthService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userServ:UserService,
+    private toastr:ToastrService
   ) {
     this.logoSrc = this.themeService.getLogo();
     this.userLogoSrc = this.themeService.getUserLogo();
     this.toggleLogoSrc = this.themeService.getToggleLogo();
   }
   ngOnInit(): void {
+    this.userData = sessionStorage.getItem('userData');
+    this.userData = JSON.parse(this.userData);
     this.isLoggedInUser = sessionStorage.getItem('LoggedInUser') !== null;
     this.base2URL = environment.baseURL2;
+    this.getBookingList();
   }
   logoutUser() {
     this.SharedService.sendHideHeaderFlag(true);
@@ -85,5 +95,21 @@ export class UserDashboardComponent {
   }
   goToFollow(){
     this.router.navigate(['/followus'])
+  }
+  getBookingList(){
+    let dataToPass={
+      "user_id":this.userData.userid
+    }
+    this.userServ.fetchBookingConfirmation(dataToPass).subscribe({
+      next:(data:any)=>{
+        if(data.responseContents){
+          this.notifications = data.responseContents.slice(0, 5);
+          console.log(this.notifications)
+        }
+      },
+      error:(err:any)=>{
+        this.toastr.error('Failed to load','',{timeOut:1000});
+      }
+    })
   }
 }

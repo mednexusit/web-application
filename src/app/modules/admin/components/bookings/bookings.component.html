@@ -22,6 +22,10 @@
       <th mat-header-cell *matHeaderCellDef>Conference Name</th>
       <td mat-cell *matCellDef="let element">{{ element.conference_eventname }}</td>
     </ng-container>
+    <ng-container matColumnDef="Conference Place">
+      <th mat-header-cell *matHeaderCellDef>Conference Place</th>
+      <td mat-cell *matCellDef="let element">{{ element.conference_place }}</td>
+    </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="Participants">
@@ -33,6 +37,17 @@
             <label>Email:</label><span>{{par.email}}</span>
             <label>Age:</label><span>{{par.age}}</span>
             <label>Gender:</label><span *ngIf="par.gender===1">Male</span> <span *ngIf="par.gender===2">Female</span>
+            <label *ngIf="par?.postgraduation">Post Graduation:</label><span>{{par.postgraduation}}</span>
+            <label *ngIf="par?.yearofstudying">Year of Passing or Year of Study:</label><span>{{par.yearofstudying}}</span>
+            <label *ngIf="par?.yearofpracticing !=''">Experience in Year/Year of Study:</label><span>{{par.yearofpracticing}}</span>
+            <label *ngIf="par?.superspecialty !=''">Super Speciality:</label><span>{{par.superspecialty}}</span>
+            <label *ngIf="par?.medRegisterNum !=''">Med Counsil Register Number:</label><span>{{par.medRegisterNum}}</span>
+            <label *ngIf="par?.council_reg !=''">Council Registration:</label><span>{{par.council_reg}}</span>
+            <label *ngIf="par?.council_state !='' ">Council State:</label><span>{{par.council_state}}</span>
+            <label *ngIf="par?.mbbs !='' ">College Name:</label><span>{{par.mbbs}}</span>
+            <label *ngIf="par?.current_position !='' ">Current Position:</label><span>{{par.current_position}}</span>
+            <label *ngIf="par?.current_working_or_studying !='' ">Current Working Organization/Studying Institute:</label><span>{{par.current_working_or_studying}}</span>
+            <label *ngIf="par?.exporstudiing_year !='' ">Year of Experience/Passing :</label><span>{{par.exporstudiing_year}}</span>
           </li>
         </ol>
       </td>

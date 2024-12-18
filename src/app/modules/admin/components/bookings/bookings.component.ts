@@ -14,7 +14,7 @@ export class BookingsComponent implements OnInit {
   bookings:any=[];
   dataSource = new MatTableDataSource<any>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: any = ['Sr.No', 'Conference Name', 'Participants', 'Action'];
+  displayedColumns: any = ['Sr.No', 'Conference Name','Conference Place' ,'Participants', 'Action'];
   constructor(private adminServ:AdminservService, private toastr:ToastrService){
 
   }
@@ -56,13 +56,27 @@ export class BookingsComponent implements OnInit {
     }
 
     generateCSV(conference: any): string {
-      const headers = ['Conference Name','Name', 'Email', 'Age', 'Gender','Date'];
+      const headers = ['Conference Name','Name', 'Email', 'Age', 'Gender','Post Graduation','Year of Passing or Year of Study',
+        'Super Speciality','College Name','Council Registration','Council State','Current Position','Current Working Organization/Studying Institute',
+        'Year of Experience/Passing'
+      ];
       const rows = conference.participation.map((par: any) => [
         conference.conference_name,
-        par.name,
-        par.email,
-        par.age,
-        par.gender === 1 ? 'Male' : 'Female',
+        par?.name,
+        par?.email,
+        par?.age,
+        par?.gender === 1 ? 'Male' : 'Female',
+        par?.postgraduation,
+        par?.yearofstudying,
+        par?.yearofpracticing,
+        par?.superspecialty,
+        par?.mbbs,
+        par?.council_reg,
+        par?.council_state,
+        par?.current_position,
+        par?.current_working_or_studying,
+        par?.medRegisterNum,
+        par?.exporstudiing_year,
         this.formatDate(conference.conference_proposal_date_time)
       ]);
       return [headers.join(','), ...rows.map((row:any) => row.join(','))].join('\n');

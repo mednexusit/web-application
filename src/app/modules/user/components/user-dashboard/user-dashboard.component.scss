@@ -95,7 +95,7 @@ $text-color: #ffffff;
 .sidenav-container {
   height: calc(100% - 64px);
   background-color: $background-color;
-  
+
   @media only screen and (max-width: 460px){
     height: calc(100% - 19%);
     padding-bottom: 3vw;
@@ -1361,3 +1361,15 @@ padding: 20px;
     }
   }
 
+  .notifications{
+
+
+  }
+  .notification{
+    font-size: 8px !important;
+    display: flex;
+    .detials{
+      font-size: 8px;
+      display: flex;
+    }
+  }
