@@ -52,7 +52,8 @@
     }
     ol{
         padding: 0;
-        margin: 2vw 6vw;
+        margin: 2vw 3vw;
+        list-style-type: none;
     }
 }
 :host ::ng-deep header{
@@ -72,7 +73,11 @@
         .user-logo-white{
             display: block !important;
         }
-        .logo,.user-logo{
+        .logo{
+            width: 5vw !important;
+
+        }
+        .user-logo{
             display: none;
         }
         .actions{

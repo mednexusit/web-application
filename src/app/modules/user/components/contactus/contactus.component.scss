@@ -128,9 +128,14 @@
         .user-logo-white{
             display: block !important;
         }
-        .logo,.user-logo{
+        .user-logo{
             display: none;
+            
         }
+            .logo{
+                width: 5vw !important;
+
+            }
         .actions{
             .pt-1{
                 // height: 2.3vw !important;
