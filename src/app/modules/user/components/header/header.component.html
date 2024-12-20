@@ -14,7 +14,7 @@
         <!-- User Logo with Dropdown Toggle -->
         <li class="pt-1" (click)="toggleDropdown()">
           <img [src]="userLogoSrc" class="user-logo" alt="User Logo" />
-          <img src="../../../../../assets/new-logo.jpg" class="user-logo-white" alt="User Logo" />
+          <img src="../../../../../assets/userlogo-white.png" class="user-logo-white" alt="User Logo" />
           <!-- Dropdown Menu -->
           <div *ngIf="showDropdown" class="dropdown-menu">
             <a [routerLink]="['/login']" class="dropdown-item" *ngIf="!isLoggedInUser">Login   <i class="fa-solid fa-right-to-bracket logIcon"></i></a>
