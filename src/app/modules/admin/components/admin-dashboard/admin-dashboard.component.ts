@@ -168,6 +168,14 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       sub_subject: ['', Validators.required],
     });
   }
+  isImage(url: string): boolean {
+    return /\.(jpg|jpeg|png|gif|bmp|svg)$/i.test(url);
+  }
+
+  // Check if the URL points to a PDF
+  isPdf(url: string): boolean {
+    return /\.pdf$/i.test(url);
+  }
   addSubjects() {
     if (this.subjectsListArray?.length <= 8) {
       this.subjectsListArray.push(this.getSubjects());

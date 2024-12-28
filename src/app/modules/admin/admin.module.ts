@@ -29,6 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AddnewsfeedComponent } from './components/addnewsfeed/addnewsfeed.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
     AddsubadminComponent,
     AddnewsfeedComponent,
     BookingsComponent,
+    SafeUrlPipe,
   ],
   imports: [
     CommonModule,
@@ -63,6 +66,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    PdfViewerModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu

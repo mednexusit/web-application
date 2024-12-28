@@ -31,9 +31,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
-  declarations: [AppComponent, PagenotfoundComponent],
+  declarations: [AppComponent, PagenotfoundComponent, SafeUrlPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

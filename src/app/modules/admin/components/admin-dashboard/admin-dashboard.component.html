@@ -248,11 +248,13 @@
           <label for="">Speaker Name: {{ this.modalData.speaker_name }}</label>
           <div class="flex d-flex">
             <label for="">Session Name:</label>
-            <img src="{{ this.modalData.session_name }}" alt="" />
+            <img *ngIf="isImage(modalData.session_name)" [src]="modalData.session_name" alt="Session Image" />
+            <iframe *ngIf="isPdf(modalData.session_name)" [src]="modalData.session_name | safeUrl" width="250px" height="250px"></iframe>
           </div>
           <div class="flex d-flex">
             <label for="">Letter:</label>
-            <img src="{{ this.modalData.letter }}" alt="" />
+            <img *ngIf="isImage(modalData.letter)" [src]="modalData.letter" alt="Letter Image" />
+            <iframe *ngIf="isPdf(modalData.letter)" [src]="modalData.letter | safeUrl" width="250px" height="250px"></iframe>
           </div>
         </div>
       </div>
