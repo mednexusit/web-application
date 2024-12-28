@@ -54,6 +54,7 @@ export class NewsfeedlistComponent implements OnInit {
     });
   }
   goBack() {
-    this.userServ.goBack();
+    this.router.navigate(['dashboard/education1'])
+   // this.userServ.goBack();
   }
 }

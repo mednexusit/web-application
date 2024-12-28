@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   speakerInfo: any = FormGroup;
   paymentInfo: any = FormGroup;
   createdDate:Date= new Date();
+  createdFromDate:Date=new Date();
+  createdToDate:Date=new Date();
   formattedDate: string;
+  fromFormattedDate:string;
+  toFormattedDate:string;
   categories: any = [
     { name: 'Conference(Online)', id: 1 },
     { name: 'Conference(Offline)', id: 2 },
@@ -60,7 +64,7 @@ export class HomeComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'),
         ]),
       ],
     });
@@ -72,13 +76,16 @@ export class HomeComponent implements OnInit {
       state: ['', Validators.required],
       pin: ['', Validators.required],
       venu: ['', Validators.required],
-      proposal_date_time:['',Validators.required]
+      proposal_from_datetime:['',Validators.required],
+      proposal_to_datetime:['',Validators.required],
+
     });
     this.speakerInfo = this.formBuilder.group({
       speakerinfo: ['', Validators.required],
       session_name: ['', Validators.required],
       topic: ['', Validators.required],
       speaker_name: ['', Validators.required],
+      price:['',Validators.required],
       duration: ['', Validators.required],
       letter: ['', Validators.required],
       cme_point: ['', Validators.required],
@@ -90,7 +97,7 @@ export class HomeComponent implements OnInit {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'),
         ]),
       ],
       contactphonenumber: [
@@ -121,9 +128,13 @@ export class HomeComponent implements OnInit {
       ],
       branchaddress: ['', Validators.required],
     });
-    this.conferenceInfo.get('proposal_date_time').valueChanges.subscribe((data:any)=>{
-      this.createdDate = new Date(data);
-      this.formattedDate = this.formatDate(this.createdDate);
+    this.conferenceInfo.get('proposal_from_datetime').valueChanges.subscribe((data:any)=>{
+      this.createdFromDate = new Date(data);
+      this.fromFormattedDate = this.formatDate(this.createdFromDate);
+    })
+    this.conferenceInfo.get('proposal_to_datetime').valueChanges.subscribe((data:any)=>{
+      this.createdToDate = new Date(data);
+      this.toFormattedDate = this.formatDate(this.createdToDate);
     })
   }
   changeCurrentStep(data: number) {
@@ -183,7 +194,9 @@ export class HomeComponent implements OnInit {
       ifsccode: this.paymentInfo.get('ifsccode').value,
       panno: this.paymentInfo.get('panno').value,
       branchaddress: this.paymentInfo.get('branchaddress').value,
-      proposal_date_time:this.formattedDate.toString()
+      proposal_from_datetime:this.fromFormattedDate.toString(),
+      proposal_to_datetime:this.toFormattedDate.toString(),
+      price:this.paymentInfo.get('price').value
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({
       next: (data: any) => {
