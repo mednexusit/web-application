@@ -284,11 +284,11 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       let todateValue = new Date(this.editData.proposal_to_datetime);
       if (!isNaN(todateValue.getTime())) {
         // Check if it's a valid date
-        const year = todateValue.getUTCFullYear();
-        const month = String(todateValue.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(todateValue.getUTCDate()).padStart(2, '0');
-        const hours = String(todateValue.getUTCHours()).padStart(2, '0');
-        const minutes = String(todateValue.getUTCMinutes()).padStart(2, '0');
+        const year = todateValue.getFullYear();
+        const month = String(todateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(todateValue.getDate()).padStart(2, '0');
+        const hours = String(todateValue.getHours()).padStart(2, '0');
+        const minutes = String(todateValue.getMinutes()).padStart(2, '0');
         const toformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
         this.editvendorFormGroup
           .get('proposal_to_datetime')
@@ -300,11 +300,12 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       if (!isNaN(fromdateValue.getTime())) {
         // Check if it's a valid date
         const year = fromdateValue.getUTCFullYear();
-        const month = String(fromdateValue.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(fromdateValue.getUTCDate()).padStart(2, '0');
-        const hours = String(fromdateValue.getUTCHours()).padStart(2, '0');
-        const minutes = String(fromdateValue.getUTCMinutes()).padStart(2, '0');
+        const month = String(fromdateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(fromdateValue.getDate()).padStart(2, '0');
+        const hours = String(fromdateValue.getHours()).padStart(2, '0');
+        const minutes = String(fromdateValue.getMinutes()).padStart(2, '0');
         const fromformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+        console.log(fromformattedDate)
         this.editvendorFormGroup
           .get('proposal_from_datetime')
           .setValue(fromformattedDate);
