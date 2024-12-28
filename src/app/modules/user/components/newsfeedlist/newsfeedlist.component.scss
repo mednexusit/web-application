@@ -753,16 +753,145 @@ color: #fff;
       width: 100%;
     }
   }
+
+  .main-card{
+    height: 21vh !important;
+    max-height: 21vh !important;
+    overflow-y: auto;
+    align-items: center;
+    
+    .img-sec{
+      width: 80px !important;
+      height: 80px !important;
+    }
+    p{
+      font-size: 0.6rem !important;
+      line-height: 12px;
+    }
+    .p0{
+      padding-right: 0px !important;
+    }
+  }
+  .footer-sec{
+    position: relative !important;
+    .col-lg-4{
+      position: relative !important;
+    }
+  }
 }
 
+@media (min-width:601px) and (max-width: 768px) {
+  .footer-sec{
+    position: relative !important;
+    .col-lg-4{
+      position: relative !important;
+    }
+  }
+  .main-card{
+    align-items: center;
+    height: 15vh !important;
+  }
+}
+
+@media (min-width:769px) and (max-width: 1000px) {
+  .footer-sec{
+    position: relative !important;
+    .col-lg-4{
+      position: relative !important;
+    }
+  }
+  .main-card{
+    align-items: center;
+    height: 15vh !important;
+    .p0{
+      padding-right: 0px;
+    }
+  }
+}
+
+@media (min-width:1001px) and (max-width: 1999px) {
+  .main-card{
+    .img-sec{
+      width: 90px !important;
+      height: 90px !important;
+    }
+    p{
+      font-size: 0.6rem;
+    }
+  }
+}
+
+.pright{
+  padding-right: 1rem;
+}
+.main-card{
+  height: 25vh;
+  padding: 15px 15px;
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  width: 100%;
+  background-image: url(../../../../../assets/ed-ban.jpg);
+  // background-image: linear-gradient(to bottom right, #36b4b0, #32b6aa);
+    .col-4{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  .img-sec{
+    width: 110px;
+    height: 110px;
+
+    img{
+      width: 100%;
+      height: 100%;
+      border: 1px solid white;
+      border-radius: 50%;
+    }
+  }
+
+  .col-8{
+    position: relative;
+
+    p{
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1rem;
+    }
+
+    .footer-sec{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      .col-lg-4{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+      p{
+        font-size: 0.6rem;
+        font-weight: 600;
+        // line-height: 15px;
+        margin-bottom: 0;
+        color: #eaeaea;
+        ;
+      }
+    }
+  }
+}
 .speaker-card {
+  background-image: url(../../../../../assets/ed-ban.jpg);
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 15px 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: .5rem;
   max-width: 600px;
-  margin: 20px auto;
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -771,16 +900,20 @@ color: #fff;
   
   .card-text{
     height: 100%;
-    overflow-y: auto;
+    width: 100%;
   }
 }
 
 .speaker-card img {
-  border-radius: 0%;
-  width: 80px;
-  height: 80px;
+  border: 1px solid #35b1af;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-right: 20px;
+}
+.image-sec{
+  width: 120px;
+  height: 120px;
 }
 
 .speaker-card h3 {
@@ -974,7 +1107,7 @@ color: #fff;
   border-radius: 5px;
 }
 .tab-card2 {
-  width: 430px;
+  width: 100%;
   border-radius: 10px;
   color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -1000,11 +1133,7 @@ color: #fff;
   color: black;
   font-weight: 500;
 }
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .left-text {
   text-align: left;
@@ -1123,6 +1252,7 @@ border: none;
 .side-text{
   font-size: 12px;
   font-weight: 600;
+  height: 12vh;
 }
 
 
