@@ -209,7 +209,7 @@
         </h5>
       </div>
       <hr />
-      <div class="row" *ngIf="remaindersData.length">
+      <div class="row scroll-container" *ngIf="remaindersData.length">
         <!-- Coupon 1 -->
         <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
           <div class="coupon d-flex border p-2 align-items-center">
@@ -224,6 +224,8 @@
             </span>
           </div>
         </div>
+
+
       </div>
       <div class="row" *ngIf="!remaindersData.length">
         <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer">
@@ -332,7 +334,7 @@
       </div>
       <div class="row" *ngIf="userAvailableSpecialities.length <= 0 ">
         <h1>No Specialities,
-          <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Please Register</a>
+          <a [routerLink]="['']" routerLinkActive="router-link-active">Please Register</a>
         </h1>
       </div>
     </div>

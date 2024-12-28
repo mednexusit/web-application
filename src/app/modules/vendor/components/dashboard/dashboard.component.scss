@@ -13,7 +13,7 @@ $text-color: #ffffff;
     padding-top: 0.3rem;
   }
   
-  .col-md-9{
+  .col-md-8{
     .col-md-1{
       text-align: right;
     }
@@ -23,7 +23,7 @@ $text-color: #ffffff;
     }
   }
 
-  .col-md-3{
+  .col-md-4{
     color: white;
     text-align: right;
     padding-right: 0px;
@@ -36,6 +36,10 @@ header{
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.sidenav-tab{
+  display: none;
 }
 
 .logoutColor{
@@ -80,155 +84,6 @@ header{
     font-size: 1.3rem;
   }
 }
-@media only screen and (min-width: 768px){
-  .router-link-active{
-    transition: all 0.3s linear;
-    span{
-      color: #0f7c7f !important;
-    }
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 996px) {
-  .padd0{
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  .mat-sidenav{
-    width: 6%;
-  }
-}
-@media screen and (min-width: 996px) and (max-width: 1100px) {
-  .padd0{
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  img.menu-ic {
-    margin-right: 5px !important;
-    width: 15px !important;
-    height: 15px !important;
-  }
-  mat-nav-list a {
-    span{
-      font-size: 9px !important;
-    }
-  }
-}
-@media screen and (min-width: 1101px) and (max-width: 2000px) {
-  .padd0{
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  ::ng-deep .router-link-active{
-    transition: all 0.3s linear;
-    background-color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    span{
-      color: #0f7c7f !important;
-      font-weight: 500;
-    }
-  }
-  .desktop {
-    display: none !important;
-  }
-  .navbar ul li a{
-    color: white !important;
-  }
-
-  .mobile {
-    display: block;
-    height: 12%;
-    width: 100%;
-    z-index: 1000;
-    left: 0%;
-    background: $primary-color;
-
-    .logo{
-      height: 60px;
-      .col-3{
-        text-align: right;
-        i{
-          font-size: 1.3rem;
-        }
-      }
-    }
-  }
-
-  .show-img{
-    width: 100%;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 0.3rem;
-  }
-
-  .navbar {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    background: $primary-color;
-    transition: left 0.3s;
-  }
-
-  .navbar.show {
-    left: 0;
-  }
-
-  ul {
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-    margin: 0px;
-    padding: 0;
-  }
-
-  li {
-    width: 100%;
-  }
-
-  a {
-    display: flex;
-    width: 100% !important;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .show-mobile-list{
-    position: absolute;
-    top: 80px;
-    width: 100%;
-    img{
-      padding-top: 0px;
-        margin-right: 10px;
-        width: 20px;
-        height: 20px;
-        color: white;
-    }
-
-    ul{
-      padding-left: 5%;
-      li{
-        i{
-          padding-right: 2.5%;
-          padding-top: 0.5%;
-        }
-      }
-    }
-  }
-
-  .sidenav{
-    display: none;
-  }
- 
-
-}
-
 header {
   width: 100%;
   height: 55px;
@@ -261,6 +116,9 @@ header {
     }
   }
 }
+.tab-sidenav-list{
+  display: none;
+}
 
 .hamIcon{
   color: #6610f2;
@@ -278,16 +136,14 @@ header {
   color: $text-color;
   transition: width 0.3s ease;
   border-right: 0px;
-
-  // Full width when open, minimal width when closed
   width: 16%;
 
   &.mat-drawer {
     &.closed {
-      width: 80px; // Width for icon-only view
+      width: 80px;
       mat-nav-list {
         a {
-          justify-content: center; // Center icons when sidebar is collapsed
+          justify-content: center;
         }
       }
     }
@@ -310,6 +166,14 @@ header {
       font-size: 0.7rem;
       font-weight: 600;
       color: #5a5757;
+    }
+  }
+
+  ::ng-deep .router-link-active{
+    transition: all 0.3s linear;
+    span{
+      color: #0F7C7F !important;
+      font-weight: 500;
     }
   }
 }
@@ -404,4 +268,222 @@ header {
 .user-role{
   font-size: 0.6rem;
   line-height: 0.6rem;
+}
+@media screen and (min-width: 320px) and (max-width: 344px) { 
+  .mobile {
+    height: 8% !important;
+    .logo{
+      padding: 0.5rem !important;
+    }
+  }
+}
+
+@media screen and (min-width: 345px) and (max-width: 378px) { 
+  .mobile {
+    height: 10% !important;
+    .logo{
+      padding: 0.5rem !important;
+    }
+  }
+}
+@media screen and (min-width: 379px) and (max-width: 500px) { 
+  .mobile {
+    height: 8% !important;
+    .logo{
+      padding: 1rem !important;
+    }
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 996px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .web-sidenav-list{
+    display: none !important;
+  }
+  .tab-sidenav-list{
+    display: block !important;
+  }
+  .mat-sidenav{
+    width: 7%;
+  }
+  .mat-drawer-content{
+    margin-left: 10%;
+  }
+  .mobile{
+    height: 7% !important;
+  }
+  .navbar{
+    height: 7%;
+  }
+  .sidenav-container{
+    height: 93%;
+  }
+  .dropdown .fa-xl{
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 996px) and (max-width: 1023px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .web-sidenav-list{
+    display: none !important;
+  }
+  .tab-sidenav-list{
+    display: block !important;
+  }
+  img.menu-ic {
+    margin-right: 5px !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+  mat-nav-list a {
+    span{
+      font-size: 9px !important;
+    }
+  }
+  .mobile{
+    height: 7% !important;
+  }
+  .navbar{
+    height: 7%;
+  }
+  .sidenav-container{
+    height: 93%;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1099px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .navbar{
+    height: 8%;
+  }
+  .mat-sidenav{
+    width: 20%;
+  }
+  .mat-drawer-content{
+    margin-left: 20%;
+  }
+  .sidenav-container{
+    height: 92%;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 2000px) {
+  .padd0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  
+  ::ng-deep .router-link-active{
+    transition: all 0.3s linear;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    span{
+      color: #0f7c7f !important;
+      font-weight: 500;
+    }
+  }
+  .desktop {
+    display: none !important;
+  }
+  .navbar ul li a{
+    color: white !important;
+  }
+
+  .mobile {
+    display: block;
+    height: 9%;
+    width: 100%;
+    z-index: 1000;
+    left: 0%;
+    background: $primary-color;
+
+    .logo{
+      height: 60px;
+      padding: 1rem !important;
+      .col-3{
+        text-align: right;
+        i{
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  .show-img{
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.3rem;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: $primary-color;
+    transition: left 0.3s;
+  }
+
+  .navbar.show {
+    left: 0;
+  }
+
+  ul {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  a {
+    display: flex;
+    width: 100% !important;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .show-mobile-list{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    img{
+      padding-top: 0px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        color: white;
+    }
+
+    ul{
+      padding-left: 5%;
+      li{
+        i{
+          padding-right: 2.5%;
+          padding-top: 0.5%;
+        }
+      }
+    }
+  }
+  .sidenav{
+    display: none;
+  }
 }

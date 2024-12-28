@@ -67,6 +67,9 @@ export class MyInterestComponent implements OnInit {
       this.fetchMyInterest();
     }
   }
+  goBack(){
+    this.userServ.goBack();
+  }
 
   fetchBookingConfirmationList(){
     let dataToPass={

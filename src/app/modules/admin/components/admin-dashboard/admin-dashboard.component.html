@@ -228,7 +228,8 @@
         <div class="details">
           <label for="">Event Name: {{ this.modalData.eventname }}</label>
           <label for="">Organized By: {{ this.modalData.organisedby }}</label>
-          <label for="">Conference Host Date: {{ this.modalData.proposal_date_time | date: 'MM/dd/yyyy hh:mm a':'UTC' }}</label>
+          <label for="">Conference From Date: {{ this.modalData.proposal_from_datetime | date: 'MM/dd/yyyy hh:mm a' }}</label>
+          <label for="">Conference To Date: {{ this.modalData.proposal_to_datetime | date: 'MM/dd/yyyy hh:mm a' }}</label>
           <label for="">Category: {{ this.modalData.category }}</label>
           <label for="">State: {{ this.modalData.state }}</label>
           <label for="">Place: {{ this.modalData.place }}</label>
@@ -243,14 +244,17 @@
           <label for="">Topic: {{ this.modalData.topic }}</label>
           <label for="">Duration: {{ this.modalData.duration }}</label>
           <label for="">CME Points: {{ this.modalData.cme_point }}</label>
+          <label for="">Price: {{ this.modalData.price }}</label>
           <label for="">Speaker Name: {{ this.modalData.speaker_name }}</label>
           <div class="flex d-flex">
             <label for="">Session Name:</label>
-            <img src="{{ this.modalData.session_name }}" alt="" />
+            <img *ngIf="isImage(modalData.session_name)" [src]="modalData.session_name" alt="Session Image" />
+            <iframe *ngIf="isPdf(modalData.session_name)" [src]="modalData.session_name | safeUrl" width="250px" height="250px"></iframe>
           </div>
           <div class="flex d-flex">
             <label for="">Letter:</label>
-            <img src="{{ this.modalData.letter }}" alt="" />
+            <img *ngIf="isImage(modalData.letter)" [src]="modalData.letter" alt="Letter Image" />
+            <iframe *ngIf="isPdf(modalData.letter)" [src]="modalData.letter | safeUrl" width="250px" height="250px"></iframe>
           </div>
         </div>
       </div>
@@ -358,9 +362,14 @@
             <input type="text" formControlName="organizedby" />
           </div>
           <div class="edit-fields">
-            <label for="">Host Conference Date:</label>
-            <input type="datetime-local" formControlName="proposal_date_time" />
+            <label for=""> Conference From Date:</label>
+            <input type="datetime-local" formControlName="proposal_from_datetime" />
           </div>
+          <div class="edit-fields">
+            <label for=""> Conference To Date:</label>
+            <input type="datetime-local" formControlName="proposal_to_datetime" />
+          </div>
+
           <div class="edit-fields">
             <label for="">Category:</label>
             <select
@@ -410,6 +419,10 @@
           <div class="edit-fields">
             <label for="">CME Points:</label>
             <input type="text" formControlName="cme_point" />
+          </div>
+          <div class="edit-fields">
+            <label for="">Price:</label>
+            <input type="text" formControlName="price" />
           </div>
           <div class="edit-fields">
             <label for="">Speaker Name: </label>

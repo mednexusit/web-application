@@ -126,6 +126,10 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       branchaddress: ['', Validators.required],
       subjects: this.fb.array([this.getSubjects()]),
       proposal_date_time: ['', Validators.required],
+      proposal_from_datetime:['',Validators.required],
+      proposal_to_datetime:['',Validators.required],
+      price:['',Validators.required]
+
     });
 
     // this.editvendorFormGroup
@@ -163,6 +167,14 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       subject: ['', Validators.required],
       sub_subject: ['', Validators.required],
     });
+  }
+  isImage(url: string): boolean {
+    return /\.(jpg|jpeg|png|gif|bmp|svg)$/i.test(url);
+  }
+
+  // Check if the URL points to a PDF
+  isPdf(url: string): boolean {
+    return /\.pdf$/i.test(url);
   }
   addSubjects() {
     if (this.subjectsListArray?.length <= 8) {
@@ -269,20 +281,36 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       this.editvendorFormGroup.get('email').setValue(this.editData.email);
       this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
       this.editvendorFormGroup.get('address').setValue(this.editData.address);
-      let dateValue = new Date(this.editData.proposal_date_time);
-      if (!isNaN(dateValue.getTime())) {
+      let todateValue = new Date(this.editData.proposal_to_datetime);
+      if (!isNaN(todateValue.getTime())) {
         // Check if it's a valid date
-        const year = dateValue.getUTCFullYear();
-        const month = String(dateValue.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(dateValue.getUTCDate()).padStart(2, '0');
-        const hours = String(dateValue.getUTCHours()).padStart(2, '0');
-        const minutes = String(dateValue.getUTCMinutes()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+        const year = todateValue.getFullYear();
+        const month = String(todateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(todateValue.getDate()).padStart(2, '0');
+        const hours = String(todateValue.getHours()).padStart(2, '0');
+        const minutes = String(todateValue.getMinutes()).padStart(2, '0');
+        const toformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
         this.editvendorFormGroup
-          .get('proposal_date_time')
-          .setValue(formattedDate);
+          .get('proposal_to_datetime')
+          .setValue(toformattedDate);
       } else {
-        console.error('Invalid date format:', this.editData.proposal_date_time);
+        console.error('Invalid date format:', this.editData.proposal_to_datetime);
+      }
+      let fromdateValue = new Date(this.editData.proposal_from_datetime);
+      if (!isNaN(fromdateValue.getTime())) {
+        // Check if it's a valid date
+        const year = fromdateValue.getUTCFullYear();
+        const month = String(fromdateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(fromdateValue.getDate()).padStart(2, '0');
+        const hours = String(fromdateValue.getHours()).padStart(2, '0');
+        const minutes = String(fromdateValue.getMinutes()).padStart(2, '0');
+        const fromformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+        console.log(fromformattedDate)
+        this.editvendorFormGroup
+          .get('proposal_from_datetime')
+          .setValue(fromformattedDate);
+      } else {
+        console.error('Invalid date format:', this.editData.proposal_from_datetime);
       }
       this.editvendorFormGroup
         .get('eventname')
@@ -309,6 +337,9 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       this.editvendorFormGroup
         .get('cme_point')
         .setValue(this.editData.cme_point);
+        this.editvendorFormGroup
+        .get('price')
+        .setValue(this.editData.price);
       this.editvendorFormGroup
         .get('vendorname')
         .setValue(this.editData.vendorname);

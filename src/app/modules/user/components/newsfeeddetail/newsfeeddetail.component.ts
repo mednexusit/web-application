@@ -50,7 +50,8 @@ export class NewsfeeddetailComponent implements OnInit {
   }
 
   goBack() {
-    this.userServ.goBack();
+    this.router.navigate(['dashboard/education1/news-feed'])
+   // this.userServ.goBack();
   }
   getNewsFeedData() {
     this.userServ.getNewsFeedDetails(this.newsFeedId).subscribe({

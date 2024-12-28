@@ -188,17 +188,19 @@ $text-color: #ffffff;
         }
     }
 }
-@media screen and (min-width: 767px) and (max-width: 1180px) {
+@media screen and (min-width: 768px) and (max-width: 819px) {
     .login-page-scetion{
         .login-banner-img{
+            height: auto;
             .content-section{
                 padding: 3rem 3rem 0rem 3rem;
             }
             .image-section{
-                height: 110vh;
+                height: 35vh;
+                border-radius: 50% 50% 0% 0% !important;
                 border-radius: 50%;
                 img{
-                    height: 60vh;
+                    height: 20vh;
                 }
             }
         }
@@ -206,6 +208,72 @@ $text-color: #ffffff;
    
     .form-section{
         padding: 3.5rem 0rem 2rem 1rem !important;
+    }
+  }
+  @media screen and (min-width: 820px) and (max-width: 911px) {
+    .login-page-scetion{
+        .login-banner-img{
+            height: auto;
+            .content-section{
+                padding: 3rem 3rem 0rem 3rem;
+            }
+            .image-section{
+                height: 30vh;
+                border-radius: 50% 50% 0% 0% !important;
+                border-radius: 50%;
+                img{
+                    height: 20vh;
+                }
+            }
+        }
+    }
+   
+    .form-section{
+        padding: 3.5rem 0rem 2rem 1rem !important;
+    }
+  }
+  @media screen and (min-width: 912px) and (max-width: 1023px) {
+    .login-page-scetion{
+        .login-banner-img{
+            height: auto;
+            .content-section{
+                padding: 3rem 3rem 0rem 3rem;
+            }
+            .image-section{
+                height: 25vh;
+                border-radius: 50% 50% 0% 0% !important;
+                border-radius: 50%;
+                img{
+                    height: 20vh;
+                }
+            }
+        }
+    }
+   
+    .form-section{
+        padding: 3.5rem 0rem 2rem 1rem !important;
+    }
+  }
+  @media screen  and (min-width: 1024px) and (max-width: 1180px){
+    .form-section{
+        padding: 3.5rem 0rem 2rem 1rem !important;
+    }
+    .login-page-scetion{
+        height: auto;
+        .login-banner-img{
+            height: auto;
+            .content-section{
+                padding: 3rem 3rem 0rem 3rem;
+            }
+            .image-section{
+                height: 55vh;
+                border-radius: 50% 50% 0% 0% !important;
+                border-radius: 50%;
+                img{
+                    height: 40vh;
+                }
+            }
+        }
     }
   }
 

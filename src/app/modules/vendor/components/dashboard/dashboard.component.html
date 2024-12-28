@@ -1,19 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light w-100 desktop">
   <div class="row col-12">
-    <div class="col-md-9 row">
+    <div class="col-md-8 row">
       <div class="col-md-1">
         <button mat-icon-button (click)="toggleSidebar()">
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      <div class="col-11">
+      <div class="col-md-11">
         <span class="logo">
-          <img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+          <img src="../../../../../assets/new-logo.png" alt="MedNexusNS Logo" />
         </span>
       </div>
     </div>
-    <div class="col-md-3 row">
-		<div class="col-md-5 padd0">
+    <div class="col-md-4 row">
+		<div class="col-md-6 padd0">
 			<button mat-icon-button>
 				<i class="fa-solid fa-user-plus"></i>
 			</button>
@@ -21,7 +21,7 @@
 			<i class="fa-regular fa-bell"></i>
 			</button>
 		</div>
-		<div class="col-md-7 padd0 row user-info">
+		<div class="col-md-6 padd0 row user-info">
 			<div class="col-md-8">
 				<div class="user-name">{{titleName}}</div>
 				<div class="user-role">{{titleDesg}}</div>
@@ -41,9 +41,9 @@
 </nav>
 
 <header class="mobile">
-	<div class="logo row">
+	<div class="logo row align-content-start align-content-md-stretch">
 		<div class="col-9">
-			<img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+			<img src="../../../../../assets/new-logo.png" alt="MedNexusNS Logo" />
 		</div>
 		<div class="col-3">
 			<button class="hamburger" (click)="toggleMobileMenu()">
@@ -55,7 +55,7 @@
 	<nav class="navbar navbar-expand" [class.show]="isMobileMenuOpen">
 		<div class="row show-img">
 			<div class="col-9">
-				<img src="../../../../../assets/logo-white.png" alt="MedNexus Logo" />
+				<img src="../../../../../assets/new-logo.png" alt="MedNexusNS Logo" />
 			</div>
 			<div class="col-3">
 				<button class="closeBtn" (click)="toggleMobileMenu()">
@@ -101,7 +101,7 @@
 					</a>
 				</li>
 				<li>
-					<a [routerLink]="['/vendor/dashboard/logout']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()">
+					<a [routerLink]="['/vendor/dashboard/logout']" routerLinkActive="router-link-active" (click)="toggleMobileMenu()" (click)="logout()">
 						<img src="../../../../../assets/logout-icon.svg" class="menu-ic"><span>Logout</span>
 					</a>
 				</li>
@@ -110,12 +110,12 @@
 	</nav>
   </header>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container sidenav-web" >
 	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
-		<mat-nav-list>
+		<mat-nav-list class="web-sidenav-list">
 			<a class="active" mat-list-item [routerLink]="['/vendor/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }">
 				<img src="../../../../../assets/dsico.svg" class="menu-ic">
-				<span *ngIf="isSidebarOpen">Dashboards</span>
+				<span *ngIf="isSidebarOpen">Dashboard</span>
 			</a>
 			<a mat-list-item [routerLink]="['conference']"   routerLinkActive="router-link-active">
 				<img src="../../../../../assets/conference-icon.svg" class="menu-ic">
@@ -141,9 +141,35 @@
 				<img src="../../../../../assets/support-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Support</span>
 			</a>
-			<a mat-list-item [routerLink]="['logout']" routerLinkActive="router-link-active">
+			<a mat-list-item [routerLink]="['logout']" routerLinkActive="router-link-active" (click)="logout()">
 				<img src="../../../../../assets/logout-icon.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Logout</span>
+			</a>
+		</mat-nav-list>
+		<mat-nav-list class="tab-sidenav-list">
+			<a class="active" mat-list-item [routerLink]="['/vendor/dashboard']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: true }" matTooltip="Dashboard" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/dsico.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['conference']"   routerLinkActive="router-link-active" matTooltip="Conference" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/conference-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['financial-overview']" routerLinkActive="router-link-active" matTooltip="Financial Overview" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/finance-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['registrant']" routerLinkActive="router-link-active" matTooltip="Registrant Management" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/registrant-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['analytics']" routerLinkActive="router-link-active" matTooltip="Analytics" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/analytics-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['notification']" routerLinkActive="router-link-active" matTooltip="Conference Promotion" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/conference-prom-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['support']" routerLinkActive="router-link-active" matTooltip="Support" [matTooltipPosition]="'right'">
+				<img src="../../../../../assets/support-icon.svg" class="menu-ic">
+			</a>
+			<a mat-list-item [routerLink]="['logout']" routerLinkActive="router-link-active" matTooltip="Logout" [matTooltipPosition]="'right'" (click)="logout()">
+				<img src="../../../../../assets/logout-icon.svg" class="menu-ic">
 			</a>
 		</mat-nav-list>
 	</mat-sidenav>
@@ -152,4 +178,5 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
 

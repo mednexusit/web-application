@@ -43,6 +43,16 @@
         <i class="fa-solid fa-chevron-right rightIcon"></i>
       </a>
     </div>
+    <div class="item">
+      <a
+        [routerLink]="['/admin/adminhome/bookings']"
+        routerLinkActive="router-link-active"
+      >
+      <i class="fa-solid fa-calendar-days"></i>
+        <span *ngIf="!isHideFlag"> Bookings </span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
+    </div>
     <div class="item" *ngIf="userType === 2">
       <p (click)="openNewsFeed()">
         <i class="fa-brands fa-black-tie"></i>

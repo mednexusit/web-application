@@ -44,13 +44,19 @@ export class SearchComponent  implements OnInit{
     //   this.deleteBookMark(data)
     // }
 
-      this.dialog.open(ConferencedetailsComponent,{
+     const dialogRef =  this.dialog.open(ConferencedetailsComponent,{
         data:data,
         height: "calc(100%)",
         width: "calc(100%)",
         maxWidth: "100%",
         maxHeight: "100%"
       })
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('The dialog was closed');
+        console.log('Dialog result:', result);
+
+      });
 
 
   }

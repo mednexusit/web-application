@@ -1,81 +1,98 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span class="logo" *ngIf="isSidebarOpen">
-      <img src="../../../../../assets/vendor-logo.png" alt="MedNexus Logo" />
-    </span>
-    <button mat-icon-button (click)="toggleSidebar()">
-      <mat-icon>menu</mat-icon>
-    </button>
 
-    <span class="spacer"></span>
-    <button mat-icon-button class="mt-2">
-      <mat-icon>notifications</mat-icon>
-    </button>
+    <mat-toolbar-row>
 
-    <div>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <i class="fa-solid fa-user-tie"></i>
+      <span class="logo" *ngIf="isSidebarOpen">
+        <img src="../../../../../assets/new-logo.png" alt="MedNexusNS Logo" />
+      </span>
+      <button mat-icon-button (click)="toggleSidebar()" class="mobileHideButton">
+        <mat-icon>menu</mat-icon>
       </button>
-    </div>
 
-    <mat-menu #menu="matMenu" class="prof-menu">
-      <button mat-menu-item (click)="goToMyProfile()">
-        <img src="../../../../../assets/profile.svg" alt="profile" />
-        My Profile
+      <span class="spacer"></span>
+      <button mat-icon-button class="mt-2"  [matMenuTriggerFor]="noti">
+        <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-menu-item>
-        <img src="../../../../../assets/profissional.svg" alt="profile" />
-        Professional Credentials
-      </button>
-      <button mat-menu-item>
-        <img src="../../../../../assets/add-conf.svg" alt="profile" />
-        Add Conference
-      </button>
-      <button mat-menu-item>
-        <img src="../../../../../assets/premium.svg" alt="profile" />
-        Premium
-      </button>
-      <button mat-menu-item>
-        <img src="../../../../../assets/setting.svg" alt="profile" />
-        Settings
-      </button>
-      <button mat-menu-item>
-        <img src="../../../../../assets/whatnew.svg" alt="profile" />
-        What's New in App
-      </button>
-      <button mat-menu-item (click)="logoutUser()">
-        <a
-          [routerLink]="['/login']"
-          title="Login"
-          class="text-dark"
-          *ngIf="!isLoggedInUser"
-          ><mat-icon>logout</mat-icon></a
-        >
-        <a
-          [routerLink]="['']"
-          *ngIf="isLoggedInUser"
-          title="Logout"
-          class="text-dark"
-          ><img src="../../../../../assets/logout.svg" alt="profile"
-        /></a>
-        Logout
-      </button>
-    </mat-menu>
+      <mat-menu #noti="matMenu" class="notifications">
+        <div class="notification" *ngFor="let item of notifications">
+          <span>Conference Booked !</span>
+          <div class="detials">
+            <label for="">Event Name: <span>{{item.eventname}}</span></label>
+            <label for="">Conference Name: <span>{{item.conference_name}}</span></label>
+            <label for="">Speaker Name: <span>{{item.speaker_name}}</span></label>
+            <label for="">Proposal Date and Time: <span>{{item.proposal_date_time | date: "yyyy-MM-dd"}}</span></label>
+            <label for="">Place: <span>{{item.place}}</span></label>
+          </div>
+        </div>
+      </mat-menu>
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <i class="fa-solid fa-user-tie"></i>
+        </button>
+      </div>
 
-    <!-- <div>
-      <a [routerLink]="['/login']" title="Login" class="text-dark" *ngIf="!isLoggedInUser"><i
-          class="fa-solid fa-right-to-bracket logIcon"></i></a>
-      <a [routerLink]="['']" *ngIf="isLoggedInUser" title="Logout" (click)="logoutUser()" class="text-dark"><i
-          class="fa-solid fa-right-from-bracket logIcon text-light"></i></a>
-    </div> -->
-  </mat-toolbar-row>
+
+      <mat-menu #menu="matMenu" class="prof-menu">
+        <button mat-menu-item (click)="goToMyProfile()">
+          <img src="../../../../../assets/profile.svg" alt="profile" />
+          My Profile
+        </button>
+        <button mat-menu-item (click)="goToAddConference()">
+          <img src="../../../../../assets/add-conf.svg" alt="Add Conference" />
+          Add Conference
+        </button>
+        <button mat-menu-item (click)="goToAbout()">
+          <span class="iconsI">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </span>
+          <!-- <img src="../../../../../assets/about-light.svg" alt="About Us"  class="iconsI"/> -->
+          <span class="titleText">About Us</span>
+        </button>
+        <button mat-menu-item (click)="goToFollow()">
+          <img src="../../../../../assets/setting.svg" alt="Follow Us"  class="iconsI"/>
+          Follow Us
+        </button>
+        <button mat-menu-item (click)="goToContact()">
+          <!-- <img src="../../../../../assets/contact.svg" alt="Contact Us" class="iconsI" /> -->
+           <span class="iconsI">
+            <i class="fa-solid fa-phone"></i>
+           </span>
+        <span>
+          Contact Us
+        </span>
+        </button>
+        <button mat-menu-item >
+          <img src="../../../../../assets/whatnew.svg" alt="What's New in App" class="iconsI" />
+          What's New in App
+        </button>
+        <button mat-menu-item (click)="logoutUser()">
+          <a
+            [routerLink]="['/login']"
+            title="Login"
+            class="text-dark"
+            *ngIf="!isLoggedInUser"
+            ><mat-icon>logout</mat-icon></a
+          >
+          <a
+            [routerLink]="['']"
+            *ngIf="isLoggedInUser"
+            title="Logout"
+            class="text-dark"
+            ><img src="../../../../../assets/logout.svg" alt="profile"
+          /></a>
+          Logout
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+
+
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
 	<mat-sidenav #sidenav [mode]="sidenavMode" [(opened)]="isSidebarOpen" class="sidenav">
 		<mat-nav-list>
 			<a class="active" mat-list-item [routerLink]="['home']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
-				<img src="../../../../../assets/home-light.svg" class="menu-ic">
+				<img src="../../../../../assets/home-light-inactive.svg" class="menu-ic">
 				<span *ngIf="isSidebarOpen">Home</span>
 			</a>
 			<a mat-list-item [routerLink]="['my-interest']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
@@ -101,3 +118,25 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<div class="footer-menu">
+  <div class="menu-item">
+    <a class="active" [routerLink]="['home']"  routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
+      <img src="../../../../../assets/home-light.svg" class="menu-ic">
+    </a>
+  </div>
+  <div class="menu-item">
+    <a mat-list-item [routerLink]="['my-interest']"   routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
+      <img src="../../../../../assets/My-Interest.svg" class="menu-ic">
+    </a>
+  </div>
+  <div class="menu-item">
+    <a mat-list-item [routerLink]="['search']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
+      <img src="../../../../../assets/search.svg" class="menu-ic">
+    </a>
+  </div>
+  <div class="menu-item">
+    <a mat-list-item [routerLink]="['education1']" routerLinkActive="router-link-active"  [routerLinkActiveOptions]="{ exact: false }">
+      <img src="../../../../../assets/educte.svg" class="menu-ic">
+    </a>
+  </div>
+</div>

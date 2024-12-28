@@ -3,10 +3,10 @@
     <div class="left p-4 pb-0">
       <div class="left-container w-100">
         <div class="text-center w-100">
-          <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
+          <img src="../../../../../assets/new-logo.png" alt="vendor logo" class="vendor-logo" />
         </div>
         <p class="mt-4 mb-0">
-          Showcase your conference on Mednexus and reach a broad network of healthcare professionals.
+          Showcase your conference on MednexusNS and reach a broad network of healthcare professionals.
           Our platform ensures your event gains the attention it deserves, helping you connect with
           passionate professionals eager to learn and grow. Maximize your conference's impact by joining
           a community dedicated to advancing medical knowledge.
@@ -19,7 +19,7 @@
     <div class="right">
       <div class="only-mobile d-none">
         <div class="logo px-3">
-          <img src="../../../../../assets/vendor-logo.png" alt="vendor logo" class="vendor-logo" />
+          <img src="../../../../../assets/new-logo.png" alt="vendor logo" class="vendor-logo" />
         </div>
         <div class="right-content-data">
 
@@ -327,31 +327,61 @@
               </div>
               <div class="fields w-100 d-flex my-3 flex-column">
                 <div class="right-data d-flex flex-column w-100">
-                  <label for="">Conference Host Date<span class="reruired-form-field">*</span></label>
+                  <label for="">Conference From Date<span class="reruired-form-field">*</span></label>
                   <input
                     type="datetime-local"
-                    formControlName="proposal_date_time"
+                    formControlName="proposal_from_datetime"
                     placeholder="Conference Host Date"
                     [class.valid]="
-                      conferenceInfo.get('proposal_date_time').valid &&
-                      (conferenceInfo.get('proposal_date_time').dirty ||
-                        conferenceInfo.get('proposal_date_time').touched)
+                      conferenceInfo.get('proposal_from_datetime').valid &&
+                      (conferenceInfo.get('proposal_from_datetime').dirty ||
+                        conferenceInfo.get('proposal_from_datetime').touched)
                     "
                     [class.invalid]="
-                      conferenceInfo.get('proposal_date_time').invalid &&
-                      (conferenceInfo.get('proposal_date_time').dirty ||
-                        conferenceInfo.get('proposal_date_time').touched)
+                      conferenceInfo.get('proposal_from_datetime').invalid &&
+                      (conferenceInfo.get('proposal_from_datetime').dirty ||
+                        conferenceInfo.get('proposal_from_datetime').touched)
                     "
                   />
                   <div
                     *ngIf="
-                      conferenceInfo.get('proposal_date_time').invalid &&
-                      (conferenceInfo.get('proposal_date_time').dirty ||
-                        conferenceInfo.get('proposal_date_time').touched)
+                      conferenceInfo.get('proposal_from_datetime').invalid &&
+                      (conferenceInfo.get('proposal_from_datetime').dirty ||
+                        conferenceInfo.get('proposal_from_datetime').touched)
                     "
                     class="error"
                   >
-                    Date is required.
+                    From Date is required.
+                  </div>
+                </div>
+              </div>
+              <div class="fields w-100 d-flex my-3 flex-column">
+                <div class="right-data d-flex flex-column w-100">
+                  <label for="">Conference To Date<span class="reruired-form-field">*</span></label>
+                  <input
+                    type="datetime-local"
+                    formControlName="proposal_to_datetime"
+                    placeholder="Conference Host Date"
+                    [class.valid]="
+                      conferenceInfo.get('proposal_to_datetime').valid &&
+                      (conferenceInfo.get('proposal_to_datetime').dirty ||
+                        conferenceInfo.get('proposal_to_datetime').touched)
+                    "
+                    [class.invalid]="
+                      conferenceInfo.get('proposal_to_datetime').invalid &&
+                      (conferenceInfo.get('proposal_to_datetime').dirty ||
+                        conferenceInfo.get('proposal_to_datetime').touched)
+                    "
+                  />
+                  <div
+                    *ngIf="
+                      conferenceInfo.get('proposal_to_datetime').invalid &&
+                      (conferenceInfo.get('proposal_to_datetime').dirty ||
+                        conferenceInfo.get('proposal_to_datetime').touched)
+                    "
+                    class="error"
+                  >
+                   To Date is required.
                   </div>
                 </div>
               </div>
@@ -562,6 +592,34 @@
                   accept=".pdf, .jpg, .jpeg"
                   (change)="handleSessionNameFile($event)"
                 />
+              </div>
+            </div>
+            <div class="fields w-100 d-flex my-3 flex-column">
+              <label for="">Price<span class="reruired-form-field">*</span></label>
+              <input
+                type="text"
+                formControlName="price"
+                placeholder="Enter Price"
+                [class.valid]="
+                  speakerInfo.get('price').valid &&
+                  (speakerInfo.get('price').dirty ||
+                    speakerInfo.get('price').touched)
+                "
+                [class.invalid]="
+                  speakerInfo.get('price').invalid &&
+                  (speakerInfo.get('price').dirty ||
+                    speakerInfo.get('price').touched)
+                "
+              />
+              <div
+                *ngIf="
+                  speakerInfo.get('price').invalid &&
+                  (speakerInfo.get('price').dirty ||
+                    speakerInfo.get('price').touched)
+                "
+                class="error"
+              >
+                Price is required.
               </div>
             </div>
             <div class="fields d-flex flex-column my-3">
@@ -1008,6 +1066,6 @@
     </div>
   </div>
   <div class="footer">
-    <p>© Copyright 2024 mednexus. All Rights Reserved.</p>
+    <p>© Copyright 2024 MednexusNS. All Rights Reserved.</p>
   </div>
 </div>

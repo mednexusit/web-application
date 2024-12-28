@@ -1,0 +1,73 @@
+<div class="search-bar col col-lg-5 col-md-5 col-sm-12">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Type to search"
+      class="searchInp"
+    />
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Sr.No">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Conference Name">
+      <th mat-header-cell *matHeaderCellDef>Conference Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.conference_eventname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Conference Place">
+      <th mat-header-cell *matHeaderCellDef>Conference Place</th>
+      <td mat-cell *matCellDef="let element">{{ element.conference_place }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Participants">
+      <th mat-header-cell *matHeaderCellDef>Participants</th>
+      <td mat-cell *matCellDef="let element">
+        <ol>
+          <li *ngFor="let par of element.participation">
+            <label>Name:</label><span>{{par.name}}</span>
+            <label>Email:</label><span>{{par.email}}</span>
+            <label>Age:</label><span>{{par.age}}</span>
+            <label>Gender:</label><span *ngIf="par.gender===1">Male</span> <span *ngIf="par.gender===2">Female</span>
+            <label *ngIf="par?.postgraduation">Post Graduation:</label><span>{{par.postgraduation}}</span>
+            <label *ngIf="par?.yearofstudying">Year of Passing or Year of Study:</label><span>{{par.yearofstudying}}</span>
+            <label *ngIf="par?.yearofpracticing !=''">Experience in Year/Year of Study:</label><span>{{par.yearofpracticing}}</span>
+            <label *ngIf="par?.superspecialty !=''">Super Speciality:</label><span>{{par.superspecialty}}</span>
+            <label *ngIf="par?.medRegisterNum !=''">Med Counsil Register Number:</label><span>{{par.medRegisterNum}}</span>
+            <label *ngIf="par?.council_reg !=''">Council Registration:</label><span>{{par.council_reg}}</span>
+            <label *ngIf="par?.council_state !='' ">Council State:</label><span>{{par.council_state}}</span>
+            <label *ngIf="par?.mbbs !='' ">College Name:</label><span>{{par.mbbs}}</span>
+            <label *ngIf="par?.current_position !='' ">Current Position:</label><span>{{par.current_position}}</span>
+            <label *ngIf="par?.current_working_or_studying !='' ">Current Working Organization/Studying Institute:</label><span>{{par.current_working_or_studying}}</span>
+            <label *ngIf="par?.exporstudiing_year !='' ">Year of Experience/Passing :</label><span>{{par.exporstudiing_year}}</span>
+          </li>
+        </ol>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Download</th>
+      <td mat-cell *matCellDef="let element">
+        <i class="fa-solid fa-download" (click)="downloadCSV(element)"></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>

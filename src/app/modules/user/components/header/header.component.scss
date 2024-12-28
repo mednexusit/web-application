@@ -129,7 +129,7 @@ header{
   .logo{
     width: 20vw;
     position: relative;
-    top: 3vw;
+    top: 5vw;
     left: 3vw;
   }
   .searchArea{
@@ -191,9 +191,9 @@ header{
     background: #E9E9E9;
     padding: 0 5vw;
     .logo{
-      width: 40vw;
-      top: 0vw;
-      left: 0vw;
+      width: 20vw !important;
+      top: 3vw !important;
+      left: -5vw !important;
     }
     .searchArea{
       width: 5vw;

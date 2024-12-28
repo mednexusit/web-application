@@ -58,6 +58,7 @@ import { AreaofinterestsubsubjectComponent } from './components/areaofinterestsu
 import { AreaofinterestlistComponent } from './components/areaofinterestlist/areaofinterestlist.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { ChunkPipe } from './pipes/chunk.pipe';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ChunkPipe } from './pipes/chunk.pipe';
     AreaofinterestsubsubjectComponent,
     AreaofinterestlistComponent,
     ChunkPipe,
+    PaymentComponent,
   ],
   imports: [
     CommonModule,

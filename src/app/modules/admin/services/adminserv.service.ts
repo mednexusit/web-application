@@ -186,6 +186,16 @@ export class AdminservService {
     );
   }
 
+  getBookingConfirmationList(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+   return this.http.post(this.baseURL2+'resorceapi/adminbookingconfirmationlist',data,httpOptions);
+  }
+
   submitConferenceDetails(data:any){
     let authToken = sessionStorage.getItem('LoggedInUser');
     let httpOptions = {

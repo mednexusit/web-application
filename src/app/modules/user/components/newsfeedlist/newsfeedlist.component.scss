@@ -736,8 +736,8 @@ color: #fff;
 }
 
 .img-data-grid-container {
-  // width: auto;
-  max-height: 20vw;
+  width: auto;
+  // max-height: 20vw;
   height: auto;
   img{
     width: 50%;
@@ -747,8 +747,8 @@ color: #fff;
 }
 @media only screen and (max-width: 600px) {
   .img-data-grid-container {
-    // width: auto;
-    max-height: 40vw;
+    width: auto;
+    // max-height: 40vw;
     img{
       width: 100%;
     }
@@ -934,14 +934,15 @@ color: #fff;
 /* Responsive Design */
 @media (max-width: 768px) {
   .speaker-card {
-      flex-direction: column;
+      // flex-direction: column;
       text-align: center;
       height: auto !important;
       max-height: unset !important;
+      margin: 0 !important;
   }
 
   .speaker-card img {
-      margin-right: 0;
+      margin-right: 15px;
       margin-bottom: 10px;
   }
 }
@@ -1139,7 +1140,7 @@ color: #fff;
   text-align: left;
 }
 .subheading-left-text{
-  width: 10vw;
+  width: 50vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1252,7 +1253,7 @@ border: none;
 .side-text{
   font-size: 12px;
   font-weight: 600;
-  height: 12vh;
+  text-align: left;
 }
 
 

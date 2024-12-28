@@ -35,7 +35,7 @@ export class ThememanageService {
   }
 
   getLogo(): string {
-    return this.currentTheme === 'dark-theme' ? '../../../../../assets/logo-header.svg' : '../../../../../assets/logo-header.svg';
+    return this.currentTheme === 'dark-theme' ? '../../../../../assets/new-logo.png' : '../../../../../assets/new-logo.png';
   }
   getUserLogo(): string {
     return this.currentTheme === 'dark-theme' ? '../../../../../assets/user-dark.svg' : '../../../../../assets/user-light.svg';

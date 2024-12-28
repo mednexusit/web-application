@@ -154,7 +154,12 @@
 }
 
 .NgxEditor__Wrapper{
-  height: 15vw;
+  height: 350px;
+  min-height: 350px;
+  max-height: 350px;
+}
+.NgxEditor__Wrapper .NgxEditor{
+  height: 100% !important;
 }
 
 .imageLinkWrapper{

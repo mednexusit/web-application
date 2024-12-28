@@ -67,7 +67,11 @@
         .user-logo-white{
             display: block !important;
         }
-        .logo,.user-logo{
+        .logo{
+            width: 5vw !important;
+
+        }
+        .user-logo{
             display: none;
         }
         .actions{
