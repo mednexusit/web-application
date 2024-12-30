@@ -19,6 +19,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -121,6 +122,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     MatNativeDateModule, // Make sure this is in the imports array
     MatFormFieldModule,
     MatInputModule,
+    MatExpansionModule,
     NgOtpInputModule,
   ],
 })
