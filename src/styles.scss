@@ -257,6 +257,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mainSection{
   flex-grow: 1;
 }
+.price{
+  margin-top: 10px;
+  font-weight: 800;
+}
 
 $primary-color : #0F7C7F;
 app-search::-webkit-scrollbar {

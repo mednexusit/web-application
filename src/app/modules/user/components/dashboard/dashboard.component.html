@@ -12,11 +12,13 @@
                       <div class="title">{{ item.eventname }}</div>
                       <!-- <div class="conference">{{ item.eventname }}</div> -->
                       <div class="details">
-                        On <strong>{{ item.proposal_date_time | date: 'yyyy-MM-dd' }}</strong>
+                        From <strong>{{ item.proposal_from_datetime | date: 'yyyy-MM-dd' }}</strong>
+                        to  <strong>{{ item.proposal_to_datetime | date: 'yyyy-MM-dd' }}</strong>
                         <br>
                         <!-- Morning Session from <strong>8:30 to 1:30PM</strong> -->
                       </div>
                       <div class="location">Location: {{ item.place }}</div>
+                      <div class="price">Price: {{ item.price | currency:"INR" }}</div>
                       <div class="guest1">
                         <img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
                       </div>
@@ -220,7 +222,12 @@
               <p class="coupon-caption">
                 {{item?.eventname}}
               </p>
-              <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
+              <!-- <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p> -->
+               <p class="cod"><strong>From {{item.proposal_from_datetime}}</strong></p>
+               <p class="cod"><strong>to {{item.proposal_to_datetime}}</strong></p>
+               <p class="price">
+                {{item.price |currency:"INR"}}
+               </p>
             </span>
           </div>
         </div>

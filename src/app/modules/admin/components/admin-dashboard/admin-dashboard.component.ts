@@ -125,7 +125,6 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       panno: ['', Validators.required],
       branchaddress: ['', Validators.required],
       subjects: this.fb.array([this.getSubjects()]),
-      proposal_date_time: ['', Validators.required],
       proposal_from_datetime:['',Validators.required],
       proposal_to_datetime:['',Validators.required],
       price:['',Validators.required]

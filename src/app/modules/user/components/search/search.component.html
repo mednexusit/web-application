@@ -42,11 +42,16 @@
       {{ item.eventname }}
     </div>
     <div class="tab-details">
-      On
-      <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+      From
+      <strong>{{ item.proposal_from_datetime | date : "yyyy-MM-dd" }}</strong>
+      to
+      <strong>{{ item.proposal_to_datetime | date : "yyyy-MM-dd" }}</strong>
     </div>
     <div class="location">
       Location: {{ item.place | titlecase }}
+    </div>
+    <div class="price">
+      Price: {{ item.price | currency:"INR" }}
     </div>
   </div>
   </div>

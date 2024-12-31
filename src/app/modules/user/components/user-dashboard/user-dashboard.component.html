@@ -20,8 +20,10 @@
             <label for="">Event Name: <span>{{item.eventname}}</span></label>
             <label for="">Conference Name: <span>{{item.conference_name}}</span></label>
             <label for="">Speaker Name: <span>{{item.speaker_name}}</span></label>
-            <label for="">Proposal Date and Time: <span>{{item.proposal_date_time | date: "yyyy-MM-dd"}}</span></label>
+            <label for="">Proposal From Date and Time: <span>{{item.proposal_from_datetime | date: "yyyy-MM-dd"}}</span></label>
+            <label for="">Proposal To Date and Time: <span>{{item.proposal_to_datetime | date: "yyyy-MM-dd"}}</span></label>
             <label for="">Place: <span>{{item.place}}</span></label>
+            <label for="">Price: <span>{{item.price | currency:"INR"}}</span></label>
           </div>
         </div>
       </mat-menu>

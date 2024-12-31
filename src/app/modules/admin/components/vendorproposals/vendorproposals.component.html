@@ -127,6 +127,10 @@
         <div class="value">{{ vendorProposalDetailData[0]?.speakerinfo }}</div>
       </div>
       <div class="fields">
+        <label for="">Price:</label>
+        <div class="value">{{ vendorProposalDetailData[0]?.price | currency:"INR" }}</div>
+      </div>
+      <div class="fields">
         <label for="">Session Name:</label>
         <div class="value">
           <img src="{{ vendorProposalDetailData[0]?.session_name }}" alt="" />
@@ -143,8 +147,12 @@
         <div class="value">{{ vendorProposalDetailData[0]?.vendorname }}</div>
       </div>
       <div class="fields">
-        <label for="">Conference Host Date:</label>
-        <div class="value">{{ vendorProposalDetailData[0]?.proposal_date_time |  date: 'MM/dd/yyyy hh:mm a':'UTC' }}</div>
+        <label for="">From Host Date:</label>
+        <div class="value">{{ vendorProposalDetailData[0]?.proposal_from_datetime |  date: 'MM/dd/yyyy hh:mm a' }}</div>
+      </div>
+      <div class="fields">
+        <label for="">To Host Date:</label>
+        <div class="value">{{ vendorProposalDetailData[0]?.proposal_to_datetime |  date: 'MM/dd/yyyy hh:mm a' }}</div>
       </div>
       <div class="fields">
         <label for="">Venu:</label>

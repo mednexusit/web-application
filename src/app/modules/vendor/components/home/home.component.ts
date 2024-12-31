@@ -196,7 +196,7 @@ export class HomeComponent implements OnInit {
       branchaddress: this.paymentInfo.get('branchaddress').value,
       proposal_from_datetime:this.fromFormattedDate.toString(),
       proposal_to_datetime:this.toFormattedDate.toString(),
-      price:this.paymentInfo.get('price').value
+      price:this.speakerInfo.get('price').value
     };
     this.sharedServ.submitVendorProposalForm(dataToPass).subscribe({
       next: (data: any) => {

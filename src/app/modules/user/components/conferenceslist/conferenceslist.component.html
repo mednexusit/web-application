@@ -5,7 +5,7 @@
         <h1 class="head m-0">Events</h1>
         <h5
           class="cat-tittle m-0"
-          style="margin-left: auto;cursor: pointer;"
+          style="margin-left: auto; cursor: pointer"
           (click)="goBack()"
         >
           <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
@@ -29,10 +29,11 @@
           <mat-tab label="ALL">
             <ng-template mat-tab-label> ALL </ng-template>
             <!-- Content for Hot Jobs tab -->
-            <div class="row " *ngIf="conferenceListData.length > 0">
-              <div class="row  d-flex flex-wrap justify-content-start">
+            <div class="row" *ngIf="conferenceListData.length > 0">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[1,2,3,4])"
+                  class="tab-card1 col-md-6 col-lg-4"
+                  (click)="openModal(item, $event, [1, 2, 3, 4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -46,7 +47,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     WORKSHOP
+                      WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -60,21 +61,36 @@
                     >
                       OFFLINE
                     </div>
-
                   </div>
                   <div class="bookmarkIcon">
-                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[1,2,3,4])"></i>
-                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                    <i
+                      class="fa-regular fa-bookmark"
+                      *ngIf="item.b_id === null"
+                      (click)="bookmarkConference(item, $event, [1, 2, 3, 4])"
+                    ></i>
+                    <i
+                      class="fa-solid fa-bookmark"
+                      *ngIf="item.b_id !== null"
+                    ></i>
                   </div>
                   <div class="tab-title">
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details">
-                    On
-                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+                    from
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
+                  </div>
+                  <div class="price">
+                    Price: {{ item.price | currency : "INR" }}
                   </div>
                 </div>
               </div>
@@ -89,9 +105,10 @@
             <ng-template mat-tab-label for="ONLINE"> ONLINE </ng-template>
 
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row  d-flex flex-wrap justify-content-start">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-4 col-lg-4" (click)="openModal(item,$event,[1])"
+                  class="tab-card1 col-md-4 col-lg-4"
+                  (click)="openModal(item, $event, [1])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -105,7 +122,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     WORKSHOP
+                      WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -121,18 +138,34 @@
                     </div>
                   </div>
                   <div class="bookmarkIcon">
-                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[1])"></i>
-                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                    <i
+                      class="fa-regular fa-bookmark"
+                      *ngIf="item.b_id === null"
+                      (click)="bookmarkConference(item, $event, [1])"
+                    ></i>
+                    <i
+                      class="fa-solid fa-bookmark"
+                      *ngIf="item.b_id !== null"
+                    ></i>
                   </div>
                   <div class="tab-title">
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details">
-                    On
-                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+                    from
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
+                  </div>
+                  <div class="price">
+                    Price: {{ item.price | currency : "INR" }}
                   </div>
                 </div>
               </div>
@@ -146,9 +179,10 @@
           <mat-tab label="OFFLINE">
             <ng-template mat-tab-label> OFFLINE </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row  d-flex flex-wrap justify-content-start">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[2])"
+                  class="tab-card1 col-md-6 col-lg-4"
+                  (click)="openModal(item, $event, [2])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -162,7 +196,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     WORKSHOP
+                      WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -178,18 +212,34 @@
                     </div>
                   </div>
                   <div class="bookmarkIcon">
-                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[2])"></i>
-                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                    <i
+                      class="fa-regular fa-bookmark"
+                      *ngIf="item.b_id === null"
+                      (click)="bookmarkConference(item, $event, [2])"
+                    ></i>
+                    <i
+                      class="fa-solid fa-bookmark"
+                      *ngIf="item.b_id !== null"
+                    ></i>
                   </div>
                   <div class="tab-title">
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details">
-                    On
-                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+                    from
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
+                  </div>
+                  <div class="price">
+                    Price: {{ item.price | currency : "INR" }}
                   </div>
                 </div>
               </div>
@@ -203,9 +253,10 @@
           <mat-tab label="WORKSHOP">
             <ng-template mat-tab-label>WORKSHOP </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row  d-flex flex-wrap justify-content-start">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[3])"
+                  class="tab-card1 col-md-6 col-lg-4"
+                  (click)="openModal(item, $event, [3])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -219,7 +270,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     WORKSHOP
+                      WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -235,18 +286,34 @@
                     </div>
                   </div>
                   <div class="bookmarkIcon">
-                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[3])"></i>
-                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                    <i
+                      class="fa-regular fa-bookmark"
+                      *ngIf="item.b_id === null"
+                      (click)="bookmarkConference(item, $event, [3])"
+                    ></i>
+                    <i
+                      class="fa-solid fa-bookmark"
+                      *ngIf="item.b_id !== null"
+                    ></i>
                   </div>
                   <div class="tab-title">
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details">
-                    On
-                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+                    from
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
+                  </div>
+                  <div class="price">
+                    Price: {{ item.price | currency : "INR" }}
                   </div>
                 </div>
               </div>
@@ -260,9 +327,10 @@
           <mat-tab label="EXPOS">
             <ng-template mat-tab-label> EXPOS </ng-template>
             <div class="row" *ngIf="conferenceListData.length > 0">
-              <div class="row  d-flex flex-wrap justify-content-start">
+              <div class="row d-flex flex-wrap justify-content-start">
                 <div
-                  class="tab-card1 col-md-6 col-lg-4" (click)="openModal(item,$event,[4])"
+                  class="tab-card1 col-md-6 col-lg-4"
+                  (click)="openModal(item, $event, [4])"
                   *ngFor="let item of conferenceListData | filter : searchText"
                 >
                   <div class="d-flex justify-content-end">
@@ -276,7 +344,7 @@
                       class="top-trending-label1 bg-danger"
                       *ngIf="item.category == 3"
                     >
-                     WORKSHOP
+                      WORKSHOP
                     </div>
                     <div
                       class="top-trending-label1 bg-info"
@@ -292,18 +360,44 @@
                     </div>
                   </div>
                   <div class="bookmarkIcon">
-                    <i class="fa-regular fa-bookmark" *ngIf="item.b_id===null" (click)="bookmarkConference(item,$event,[4])"></i>
-                    <i class="fa-solid fa-bookmark" *ngIf="item.b_id!==null"></i>
+                    <i
+                      class="fa-regular fa-bookmark"
+                      *ngIf="item.b_id === null"
+                      (click)="bookmarkConference(item, $event, [4])"
+                    ></i>
+                    <i
+                      class="fa-solid fa-bookmark"
+                      *ngIf="item.b_id !== null"
+                    ></i>
                   </div>
                   <div class="tab-title">
                     {{ item.eventname }}
                   </div>
                   <div class="tab-details">
-                    On
-                    <strong>{{ item.proposal_date_time | date : "yyyy-MM-dd" }}</strong>
+                    from
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                  </div>
+                  <div class="tab-details">
+                    From
+                    <strong>{{
+                      item.proposal_from_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
+                    to
+                    <strong>{{
+                      item.proposal_to_datetime | date : "yyyy-MM-dd"
+                    }}</strong>
                   </div>
                   <div class="location">
                     Location: {{ item.place | titlecase }}
+                  </div>
+                  <div class="price">
+                    Price: {{ item.price | currency : "INR" }}
                   </div>
                 </div>
               </div>
