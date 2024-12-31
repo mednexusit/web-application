@@ -541,4 +541,21 @@ export class UserService {
       httpOptions
     );
   }
+  submitFeedBack(data:any){
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let token;
+    if (authToken) {
+      token = JSON.parse(authToken);
+    }
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.post(
+      this.baseURL2 + 'feedBack/upsertFeedBack',
+      data,
+      httpOptions
+    );
+  }
 }

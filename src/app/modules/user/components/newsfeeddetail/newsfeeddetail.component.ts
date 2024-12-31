@@ -22,6 +22,7 @@ export class NewsfeeddetailComponent implements OnInit {
   feedbackForm: FormGroup;
   submitted = false;
   showForm = false;
+  userDetailsData:any;
 
   constructor(
     private fb: FormBuilder,
@@ -37,20 +38,37 @@ export class NewsfeeddetailComponent implements OnInit {
 
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state;
-    
+
   }
 
   ngOnInit(): void {
+
     this.newsFeedId = this.route.snapshot.params['id'];
     if (this.newsFeedId != undefined) {
       this.getNewsFeedData();
     }
     this.checkIsUserLoggedIn();
     this.getUserData();
+    this.getUserDetails();
   }
   getUserData() {
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
+  }
+  getUserDetails(){
+    let dataToPass={
+      user_id:this.userData.userid
+    }
+    this.userServ.getUserDetails(dataToPass).subscribe({
+      next:(data:any)=>{
+        this.userDetailsData = data.responseContents;
+        this.userDetailsData =  this.userDetailsData[0];
+        console.log(this.userDetailsData);
+      },
+      error:(error:any)=>{
+        console.error("Failed to fetch user details");
+      }
+    })
   }
 
   checkIsUserLoggedIn() {
@@ -157,9 +175,28 @@ export class NewsfeeddetailComponent implements OnInit {
     if (this.feedbackForm.invalid) {
       return;
     }
-    this.toastr.success('Feedback has been shared successfully', '', {
-      timeOut: 2000,
-    });
+    let dataToPass={
+      "name":this.userDetailsData?.fullname,
+      "comment":this.feedbackForm.get('feedback')?.value,
+      "email":this.userDetailsData?.email,
+      "phone":this.userDetailsData?.user_reg_mobile,
+      "specialityid":this.userDetailsData?.course,
+      "userid":this.userData.userid
+    }
+    console.log("Data ToPass",dataToPass)
+    this.userServ.submitFeedBack(dataToPass).subscribe({
+      next:(data:any)=>{
+        this.toastr.success('Feedback has been shared successfully', '', {
+          timeOut: 2000,
+        });
+      },
+      error:(error:any)=>{
+        this.toastr.error('Failed to share feedback', '', {
+          timeOut: 2000,
+        });
+      }
+    })
+
     console.log('Feedback submitted:', this.feedbackForm.value.feedback);
     // alert(`Thank you for your feedback: ${this.feedbackForm.value.feedback}`);
     this.feedbackForm.reset();
