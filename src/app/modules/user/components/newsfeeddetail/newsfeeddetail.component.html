@@ -109,5 +109,42 @@
 
       <hr />
     </div>
+    <div class="feedback-btn">
+      <button class="contact-button" (click)="toggleForm()">Feedback</button>
+    </div>
   </div>
 </section>
+
+<div class="modal fade" id="secondModal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayForm}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header col-12">
+              <div class="col-6">
+                  <p>Feedback</p>
+              </div>
+              <div class="col-6 text-right">
+                  <button type="button" class="close" aria-label="Close" (click)="closeForm()"><span aria-hidden="true">&times;</span></button>
+              </div>  
+          </div>
+         <div class="modal-body">
+              <form [formGroup]="feedbackForm" (ngSubmit)="feedbackFormSubmit()">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label for="feedback"><p>Comment:</p></label>
+                  </div>
+                  <div class="col-lg-10">
+                    <textarea formControlName="feedback" placeholder="Write your feedback here...">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="error" *ngIf="feedbackForm.controls['feedback'].invalid && feedbackForm.controls['feedback'].touched">
+                  Feedback is required.
+                </div>
+                
+                <button type="submit" [disabled]="!feedbackForm.valid" class="submit-btn mt-4">Submit</button>
+              </form>
+              
+          </div>
+     </div>
+      </div>
+</div>
