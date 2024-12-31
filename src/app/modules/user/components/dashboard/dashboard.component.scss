@@ -432,8 +432,8 @@ color: #2E2E2E;
 
 .iconbox-top .icon {
     position: absolute;
-    top: 28%;
-    right: 60%;
+    top: 40%;
+    right: 50%;
     -webkit-transform: translateY(-50%) translateX(50%);
   transform: translateY(-50%) translateX(50%);
     font-size: 42px;
@@ -825,6 +825,12 @@ color: #fff;
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .mobile-hide{
+    display: none !important;
+  }
+  .mobile-show{
+    display: block !important;
+  }
   .speaker-card {
       flex-direction: column;
       text-align: center;
@@ -935,8 +941,8 @@ color: #fff;
 }
 
 .icon img{
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   object-fit: contain;
   border-radius: 50%;
 }
@@ -1204,4 +1210,13 @@ mat-dialog-content{
 .scroll-container::-webkit-scrollbar-track {
   background-color: #f0f0f0; /* Track color */
   border-radius: 10px; /* Match thumb's rounded corners */
+}
+
+
+.mobile-hide{
+  display: block;
+}
+
+.mobile-show{
+  display: none;
 }

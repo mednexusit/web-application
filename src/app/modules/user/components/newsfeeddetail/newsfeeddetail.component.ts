@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-newsfeeddetail',
@@ -17,15 +18,26 @@ export class NewsfeeddetailComponent implements OnInit {
   isUserLoggedIn: boolean = false;
   userData: any;
   isFeedLiked:boolean=false;
+  displayForm = "none";
+  feedbackForm: FormGroup;
+  submitted = false;
+  showForm = false;
+
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private userServ: UserService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private toastr: ToastrService
   ) {
+    this.feedbackForm = this.fb.group({
+      feedback: ['', [Validators.required, Validators.minLength(5)]]
+    });
+
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state;
+    
   }
 
   ngOnInit(): void {
@@ -128,5 +140,30 @@ export class NewsfeeddetailComponent implements OnInit {
         console.error(err);
       },
     });
+  }
+
+  toggleForm(){
+    this.displayForm = "block";
+    this.showForm = !this.showForm;
+  }
+  closeForm(){
+    this.displayForm ="none";
+  }
+  get f() {
+    return this.feedbackForm.controls;
+  }
+  feedbackFormSubmit(){
+    this.submitted = true;
+    if (this.feedbackForm.invalid) {
+      return;
+    }
+    this.toastr.success('Feedback has been shared successfully', '', {
+      timeOut: 2000,
+    });
+    console.log('Feedback submitted:', this.feedbackForm.value.feedback);
+    // alert(`Thank you for your feedback: ${this.feedbackForm.value.feedback}`);
+    this.feedbackForm.reset();
+    this.submitted = false;
+    this.closeForm()
   }
 }

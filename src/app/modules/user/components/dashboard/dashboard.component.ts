@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDrawerMode } from '@angular/material/sidenav';
@@ -13,6 +13,7 @@ import { ConferencedetailsComponent } from '../conferencedetails/conferencedetai
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
   isSidebarOpen = true; // Sidebar initially open
@@ -26,6 +27,19 @@ export class DashboardComponent {
   private dialogRef: MatDialogRef<any> | null = null;
   displayedItems: number = 5;
   carnivalData:any=[];
+  step = signal(0);
+
+  setStep(index: number) {
+    this.step.set(index);
+  }
+
+  nextStep() {
+    this.step.update(i => i + 1);
+  }
+
+  prevStep() {
+    this.step.update(i => i - 1);
+  }
 
   onTabChange(event: any) {
     if (event.index === 0) {
