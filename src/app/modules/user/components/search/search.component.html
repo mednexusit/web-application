@@ -50,7 +50,7 @@
     <div class="location">
       Location: {{ item.place | titlecase }}
     </div>
-    <div class="price">
+    <div class="price" *ngIf="item.price">
       Price: {{ item.price | currency:"INR" }}
     </div>
   </div>

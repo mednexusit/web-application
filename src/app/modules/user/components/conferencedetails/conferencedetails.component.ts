@@ -250,7 +250,7 @@ export class ConferencedetailsComponent implements OnInit {
   }
   confirmBooking() {
     let data={
-      amount:1,
+      amount:this.conferenceData.price,
       currency:'INR',
       userData:this.userDetailsData
     }

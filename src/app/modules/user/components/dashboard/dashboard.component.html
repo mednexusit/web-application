@@ -18,7 +18,7 @@
                         <!-- Morning Session from <strong>8:30 to 1:30PM</strong> -->
                       </div>
                       <div class="location">Location: {{ item.place }}</div>
-                      <div class="price">Price: {{ item.price | currency:"INR" }}</div>
+                      <div class="price" *ngIf="item.price">Price: {{ item.price | currency:"INR" }}</div>
                       <div class="guest1">
                         <img src="../../../../../assets/Ellipse-logo.png" alt="Chief Guest">
                       </div>
@@ -225,7 +225,7 @@
               <!-- <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p> -->
                <p class="cod"><strong>From {{item.proposal_from_datetime}}</strong></p>
                <p class="cod"><strong>to {{item.proposal_to_datetime}}</strong></p>
-               <p class="price">
+               <p class="price" *ngIf="item.price">
                 {{item.price |currency:"INR"}}
                </p>
             </span>
@@ -258,7 +258,7 @@
       </div>
       <div class="row areaofinterest">
         <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex align-items-center">
-          
+
           <div class=" w-50 aoi">
             <div class="mn-icon-container mr-3">
               <img src="../../../../../assets/area-of-intrest-mn-icon.png"  style="width: 60px;height: 60px;" alt="Mn area of intrest">
@@ -352,7 +352,7 @@
     <mat-accordion class="example-headers-align">
       <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title> Remainders 
+          <mat-panel-title> Remainders
             <h5 class="cat-tittle" style="margin-left: auto">
               <b>View All</b>
             </h5>
@@ -373,8 +373,8 @@
               </span>
             </div>
           </div>
-  
-  
+
+
         </div>
         <div class="row" *ngIf="!remaindersData.length">
           <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer">
@@ -390,7 +390,7 @@
 
       <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)" hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title> Area Of Interest 
+          <mat-panel-title> Area Of Interest
             <h5 class="cat-tittle" style="margin-left: auto" (click)="viewAllAreaOfInterest()">
               <b>View All</b>
             </h5>
@@ -398,7 +398,7 @@
         </mat-expansion-panel-header>
         <div class="row areaofinterest">
           <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex align-items-center">
-            
+
             <div class=" w-50 aoi">
               <div class="mn-icon-container mr-3">
                 <img src="../../../../../assets/area-of-intrest-mn-icon.png"  style="width: 60px;height: 60px;" alt="Mn area of intrest">

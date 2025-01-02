@@ -232,6 +232,11 @@ export class DashboardComponent {
         if(data){
           this.carnivalData = data.responseContents;
           this.carnivalData = this.carnivalData.slice(-5);
+          this.carnivalData.forEach((item:any) => {
+              if(item.price== "null"){
+                item.price=0;
+              }
+          });
         }
       },
       error:(err:any)=>{
@@ -288,6 +293,11 @@ export class DashboardComponent {
     this.userServ.getAllRemainders(dataToPass).subscribe({
       next: (data: any) => {
         this.remaindersData = data.responseContents;
+        this.remaindersData.forEach((item:any)=>{
+          if(item.price== 'null'){
+            item.price=0;
+          }
+        })
       },
       error: (err: any) => {
         console.error(err);

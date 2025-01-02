@@ -34,7 +34,7 @@
                   <div class="location my-2">
                     Location: {{ item.place | titlecase }}
                   </div>
-                  <div class="price my-2">
+                  <div class="price my-2" *ngIf="item.price">
                     Price: {{ item.price | currency:"INR" }}
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                   <div class="location my-2">
                     Location: {{ item.place | titlecase }}
                   </div>
-                  <div class="price my-2">
+                  <div class="price my-2" *ngIf="item.price">
                     Price: {{ item.price | currency:"INR" }}
                   </div>
                 </div>

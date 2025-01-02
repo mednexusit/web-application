@@ -37,6 +37,7 @@ import { IsEllipsisActiveDirective } from './isEllipsesActive.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 
+
 @NgModule({
   declarations: [
     VendorloginComponent,
@@ -76,7 +77,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatTooltipModule
+    MatTooltipModule,
     ]
 })
 export class VendorModule { }

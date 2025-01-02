@@ -623,6 +623,8 @@
               >
                 Price is required.
               </div>
+              <small class="error" *ngIf="speakerInfo.get('price').errors?.pattern">Please enter valid price.</small>
+
             </div>
             <div class="fields d-flex flex-column my-3">
               <label for="">Enter Manually<span class="reruired-form-field">*</span></label>

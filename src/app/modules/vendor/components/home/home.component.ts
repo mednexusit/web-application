@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       session_name: ['', Validators.required],
       topic: ['', Validators.required],
       speaker_name: ['', Validators.required],
-      price:['',Validators.required],
+      price:['',Validators.compose([Validators.required, Validators.pattern(/^\d{9}$/)])],
       duration: ['', Validators.required],
       letter: ['', Validators.required],
       cme_point: ['', Validators.required],

@@ -13,12 +13,12 @@ import { SharedService } from '../../../../shared/shared.service';
 export class ConferenceslistComponent implements OnInit {
   userData: any;
   subjectID: any;
-  subjectIDTEMP:any;
+  subjectIDTEMP: any;
   categoryIDS: any = [];
   activeButton: string = 'ALL';
   conferenceListData: any = [];
-  searchText:string='';
-  onTabChange(data:MatTabChangeEvent){
+  searchText: string = '';
+  onTabChange(data: MatTabChangeEvent) {
     switch (data.tab.textLabel) {
       case 'ALL':
         this.fetchConferences([1, 2, 3, 4]);
@@ -41,16 +41,19 @@ export class ConferenceslistComponent implements OnInit {
   }
 
   // Method to set the active button
-  currentIndex = 0;  // Index of the current slide
+  currentIndex = 0; // Index of the current slide
 
   // Go to the next slide
   nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.conferenceListData?.length;
+    this.currentIndex =
+      (this.currentIndex + 1) % this.conferenceListData?.length;
   }
 
   // Go to the previous slide
   prevSlide() {
-    this.currentIndex = (this.currentIndex - 1 + this.conferenceListData?.length) % this.conferenceListData?.length;
+    this.currentIndex =
+      (this.currentIndex - 1 + this.conferenceListData?.length) %
+      this.conferenceListData?.length;
   }
   // Method to check if a button is active
   isActive(buttonLabel: string) {
@@ -60,33 +63,31 @@ export class ConferenceslistComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private userServ: UserService,
-    private dialog:MatDialog,
-    private sharedServ:SharedService
+    private dialog: MatDialog,
+    private sharedServ: SharedService
   ) {}
   ngOnInit(): void {
-
     this.subjectID = this.route.snapshot.paramMap.get('id');
-    if(this.subjectID !==0){
+    if (this.subjectID !== 0) {
       localStorage.clear();
     }
     this.userData = sessionStorage.getItem('userData');
     this.userData = JSON.parse(this.userData);
     this.categoryIDS = [1, 2, 3, 4];
-    this.sharedServ.getSubjectData().subscribe((data:any)=>{
-      if(data){
-        this.subjectIDTEMP=data.sub_subject_ids;
-          // localStorage.setItem("aoi",JSON.stringify(data));
-          // this.subjectIDTEMP= localStorage.getItem("aoi");
-          // this.subjectIDTEMP= JSON.parse(this.subjectIDTEMP);
-          // this.subjectIDTEMP= this.subjectIDTEMP.sub_subject_ids;
-
+    this.sharedServ.getSubjectData().subscribe((data: any) => {
+      if (data) {
+        this.subjectIDTEMP = data.sub_subject_ids;
+        // localStorage.setItem("aoi",JSON.stringify(data));
+        // this.subjectIDTEMP= localStorage.getItem("aoi");
+        // this.subjectIDTEMP= JSON.parse(this.subjectIDTEMP);
+        // this.subjectIDTEMP= this.subjectIDTEMP.sub_subject_ids;
       }
-    })
+    });
     this.fetchConferences(this.categoryIDS);
   }
   fetchConferences(data: any) {
     let dataToPass = {
-      subject_id: this.subjectID==0?this.subjectIDTEMP:this.subjectID,
+      subject_id: this.subjectID == 0 ? this.subjectIDTEMP : this.subjectID,
       category_id: data,
       user_id: this.userData.userid,
     };
@@ -102,32 +103,31 @@ export class ConferenceslistComponent implements OnInit {
   goBack() {
     this.userServ.goBack();
   }
-  openModal(data:any, event:any,array:any){
+  openModal(data: any, event: any, array: any) {
+    console.log('DATA', data);
     event.stopPropagation();
-    if((event.target as HTMLElement).classList.contains('fa-bookmark')){
-      this.bookmarkConference(data,event,array)
+    if ((event.target as HTMLElement).classList.contains('fa-bookmark')) {
+      this.bookmarkConference(data, event, array);
+    } else {
+      this.dialog.open(ConferencedetailsComponent, {
+        data: data,
+        height: 'calc(100%)',
+        width: 'calc(100%)',
+        maxWidth: '100%',
+        maxHeight: '100%',
+      });
     }
-    else{
-      this.dialog.open(ConferencedetailsComponent,{
-        data:data,
-        height: "calc(100%)",
-      width: "calc(100%)",
-      maxWidth: "100%",
-      maxHeight: "100%"
-      })
-    }
-
   }
-  bookmarkConference(data:any,event:any,array:any){
-    this.categoryIDS=array;
+  bookmarkConference(data: any, event: any, array: any) {
+    this.categoryIDS = array;
     event.stopPropagation();
-    let dataToPass={
-      "user_id":this.userData.userid,
-      "conference_id":data.id
-    }
+    let dataToPass = {
+      user_id: this.userData.userid,
+      conference_id: data.id,
+    };
     this.userServ.bookMarkSave(dataToPass).subscribe({
       next: (data: any) => {
-        if(data.responseContents){
+        if (data.responseContents) {
           this.fetchConferences(this.categoryIDS);
         }
       },

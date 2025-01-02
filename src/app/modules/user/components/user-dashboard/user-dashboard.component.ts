@@ -104,7 +104,6 @@ export class UserDashboardComponent implements OnInit {
       next:(data:any)=>{
         if(data.responseContents){
           this.notifications = data.responseContents.slice(0, 5);
-          console.log(this.notifications)
         }
       },
       error:(err:any)=>{

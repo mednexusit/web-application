@@ -23,7 +23,7 @@
             <label for="">Proposal From Date and Time: <span>{{item.proposal_from_datetime | date: "yyyy-MM-dd"}}</span></label>
             <label for="">Proposal To Date and Time: <span>{{item.proposal_to_datetime | date: "yyyy-MM-dd"}}</span></label>
             <label for="">Place: <span>{{item.place}}</span></label>
-            <label for="">Price: <span>{{item.price | currency:"INR"}}</span></label>
+            <label for="" *ngIf="item.price">Price: <span>{{item.price | currency:"INR"}}</span></label>
           </div>
         </div>
       </mat-menu>
