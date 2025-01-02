@@ -14,6 +14,7 @@ import { VendorproposalsComponent } from './components/vendorproposals/vendorpro
 import { SubadminsComponent } from './components/subadmins/subadmins.component';
 import { AddsubadminComponent } from './components/addsubadmin/addsubadmin.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: AdminloginComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'vendor-proposals', component: VendorproposalsComponent },
       { path: 'subadmins', component: SubadminsComponent },
       { path: 'add-subadmin', component: AddsubadminComponent },
+      { path: 'feedback', component: FeedbackComponent },
       {path:'bookings',component:BookingsComponent}
     ],
   },

@@ -256,5 +256,14 @@ export class AdminservService {
     };
     return this.http.post(this.baseURL2+'resorceapi/detailsUpdatesNewsfeed',data,httpOptions)
   }
-
+  getFeedbackList(data:any){
+    //feedBack/getFeedBacks?limit=10&offset=0
+    let authToken = sessionStorage.getItem('LoggedInUser');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`,
+      }),
+    };
+    return this.http.get(this.baseURL2+`feedBack/getFeedBacks?limit=${data.limit}&offset=${data.offset}`,httpOptions)
+  }
 }

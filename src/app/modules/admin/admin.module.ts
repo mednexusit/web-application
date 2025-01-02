@@ -31,6 +31,7 @@ import { AddnewsfeedComponent } from './components/addnewsfeed/addnewsfeed.compo
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
     AddnewsfeedComponent,
     BookingsComponent,
     SafeUrlPipe,
+    FeedbackComponent,
   ],
   imports: [
     CommonModule,
