@@ -176,6 +176,7 @@ h4 {
 }
 .edit-fields {
   margin-top: 10px;
+  white-space: nowrap;
   label {
     width: 20%;
   }
@@ -265,6 +266,22 @@ h4 {
   .searchInp{
     width: 100%;
   }
+}
+.subjectsBlock{
+  select{
+    width: 60%;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 10px;
+  }
+  label{
+    width: 25%;
+  }
+}
+.pdf-container{
+  height: auto;
+  width: 350px;
+  margin-top: 50px;
 }
 .idColor{
   color: red;

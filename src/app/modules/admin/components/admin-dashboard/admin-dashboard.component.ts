@@ -38,6 +38,8 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   subjectsListData: any = [];
   subSubjectsListData: any = [];
   subSubjectListDataArray: any = [];
+  subSubjectsListDataIMP: any = [];
+  subSubjectListDataArrayIMP: any = [];
   action: any = '';
   isShowVendorModal: boolean = false;
   subAdminPhoneNumber: any = '';
@@ -128,7 +130,6 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       proposal_from_datetime:['',Validators.required],
       proposal_to_datetime:['',Validators.required],
       price:['',Validators.required]
-
     });
 
     // this.editvendorFormGroup
@@ -260,119 +261,225 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
 
       this.modalData.subjectDetailsData = subjectDetailsData;
     }
+    // if (action === 'edit') {
+    //   this.getSubjectList();
+    //   this.isShowVendorModal = true;
+    //   this.editData = data;
+    //   console.log("this.editData", this.editData)
+    //   const subjectsArray = this.editvendorFormGroup.get('subjects') as FormArray;
+    //  // subjectsArray.clear(); // Clear existing entries in FormArray
+
+    //   const subjectDetails = this.editData.subject_details || [];
+    //   this.editData.subject_details.forEach((item:any,index:any) => {
+    //     //this.getSubSubjectList(item.subject_detail)
+    //     this.getSubSubjectList(item.subject_id,index);
+    //   });
+    //   const subSubjectDetails = this.editData.sub_subject_details || this.subSubjectsListData;
+
+    //   subjectDetails.forEach((subjectDetail:any, index:any) => {
+    //     const subSubject =
+    //       subSubjectDetails.find((s:any) => s.sub_subject_id === subjectDetail.subject_id) || {};
+
+    //     subjectsArray.push(
+    //       this.fb.group({
+    //         subject: [subjectDetail.subject_id || '', Validators.required],
+    //         sub_subject: [subSubject.sub_subject_id || '', Validators.required],
+    //       })
+    //     );
+    //   });
+
+    //   this.editvendorFormGroup.get('id').setValue(this.editData.id);
+    //   this.editvendorFormGroup.get('name').setValue(this.editData.name);
+    //   this.editvendorFormGroup.get('age').setValue(this.editData.age);
+    //   this.editvendorFormGroup.get('gender').setValue(this.editData.gender);
+    //   this.editvendorFormGroup.get('email').setValue(this.editData.email);
+    //   this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
+    //   this.editvendorFormGroup.get('address').setValue(this.editData.address);
+    //   let todateValue = new Date(this.editData.proposal_to_datetime);
+    //   if (!isNaN(todateValue.getTime())) {
+    //     // Check if it's a valid date
+    //     const year = todateValue.getFullYear();
+    //     const month = String(todateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    //     const day = String(todateValue.getDate()).padStart(2, '0');
+    //     const hours = String(todateValue.getHours()).padStart(2, '0');
+    //     const minutes = String(todateValue.getMinutes()).padStart(2, '0');
+    //     const toformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+    //     this.editvendorFormGroup
+    //       .get('proposal_to_datetime')
+    //       .setValue(toformattedDate);
+    //   } else {
+    //     console.error('Invalid date format:', this.editData.proposal_to_datetime);
+    //   }
+    //   let fromdateValue = new Date(this.editData.proposal_from_datetime);
+    //   if (!isNaN(fromdateValue.getTime())) {
+    //     // Check if it's a valid date
+    //     const year = fromdateValue.getUTCFullYear();
+    //     const month = String(fromdateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    //     const day = String(fromdateValue.getDate()).padStart(2, '0');
+    //     const hours = String(fromdateValue.getHours()).padStart(2, '0');
+    //     const minutes = String(fromdateValue.getMinutes()).padStart(2, '0');
+    //     const fromformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+    //     console.log(fromformattedDate)
+    //     this.editvendorFormGroup
+    //       .get('proposal_from_datetime')
+    //       .setValue(fromformattedDate);
+    //   } else {
+    //     console.error('Invalid date format:', this.editData.proposal_from_datetime);
+    //   }
+    //   this.editvendorFormGroup
+    //     .get('eventname')
+    //     .setValue(this.editData.eventname);
+    //   this.editvendorFormGroup.get('category').setValue(this.editData.category);
+    //   this.editvendorFormGroup
+    //     .get('organizedby')
+    //     .setValue(this.editData.organizedby);
+    //   this.editvendorFormGroup.get('state').setValue(this.editData.state);
+    //   this.editvendorFormGroup.get('place').setValue(this.editData.place);
+    //   this.editvendorFormGroup.get('pin').setValue(this.editData.pin);
+    //   this.editvendorFormGroup.get('venu').setValue(this.editData.venu);
+    //   this.editvendorFormGroup
+    //     .get('speakerinfo')
+    //     .setValue(this.editData.speakerinfo);
+    //   this.editvendorFormGroup
+    //     .get('session_name')
+    //     .setValue(this.editData.session_name);
+    //   this.editvendorFormGroup.get('topic').setValue(this.editData.topic);
+    //   this.editvendorFormGroup.get('duration').setValue(this.editData.duration);
+    //   this.editvendorFormGroup
+    //     .get('speaker_name')
+    //     .setValue(this.editData.speaker_name);
+    //   this.editvendorFormGroup
+    //     .get('cme_point')
+    //     .setValue(this.editData.cme_point);
+    //     this.editvendorFormGroup
+    //     .get('price')
+    //     .setValue(this.editData.price);
+    //   this.editvendorFormGroup
+    //     .get('vendorname')
+    //     .setValue(this.editData.vendorname);
+    //   this.editvendorFormGroup
+    //     .get('contactemail')
+    //     .setValue(this.editData.contactemail);
+
+    //   this.editvendorFormGroup
+    //     .get('contactperson')
+    //     .setValue(this.editData.contactperson);
+    //   this.editvendorFormGroup
+    //     .get('contactphonenumber')
+    //     .setValue(this.editData.contactphonenumber);
+    //   this.editvendorFormGroup.get('bankname').setValue(this.editData.bankname);
+    //   this.editvendorFormGroup
+    //     .get('branchname')
+    //     .setValue(this.editData.branchname);
+
+    //   this.editvendorFormGroup
+    //     .get('accountholdername')
+    //     .setValue(this.editData.accountholdername);
+    //   this.editvendorFormGroup
+    //     .get('accountnumber')
+    //     .setValue(this.editData.accountnumber);
+    //   this.editvendorFormGroup.get('ifsccode').setValue(this.editData.ifsccode);
+    //   this.editvendorFormGroup.get('panno').setValue(this.editData.panno);
+    //   this.editvendorFormGroup
+    //     .get('branchaddress')
+    //     .setValue(this.editData.branchaddress);
+    //   this.editvendorFormGroup
+    //     .get('session_name')
+    //     .setValue(this.editData.session_name);
+    //   this.editvendorFormGroup.get('letter').setValue(this.editData.letter);
+    // }
     if (action === 'edit') {
-      this.getSubjectList();
+      this.getSubjectList(); // Populate subjectsListData dynamically
       this.isShowVendorModal = true;
       this.editData = data;
-      if (this.editData.subject) {
-        let items = this.editvendorFormGroup.get('subjects');
-        items.controls.forEach((ele: any) => {});
 
-        items.value.forEach((sub: any, index: any) => {});
-        if (this.editData.sub_subject) {
-          //  this.editvendorFormGroup.get('sub_subject').setValue(this.editData.subject);
+      // Clear existing FormArray
+      const subjectsArray = this.editvendorFormGroup.get('subjects') as FormArray;
+      subjectsArray.clear();
+
+      // Populate FormArray dynamically
+      const subjectDetails = this.editData.subject_details || [];
+      const subSubjectDetails = this.editData.sub_subject_details || [];
+      subjectDetails.forEach(async(subjectDetail: any, index: any) => {
+      let dataGot =  await this.getSubSubjectListReturned(subjectDetail.subject_id);
+        this.subSubjectListDataArray[index] = dataGot;
+      let subSubject =   dataGot.find((item:any)=> item.id===subSubjectDetails[index].sub_subject_id);
+       // const subSubject =  this.subSubjectsListData.find((s:any)=> s.)
+      //  this.getSubSubjectList()
+        // const subSubject =
+        //   subSubjectDetails.find((s: any) => s.sub_subject_id === subjectDetail.subject_id) || {};
+
+        subjectsArray.push(
+          this.fb.group({
+            subject: [subjectDetail.subject_id || '', Validators.required],
+            sub_subject: [subSubject.id || '', Validators.required],
+          })
+        );
+
+        //this.getSubSubjectList(subjectDetail.subject_id, index); // Fetch sub-subjects dynamically
+      });
+
+      // Set form values for other fields
+      const setValueIfExists = (field: string, value: any) => {
+        if (value !== null && value !== undefined) {
+          this.editvendorFormGroup.get(field)?.setValue(value);
         }
-      }
-      this.editvendorFormGroup.get('id').setValue(this.editData.id);
-      this.editvendorFormGroup.get('name').setValue(this.editData.name);
-      this.editvendorFormGroup.get('age').setValue(this.editData.age);
-      this.editvendorFormGroup.get('gender').setValue(this.editData.gender);
-      this.editvendorFormGroup.get('email').setValue(this.editData.email);
-      this.editvendorFormGroup.get('phone').setValue(this.editData.phone);
-      this.editvendorFormGroup.get('address').setValue(this.editData.address);
-      let todateValue = new Date(this.editData.proposal_to_datetime);
-      if (!isNaN(todateValue.getTime())) {
-        // Check if it's a valid date
-        const year = todateValue.getFullYear();
-        const month = String(todateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(todateValue.getDate()).padStart(2, '0');
-        const hours = String(todateValue.getHours()).padStart(2, '0');
-        const minutes = String(todateValue.getMinutes()).padStart(2, '0');
-        const toformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
-        this.editvendorFormGroup
-          .get('proposal_to_datetime')
-          .setValue(toformattedDate);
-      } else {
-        console.error('Invalid date format:', this.editData.proposal_to_datetime);
-      }
-      let fromdateValue = new Date(this.editData.proposal_from_datetime);
-      if (!isNaN(fromdateValue.getTime())) {
-        // Check if it's a valid date
-        const year = fromdateValue.getUTCFullYear();
-        const month = String(fromdateValue.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-        const day = String(fromdateValue.getDate()).padStart(2, '0');
-        const hours = String(fromdateValue.getHours()).padStart(2, '0');
-        const minutes = String(fromdateValue.getMinutes()).padStart(2, '0');
-        const fromformattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
-        console.log(fromformattedDate)
-        this.editvendorFormGroup
-          .get('proposal_from_datetime')
-          .setValue(fromformattedDate);
-      } else {
-        console.error('Invalid date format:', this.editData.proposal_from_datetime);
-      }
-      this.editvendorFormGroup
-        .get('eventname')
-        .setValue(this.editData.eventname);
-      this.editvendorFormGroup.get('category').setValue(this.editData.category);
-      this.editvendorFormGroup
-        .get('organizedby')
-        .setValue(this.editData.organizedby);
-      this.editvendorFormGroup.get('state').setValue(this.editData.state);
-      this.editvendorFormGroup.get('place').setValue(this.editData.place);
-      this.editvendorFormGroup.get('pin').setValue(this.editData.pin);
-      this.editvendorFormGroup.get('venu').setValue(this.editData.venu);
-      this.editvendorFormGroup
-        .get('speakerinfo')
-        .setValue(this.editData.speakerinfo);
-      this.editvendorFormGroup
-        .get('session_name')
-        .setValue(this.editData.session_name);
-      this.editvendorFormGroup.get('topic').setValue(this.editData.topic);
-      this.editvendorFormGroup.get('duration').setValue(this.editData.duration);
-      this.editvendorFormGroup
-        .get('speaker_name')
-        .setValue(this.editData.speaker_name);
-      this.editvendorFormGroup
-        .get('cme_point')
-        .setValue(this.editData.cme_point);
-        this.editvendorFormGroup
-        .get('price')
-        .setValue(this.editData.price);
-      this.editvendorFormGroup
-        .get('vendorname')
-        .setValue(this.editData.vendorname);
-      this.editvendorFormGroup
-        .get('contactemail')
-        .setValue(this.editData.contactemail);
+      };
 
-      this.editvendorFormGroup
-        .get('contactperson')
-        .setValue(this.editData.contactperson);
-      this.editvendorFormGroup
-        .get('contactphonenumber')
-        .setValue(this.editData.contactphonenumber);
-      this.editvendorFormGroup.get('bankname').setValue(this.editData.bankname);
-      this.editvendorFormGroup
-        .get('branchname')
-        .setValue(this.editData.branchname);
+      setValueIfExists('id', this.editData.id);
+      setValueIfExists('name', this.editData.name);
+      setValueIfExists('age', this.editData.age);
+      setValueIfExists('gender', this.editData.gender);
+      setValueIfExists('email', this.editData.email);
+      setValueIfExists('phone', this.editData.phone);
+      setValueIfExists('address', this.editData.address);
+      setValueIfExists('eventname', this.editData.eventname);
+      setValueIfExists('category', this.editData.category);
+      setValueIfExists('organizedby', this.editData.organizedby);
+      setValueIfExists('state', this.editData.state);
+      setValueIfExists('place', this.editData.place);
+      setValueIfExists('pin', this.editData.pin);
+      setValueIfExists('venu', this.editData.venu);
+      setValueIfExists('speakerinfo', this.editData.speakerinfo);
+      setValueIfExists('session_name', this.editData.session_name);
+      setValueIfExists('topic', this.editData.topic);
+      setValueIfExists('speaker_name', this.editData.speaker_name);
+      setValueIfExists('duration', this.editData.duration);
+      setValueIfExists('letter', this.editData.letter);
+      setValueIfExists('cme_point', this.editData.cme_point);
+      setValueIfExists('price', this.editData.price);
+      setValueIfExists('vendorname', this.editData.vendorname);
+      setValueIfExists('contactemail', this.editData.contactemail);
+      setValueIfExists('contactperson', this.editData.contactperson);
+      setValueIfExists('contactphonenumber', this.editData.contactphonenumber);
+      setValueIfExists('bankname', this.editData.bankname);
+      setValueIfExists('branchname', this.editData.branchname);
+      setValueIfExists('accountholdername', this.editData.accountholdername);
+      setValueIfExists('accountnumber', this.editData.accountnumber);
+      setValueIfExists('ifsccode', this.editData.ifsccode);
+      setValueIfExists('panno', this.editData.panno);
+      setValueIfExists('branchaddress', this.editData.branchaddress);
 
-      this.editvendorFormGroup
-        .get('accountholdername')
-        .setValue(this.editData.accountholdername);
-      this.editvendorFormGroup
-        .get('accountnumber')
-        .setValue(this.editData.accountnumber);
-      this.editvendorFormGroup.get('ifsccode').setValue(this.editData.ifsccode);
-      this.editvendorFormGroup.get('panno').setValue(this.editData.panno);
-      this.editvendorFormGroup
-        .get('branchaddress')
-        .setValue(this.editData.branchaddress);
-      this.editvendorFormGroup
-        .get('session_name')
-        .setValue(this.editData.session_name);
-      this.editvendorFormGroup.get('letter').setValue(this.editData.letter);
+      // Handle proposal_from_datetime
+      if (this.editData.proposal_from_datetime) {
+        const utcDate = new Date(this.editData.proposal_from_datetime);
+        const localDate = new Date(
+          utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
+        );
+        const formattedDate = localDate.toISOString().slice(0, 16); // Format: YYYY-MM-DDTHH:mm
+        this.editvendorFormGroup.get('proposal_from_datetime')?.setValue(formattedDate);
+      }
+      // Handle proposal_to_datetime
+      if (this.editData.proposal_to_datetime) {
+        const utcDate = new Date(this.editData.proposal_to_datetime);
+        const localDate = new Date(
+          utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
+        );
+        const formattedDate = localDate.toISOString().slice(0, 16); // Format: YYYY-MM-DDTHH:mm
+        this.editvendorFormGroup.get('proposal_to_datetime')?.setValue(formattedDate);
+      }
     }
+
   }
   toggleTables() {
     this.isShowDeleted = !this.isShowDeleted;
@@ -388,6 +495,12 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
 
     // Reassign paginator after the data changes
     this.dataSource.paginator = this.paginator;
+  }
+  private createSubjectFormGroup(subjectId: string, subSubjectId: string): FormGroup {
+    return this.fb.group({
+      subject: [subjectId, Validators.required],
+      sub_subject: [subSubjectId, Validators.required],
+    });
   }
 
   closeModal() {
@@ -611,6 +724,20 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
         console.error(err);
       },
     });
+  }
+  async getSubSubjectListReturned(id: any) {
+    let dataToPass = {
+      subject_id: id,
+    };
+
+    try {
+      const data: any = await this.adminServ.getSubSubjects(dataToPass).toPromise();
+      this.subSubjectsListDataIMP = data.responseContents;
+      return this.subSubjectsListDataIMP;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   }
   formatDate(date: Date): string {
     const year = date.getFullYear();

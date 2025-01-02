@@ -488,7 +488,7 @@
               <div class="left-data d-flex flex-column w-50">
                 <label for="">Pin<span class="reruired-form-field">*</span></label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="pin"
                   placeholder="Enter Pin"
                   [class.valid]="
@@ -512,6 +512,8 @@
                 >
                   Pin is required.
                 </div>
+                <small class="error" *ngIf="conferenceInfo.get('pin').errors?.pattern">Please enter a valid 6-digit pin number.</small>
+
               </div>
               <div class="right-data d-flex flex-column w-50">
                 <label for="">Venue<span class="reruired-form-field">*</span></label>

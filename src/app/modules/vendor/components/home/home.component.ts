@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
       category: ['', Validators.required],
       place: ['', Validators.required],
       state: ['', Validators.required],
-      pin: ['', Validators.required],
+      pin: ['', Validators.compose([Validators.required, Validators.pattern(/^\d{6}$/)])],
       venu: ['', Validators.required],
       proposal_from_datetime:['',Validators.required],
       proposal_to_datetime:['',Validators.required],
