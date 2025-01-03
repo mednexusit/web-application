@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Pipe } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
+import { retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -221,7 +222,7 @@ export class UserService {
       this.resourceApiURL + 'getallmbbs_specialty',
       data,
       httpOptions
-    );
+    ).pipe(retry(3));
   }
 
   getUserConferenceLists(data:any){
@@ -366,7 +367,7 @@ export class UserService {
       this.baseURL2 + 'resorceapi/getallconference',
       data,
       httpOptions
-    );
+    ).pipe(retry(3));
   }
 
   getAllRemainders(data:any){
@@ -384,7 +385,7 @@ export class UserService {
       this.baseURL2 + 'resorceapi/getallconferenceremainders',
       data,
       httpOptions
-    );
+    ).pipe(retry(3));
   }
 
   fetchBookMarkList(data:any){
