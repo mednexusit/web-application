@@ -56,7 +56,7 @@
         display: flex;
         flex-direction: column;
         label {
-          width: 25%;
+          width: 30%;
           margin: 5px;
         }
         img {
@@ -179,7 +179,7 @@ h4 {
   margin-top: 10px;
   white-space: nowrap;
   label {
-    width: 30%;
+    width: 30% !important;
   }
   input {
     padding: 7px 10px;

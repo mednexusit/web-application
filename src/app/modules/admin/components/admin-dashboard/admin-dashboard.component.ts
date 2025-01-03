@@ -333,25 +333,21 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
       setValueIfExists('ifsccode', this.editData.ifsccode);
       setValueIfExists('panno', this.editData.panno);
       setValueIfExists('branchaddress', this.editData.branchaddress);
+      setValueIfExists('proposal_from_datetime', new Date(this.editData.proposal_from_datetime))
+      setValueIfExists('proposal_to_datetime', new Date(this.editData.proposal_to_datetime))
 
       // Handle proposal_from_datetime
-      if (this.editData.proposal_from_datetime) {
-        const utcDate = new Date(this.editData.proposal_from_datetime);
-        const localDate = new Date(
-          utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
-        );
-        const formattedDate = localDate.toISOString().slice(0, 16); // Format: YYYY-MM-DDTHH:mm
-        this.editvendorFormGroup.get('proposal_from_datetime')?.setValue(formattedDate);
-      }
-      // Handle proposal_to_datetime
-      if (this.editData.proposal_to_datetime) {
-        const utcDate = new Date(this.editData.proposal_to_datetime);
-        const localDate = new Date(
-          utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
-        );
-        const formattedDate = localDate.toISOString().slice(0, 16); // Format: YYYY-MM-DDTHH:mm
-        this.editvendorFormGroup.get('proposal_to_datetime')?.setValue(formattedDate);
-      }
+      // if (this.editData.proposal_from_datetime) {
+      //   const utcDate = new Date(this.editData.proposal_from_datetime);
+      //   const formattedDate = utcDate.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:mm
+      //   this.editvendorFormGroup.get('proposal_from_datetime')?.setValue(formattedDate);
+      // }
+      // // Handle proposal_to_datetime
+      // if (this.editData.proposal_to_datetime) {
+      //   const utcDate = new Date(this.editData.proposal_to_datetime);
+      //   const formattedDate = utcDate.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:mm
+      //   this.editvendorFormGroup.get('proposal_to_datetime')?.setValue(formattedDate);
+      // }
     }
 
   }

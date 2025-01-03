@@ -420,17 +420,21 @@
           </div>
           <div class="edit-fields">
             <label for=""> Conference From Date:</label>
-            <input
+            <!-- <input
               type="datetime-local"
               formControlName="proposal_from_datetime"
-            />
+            /> -->
+            <input [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" formControlName="proposal_from_datetime" placeholder="Conference From Date">
+            <owl-date-time #dt3></owl-date-time>
           </div>
           <div class="edit-fields">
             <label for=""> Conference To Date:</label>
-            <input
+            <!-- <input
               type="datetime-local"
               formControlName="proposal_to_datetime"
-            />
+            /> -->
+            <input [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" formControlName="proposal_to_datetime" placeholder="Conference To Date">
+            <owl-date-time #dt4></owl-date-time>
           </div>
 
           <div class="edit-fields">

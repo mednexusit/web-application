@@ -32,6 +32,7 @@ import { BookingsComponent } from './components/bookings/bookings.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,8 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     MatInputModule,
     HttpClientModule,
     PdfViewerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu
