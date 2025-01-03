@@ -328,7 +328,9 @@
               <div class="fields w-100 d-flex my-3 flex-column">
                 <div class="right-data d-flex flex-column w-100">
                   <label for="">Conference From Date<span class="reruired-form-field">*</span></label>
-                  <input
+                  <input [owlDateTime]="dt2" formControlName="proposal_from_datetime" [owlDateTimeTrigger]="dt2" placeholder="Conference from date">
+                  <owl-date-time #dt2></owl-date-time>
+                  <!-- <input
                     type="datetime-local"
                     formControlName="proposal_from_datetime"
                     placeholder="Conference Host Date"
@@ -342,7 +344,7 @@
                       (conferenceInfo.get('proposal_from_datetime').dirty ||
                         conferenceInfo.get('proposal_from_datetime').touched)
                     "
-                  />
+                  /> -->
                   <div
                     *ngIf="
                       conferenceInfo.get('proposal_from_datetime').invalid &&
@@ -356,6 +358,23 @@
                 </div>
               </div>
               <div class="fields w-100 d-flex my-3 flex-column">
+                <div class="right-data d-flex flex-column w-100">
+                  <label for="">Conference To Date<span class="reruired-form-field">*</span></label>
+                  <input [owlDateTime]="dt1" formControlName="proposal_to_datetime" [owlDateTimeTrigger]="dt1" placeholder="Conference to date">
+                  <owl-date-time #dt1></owl-date-time>
+                  <div
+                  *ngIf="
+                    conferenceInfo.get('proposal_to_datetime').invalid &&
+                    (conferenceInfo.get('proposal_to_datetime').dirty ||
+                      conferenceInfo.get('proposal_to_datetime').touched)
+                  "
+                  class="error"
+                >
+                 To Date is required.
+                </div>
+                </div>
+              </div>
+              <!-- <div class="fields w-100 d-flex my-3 flex-column">
                 <div class="right-data d-flex flex-column w-100">
                   <label for="">Conference To Date<span class="reruired-form-field">*</span></label>
                   <input
@@ -384,7 +403,7 @@
                    To Date is required.
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="fields w-100 d-flex my-3 flex-column">
                 <label for="">Category<span class="reruired-form-field">*</span></label>
                 <select
@@ -595,6 +614,9 @@
                   (change)="handleSessionNameFile($event)"
                 />
               </div>
+              <small class="error" *ngIf="speakerInfo.get('session_name').touched && speakerInfo.get('session_name').invalid">
+                Upload session details in png/pdf*
+              </small>
             </div>
             <div class="fields w-100 d-flex my-3 flex-column">
               <label for="">Price<span class="reruired-form-field">*</span></label>
@@ -697,6 +719,9 @@
                   (change)="handleLetterField($event)"
                 />
               </div>
+              <small class="error" *ngIf="speakerInfo.get('letter').touched && speakerInfo.get('letter').invalid">
+                Upload letter in png/pdf*
+              </small>
             </div>
             <div class="fields w-100 d-flex my-3 flex-column">
               <label for="">CME Points:</label>

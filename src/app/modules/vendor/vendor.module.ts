@@ -35,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { IsEllipsisActiveDirective } from './isEllipsesActive.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -78,6 +79,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatDatepickerModule,
     MatTooltipModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     ]
 })
 export class VendorModule { }

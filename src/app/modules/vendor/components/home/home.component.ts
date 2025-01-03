@@ -139,6 +139,35 @@ export class HomeComponent implements OnInit {
   }
   changeCurrentStep(data: number) {
     this.currentStep = data;
+    switch (this.currentStep) {
+      case 1:
+        this.personalInfo.markAllAsTouched();
+        if (this.personalInfo.valid) {
+          this.doIncrement();
+        }
+        break;
+      case 2:
+        this.conferenceInfo.markAllAsTouched();
+        if (this.conferenceInfo.valid) {
+          this.doIncrement();
+        }
+        break;
+      case 3:
+        this.speakerInfo.markAllAsTouched();
+        if (this.speakerInfo.valid) {
+          this.doIncrement();
+        }
+        break;
+      case 4:
+        this.paymentInfo.markAllAsTouched();
+        if (this.paymentInfo.valid) {
+          this.doIncrement();
+        }
+        break;
+      default:
+        break;
+    }
+    //this.nextStep();
   }
   formatDate(date: Date): string {
     const year = date.getFullYear();
@@ -149,10 +178,65 @@ export class HomeComponent implements OnInit {
 
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
+  // nextStep() {
+  //   if(this.currentStep < 4 ){
+  //     if(this.currentStep === 1){
+  //       this.personalInfo.markAllAsTouched();
+  //       if(this.personalInfo.valid){
+  //         this.doIncrement();
+  //       }
+  //     }
+  //     if(this.currentStep === 3){
+  //       if(!this.conferenceInfo.valid){
+  //         this.conferenceInfo.markAllAsTouched();
+  //       }
+  //       if(this.conferenceInfo.valid){
+  //         this.doIncrement();
+  //       }
+  //     }
+  //     if(this.currentStep === 3){
+  //       this.speakerInfo.markAllAsTouched();
+  //       if(this.speakerInfo.valid){
+  //         this.doIncrement();
+  //       }
+  //     }
+  //   }
+
+
+  //   // if (this.currentStep < 4) {
+  //   //   this.currentStep++;
+  //   // }
+  // }
   nextStep() {
     if (this.currentStep < 4) {
-      this.currentStep++;
+      switch (this.currentStep) {
+        case 1:
+          this.personalInfo.markAllAsTouched();
+          if (this.personalInfo.valid) {
+            this.doIncrement();
+          }
+          break;
+        case 2:
+          this.conferenceInfo.markAllAsTouched();
+          if (this.conferenceInfo.valid) {
+            this.doIncrement();
+          }
+          break;
+        case 3:
+          this.speakerInfo.markAllAsTouched();
+          if (this.speakerInfo.valid) {
+            this.doIncrement();
+          }
+          break;
+        default:
+          break;
+      }
     }
+  }
+
+
+  doIncrement(){
+    this.currentStep++;
   }
 
   prevStep() {
