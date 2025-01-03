@@ -492,11 +492,13 @@
 
             <input type="text" formControlName="speaker_name" />
           </div>
-          <div class="flex d-flex align-items-center">
+          <div class=" edit-fields  d-flex align-items-center">
             <label for="">Session Name:</label>
             <img src="{{ this.editData?.session_name }}" alt="" *ngIf="isImage(this.editData?.session_name)" />
-            <div class="pdf-container" *ngIf="isPdf(editData?.session_name)">
+            <div class="pdf-container" >
+              <span *ngIf="!isPdf(editData?.session_name)">Loading ...</span>
               <pdf-viewer
+              *ngIf="isPdf(editData?.session_name)"
                 [src]="editData?.session_name"
                 [rotation]="0"
                 [original-size]="false"
@@ -523,11 +525,13 @@
               (change)="handleSessionNameFile($event)"
             />
           </div>
-          <div class="flex d-flex align-items-center">
+          <div class="edit-fields flex d-flex align-items-center">
             <label for="">Letter:</label>
             <img src="{{ this.editData?.letter }}" alt="" *ngIf="isImage(this.editData?.letter)" />
-            <div class="pdf-container" *ngIf="isPdf(editData?.letter)">
+            <div class="pdf-container" >
+              <span *ngIf="!isPdf(editData?.letter)">Loading...</span>
               <pdf-viewer
+              *ngIf="isPdf(editData?.letter)"
                 [src]="editData?.letter"
                 [rotation]="0"
                 [original-size]="false"

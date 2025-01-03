@@ -151,7 +151,7 @@
               <div class="left-data d-flex flex-column w-50">
                 <label for="">Age<span class="reruired-form-field">*</span></label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="age"
                   placeholder="Enter Age"
                   [class.valid]="
@@ -559,7 +559,7 @@
                   "
                   class="error"
                 >
-                  Pin is required.
+                  Venu is required.
                 </div>
               </div>
             </div>
@@ -684,7 +684,7 @@
                 </div>
                 <div class="item">
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Duration"
                     formControlName="duration"
                   />
@@ -698,6 +698,9 @@
                   >
                     Duration is required.
                   </div>
+                  <small class="error" *ngIf="speakerInfo.get('duration').errors?.['pattern']">
+                    Duration must be number
+                  </small>
                 </div>
               </div>
             </div>
@@ -726,7 +729,7 @@
             <div class="fields w-100 d-flex my-3 flex-column">
               <label for="">CME Points:</label>
               <input
-                type="number"
+                type="text"
                 placeholder="Enter CME Points"
                 formControlName="cme_point"
               />
@@ -740,6 +743,9 @@
               >
                 CME points is required.
               </div>
+              <small class="error" *ngIf="speakerInfo.get('cme_point').errors?.['pattern']">
+                CME point must be number
+              </small>
             </div>
           </form>
         </div>
