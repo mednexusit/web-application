@@ -85,6 +85,7 @@ export class DashboardComponent {
     this.fetchAreaOfInterest(this.userData);
     this.fetchAllRemainders();
     this.fetchConferences();
+    this.getUserSpecialities();
   }
   logoutUser() {
     this.authServ.logoutUser();

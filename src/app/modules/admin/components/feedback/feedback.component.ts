@@ -14,7 +14,7 @@ export class FeedbackComponent implements OnInit, AfterViewInit {
   offset:any=0;
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: any = ['Sr.No', 'Comment','Email' ,'Feedbacktime', 'Username','PhoneNumber','Action'];
+  displayedColumns: any = ['Sr.No', 'Comment','Email' ,'Feedbacktime', 'Username','PhoneNumber'];
   constructor(private adminServ:AdminservService){
 
 

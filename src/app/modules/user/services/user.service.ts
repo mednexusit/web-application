@@ -330,7 +330,7 @@ export class UserService {
       this.baseURL2 + 'resorceapi/getallmbbs_specialty_subject_areaintrest',
       data,
       httpOptions
-    );
+    ).pipe(retry(3));
   }
 
   deleteAreaOfInterest(data:any){

@@ -33,12 +33,6 @@
     <!-- Weight Column -->
 
 
-    <ng-container matColumnDef="Action">
-      <th mat-header-cell *matHeaderCellDef>Action</th>
-      <td mat-cell *matCellDef="let element" class="delete">
-        <i class="fa-solid fa-trash" title="Delete Feedback"></i>
-      </td>
-    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
