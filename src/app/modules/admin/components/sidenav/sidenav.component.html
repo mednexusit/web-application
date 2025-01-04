@@ -75,11 +75,7 @@
         <span *ngIf="!isHideFlag">News Feed List</span>
         <i class="fa-solid fa-chevron-right rightIcon"></i>
       </a>
-      <a [routerLink]="['feedback']">
-        <i class="fa-solid fa-comment"></i>
-        <span *ngIf="!isHideFlag">Feedback</span>
-        <i class="fa-solid fa-chevron-right rightIcon"></i>
-      </a>
+
       <!-- <a
         *ngIf="isNewsFeedOpen"
         [routerLink]="['add-subadmin']"
@@ -89,6 +85,14 @@
         <span *ngIf="!isHideFlag">Add News Feed</span>
         <i class="fa-solid fa-chevron-right rightIcon"></i>
       </a> -->
+
+    </div>
+    <div class="item">
+      <a [routerLink]="['feedback']">
+        <i class="fa-solid fa-comment"></i>
+        <span *ngIf="!isHideFlag">Feedback</span>
+        <i class="fa-solid fa-chevron-right rightIcon"></i>
+      </a>
     </div>
   </div>
 </div>
