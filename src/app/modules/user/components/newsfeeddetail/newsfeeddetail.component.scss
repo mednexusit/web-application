@@ -22,7 +22,26 @@
         }
     
     }
+}
 
+@media (min-width: 320px) and (max-width: 768px) { 
+    .contact-button {
+        bottom: 15% !important;
+    }
+    .modal{
+        .modal-dialog{
+            width: 95% !important;
+            padding: 5rem 0rem !important;
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) { 
+    .modal{
+        .modal-dialog{
+            width: 50% !important;
+        }
+    }
 }
 
 .feedback-btn{
@@ -115,6 +134,10 @@
           line-height: 14px;
           font-weight: 700;
           font-size: 0.7rem;
+      }
+
+      textarea{
+        border: 1px solid #249A9A;
       }
       
       .submit-btn{
