@@ -10,7 +10,7 @@ $text-color: #ffffff;
   height: 64px;
 
   .logo img {
-    height: 40px;
+    height: 60px;
   }
 
   .spacer {
@@ -63,6 +63,12 @@ $text-color: #ffffff;
 // Media query for mobile screens
 @media only screen and (max-width: 768px) {
 
+  .mat-toolbar {
+  
+    .logo img {
+      margin-top: 0.5rem;
+    }
+  }
   img.menu-ic {
     width: 20px;
     margin: 0px;

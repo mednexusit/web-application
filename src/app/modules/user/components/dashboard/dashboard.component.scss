@@ -113,10 +113,19 @@ li{
     margin-top: 8px;
     color: #009a88;
 }
-.head{
-font-weight: 600;
-font-size: 16px;
-}
+  .head{
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 1rem !important;
+    margin-bottom: 0;
+  }
+  .cat-tittle{
+    margin-top: 1rem !important;
+    margin-bottom: 0;
+  }
+  .coupon{
+    margin-bottom: 0px !important;
+  }
 }
 
 
@@ -825,12 +834,7 @@ color: #fff;
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .mobile-hide{
-    display: none !important;
-  }
-  .mobile-show{
-    display: block !important;
-  }
+  
   .speaker-card {
       flex-direction: column;
       text-align: center;
@@ -1210,13 +1214,4 @@ mat-dialog-content{
 .scroll-container::-webkit-scrollbar-track {
   background-color: #f0f0f0; /* Track color */
   border-radius: 10px; /* Match thumb's rounded corners */
-}
-
-
-.mobile-hide{
-  display: block;
-}
-
-.mobile-show{
-  display: none;
 }

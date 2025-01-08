@@ -88,14 +88,18 @@
           <input type="radio" name="slider" id="slide2" hidden>
           <input type="radio" name="slider" id="slide3" hidden>
           <div class="imageArea">
-            <div class="item img">
-              <video controls autoplay width="500" height="300" src="../../../../../assets/medvideo.mp4"></video>
-            </div>
-            <div class="item img">
-              <img src="../../../../../assets/medimg.jpg" alt="">
-            </div>
-            <div class="item img">
-              <img src="../../../../../assets/medimg2.jpg" alt="">
+            <div class="item img" *ngFor="let item of events">
+              <div class="scroll-card">
+                <div class="card-data"> 
+                  <h3>{{ item.title }}</h3>
+                  <h5>{{ item.dateRange }}</h5>
+                  <h4>{{ item.location }}</h4>
+                  <div class="status-label">
+                    <p>{{ item.status }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- <video controls autoplay width="500" height="300" src="../../../../../assets/medvideo.mp4"></video> -->
             </div>
           </div>
         </div>

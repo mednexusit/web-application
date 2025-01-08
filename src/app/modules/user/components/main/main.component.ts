@@ -99,6 +99,29 @@ export class MainComponent implements OnInit {
       icon: 'fa-solid fa-newspaper catIcon',
     },
   ];
+
+  events: any = [
+    {
+      title: 'Blood Types',
+      dateRange: 'From 2025-01-01 to 2025-01-02',
+      location: 'Location: Chennai',
+      status: 'ONLINE',
+    },
+    {
+      title: 'Test',
+      dateRange: 'From 2025-01-01 to 2025-01-02',
+      location: 'Location: Kurnool',
+      status: 'ONLINE',
+    },
+    {
+      title: 'Mednexus ns proficon',
+      dateRange: 'From 2025-01-01 to 2025-01-02',
+      location: 'Location: Anantapur',
+      status: 'ONLINE',
+    }
+  ];
+
+
   updateDisplayedIcons() {
     this.displayedIcons = [];
     for (let i = 0; i < this.iconsToShow; i++) {
