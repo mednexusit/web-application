@@ -1,3 +1,55 @@
 .delete{
   cursor: pointer;
 }
+.img{
+  height: 120px;
+  width: 120px;
+  img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+.details{
+  height: auto;
+  max-height: 220px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+
+}
+p{
+  height: auto !important;
+  width: 120px !important;
+
+}
+.table-container {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  max-width: 100%; /* Ensures the container doesn't overflow the parent */
+}
+
+.details-container p {
+  font-size: 14px; /* Customize font size */
+  color: #333; /* Customize text color */
+  margin: 10px 0; /* Customize spacing */
+  height: 200px !important;
+  width: 120px !important;
+}
+
+.details-container img {
+  max-width: 100%; /* Make images responsive */
+  height: auto;
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  margin-top: 10px;
+}
+
+table {
+  min-width: 800px; /* Sets a minimum width for the table */
+}
+
+.img img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain;
+}

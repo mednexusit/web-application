@@ -181,9 +181,10 @@ export class NewsfeeddetailComponent implements OnInit {
       "email":this.userDetailsData?.email,
       "phone":this.userDetailsData?.user_reg_mobile,
       "specialityid":this.userDetailsData?.course,
-      "userid":this.userData.userid
+      "userid":this.userData.userid,
+      "news_feed_id":this.newsFeedId
+
     }
-    console.log("Data ToPass",dataToPass)
     this.userServ.submitFeedBack(dataToPass).subscribe({
       next:(data:any)=>{
         this.toastr.success('Feedback has been shared successfully', '', {
