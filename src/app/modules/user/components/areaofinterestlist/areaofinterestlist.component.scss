@@ -65,3 +65,10 @@ $primary-color : #1c8185;
 .icon-holder{
   margin-bottom: 0px !important;
 }
+
+
+@media (min-width: 300px) and (max-width: 768px) {
+  .catt-tittle {
+    white-space: normal !important;
+  }
+}

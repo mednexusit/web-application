@@ -117,6 +117,10 @@ li{
 font-weight: 600;
 font-size: 16px;
 }
+.mt-5{
+  margin-top: 1rem !important;
+  margin-bottom: 0rem !important;
+}
 }
 
 
@@ -825,12 +829,7 @@ color: #fff;
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .mobile-hide{
-    display: none !important;
-  }
-  .mobile-show{
-    display: block !important;
-  }
+  
   .speaker-card {
       flex-direction: column;
       text-align: center;
@@ -1212,11 +1211,3 @@ mat-dialog-content{
   border-radius: 10px; /* Match thumb's rounded corners */
 }
 
-
-.mobile-hide{
-  display: block;
-}
-
-.mobile-show{
-  display: none;
-}
