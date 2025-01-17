@@ -165,8 +165,8 @@ display: none;
       height: 100%;
 
       .vendor-logo{
-        width: auto;
-        height: 5vw;
+        width: 10vw;
+        height: 10vw;
       }
       p{
         font-family: Open Sans;
@@ -347,6 +347,29 @@ display: none;
   }
 }
 
+@media (min-width:768px) and (max-width: 1024px){
+  .vendor-logo{
+    width: 20vw !important;
+    height: 18vw !important;
+  }
+  // .vendor-container{
+  //   .right{
+  //     padding: 20rem 0rem;
+  //   }
+  // }
+}
+
+@media (min-width:601px) and (max-width: 768px){
+  .only-mobile{
+    .logo{
+      img{
+        width: 20vw;
+        height: 15vw;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .only-mobile{
     display: flex !important;
@@ -360,8 +383,8 @@ display: none;
     }
     .logo{
       img{
-        width: 32vw;
-        height: 10vw;
+        width: 20vw;
+        height: 15vw;
       }
     }
   }

@@ -88,15 +88,20 @@
           <input type="radio" name="slider" id="slide2" hidden>
           <input type="radio" name="slider" id="slide3" hidden>
           <div class="imageArea">
-            <div class="item img">
-              <video controls autoplay width="500" height="300" src="../../../../../assets/medvideo.mp4"></video>
+            <div class="item img" *ngFor="let card of cards">
+              <div class="inner-section">
+                <span class="badge" [ngClass]="card.status === 'ONLINE' ? 'bg-success' : 'bg-danger'">{{ card.status }}</span>
+                <h5 class="card-title pt-2 pb-3">{{ card.title }}</h5>
+                <p class="card-text pt-2 pb-3">From: {{ card.startDate || 'N/A' }} to {{ card.endDate || 'N/A' }}</p>
+                <p class="card-text-btn-styles">Location: {{ card.location }}</p>
+              </div>
             </div>
-            <div class="item img">
+            <!-- <div class="item img">
               <img src="../../../../../assets/medimg.jpg" alt="">
             </div>
             <div class="item img">
               <img src="../../../../../assets/medimg2.jpg" alt="">
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="labels">
