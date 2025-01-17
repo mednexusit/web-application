@@ -20,9 +20,43 @@
     
            
         }
-    
+    }
+    .feedback-btn{
+        .contact-button {
+            bottom: 14% !important;
+            right: 5% !important;
+        }
     }
 
+    .modal{
+        .modal-dialog{
+            width: 96% !important;
+        }
+    }
+
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+.feedback-btn{
+        .contact-button {
+            bottom: 12% !important;
+            right: 5% !important;
+        }
+    }
+
+    .modal{
+        .modal-dialog{
+            width: 56% !important;
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1020px) {
+    .modal{
+        .modal-dialog{
+            width: 50% !important;
+        }
+    }
 }
 
 .feedback-btn{

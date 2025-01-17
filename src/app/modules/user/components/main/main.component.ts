@@ -43,6 +43,12 @@ export class MainComponent implements OnInit {
     'emergency-medicine-home-icon',
     'special-category-home-icon'
   ];
+  cards = [
+    { title: 'Blood Types conference', startDate: '2025-01-15', endDate: '2025-01-22', location: 'Chennai', status: 'ONLINE' },
+    { title: 'Test', startDate: '2025-01-15', endDate: '2025-01-22', location: 'Kurnool', status: 'ONLINE' },
+    { title: 'Mednexus ns proficon', startDate: '2025-01-15', endDate: '2025-01-22', location: 'Anantapur', status: 'ONLINE' }
+  ];
+
   displayedIcons: any = [];
   startIndex = 0;
   iconsToShow = 10;

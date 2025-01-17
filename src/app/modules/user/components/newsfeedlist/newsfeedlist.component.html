@@ -68,49 +68,20 @@
         <hr class="hr" />
       </div>
     </div>
-    <div class="row pright">
-      <!-- Coupon 1 -->
-      <div class="col-md-6 col-lg-6 p-2" *ngFor="let item of newsFeedData">
-        <div class="row main-card mx-2" (click)="goToNewsDetails(item)">
-          <div class="col-4">
-            <div class="img-sec">
-              <img [src]="item.img_url" alt="Kamal Kishore Soan" />
-            </div>
+    <div class="row card-info">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 card-container mb-4" *ngFor="let item of newsFeedData">
+        <div class="card" (click)="goToNewsDetails(item)">
+          <div class="card-header">
+            <img [src]="item.img_url" alt="Kamal Kishore Soan" class="card-image">
           </div>
-          <div class="col-8 p0">
-            <div class="card-content-sec">
-              <p>{{ item.heading }}</p>
-            </div>
-            <div class="row footer-sec">
-              <div class="col-lg-7 col-xs-12 p0">
-                <p>{{ item.subheading }}</p>
-              </div>
-              <div class="col-lg-4 col-xs-12 p0">
-                <p>{{ getTimeAgo(item.created_at) }}</p>
-              </div>
-            </div>
+          <div class="card-body">
+            <p class="card-title">{{ item.heading }}</p>
+            <p class="card-description">{{ item.subheading }}</p>
+            <p class="card-date">{{ getTimeAgo(item.created_at) }}</p>
           </div>
         </div>
-        <!-- <div class="speaker-card" (click)="goToNewsDetails(item)">
-          <img [src]="item.img_url" alt="Kamal Kishore Soan" />
-          <div class="card-text pl-2">
-            <h4 class="side-text">{{ item.heading }}</h4>
-
-            <div class="card-footer row">
-              <div class="col-8">
-                <h5 class="left-text subheading-left-text">
-                  <b>{{ item.subheading }}</b>
-                </h5>
-              </div>
-              <div class="col-4">
-                <h6 class="right-text">
-                  <b>{{ getTimeAgo(item.created_at) }}</b>
-                </h6>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
+      
     </div>
   </div>
 </section>

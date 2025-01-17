@@ -202,7 +202,7 @@
     </div>
   </section>
 
-  <section class="mobile-hide">
+  <section>
     <div class="container">
       <div class="d-flex">
         <h1 class="head mt-5">Remainders</h1>
@@ -248,7 +248,7 @@
   </section>
 
   <!-- Recommended For You Section -->
-  <section class="mobile-hide">
+  <section>
     <div class="container">
       <div class="d-flex">
         <h1 class="head mt-5">Area Of Interest</h1>
@@ -300,7 +300,7 @@
   </section>
 
   <!---Add Category-->
-  <section class="mobile-hide">
+  <section>
     <div class="container">
       <div class="d-flex">
         <h1 class="head mt-5">Your Specialities</h1>
@@ -348,143 +348,13 @@
     </div>
   </section>
 
-  <div class="mobile-show pt-4">
-    <mat-accordion class="example-headers-align">
-      <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)" hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Remainders
-            <h5 class="cat-tittle" style="margin-left: auto">
-              <b>View All</b>
-            </h5>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row scroll-container" *ngIf="remaindersData.length">
-          <!-- Coupon 1 -->
-          <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer" *ngFor="let item of remaindersData" (click)="openModal(item)">
-            <div class="coupon d-flex border p-2 align-items-center">
-              <span>
-                <img src="../../../../../assets/area-of-intrest-mn-icon.png" style="margin-right: 15px;" alt="Coupon Icon" />
-              </span>
-              <span class="mr-3">
-                <p class="coupon-caption">
-                  {{item?.eventname}}
-                </p>
-                <p class="cod"><strong>{{getDateStatus(item.proposal_date_time)}}</strong></p>
-              </span>
-            </div>
-          </div>
-
-
-        </div>
-        <div class="row" *ngIf="!remaindersData.length">
-          <div class="col-12 col-lg-3 col-xl-3 col-md-3 cursor-pointer">
-            <div class="coupon d-flex border p-2 align-items-center flex-column">
-              <span>
-                <img src="../../../../../assets/area-of-intrest-mn-icon.png" style="margin-right: 15px;" alt="Coupon Icon" />
-              </span>
-              <h1 class="mr-3">No Remainders</h1>
-            </div>
-          </div>
-        </div>
+    <mat-accordion>
+      <mat-expansion-panel >
+       
       </mat-expansion-panel>
 
-      <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)" hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Area Of Interest
-            <h5 class="cat-tittle" style="margin-left: auto" (click)="viewAllAreaOfInterest()">
-              <b>View All</b>
-            </h5>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row areaofinterest">
-          <div class="col-10 col-sm-12 col-lg-10 col-xl-8 col-md-10 d-flex align-items-center">
-
-            <div class=" w-50 aoi">
-              <div class="mn-icon-container mr-3">
-                <img src="../../../../../assets/area-of-intrest-mn-icon.png"  style="width: 60px;height: 60px;" alt="Mn area of intrest">
-              </div>
-              <div
-              class=""
-              *ngFor="let item of limitedAreaOfInterestData "
-            >
-              <div class="wrapper"(click)="goToConferences(item)">
-                <div class="iconbox-top md-align-center">
-                  <div class="iconbox-top-content">
-                    <div class="hover-holder">
-                      <div class="icon-holder">
-                        <svg class="svg-circle">
-                          <circle
-                            cx="49"
-                            cy="49"
-                            r="47"
-                            stroke="rgb(15,124,127)"
-                            stroke-width="2"
-                            fill="none"
-                          ></circle>
-                        </svg>
-                        <div class="icon"><img src="{{ item.img }}" /></div>
-                      </div>
-                      <!-- <h1 class="catt-tittle">{{ item.subcategory_name }}</h1> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="col-2 col-sm-2 col-lg-2 col-xl-2 col-md-2 d-flex justify-content-end">
-            <div class="recommendation-icon" (click)="goToAreaOfInterest()" title="Add Area Of Interest">+</div>
-          </div>
-        </div>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)" hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Your Specialities
-            <h5 class="cat-tittle" style="margin-left: auto">
-              <span><i class="fa-regular fa-less-than"></i></span>&nbsp; Back to
-              Home
-            </h5>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="row" *ngIf="userAvailableSpecialities.length > 0 ">
-          <!-- Coupon 1 -->
-          <div
-            class="col-4 col-sm-6 col-lg-2 col-xl-2 col-md-2"
-            *ngFor="let item of userAvailableSpecialities"
-          >
-            <div class="wrapper"(click)="goToConference(item)">
-              <div class="iconbox-top md-align-center">
-                <div class="iconbox-top-content">
-                  <div class="hover-holder">
-                    <div class="icon-holder">
-                      <svg class="svg-circle">
-                        <circle
-                          cx="49"
-                          cy="49"
-                          r="47"
-                           stroke="rgb(15,124,127)"
-                          stroke-width="2"
-                          fill="none"
-                        ></circle>
-                      </svg>
-                      <div class="icon"><img src="{{ item.img }}" /></div>
-                    </div>
-                    <h1 class="catt-tittle">{{ item.specialty_name }}</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" *ngIf="userAvailableSpecialities.length <= 0 ">
-          <h1>No Specialities,
-            <a [routerLink]="['']" routerLinkActive="router-link-active">Please Register</a>
-          </h1>
-        </div>
-      </mat-expansion-panel>
+      
     </mat-accordion>
-  </div>
 
   <!---Anatomy-->
 </div>
