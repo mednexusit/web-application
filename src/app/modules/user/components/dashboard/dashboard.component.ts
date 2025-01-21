@@ -85,7 +85,7 @@ export class DashboardComponent {
     this.fetchAreaOfInterest(this.userData);
     this.fetchAllRemainders();
     this.fetchConferences();
-    this.getUserSpecialities();
+    //this.getUserSpecialities();
   }
   logoutUser() {
     this.authServ.logoutUser();
@@ -178,8 +178,8 @@ export class DashboardComponent {
         user_id: data.userid,
       };
       this.userServ.getUserDetails(dataToPass).subscribe({
-        next: (data: any) => {
-          this.userDetailsData = data.responseContents;
+        next:async (data: any) => {
+          this.userDetailsData = await data.responseContents;
           if (this.userDetailsData[0]?.course) {
             this.getUserSpecialities();
           }
