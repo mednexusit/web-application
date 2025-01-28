@@ -1,37 +1,69 @@
 <div class="container">
   <h1>Area Of Interest</h1>
   <div class="row aoilist">
-    <div
-    class="col-12 col-sm-12 col-lg-12 col-xl-12 col-md-12 subject"
-    *ngFor="let item of areaOfInterestData"
-  >
-    <div class="wrapper" (click)="goToConference(item)">
-      <div class="iconbox-top">
-        <div class="iconbox-top-content">
-          <div class="hover-holder">
-            <div class="icon-holder">
-              <svg class="svg-circle">
-                <circle
-                  cx="49"
-                  cy="49"
-                  r="47"
-                  stroke="rgb(15,124,127)"
-                  stroke-width="2"
-                  fill="none"
-                ></circle>
-              </svg>
-              <div class="icon"><img src="{{ item.img }}" /></div>
+    <div class="col-12 col-sm-12 col-lg-12 col-xl-12 col-md-12 subject p-2" *ngFor="let item of areaOfInterestData">
+      <div class="content-sec col-10 col-sm-10 col-lg-10 col-xs-10 col-md-10" (click)="goToConference(item)">
+        <div class="iconbox-top">
+          <div class="iconbox-top-content row">
+            <div class="hover-holder subject">
+              <div class="icon-holder col-3 col-sm-2 col-lg-2 col-xs-3 col-md-3">
+                <svg class="svg-circle">
+                  <circle
+                    cx="49"
+                    cy="49"
+                    r="47"
+                    stroke="rgb(15,124,127)"
+                    stroke-width="2"
+                    fill="none"
+                  ></circle>
+                </svg>
+                <div class="icon"><img src="{{ item.img }}" /></div>
+              </div>
+              <div class="col-9 col-sm-10 col-lg-10 col-xs-9 col-md-9">
+                <h1 class="catt-tittle">{{ item.subcategory_name }}</h1>
+              </div>
+              
             </div>
-            <h1 class="catt-tittle">{{ item.subcategory_name }}</h1>
           </div>
-
         </div>
-
       </div>
-    </div>
-    <div class="delete"(click)="deleteAOI(item)">
-      <i class="fa-solid fa-trash"></i>
-    </div>
+      <div class="btn-sec delete col-2 col-sm-2 col-lg-2 col-xs-2 col-md-2" (click)="deleteAOI(item)">
+        <i class="fa-solid fa-trash"></i>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+<!--       
+      <div class="wrapper" (click)="goToConference(item)">
+        <div class="iconbox-top">
+          <div class="iconbox-top-content">
+            <div class="hover-holder">
+              <div class="icon-holder">
+                <svg class="svg-circle">
+                  <circle
+                    cx="49"
+                    cy="49"
+                    r="47"
+                    stroke="rgb(15,124,127)"
+                    stroke-width="2"
+                    fill="none"
+                  ></circle>
+                </svg>
+                <div class="icon"><img src="{{ item.img }}" /></div>
+              </div>
+              <h1 class="catt-tittle">{{ item.subcategory_name }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="delete"(click)="deleteAOI(item)">
+        <i class="fa-solid fa-trash"></i>
+      </div> -->
   </div>
   </div>
 </div>

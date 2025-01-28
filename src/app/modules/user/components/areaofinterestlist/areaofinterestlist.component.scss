@@ -5,7 +5,7 @@ $primary-color : #1c8185;
   flex-direction: column;
   overflow-y: scroll;
   flex-wrap: nowrap;
-  height: 450px;
+  // height: 450px;
   scroll-behavior: smooth;
 }
 .aoilist::-webkit-scrollbar {
@@ -33,22 +33,16 @@ $primary-color : #1c8185;
   margin-top: 10px;
 }
 .hover-holder{
-  display: flex;
+  // display: flex;
   align-items: center;
 }
 .catt-tittle{
   white-space: nowrap;
 }
-.iconbox-top.iconbox-top-content{
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-}
 .iconbox-top-content{
   display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
+  // align-items: center !important;
+  // justify-content: space-between !important;
   width: 100% !important;
 }
 .iconbox-top{
@@ -61,9 +55,13 @@ $primary-color : #1c8185;
 .delete{
   color: red;
   cursor: pointer;
+  text-align: right;
+  padding-right: 10px;
 }
 .icon-holder{
   margin-bottom: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 
